@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\PenjualanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +21,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [Dashboard::class,'index']);
+
+Route::resource('/penjualan',PenjualanController::class);
+Route::resource('/pembelian',PembelianController::class);
+
