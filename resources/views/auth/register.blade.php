@@ -25,26 +25,26 @@
 									<div class="text-center mb-3">
 										<a href="index.html"><img src="images/logo-full.png" alt=""></a>
 									</div>
-                                    <h4 class="text-center mb-4 text-white">Sign up your account</h4>
+                                    <h4 class="text-center mb-4 text-white">Silahkan Buat Akun</h4>
                                     <form action="index.html">
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Username</strong></label>
-                                            <input type="text" class="form-control" placeholder="username">
+                                            <input type="text" class="form-control" placeholder="Masukan Username">
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Email</strong></label>
-                                            <input type="email" class="form-control" placeholder="hello@example.com">
+                                            <input type="email" class="form-control" placeholder="contoh@gmail.com">
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Password</strong></label>
                                             <input type="password" class="form-control" value="Password">
                                         </div>
                                         <div class="text-center mt-4">
-                                            <button type="submit" class="btn bg-white text-primary btn-block">Sign me up</button>
+                                            <button type="submit" class="btn bg-white text-primary btn-block">Daftar</button>
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p class="text-white">Already have an account? <a class="text-white" href="page-login.html">Sign in</a></p>
+                                        <p class="text-white">Sudah Punya Akun? <a class="text-white" href="page-login.html">Masuk</a></p>
                                     </div>
                                 </div>
                             </div>

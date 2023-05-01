@@ -26,7 +26,7 @@
                                     <div class="text-center mb-3">
                                         <a href="index.html"><img src="images/logo-full.png" alt=""></a>
                                     </div>
-                                    <h4 class="text-center mb-4 text-white">Sign in your account</h4>
+                                    <h4 class="text-center mb-4 text-white">Sistem Informasi SMAC</h4>
                                     @if(session('error'))
                                         <div class="alert alert-danger" role="alert">
                                             {{ session('error') }}
@@ -57,12 +57,7 @@
                                         </div>
                                         <div class="form-row d-flex justify-content-between mt-4 mb-2">
                                             <div class="form-group">
-                                                <div class="custom-control custom-checkbox ml-1 text-white">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                        id="basic_checkbox_1">
-                                                    <label class="custom-control-label" for="basic_checkbox_1">Remember
-                                                        my preference</label>
-                                                </div>
+                                                
                                             </div>
                                             <div class="form-group">
                                                 <a class="text-white" href="page-forgot-password.html">Forgot
@@ -70,13 +65,12 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn bg-white text-primary btn-block">Sign Me
-                                                In</button>
+                                            <button type="submit" class="btn bg-white text-primary btn-block">Masuk</button>
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p class="text-white">Don't have an account? <a class="text-white"
-                                                href="/auth/create">Sign up</a></p>
+                                        <p class="text-white">Belum punya akun? <a class="text-white"
+                                                href="/auth/create">Daftar</a></p>
                                     </div>
                                 </div>
                             </div>
