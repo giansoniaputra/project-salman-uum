@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\Dashboard;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PenjualanController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,16 @@ use Illuminate\Support\Facades\Route;
 //     return view('index');
 // });
 
-Route::get('/', [Dashboard::class,'index']);
+Route::get('/', [Dashboard::class,'index'])->middleware('auth');
+Route::get('/home', [Dashboard::class,'index'])->middleware('auth');
 
-Route::resource('/penjualan',PenjualanController::class);
-Route::resource('/pembelian',PembelianController::class);
+Route::resource('/penjualan',PenjualanController::class)->middleware('auth');
+Route::resource('/pembelian',PembelianController::class)->middleware('auth');
+Route::resource('/auth', AuthController::class)->middleware('guest');
+Route::get('/auth', [AuthController::class,'index'])->name('login')->middleware('guest');
+
+// Login
+Route::post('/authenticate', [AuthController::class, 'authenticate']);
+// LOGOUT
+Route::get('/logout', [AuthController::class, 'logout']);
 

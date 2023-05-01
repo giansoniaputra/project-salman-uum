@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -12,7 +13,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-        //
+        return view('auth.login');
     }
 
     /**
@@ -20,7 +21,7 @@ class AuthController extends Controller
      */
     public function create()
     {
-        //
+        return view('auth.register');
     }
 
     /**
@@ -61,5 +62,34 @@ class AuthController extends Controller
     public function destroy(users $users)
     {
         //
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/auth');
+
+    }
+
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ],[
+            'email.required' => 'Email tidak boleh kosong',
+            'email.email' => 'Email harus valid',
+            'password.required' => 'Email tidak boleh kosong',
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/');
+        }
+
+        return back()->with('error', 'Username atau Password Salah');
     }
 }
