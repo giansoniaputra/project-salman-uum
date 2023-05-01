@@ -72,22 +72,17 @@
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
                             <div class="dashboard_bar">
-								<div class="input-group search-area d-lg-inline-flex d-none">
-									<input type="text" class="form-control" placeholder="Search here...">
-									<div class="input-group-append">
-										<span class="input-group-text"><a href="javascript:void(0)"><i class="flaticon-381-search-2"></i></a></span>
-									</div>
-								</div>
+                                Rifat Jaya Motor
                             </div>
                         </div>
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
-									<!-- <div class="header-info">
-										<span class="text-black">Hello,<strong>Franklin</strong></span>
+									 <div class="header-info">
+										<span class="text-black">Hello, <strong>Salfarizi</strong></span>
 										<p class="fs-12 mb-0">Super Admin</p>
-									</div> -->
-                                    <img src="images/profile/17.jpg" width="20" alt=""/>
+									</div> 
+                                    <img src="images/profile/IMG_7064 (Custom).jpg" class="rounded-circle user_img" width="30" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="./app-profile.html" class="dropdown-item ai-icon">
