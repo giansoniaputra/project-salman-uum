@@ -12,8 +12,9 @@ class PenjualanController extends Controller
     public function index()
     {
         $data=[
+            'title'=> 'Penjualan | SMAC',
             'judul'=> 'Penjualan',
-            'breadcumb1' => 'Master',
+            'breadcumb1' => 'Transaksi',
             'breadcumb2' => 'Penjualan',
         ];
         return view('penjualan.index',$data);

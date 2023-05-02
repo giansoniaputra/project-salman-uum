@@ -65,13 +65,9 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn bg-white text-primary btn-block">Masuk</button>
+                                            <button type="submit" class="btn bg-white text-primary btn-block">Login</button>
                                         </div>
                                     </form>
-                                    <div class="new-account mt-3">
-                                        <p class="text-white">Belum punya akun? <a class="text-white"
-                                                href="/auth/create">Daftar</a></p>
-                                    </div>
                                 </div>
                             </div>
                         </div>

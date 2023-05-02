@@ -9,6 +9,7 @@ class Dashboard extends Controller
     public function index()
     {
         $data=[
+            'title'=> 'Dashboard | SMAC',
             'judul'=> 'Dashboard',
             'breadcumb1' => 'Dashboard',
             'breadcumb2' => 'Dashboard',

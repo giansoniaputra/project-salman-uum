@@ -42,12 +42,12 @@
                                             <input type="password" class="form-control" value="Password">
                                         </div>
                                         <div class="form-group">
-                                            <label for="roles" class="form-label">Roles</label>
-                                            <select class="form-select form-select-lg" name="roles" id="roles">
-                                                <option selected disabled>Pilih Role...</option>
-                                                <option value="SUPER ADMIN">SUPER ADMIN</option>
-                                                <option value="ADMIN">ADMIN</option>
-                                                <option value="MEMBER">MEMBER</option>
+                                            <label class="mb-1 text-white"><strong>Pilih Role</strong></label>
+                                            <select class="form-control form-control-sm default-select">
+                                                <option selected>Pilih Role</option>
+                                                <option>Super Admin</option>
+                                                <option>Admin</option>
+                                                <option>Member</option>
                                             </select>
                                         </div>
                                         <div class="text-center mt-4">
