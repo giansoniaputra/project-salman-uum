@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin');
             $table->string('alamat');
-            $table->string('photo');
+            $table->string('photo_ktp');
             $table->timestamps();
         });
     }

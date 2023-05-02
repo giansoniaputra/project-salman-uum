@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('bahan_bakar');
             $table->string('bpkb');
             $table->string('berlaku_sampai');
+            $table->string('photo_bpkb');
+            $table->string('photo_stnk');
             $table->timestamps();
         });
     }
