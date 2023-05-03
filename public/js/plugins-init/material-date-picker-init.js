@@ -2,11 +2,11 @@
     "use strict"
 
     // MAterial Date picker
-    $('#mdate').bootstrapMaterialDatePicker({
+    $('#tanggal_lahir').bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false
     });
-    $('#mdate2').bootstrapMaterialDatePicker({
+    $('#tanggal_beli').bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false
     });

@@ -25,9 +25,17 @@ Route::get('/', [Dashboard::class,'index'])->middleware('auth');
 Route::get('/home', [Dashboard::class,'index'])->middleware('auth');
 
 Route::resource('/penjualan',PenjualanController::class)->middleware('auth');
-Route::resource('/pembelian',PembelianController::class)->middleware('auth');
 Route::resource('/auth', AuthController::class)->middleware('guest');
 Route::get('/auth', [AuthController::class,'index'])->name('login')->middleware('guest');
+
+// PEMBELIAN
+Route::resource('/pembelian',PembelianController::class)->middleware('auth');
+    // Cek apakah konsumen sudah terdaftar
+Route::get('/cekNIK', [PembelianController::class, 'cek_nik'])->middleware('auth');
+
+// DATATABLES
+Route::get('/datatablesPembelian', [PembelianController::class, 'dataTables'])->middleware('auth');
+
 
 // Login
 Route::post('/authenticate', [AuthController::class, 'authenticate']);

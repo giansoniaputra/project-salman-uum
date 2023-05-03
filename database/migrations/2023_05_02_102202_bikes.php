@@ -17,14 +17,15 @@ return new class extends Migration
             $table->string('no_polisi');
             $table->string('merek');
             $table->string('type');
+            $table->string('warna');
             $table->integer('tahun_pembuatan');
             $table->string('daya');
             $table->string('no_rangka');
             $table->string('bahan_bakar');
             $table->string('bpkb');
             $table->string('berlaku_sampai');
-            $table->string('photo_bpkb');
-            $table->string('photo_stnk');
+            $table->string('photo_bpkb')->nullable();
+            $table->string('photo_stnk')->nullable();
             $table->timestamps();
         });
     }

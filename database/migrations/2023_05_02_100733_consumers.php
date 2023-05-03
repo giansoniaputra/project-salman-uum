@@ -16,10 +16,11 @@ return new class extends Migration
             $table->uuid('unique')->unique();
             $table->string('nik', 16);
             $table->string('nama', 225);
+            $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin');
             $table->string('alamat');
-            $table->string('photo_ktp');
+            $table->string('photo_ktp')->nullable();
             $table->timestamps();
         });
     }
