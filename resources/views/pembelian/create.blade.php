@@ -62,7 +62,7 @@
                                                 </div>
                                                 <input type="text"
                                                     class="form-control @error('tempat_lahir') is-invalid @enderror"
-                                                    value="{{ old('tanggal_lahir') }}"
+                                                    value="{{ old('tempat_lahir') }}"
                                                     placeholder="Masukan Tempat Lahir" name="tempat_lahir"
                                                     id="tempat_lahir">
                                                 @error('tempat_lahir')
@@ -78,7 +78,7 @@
                                                 </div>
                                                 <input type="text"
                                                     class="form-control @error('tanggal_lahir') is-invalid @enderror"
-                                                    value="{{ old('tempat_lahir') }}"
+                                                    value="{{ old('tanggal_lahir') }}"
                                                     placeholder="Masukan Tanggal Lahir" name="tanggal_lahir"
                                                     id="tanggal_lahir">
                                                 @error('tanggal_lahir')
@@ -286,7 +286,7 @@
                                             <div class="custom-file">
                                                 <input type="file"
                                                     class="custom-file-input @error('photo_bpkb') is-invalid @enderror"
-                                                    value="{{ old('photo_bpkb') }}" name="photo_stnk"
+                                                    value="{{ old('photo_bpkb') }}" name="photo_bpkb"
                                                     name="photo_bpkb" id="photo_bpkb">
                                                 <label class="custom-file-label">Choose file</label>
                                                 @error('photo_bpkb')
