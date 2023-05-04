@@ -48,7 +48,7 @@ class PembelianController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = $request->validate([
+        $rules = [
             'nik' => 'required',
             'nama' => 'required',
             'tempat_lahir' => 'required',
@@ -66,7 +66,8 @@ class PembelianController extends Controller
             'berlaku_sampai' => 'required',
             'harga_beli' => 'required',
             'tanggal_beli' => 'required',
-        ],[
+        ];
+        $pesan = [
             'nik.required' => 'Tidak boleh Kosong' ,
             'nama.required' => 'Tidak boleh Kosong' ,
             'tempat_lahir.required' => 'Tidak boleh Kosong' ,
@@ -84,8 +85,15 @@ class PembelianController extends Controller
             'berlaku_sampai.required' => 'Tidak boleh Kosong',
             'harga_beli.required' => 'Tidak boleh Kosong',
             'tanggal_beli.required' => 'Tidak boleh Kosong',
-         ]);
-
+         ];
+         $validator = Validator::make($request->all(),$rules, $pesan);
+         if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->with('error', 'Pastikan anda menginput dengan benar')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
          $consumer = Consumer::where('nik', $request->nik)->first();
 
         if(!$consumer){
@@ -140,9 +148,8 @@ class PembelianController extends Controller
         Buy::create($data_transaksi);
 
         return redirect('/pembelian')->with('success', 'Data Transaksi Berhasil Ditambahkan');
-
-
-
+            
+        }
         
     }
 
@@ -159,7 +166,23 @@ class PembelianController extends Controller
      */
     public function edit(Buy $buy)
     {
-        //
+        
+    }
+
+    public function page_edit(Buy $buy)
+    {
+        
+        $data = [
+            'title'=> 'Edit Pembelian | SMAC',
+            'judul'=> 'Edit Data Pembelian',
+            'breadcumb1' => 'Pembelian',
+            'breadcumb2' => 'Edit Data Pembelian',
+            'beli' => $buy,
+            'motor' => $buy->bike,
+            'consumer' => $buy->consumer,
+
+        ];
+        return view('pembelian.edit',$data);
     }
 
     /**
@@ -192,8 +215,8 @@ class PembelianController extends Controller
     public function dataTables(Request $request)
     {
         if ($request->ajax()) {
-            $query = DB::table('buys')
-                    ->join('bikes', 'buys.bike_id', '=' , 'bikes.id');
+            $query = DB::table('bikes')
+                    ->join('buys', 'bikes.id', '=' , 'buys.bike_id');
             $data = $query->get();
 
             foreach ($data as $row){
@@ -204,7 +227,7 @@ class PembelianController extends Controller
             return DataTables::of($data)->addColumn('action', function($row){
                     $actionBtn =
                     '<button class="btn btn-info btn-sm info-button" data-id="'.$row->id.'"><i class="flaticon-381-view-2"></i></button>
-                    <button class="btn btn-success btn-sm edit-button" data-id="'.$row->id.'"><i class="flaticon-381-edit-1"></i></button>
+                    <a href="/edit/'.$row->unique.'" class="btn btn-success btn-sm edit-button" data-id="'.$row->id.'"><i class="flaticon-381-edit-1"></i></a>
                     <button class="btn btn-warning btn-sm setting-button" data-id="'.$row->id.'"><i class="flaticon-381-settings-6"></i></button>
                     <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
                         <button type="button" class="btn btn-danger btn-sm delete-button" data-token="'.csrf_token().'" data-id="'.$row->id.'"><i class="flaticon-381-trash-1"></i></button>

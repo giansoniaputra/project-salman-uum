@@ -32,6 +32,8 @@ Route::get('/auth', [AuthController::class,'index'])->name('login')->middleware(
 Route::resource('/pembelian',PembelianController::class)->middleware('auth');
     // Cek apakah konsumen sudah terdaftar
 Route::get('/cekNIK', [PembelianController::class, 'cek_nik'])->middleware('auth');
+    // Edit Data
+Route::get('/edit/{buy:unique}', [PembelianController::class, 'page_edit'])->middleware('auth');
 
 // DATATABLES
 Route::get('/datatablesPembelian', [PembelianController::class, 'dataTables'])->middleware('auth');
