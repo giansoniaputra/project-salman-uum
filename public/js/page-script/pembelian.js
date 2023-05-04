@@ -122,7 +122,7 @@ $(document).ready(function () {
     // Popup Modal Detail
     $('#dataTables').on('click','.info-button',function(){
         let id = $(this).attr('data-id')
-        alert(id)
+        $('#modal-detail').modal('show')
     })
 
     let monthBefore = $('.dtp-select-month-before .material-icons')
