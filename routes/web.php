@@ -3,6 +3,8 @@
 use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BikeController;
+use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PenjualanController;
 
@@ -35,12 +37,18 @@ Route::get('/cekNIK', [PembelianController::class, 'cek_nik'])->middleware('auth
     // Edit Data
 Route::get('/edit/{buy:unique}', [PembelianController::class, 'page_edit'])->middleware('auth');
 
+// DATA MOTOR
+Route::resource('/motor', BikeController::class)->middleware('auth');
+
+// DATA KONSUMEN
+Route::resource('/consumer', ConsumerController::class)->middleware('auth');
+
+// AUTHENTIKASI
+    // Login
+Route::post('/authenticate', [AuthController::class, 'authenticate']);
+    // Logout
+Route::get('/logout', [AuthController::class, 'logout']);
+
 // DATATABLES
 Route::get('/datatablesPembelian', [PembelianController::class, 'dataTables'])->middleware('auth');
-
-
-// Login
-Route::post('/authenticate', [AuthController::class, 'authenticate']);
-// LOGOUT
-Route::get('/logout', [AuthController::class, 'logout']);
 

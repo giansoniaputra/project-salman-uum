@@ -273,7 +273,7 @@
                                                 <input type="file"
                                                     class="custom-file-input @error('photo_stnk') is-invalid @enderror"
                                                     value="{{ old('photo_stnk', $motor->photo_stnk) }}" name="photo_stnk"
-                                                    id="photo_stnk">
+                                                    id="photo_stnk" onchange="previewImageSTNK()">
                                                 <label class="custom-file-label">Choose file</label>
                                                 @error('photo_stnk')
                                                     <div class="invalid-feedback">
@@ -281,6 +281,7 @@
                                                     </div>
                                                 @enderror
                                             </div>
+                                            <img src="/storage/{{ $motor->photo_stnk }}" style="width: 250px" alt="" class="img-thumbnail mt-3 ml-5 image-stnk">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 mb-2">
@@ -290,13 +291,14 @@
                                                 <input type="file"
                                                     class="custom-file-input @error('photo_bpkb') is-invalid @enderror"
                                                     value="{{ old('photo_bpkb', $motor->photo_bpkb) }}" name="photo_bpkb"
-                                                    name="photo_bpkb" id="photo_bpkb">
+                                                    name="photo_bpkb" id="photo_bpkb" onchange="previewImageBPKB()">
                                                 <label class="custom-file-label">Choose file</label>
                                                 @error('photo_bpkb')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
+                                                <img src="/storage/{{ $motor->photo_bpkb }}" style="width: 250px" alt="" class="img-thumbnail mt-3 ml-5 image-bpkb">
                                             </div>
                                         </div>
                                     </div>
@@ -370,6 +372,5 @@
             text: flashData,
         })
     }
-
 </script>
 @endsection

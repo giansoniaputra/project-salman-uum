@@ -20,8 +20,8 @@
                 <span class="nav-text">Master</span>
             </a>
             <ul aria-expanded="false">
-                <li><a href="/">Data Konsumen</a></li>
-                <li><a href="/">Data Motor</a></li>
+                <li><a href="/consumer">Data Konsumen</a></li>
+                <li><a href="/motor">Data Motor</a></li>
             </ul>
         </li>
             <li><a href="widget-basic.html" class="ai-icon" aria-expanded="false">

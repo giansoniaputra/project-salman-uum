@@ -109,7 +109,7 @@ class PembelianController extends Controller
             $data_consumer = [
                 'unique' => Str::random(36),
                 'nik' => $request->nik,
-                'nama' => $request->nama,
+                'nama' => ucwords(strtolower($request->nama)),
                 'tempat_lahir' => $request->tempat_lahir,
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
@@ -122,16 +122,17 @@ class PembelianController extends Controller
         $path2 = $request->file('photo_bpkb')->store('bpkb');
         $data_motor = [
             'unique' => Str::random(26),
-            'merek' => $request->merek,
+            'merek' => ucwords(strtolower($request->merek)),
             'daya' => $request->daya,
             'tahun_pembuatan' => $request->tahun_pembuatan,
-            'warna' => $request->warna,
+            'warna' => ucwords(strtolower($request->warna)),
             'no_rangka' => $request->no_rangka,
             'bpkb' => $request->bpkb,
             'type' => $request->type,
-            'bahan_bakar' => $request->bahan_bakar,
-            'no_polisi' => $request->no_polisi,
+            'bahan_bakar' => ucwords(strtolower($request->bahan_bakar)),
+            'no_polisi' => strtoupper($request->no_polisi),
             'berlaku_sampai' => $request->berlaku_sampai,
+            'status' => 'READY STOCK',
             'photo_stnk' => $path1,
             'photo_bpkb' => $path2,
         ];
@@ -259,8 +260,8 @@ class PembelianController extends Controller
 
             $data_consumer = [
                 'nik' => $request->nik,
-                'nama' => $request->nama,
-                'tempat_lahir' => $request->tempat_lahir,
+                'nama' => ucwords(strtolower($request->nama)),
+                'tempat_lahir' => ucwords(strtolower($request->tempat_lahir)),
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'alamat' => $request->alamat,
@@ -271,15 +272,15 @@ class PembelianController extends Controller
             //  Update Motor
              if($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') != NULL){
                 $data_motor = [
-                    'merek' => $request->merek,
+                    'merek' => ucwords(strtolower($request->merek)),
                     'daya' => $request->daya,
                     'tahun_pembuatan' => $request->tahun_pembuatan,
-                    'warna' => $request->warna,
+                    'warna' => ucwords(strtolower($request->warna)),
                     'no_rangka' => $request->no_rangka,
                     'bpkb' => $request->bpkb,
                     'type' => $request->type,
-                    'bahan_bakar' => $request->bahan_bakar,
-                    'no_polisi' => $request->no_polisi,
+                    'bahan_bakar' => ucwords(strtolower($request->bahan_bakar)),
+                    'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
                     'photo_bpkb' => $request->file('photo_bpkb')->store('bpkb'),
                 ];
@@ -289,15 +290,15 @@ class PembelianController extends Controller
                 Bike::where('id', $motor->id)->update($data_motor);
             } elseif($request->file('photo_stnk') != NULL && $request->file('photo_bpkb') == NULL){
                 $data_motor = [
-                    'merek' => $request->merek,
+                    'merek' => ucwords(strtolower($request->merek)),
                     'daya' => $request->daya,
                     'tahun_pembuatan' => $request->tahun_pembuatan,
-                    'warna' => $request->warna,
+                    'warna' => ucwords(strtolower($request->warna)),
                     'no_rangka' => $request->no_rangka,
                     'bpkb' => $request->bpkb,
                     'type' => $request->type,
-                    'bahan_bakar' => $request->bahan_bakar,
-                    'no_polisi' => $request->no_polisi,
+                    'bahan_bakar' => ucwords(strtolower($request->bahan_bakar)),
+                    'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
                     'photo_stnk' => $request->file('photo_stnk')->store('stnk'),
                 ];
@@ -307,29 +308,29 @@ class PembelianController extends Controller
                 Bike::where('id', $motor->id)->update($data_motor);
             } elseif($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') == NULL){
                 $data_motor = [
-                    'merek' => $request->merek,
+                    'merek' => ucwords(strtolower($request->merek)),
                     'daya' => $request->daya,
                     'tahun_pembuatan' => $request->tahun_pembuatan,
-                    'warna' => $request->warna,
+                    'warna' => ucwords(strtolower($request->warna)),
                     'no_rangka' => $request->no_rangka,
                     'bpkb' => $request->bpkb,
                     'type' => $request->type,
-                    'bahan_bakar' => $request->bahan_bakar,
-                    'no_polisi' => $request->no_polisi,
+                    'bahan_bakar' => ucwords(strtolower($request->bahan_bakar)),
+                    'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
                 ];
                 Bike::where('id', $motor->id)->update($data_motor);
             } elseif($request->file('photo_stnk') != NULL && $request->file('photo_bpkb') != NULL){
                 $data_motor = [
-                    'merek' => $request->merek,
+                    'merek' => ucwords(strtolower($request->merek)),
                     'daya' => $request->daya,
                     'tahun_pembuatan' => $request->tahun_pembuatan,
-                    'warna' => $request->warna,
+                    'warna' => ucwords(strtolower($request->warna)),
                     'no_rangka' => $request->no_rangka,
                     'bpkb' => $request->bpkb,
                     'type' => $request->type,
-                    'bahan_bakar' => $request->bahan_bakar,
-                    'no_polisi' => $request->no_polisi,
+                    'bahan_bakar' => ucwords(strtolower($request->bahan_bakar)),
+                    'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
                     'photo_bpkb' => $request->file('photo_bpkb')->store('bpkb'),
                     'photo_stnk' => $request->file('photo_stnk')->store('stnk'),

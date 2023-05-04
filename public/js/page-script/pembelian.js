@@ -91,8 +91,8 @@ $(document).ready(function () {
     // })
 
     $("#nik").on("keyup", function () {
+        NProgress.start();
         let nik = $("#nik").val()
-
         $.ajax({
             data: {
                 nik: nik
@@ -107,12 +107,14 @@ $(document).ready(function () {
                     $("#tanggal_lahir").val(response.success.tanggal_lahir)
                     $("#jenis_kelamin").val(response.success.jenis_kelamin)
                     $("#alamat").html(response.success.alamat)
+                    NProgress.done();
                 } else {
                     $("#nama").val('')
                     $("#tempat_lahir").val('')
                     $("#tanggal_lahir").val('')
                     $("#jenis_kelamin").val('Laki-Laki')
                     $("#alamat").html('')
+                    NProgress.done();
                 }
 
             }
@@ -189,3 +191,25 @@ $(document).ready(function () {
         });
     }
 })
+
+function previewImageBPKB() {
+    const image = document.querySelector('#photo_bpkb');
+    const imgPre = document.querySelector('.image-bpkb');
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image.files[0]);
+    oFReader.onload = function(oFREvent){
+        imgPre.src = oFREvent.target.result;
+    }
+}
+
+function previewImageSTNK() {
+    const image = document.querySelector('#photo_stnk');
+    const imgPre = document.querySelector('.image-stnk');
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image.files[0]);
+    oFReader.onload = function(oFREvent){
+        imgPre.src = oFREvent.target.result;
+    }
+}

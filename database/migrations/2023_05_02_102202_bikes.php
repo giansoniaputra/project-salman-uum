@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('bahan_bakar');
             $table->string('bpkb');
             $table->string('berlaku_sampai');
+            $table->string('status');
             $table->string('photo_bpkb')->nullable();
             $table->string('photo_stnk')->nullable();
             $table->timestamps();

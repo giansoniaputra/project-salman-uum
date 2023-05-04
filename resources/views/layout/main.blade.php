@@ -96,8 +96,8 @@
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
                                     <div class="header-info">
-                                        <span class="text-black">Halo, <strong>Salfarizi</strong></span>
-                                        <p class="fs-12 mb-0">Super Admin</p>
+                                        <span class="text-black">Halo, <strong>{{ auth()->user()->name }}</strong></span>
+                                        <p class="fs-12 mb-0">{{ auth()->user()->roles }}</p>
                                     </div>
                                     <img src="/images/profile/IMG_7064 (Custom).jpg" class="rounded-circle user_img"
                                         width="30" alt="" />

@@ -1,5 +1,6 @@
 @extends('layout.main')
 @section('container')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
 <div id="pesan" data-flash="{{ session('error') }}"></div>
 <div class="row">
     <div class="col-xl-12 col-xxl-12">
@@ -263,37 +264,39 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 mb-2">
+                                    <div class="col-lg-6 mb-2" style="padding-bottom:300px">
                                         <div class="form-group">
                                             <label class="text-label mb-3" for="photo_stnk">Foto STNK</label>
                                             <div class="custom-file">
                                                 <input type="file"
                                                     class="custom-file-input @error('photo_stnk') is-invalid @enderror"
                                                     value="{{ old('photo_stnk') }}" name="photo_stnk"
-                                                    id="photo_stnk">
+                                                    id="photo_stnk" onchange="previewImageSTNK()">
                                                 <label class="custom-file-label">Choose file</label>
                                                 @error('photo_stnk')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
+                                                <img src="" style="width: 250px" alt="" class="img-thumbnail mt-3 ml-5 image-stnk">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 mb-2">
+                                    <div class="col-lg-6 mb-2" style="padding-bottom:300px">
                                         <div class="form-group">
                                             <label class="text-label mb-3" for="photo_bpkb">Foto BPKB</label>
                                             <div class="custom-file">
                                                 <input type="file"
                                                     class="custom-file-input @error('photo_bpkb') is-invalid @enderror"
                                                     value="{{ old('photo_bpkb') }}" name="photo_bpkb"
-                                                    name="photo_bpkb" id="photo_bpkb">
+                                                    name="photo_bpkb" id="photo_bpkb" onchange="previewImageBPKB()">
                                                 <label class="custom-file-label">Choose file</label>
                                                 @error('photo_bpkb')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
+                                                <img src="" style="width: 250px" alt="" class="img-thumbnail mt-3 ml-5 image-bpkb">
                                             </div>
                                         </div>
                                     </div>
@@ -356,6 +359,7 @@
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
 <script src="/js/page-script/pembelian.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
