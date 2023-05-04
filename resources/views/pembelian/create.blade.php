@@ -222,15 +222,20 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6 mb-2">
-                                        <div class="form-group">
-                                            <label class="text-label" for="berlaku_sampai">Berlaku Sampai</label>
-                                            <input type="text" name="berlaku_sampai" id="berlaku_sampai"
-                                                class="form-control @error('berlaku_sampai') is-invalid @enderror" placeholder="Masukan Tahun Berlaku" >
+                                        <label class="text-label" for="berlaku_sampai">Berlaku Sampai</label>
+                                        <div class="input-group">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i
+                                                        class="flaticon-381-calendar-1"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control @error('berlaku_sampai') is-invalid @enderror"
+                                                placeholder="Masukan Masa Berlaku" name="berlaku_sampai"
+                                                id="berlaku_sampai">
                                                 @error('berlaku_sampai')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-6 mb-2">

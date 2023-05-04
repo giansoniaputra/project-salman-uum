@@ -10,6 +10,10 @@
         weekStart: 0,
         time: false
     });
+    $('#berlaku_sampai').bootstrapMaterialDatePicker({
+        weekStart: 0,
+        time: false
+    });
     $('#timepicker').bootstrapMaterialDatePicker({
         format: 'HH:mm',
         time: true,

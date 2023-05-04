@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var table = $('#dataTables').DataTable({
-        createdRow: function ( row, data, index ) {
-           $(row).addClass('selected')
+        createdRow: function (row, data, index) {
+            $(row).addClass('selected')
         },
         "processing": true,
         "responsive": true,
@@ -12,34 +12,34 @@ $(document).ready(function () {
         "serverSide": true,
         "ajax": "/datatablesPembelian",
         "columns": [{
-            render: function (data, type, row, meta) {
-                return meta.row + meta.settings._iDisplayStart + 1;
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                },
             },
-        },
-        {
-            "data": "merek"
-        },
-        {
-            "data": "no_polisi"
-        },
-        {
-            "data": "warna"
-        },
-        {
-            "data": "tgl_beli"
-        },
-        {
-            "data": "harga"
-        },
-        {
-            "data": "action",
-            "orderable": true,
-            "searchable": true
-        },
-    ],
-    "order": [
-        [0, 'desc']
-    ]
+            {
+                "data": "merek"
+            },
+            {
+                "data": "no_polisi"
+            },
+            {
+                "data": "warna"
+            },
+            {
+                "data": "tgl_beli"
+            },
+            {
+                "data": "harga"
+            },
+            {
+                "data": "action",
+                "orderable": true,
+                "searchable": true
+            },
+        ],
+        "order": [
+            [0, 'desc']
+        ]
     });
     // RESET
     // $("#nik").on('click', function () {
@@ -97,11 +97,11 @@ $(document).ready(function () {
             data: {
                 nik: nik
             },
-            url : "/cekNIK",
-            type : "GET",
-            dataType : "json",
-            success : function(response) {
-                if(response.success) {
+            url: "/cekNIK",
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                if (response.success) {
                     $("#nama").val(response.success.nama)
                     $("#tempat_lahir").val(response.success.tempat_lahir)
                     $("#tanggal_lahir").val(response.success.tanggal_lahir)
@@ -114,11 +114,46 @@ $(document).ready(function () {
                     $("#jenis_kelamin").val('Laki-Laki')
                     $("#alamat").html('')
                 }
-                
+
             }
         })
     })
+    
+    // Popup Modal Detail
+    $('#dataTables').on('click','.info-button',function(){
+        let id = $(this).attr('data-id')
+        alert(id)
+    })
 
+    let monthBefore = $('.dtp-select-month-before .material-icons')
+    monthBefore.addClass('flaticon-381-back-2 text-white')
+    monthBefore.removeClass('material-icons')
+    monthBefore.html('')
+
+    let yearBefore = $('.dtp-select-year-before .material-icons')
+    yearBefore.addClass('flaticon-381-back-2 text-white')
+    yearBefore.removeClass('material-icons')
+    yearBefore.html('')
+
+    let monthAfter = $('.dtp-select-month-after .material-icons')
+    monthAfter.addClass('flaticon-381-next-1 text-white')
+    monthAfter.removeClass('material-icons')
+    monthAfter.html('')
+
+    let yearAfter = $('.dtp-select-year-after .material-icons')
+    yearAfter.addClass('flaticon-381-next-1 text-white')
+    yearAfter.removeClass('material-icons')
+    yearAfter.html('')
+
+    let yearRangeBefore = $('.dtp-select-year-range.before .material-icons')
+    yearRangeBefore.addClass('flaticon-381-upload-1 text-dark')
+    yearRangeBefore.removeClass('material-icons')
+    yearRangeBefore.html('')
+
+    let yearRangeAfter = $('.dtp-select-year-range.after .material-icons')
+    yearRangeAfter.addClass('flaticon-381-download text-dark')
+    yearRangeAfter.removeClass('material-icons')
+    yearRangeAfter.html('')
 
 
     function displayErrors(errors) {

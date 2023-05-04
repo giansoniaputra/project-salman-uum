@@ -203,9 +203,11 @@ class PembelianController extends Controller
             
             return DataTables::of($data)->addColumn('action', function($row){
                     $actionBtn =
-                    '<button class="btn btn-warning btn-sm edit-button" data-id="'.$row->id.'"><i class="fas fa-edit"></i></button>
+                    '<button class="btn btn-info btn-sm info-button" data-id="'.$row->id.'"><i class="flaticon-381-view-2"></i></button>
+                    <button class="btn btn-success btn-sm edit-button" data-id="'.$row->id.'"><i class="flaticon-381-edit-1"></i></button>
+                    <button class="btn btn-warning btn-sm setting-button" data-id="'.$row->id.'"><i class="flaticon-381-settings-6"></i></button>
                     <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
-                        <button type="button" class="btn btn-danger btn-sm delete-button" data-token="'.csrf_token().'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm delete-button" data-token="'.csrf_token().'" data-id="'.$row->id.'"><i class="flaticon-381-trash-1"></i></button>
                     </form>';
                     return $actionBtn;
             })->make(true);
