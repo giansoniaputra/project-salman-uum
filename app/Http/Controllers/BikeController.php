@@ -15,7 +15,7 @@ class BikeController extends Controller
         $data=[
             'title'=> 'Data Motor | SMAC',
             'judul'=> 'Data Motor',
-            'breadcumb1' => 'Data Motor',
+            'breadcumb1' => 'Master',
             'breadcumb2' => 'Data Motor',
         ];
         return view('motor.index',$data);

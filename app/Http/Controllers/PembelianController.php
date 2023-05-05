@@ -22,8 +22,8 @@ class PembelianController extends Controller
         $data=[
             'title'=> 'Pembelian | SMAC',
             'judul'=> 'Pembelian',
-            'breadcumb1' => 'Pembelian',
-            'breadcumb2' => 'Data Motor',
+            'breadcumb1' => 'Transaksi',
+            'breadcumb2' => 'Pembelian',
         ];
         return view('pembelian.index',$data);
     }
@@ -34,10 +34,10 @@ class PembelianController extends Controller
     public function create()
     {
         $data=[
-            'title'=> 'Pembelian | SMAC',
-            'judul'=> 'Pembelian',
+            'title'=> 'Tambah Transaksi Pembelian | SMAC',
+            'judul'=> 'Tambah Transaksi Pembelian',
             'breadcumb1' => 'Pembelian',
-            'breadcumb2' => 'Tambah Transaksi',
+            'breadcumb2' => 'Tambah Transaksi Pembelian',
 
         ];
         return view('pembelian.create',$data);
