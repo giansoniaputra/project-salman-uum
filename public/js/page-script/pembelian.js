@@ -120,11 +120,46 @@ $(document).ready(function () {
             }
         })
     })
-    
+
     // Popup Modal Detail
-    $('#dataTables').on('click','.info-button',function(){
+    $('#dataTables').on('click', '.info-button', function () {
         let id = $(this).attr('data-id')
         $('#modal-detail').modal('show')
+
+        $.ajax({
+            data: {
+                id : id
+            },
+            url: "/getDataTransaksi",
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                // console.log(response);
+                // console.log(response.success.consumer.nik)
+                $("#nik").html(response.success.consumer.nik);
+                $("#nama").html(response.success.consumer.nama);
+                $("#tempat-lahir").html(response.success.consumer.tempat_lahir);
+                $("#tanggal-lahir").html(response.success.tanggal_lahir);
+                $("#jenis-kelamin").html(response.success.consumer.jenis_kelamin);
+                $("#alamat").html(response.success.consumer.alamat);
+
+                $("#no-polisi").html(response.success.motor.no_polisi);
+                $("#merk").html(response.success.motor.merek);
+                $("#tipe").html(response.success.motor.type);
+                $("#warna").html(response.success.motor.warna);
+                $("#tahun-pembuatan").html(response.success.motor.tahun_pembuatan);
+                $("#daya").html(response.success.motor.daya);
+                $("#no-rangka").html(response.success.motor.no_rangka);
+                $("#bahan-bakar").html(response.success.motor.bahan_bakar);
+                $("#bpkb").html(response.success.motor.bpkb);
+                $("#berlaku-sampai").html(response.success.berlaku_sampai);
+                $("#foto-bpkb").html('<button data-img="/storage/'+response.success.motor.photo_bpkb+'" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>');
+                $("#foto-stnk").html('<button data-img="/storage/'+response.success.motor.photo_stnk+'" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>');
+
+                $("#tanggal-beli").html(response.success.tanggal_beli);
+                $("#harga-beli").html(response.success.harga);
+            }
+        })
     })
 
     let monthBefore = $('.dtp-select-month-before .material-icons')
@@ -190,6 +225,22 @@ $(document).ready(function () {
             }
         });
     }
+
+    $("#modal-detail").on("click", '.look-img-stnk' ,function(){
+        let image = $(this).attr("data-img");
+        // alert(image);
+        $("#img-photo").html('<img src="'+image+'" alt="" class="img-fluid" style="width: 800px">')
+        $("#judul-modal-photo").html('Photo STNK')
+        $("#modal-image").modal('show');
+    })
+
+    $("#modal-detail").on("click", '.look-img-bpkb' ,function(){
+        let image = $(this).attr("data-img");
+        // alert(image);
+        $("#img-photo").html('<img src="'+image+'" alt="" class="img-fluid" style="width: 800px">')
+        $("#judul-modal-photo").html('Photo BPKB')
+        $("#modal-image").modal('show');
+    })
 })
 
 function previewImageBPKB() {
@@ -198,7 +249,7 @@ function previewImageBPKB() {
 
     const oFReader = new FileReader();
     oFReader.readAsDataURL(image.files[0]);
-    oFReader.onload = function(oFREvent){
+    oFReader.onload = function (oFREvent) {
         imgPre.src = oFREvent.target.result;
     }
 }
@@ -209,7 +260,7 @@ function previewImageSTNK() {
 
     const oFReader = new FileReader();
     oFReader.readAsDataURL(image.files[0]);
-    oFReader.onload = function(oFREvent){
+    oFReader.onload = function (oFREvent) {
         imgPre.src = oFREvent.target.result;
     }
 }

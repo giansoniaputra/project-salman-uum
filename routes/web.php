@@ -36,6 +36,8 @@ Route::resource('/pembelian',PembelianController::class)->middleware('auth');
 Route::get('/cekNIK', [PembelianController::class, 'cek_nik'])->middleware('auth');
     // Edit Data
 Route::get('/edit/{buy:unique}', [PembelianController::class, 'page_edit'])->middleware('auth');
+    //Ambil Data Transaksi
+Route::get('/getDataTransaksi', [PembelianController::class, 'get_transaksi'])->middleware('auth');
 
 // DATA MOTOR
 Route::resource('/motor', BikeController::class)->middleware('auth');

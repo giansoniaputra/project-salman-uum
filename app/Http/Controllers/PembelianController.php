@@ -375,8 +375,8 @@ class PembelianController extends Controller
             $data = $query->get();
 
             foreach ($data as $row){
-                $row->tgl_beli = date('l, d-m-Y', strtotime($row->tanggal_beli));
-                $row->harga = "Rp. " . number_format($row->harga_beli,0,',','.');
+                $row->tgl_beli = tanggal_hari($row->tanggal_beli);
+                $row->harga = rupiah($row->harga_beli);
             }
             
             return DataTables::of($data)->addColumn('action', function($row){
@@ -391,5 +391,24 @@ class PembelianController extends Controller
             })
             ->make(true);
         }
+    }
+
+    public function get_transaksi(Request $request)
+    {
+        $buy = Buy::where('id', $request->id)->first();
+        $motor = Bike::where('id', $buy->bike_id)->first();
+        $consumer = Consumer::where('id', $buy->consumer_id)->first();
+
+        $data = [
+            'beli' => $buy,
+            'motor' => $motor,
+            'consumer' => $consumer,
+            'harga' => rupiah($buy->harga_beli),
+            'tanggal_beli' => tanggal_hari($buy->tanggal_beli),
+            'tanggal_lahir' => tanggal_hari($consumer->tanggal_lahir),
+            'berlaku_sampai' => tanggal_hari($motor->berlaku_sampai)
+        ];
+
+        return response()->json(['success' => $data]);
     }
 }
