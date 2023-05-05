@@ -25,7 +25,14 @@ class PenjualanController extends Controller
      */
     public function create()
     {
-        //
+        $data=[
+            'title'=> 'Tambah Transaksi Penjualan | SMAC',
+            'judul'=> 'Tambah Transaksi Penjualan',
+            'breadcumb1' => 'Pembelian',
+            'breadcumb2' => 'Tambah Transaksi Penjualan',
+
+        ];
+        return view('penjualan.create',$data);
     }
 
     /**

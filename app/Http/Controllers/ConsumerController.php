@@ -15,7 +15,7 @@ class ConsumerController extends Controller
         $data=[
             'title'=> 'Data Pelanggan | SMAC',
             'judul'=> 'Data Pelanggan',
-            'breadcumb1' => 'Data Pelanggan',
+            'breadcumb1' => 'Master',
             'breadcumb2' => 'Data Pelanggan',
         ];
         return view('consumer.index',$data);
