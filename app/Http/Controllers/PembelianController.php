@@ -383,7 +383,7 @@ class PembelianController extends Controller
                     $actionBtn =
                     '<button class="btn btn-info btn-sm info-button" data-id="'.$row->id.'"><i class="flaticon-381-view-2"></i></button>
                     <a href="/edit/'.$row->unique.'" class="btn btn-success btn-sm edit-button" data-id="'.$row->id.'"><i class="flaticon-381-edit-1"></i></a>
-                    <button class="btn btn-warning btn-sm setting-button" data-id="'.$row->id.'"><i class="flaticon-381-settings-6"></i></button>
+                    
                     <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
                         <button type="button" class="btn btn-danger btn-sm delete-button" data-token="'.csrf_token().'" data-id="'.$row->id.'"><i class="flaticon-381-trash-1"></i></button>
                     </form>';
