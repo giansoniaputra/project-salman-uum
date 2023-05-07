@@ -22706,9 +22706,8 @@ input[type="checkbox"]:checked:after {
   width: 100% !important; }
 
 .select2-container--default .select2-selection--single {
-  border-radius: 1.25rem;
   border: 1px solid #F4F5F9;
-  height: 40px;
+  height: 57px;
   background: #fff; }
   [data-theme-version="dark"] .select2-container--default .select2-selection--single {
     background: #181f39;
@@ -22717,10 +22716,10 @@ input[type="checkbox"]:checked:after {
     box-shadow: none; }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
-  line-height: 40px;
+  line-height: 57px;
   color: #7e7e7e;
   padding-left: 15px;
-  min-height: 40px; }
+  min-height: 57px; }
 
 .select2-container--default .select2-selection--multiple {
   border-color: #f0f1f5;
@@ -22737,7 +22736,7 @@ input[type="checkbox"]:checked:after {
   background: #fff; }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
-  top: 6px;
+  top: 17px;
   right: 15px; }
 
 .select2-container .select2-selection--multiple {

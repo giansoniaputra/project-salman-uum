@@ -23,9 +23,13 @@
     <!-- Pick date -->
     <link rel="stylesheet" href="/vendor/pickadate/themes/default.css">
     <link rel="stylesheet" href="/vendor/pickadate/themes/default.date.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/vendor/select2/css/select2.min.css">
     <!-- Custom Stylesheet -->
     <link href="/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+
+    
     {{-- JQuery --}}
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link
@@ -244,6 +248,9 @@
     <script src="/js/plugins-init/material-date-picker-init.js"></script>
     <!-- Pickdate -->
     <script src="/js/plugins-init/pickadate-init.js"></script>
+    <!-- Select2 -->
+    <script src="/vendor/select2/js/select2.full.min.js"></script>
+    <script src="/js/plugins-init/select2-init.js"></script>
 </body>
 
 </html>
