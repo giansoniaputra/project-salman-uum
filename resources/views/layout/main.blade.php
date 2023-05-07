@@ -65,8 +65,9 @@
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
                 <img class="logo-abbr" src="/images/logo.png" alt="">
-                <img class="logo-compact" src="/images/logo-text.png" alt="">
-                <img class="brand-title" src="/images/logo-text.png" alt="">
+                
+                <img class="logo-compact" src="/images/smac with subtext transparent gede.png" alt="">
+                <img class="brand-title" src="/images/smac with subtext transparent gede.png" alt="">
             </a>
 
             <div class="nav-control">
