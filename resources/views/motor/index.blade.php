@@ -8,7 +8,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example" class="display min-w850">
+                    <table id="dataTables" class="display min-w850">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -21,13 +21,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <td>dsa</td>
-                            <td>ads</td>
-                            <td>dsa</td>
-                            <td>ads</td>
-                            <td>sad</td>
-                            <td>sad</td>
-                            <td>sad</td>
                         </tbody>
                         <tfoot>
                             <tr>
@@ -46,4 +39,5 @@
         </div>
     </div>
 </div>
+<script src="/js/page-script/motor.js"></script>
 @endsection

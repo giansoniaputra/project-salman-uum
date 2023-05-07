@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin');
             $table->string('alamat');
+            $table->string('no_telepon')->nullable();
             $table->string('photo_ktp')->nullable();
             $table->timestamps();
         });

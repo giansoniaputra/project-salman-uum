@@ -35,7 +35,7 @@ Route::resource('/pembelian',PembelianController::class)->middleware('auth');
     // Cek apakah konsumen sudah terdaftar
 Route::get('/cekNIK', [PembelianController::class, 'cek_nik'])->middleware('auth');
     // Edit Data
-Route::get('/edit/{buy:unique}', [PembelianController::class, 'page_edit'])->middleware('auth');
+Route::get('/edit-transaksi/{buy:unique}', [PembelianController::class, 'page_edit'])->middleware('auth');
     //Ambil Data Transaksi
 Route::get('/getDataTransaksi', [PembelianController::class, 'get_transaksi'])->middleware('auth');
 
@@ -53,4 +53,5 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 // DATATABLES
 Route::get('/datatablesPembelian', [PembelianController::class, 'dataTables'])->middleware('auth');
+Route::get('/datatablesMotor', [BikeController::class, 'dataTables'])->middleware('auth');
 

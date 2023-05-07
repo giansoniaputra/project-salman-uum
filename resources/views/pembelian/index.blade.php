@@ -94,6 +94,11 @@
                                                             <td><span id="jenis-kelamin"></span></td>
                                                         </tr>
                                                         <tr>
+                                                            <td>Nomor Telepon</td>
+                                                            <td>:</td>
+                                                            <td><span id="no-telepon"></span></td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>Alamat</td>
                                                             <td>:</td>
                                                             <td><span id="alamat"></span></td>

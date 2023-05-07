@@ -141,6 +141,7 @@ $(document).ready(function () {
                 $("#tempat-lahir").html(response.success.consumer.tempat_lahir);
                 $("#tanggal-lahir").html(response.success.tanggal_lahir);
                 $("#jenis-kelamin").html(response.success.consumer.jenis_kelamin);
+                $("#no-telepon").html(response.success.consumer.no_telepon);
                 $("#alamat").html(response.success.consumer.alamat);
 
                 $("#no-polisi").html(response.success.motor.no_polisi);

@@ -54,6 +54,7 @@ class PembelianController extends Controller
             'nama' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
+            'no_telepon' => 'required',
             'alamat' => 'required',
             'merek' => 'required',
             'daya' => 'required',
@@ -75,6 +76,7 @@ class PembelianController extends Controller
             'nama.required' => 'Tidak boleh Kosong' ,
             'tempat_lahir.required' => 'Tidak boleh Kosong' ,
             'tanggal_lahir.required' => 'Tidak boleh Kosong' ,
+            'no_telepon.required' => 'Tidak boleh Kosong' ,
             'alamat.required' => 'Tidak boleh Kosong' ,
             'merek.required' => 'Tidak boleh Kosong',
             'daya.required' => 'Tidak boleh Kosong',
@@ -88,8 +90,6 @@ class PembelianController extends Controller
             'berlaku_sampai.required' => 'Tidak boleh Kosong',
             'harga_beli.required' => 'Tidak boleh Kosong',
             'tanggal_beli.required' => 'Tidak boleh Kosong',
-            // 'photo_pria.required' => 'Gambar Tidak Boleh Kosong',
-            // 'photo_wanita.required' => 'Gambar Tidak Boleh Kosong',
             'photo_stnk.image' => 'File Harus Berupa Gambar',
             'photo_bpkb.image' => 'File Harus Berupa Gambar',
             'photo_stnk.max' => 'Gambar Minimal Berukuran 3MB',
@@ -110,9 +110,10 @@ class PembelianController extends Controller
                 'unique' => Str::random(36),
                 'nik' => $request->nik,
                 'nama' => ucwords(strtolower($request->nama)),
-                'tempat_lahir' => $request->tempat_lahir,
+                'tempat_lahir' => ucwords(strtolower($request->tempat_lahir)),
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
+                'no_telepon' => $request->no_telepon,
                 'alamat' => $request->alamat,
              ];
 
@@ -205,6 +206,7 @@ class PembelianController extends Controller
             'nama' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
+            'no_telepon' => 'required',
             'alamat' => 'required',
             'merek' => 'required',
             'daya' => 'required',
@@ -226,6 +228,7 @@ class PembelianController extends Controller
             'nama.required' => 'Tidak boleh Kosong' ,
             'tempat_lahir.required' => 'Tidak boleh Kosong' ,
             'tanggal_lahir.required' => 'Tidak boleh Kosong' ,
+            'no_telepon.required' => 'Tidak boleh Kosong' ,
             'alamat.required' => 'Tidak boleh Kosong' ,
             'merek.required' => 'Tidak boleh Kosong',
             'daya.required' => 'Tidak boleh Kosong',
@@ -264,6 +267,7 @@ class PembelianController extends Controller
                 'tempat_lahir' => ucwords(strtolower($request->tempat_lahir)),
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
+                'no_telepon' => $request->no_telepon,
                 'alamat' => $request->alamat,
              ];
 
@@ -382,7 +386,7 @@ class PembelianController extends Controller
             return DataTables::of($data)->addColumn('action', function($row){
                     $actionBtn =
                     '<button class="btn btn-info btn-sm info-button" data-id="'.$row->id.'"><i class="flaticon-381-view-2"></i></button>
-                    <a href="/edit/'.$row->unique.'" class="btn btn-success btn-sm edit-button" data-id="'.$row->id.'"><i class="flaticon-381-edit-1"></i></a>
+                    <a href="/edit-transaksi/'.$row->unique.'" class="btn btn-success btn-sm edit-button" data-id="'.$row->id.'"><i class="flaticon-381-edit-1"></i></a>
                     
                     <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
                         <button type="button" class="btn btn-danger btn-sm delete-button" data-token="'.csrf_token().'" data-id="'.$row->id.'"><i class="flaticon-381-trash-1"></i></button>
