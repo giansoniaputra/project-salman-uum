@@ -46,5 +46,53 @@ $(document).ready(function () {
         "order": [
             [0, 'desc']
         ]
-    });    
+    });
+
+    $("#dataTables").on("click", '.info-motor-button', function () {
+        let id = $(this).attr("data-id");
+        $.ajax({
+            data: {
+                id: id
+            },
+            url: "/getDataMotor",
+            type: "get",
+            dataType: "json",
+            success: function (response){
+                $("#modal-detail-motor").modal('show');
+                $('#bordered_collapseTwo').slideDown();
+                $("#no-polisi").html(response.success.no_polisi);
+                $("#merk").html(response.success.merek);
+                $("#tipe").html(response.success.type);
+                $("#warna").html(response.success.warna);
+                $("#tahun-pembuatan").html(response.success.tahun_pembuatan);
+                $("#daya").html(response.success.daya);
+                $("#no-rangka").html(response.success.no_rangka);
+                $("#bahan-bakar").html(response.success.bahan_bakar);
+                $("#bpkb").html(response.success.bpkb);
+                $("#berlaku-sampai").html(response.success.berlaku_sampai);
+                $("#foto-bpkb").html('<button data-img="/storage/'+response.success.photo_bpkb+'" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>');
+                $("#foto-stnk").html('<button data-img="/storage/'+response.success.photo_stnk+'" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>');
+            }
+        })
+    })
+
+    $(".accordion__header").on("click", function(){
+        $('#bordered_collapseTwo').slideToggle();
+    })
+
+    $("#modal-detail-motor").on("click", '.look-img-stnk' ,function(){
+        let image = $(this).attr("data-img");
+        // alert(image);
+        $("#img-photo").html('<img src="'+image+'" alt="" class="img-fluid" style="width: 800px">')
+        $("#judul-modal-photo").html('Photo STNK')
+        $("#modal-image").modal('show');
+    })
+
+    $("#modal-detail-motor").on("click", '.look-img-bpkb' ,function(){
+        let image = $(this).attr("data-img");
+        // alert(image);
+        $("#img-photo").html('<img src="'+image+'" alt="" class="img-fluid" style="width: 800px">')
+        $("#judul-modal-photo").html('Photo BPKB')
+        $("#modal-image").modal('show');
+    })
 });

@@ -42,6 +42,8 @@ Route::get('/getDataTransaksi', [PembelianController::class, 'get_transaksi'])->
 
 // DATA MOTOR
 Route::resource('/motor', BikeController::class)->middleware('auth');
+    //Ambil Data Motor
+Route::get('/getDataMotor', [BikeController::class, 'get_motor'])->middleware('auth');
 
 // DATA KONSUMEN
 Route::resource('/consumer', ConsumerController::class)->middleware('auth');

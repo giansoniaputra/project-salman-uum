@@ -77,14 +77,16 @@ class BikeController extends Controller
             
             return DataTables::of($query)->addColumn('action', function($row){
                     $actionBtn =
-                    '<button class="btn btn-info btn-sm info-button" data-id="'.$row->id.'"><i class="flaticon-381-view-2"></i></button>
-                    <a href="/edit-motor/'.$row->unique.'" class="btn btn-success btn-sm edit-button" data-id="'.$row->id.'"><i class="flaticon-381-edit-1"></i></a>
-                    <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
-                        <button type="button" class="btn btn-danger btn-sm delete-button" data-token="'.csrf_token().'" data-id="'.$row->id.'"><i class="flaticon-381-trash-1"></i></button>
-                    </form>';
+                    '<button class="btn btn-info btn-sm info-motor-button" data-id="'.$row->id.'"><i class="flaticon-381-view-2"></i></button>';
                     return $actionBtn;
             })
             ->make(true);
         }
+    }
+
+    public function get_motor(Request $request)
+    {
+        $motor = Bike::where('id', $request->id)->first();
+        return response()->json(['success' => $motor]);
     }
 }

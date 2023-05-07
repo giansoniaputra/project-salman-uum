@@ -14,38 +14,18 @@
                                 <th>No</th>
                                 <th>NIK</th>
                                 <th>Nama</th>
-                                <th>Tempat Lahir</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Jenis Kelamin</th>
                                 <th>No Telepon</th>
-                                <th>Alamat</th>
-                                <th>Foto KTP</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <td>dsa</td>
-                            <td>ads</td>
-                            <td>dsa</td>
-                            <td>ads</td>
-                            <td>sad</td>
-                            <td>sad</td>
-                            <td>sad</td>
-                            <td>asd</td>
-                            <td>sad</td>
-                            <td>dsa</td>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>No</th>
                                 <th>NIK</th>
                                 <th>Nama</th>
-                                <th>Tempat Lahir</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Jenis Kelamin</th>
                                 <th>No Telepon</th>
-                                <th>Alamat</th>
-                                <th>Foto KTP</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>

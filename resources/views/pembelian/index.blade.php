@@ -228,7 +228,6 @@
         </div>
     </div>
 </div>
-</div>
 
 {{-- Modal Gambar --}}
 <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="modal-image">

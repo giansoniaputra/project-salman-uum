@@ -110,6 +110,19 @@
                                     </div>
                                     <div class="col-lg-12 mb-5">
                                         <div class="form-group">
+                                            <label class="text-label" for="no_telepon">Nomor Telepon</label>
+                                            <input class="form-control @error('no_telepon') is-invalid @enderror"
+                                                name="no_telepon" id="no_telepon"
+                                                value="{{ old('no_telepon', $consumer->no_telepon) }}">
+                                            @error('no_telepon')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-5">
+                                        <div class="form-group">
                                             <label class="text-label" for="alamat">Alamat</label>
                                             <textarea class="form-control @error('alamat') is-invalid @enderror"
                                                 rows="4" name="alamat"
