@@ -160,7 +160,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="example" class="display min-w850">
+                        <table id="example" class="display min-w850 text-center">
                             <thead>
                                 <tr>
                                     <th>No</th>

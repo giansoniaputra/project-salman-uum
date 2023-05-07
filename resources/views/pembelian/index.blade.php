@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="dataTables" class="display min-w850">
+                    <table id="dataTables" class="display min-w850 text-center">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -66,7 +66,7 @@
                                             data-parent="#accordion-two">
                                             <div class="accordion__body--text">
                                                 <div class="table-responsive">
-                                                    <table class="table header-border table-responsive-sm table-striped">
+                                                    <table class="table header-border table-responsive-sm table-striped text-center">
                                                         <tbody>
                                                             <tr>
                                                                 <td>NIK</td>
@@ -216,7 +216,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger light" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>

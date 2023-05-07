@@ -8,7 +8,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example" class="display min-w850">
+                    <table id="example" class="display min-w850 text-center">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -17,6 +17,7 @@
                                 <th>Tempat Lahir</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Jenis Kelamin</th>
+                                <th>No Telepon</th>
                                 <th>Alamat</th>
                                 <th>Foto KTP</th>
                                 <th>Action</th>
@@ -30,6 +31,7 @@
                             <td>sad</td>
                             <td>sad</td>
                             <td>sad</td>
+                            <td>asd</td>
                             <td>sad</td>
                             <td>dsa</td>
                         </tbody>
@@ -41,6 +43,7 @@
                                 <th>Tempat Lahir</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Jenis Kelamin</th>
+                                <th>No Telepon</th>
                                 <th>Alamat</th>
                                 <th>Foto KTP</th>
                                 <th>Action</th>
