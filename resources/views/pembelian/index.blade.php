@@ -42,7 +42,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
 </div>
 {{-- Modal --}}
 <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="modal-detail">

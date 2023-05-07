@@ -28,6 +28,7 @@ Route::get('/home', [Dashboard::class,'index'])->middleware('auth');
 
 Route::resource('/penjualan',PenjualanController::class)->middleware('auth');
 Route::resource('/auth', AuthController::class)->middleware('guest');
+Route::get('/auth/create', [AuthController::class,'register'])->middleware('auth');
 Route::get('/auth', [AuthController::class,'index'])->name('login')->middleware('guest');
 
 // PEMBELIAN

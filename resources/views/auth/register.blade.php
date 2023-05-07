@@ -39,7 +39,14 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Password</strong></label>
-                                            <input type="password" class="form-control" value="Password">
+                                            <input type="password" class="form-control"
+                                                placeholder="Masukan Password Anda" name="password" id="password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-1 text-white"><strong>Konfirmasi Password</strong></label>
+                                            <input type="password" class="form-control"
+                                                placeholder="Masukan Password Anda" name="conf_password"
+                                                id="conf_password">
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Pilih Role</strong></label>
@@ -55,10 +62,6 @@
                                                 class="btn bg-white text-primary btn-block">Daftar</button>
                                         </div>
                                     </form>
-                                    <div class="new-account mt-3">
-                                        <p class="text-white">Sudah Punya Akun? <a class="text-white"
-                                                href="page-login.html">Masuk</a></p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +74,35 @@
     <!--**********************************
 	Scripts
 ***********************************-->
+
     <!-- Required vendors -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let inputElement = $('input[name="conf_password"]');
+            var feedbackElement = $('<div class="invalid-feedback"></div>');
+            var feedbackElement2 = $('<div class="valid-feedback"></div>');
+
+            $("#conf_password").on("change", function () {
+                if ($("#password").val() !=  $("#conf_password").val()) {
+                    $(".pesan").html('')
+                    inputElement.addClass('is-invalid');
+                    inputElement.removeClass('is-valid');
+                    feedbackElement.append($('<p class="text-danger pesan">Password Tidak Sama</p>'))
+                    inputElement.after(feedbackElement)
+                } else if ($("#password").val() ==  $("#conf_password").val()) {
+                    inputElement.removeClass('is-invalid');
+                    inputElement.addClass('is-valid');
+                    feedbackElement2.append($('<p class="text-danger">Password Sesuai</p>'))
+                }
+
+                if($("#password").val() == ''){
+                    inputElement.removeClass('is-valid');
+                }
+            })
+        })
+
+    </script>
     <script src="./vendor/global/global.min.js"></script>
     <script src="./vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     <script src="./js/custom.min.js"></script>
