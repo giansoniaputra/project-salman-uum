@@ -1,5 +1,7 @@
 @extends('layout.main')
 @section('container')
+<link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+<div id="pesan" data-flash="{{ session('success') }}"></div>
 <div class="row">
     <div class="col-xl-3 col-sm-6">
         <div class="card">
@@ -74,5 +76,16 @@
         </div>
     </div>
 </div>
-    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const flashData = $('#pesan').data('flash');
+    if (flashData) {
+        Swal.fire(
+            'Good job!'
+            , flashData
+            , 'success'
+        )
+    }
+
+</script>
 @endsection

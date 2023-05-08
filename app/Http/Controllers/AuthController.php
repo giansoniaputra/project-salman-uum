@@ -34,7 +34,18 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate ([
+            'name' => 'required',
+            'email' => 'required|email:dns|unique:users',
+            'password' => 'required',
+            'roles' => 'required'
+
+        ]);
+
+        $validatedData['roles'] = strtoupper($request->roles);
+        $validatedData['password'] = bcrypt($request->password);
+        users::create($validatedData);
+        return redirect('/')->with('success','Akun Berhasil Didaftarkan');
     }
 
     /**

@@ -20,18 +20,17 @@
                         </div>
                         <div class="modal-body">
                             <div class="row form-material">
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-12 mb-3">
                                     <div class="form-row">
                                         <label class="text-label" for="no_polisi">No Polisi</label>
                                         <select id="single-select" name="no_polisi"
-                                        class="form-control @error('no_polisi') is-invalid @enderror"
-                                        value="{{ old('no_polisi') }}" placeholder="Masukan No Polisi">
-                                            <option value="GG">Z 1234 GG</option>
-                                            <option value="BB">Z 5678 BB</option>
-                                            <option value="AA">Z 5464 AA</option>
-                                            <option value="CC">Z 7683 CC</option>
-                                            <option value="DD">Z 4712 DD</option>
-                                            <option value="EE">Z 6741 EE</option>
+                                            class="form-control @error('no_polisi') is-invalid @enderror"
+                                            value="{{ old('no_polisi') }}" placeholder="Masukan No Polisi">
+                                            <option value="">Pilih No Polisi</option>
+                                            @foreach ($no_polisi as $row)
+                                            <option value="{{$row->no_polisi}}">{{$row->no_polisi}}</option>
+                                                
+                                            @endforeach
                                         </select>
                                         @error('no_polisi')
                                             <div class="invalid-feedback">
@@ -40,12 +39,12 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-12 mb-3">
                                     <div class="form-row">
                                         <label class="text-label" for="merk">Merk</label>
                                         <input type="text" name="merk" id="merk"
                                             class="form-control @error('merk') is-invalid @enderror"
-                                            value="{{ old('merk') }}" placeholder="Masukan Merk">
+                                            value="{{ old('merk') }}" placeholder="Masukan Merk" disabled>
                                         @error('merk')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -53,12 +52,12 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-12 mb-3">
                                     <div class="form-row">
                                         <label class="text-label" for="warna">Warna</label>
                                         <input type="text" name="warna" id="warna"
                                             class="form-control @error('warna') is-invalid @enderror"
-                                            value="{{ old('warna') }}" placeholder="Masukan Warna">
+                                            value="{{ old('warna') }}" placeholder="Masukan Warna" disabled>
                                         @error('warna')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -66,7 +65,31 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-12 mb-3">
+                                    <label class="text-label" for="jenis_pembayaran">Jenis Pembayaran</label>
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="flaticon-381-id-card"></i></span>
+                                            </div>
+                                            <select class="form-control @error('jenis_pembayaran') is-invalid @enderror"
+                                                value="{{ old('jenis_pembayaran') }}" name="jenis_pembayaran"
+                                                id="jenis_pembayaran">
+                                                <option value="">Pilih Opsi Pembayaran</option>
+                                                <option value="CASH">CASH</option>
+                                                <option value="KREDIT">KREDIT</option>
+                                            </select>
+                                            @error('jenis_pembayaran')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="buys-content-cash" class="row form-material d-none" style="padding-bottom: 92.75px">
+                                <div class="col-lg-12 mb-3">
                                     <label class="text-label" for="tahun_pembuatan">Tahun Pembuatan</label>
                                     <div class="form-row">
                                         <div class="input-group">
@@ -86,7 +109,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-12 mb-3">
                                     <label class="text-label" for="harga_jual">Harga Jual</label>
                                     <div class="form-row">
                                         <div class="input-group">
@@ -105,7 +128,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 mb-3">
+                                <div class="col-lg-12 mb-3">
                                     <label class="text-label" for="harga_beli">Harga Beli</label>
                                     <div class="form-row">
                                         <div class="input-group">
@@ -124,28 +147,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 mb-3">
-                                    <label class="text-label" for="jenis_pembayaran">Jenis Pembayaran</label>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text"><i class="flaticon-381-id-card"></i></span>
-                                            </div>
-                                            <select class="form-control @error('jenis_pembayaran') is-invalid @enderror"
-                                                value="{{ old('jenis_pembayaran') }}" name="jenis_pembayaran"
-                                                id="jenis_pembayaran">
-                                                <option value="Laki-Laki">Cash</option>
-                                                <option value="Perempuan">Kredit</option>
-                                            </select>
-                                            @error('jenis_pembayaran')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
+                            <div id="buys-content-kredit" class="d-none" style="padding-bottom: 92.75px">
+                            </div>
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
@@ -192,6 +197,7 @@
         </div>
     </div>
     <script src="/js/page-script/pembelian.js"></script>
+    <script src="/js/page-script/penjualan.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const flashData = $('#pesan').data('flash');
@@ -207,9 +213,9 @@
     <script>
         var harga_beliInput = document.getElementById("harga_beli");
         harga_beliInput.addEventListener("keyup", function(event) {
-          // Call simpleMoneyFormat function
-          var formattedharga_beli = simpleMoneyFormat.format(harga_beliInput.value);
-          harga_beliInput.value = formattedharga_beli;
+            // Call simpleMoneyFormat function
+            var formattedharga_beli = simpleMoneyFormat.format(harga_beliInput.value);
+            harga_beliInput.value = formattedharga_beli;
         });
-      </script>
+    </script>
 @endsection

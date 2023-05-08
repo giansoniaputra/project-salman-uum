@@ -1,3 +1,22 @@
+$(document).ready(function () {
+    //LOAD CONTENT CASH
+    $("#jenis_pembayaran").on('change', function () {
+        $("#jenis_pembayaran").removeClass("is-invalid")
+        if ($("#jenis_pembayaran").val() == "CASH") {
+           
+            $("#buys-content-kredit").addClass("d-none")
+            $("#buys-content-cash").removeClass("d-none")
+        } else if($("#jenis_pembayaran").val() == "KREDIT") {
+            
+            $("#buys-content-cash").addClass("d-none")
+            $("#buys-content-kredit").removeClass("d-none")
+        } else if($("#jenis_pembayaran").val() == ""){
+            
+            $("#buys-content-cash").addClass("d-none")
+            $("#buys-content-kredit").addClass("d-none")
+        }
+    })
+})
 let monthBefore = $('.dtp-select-month-before .material-icons')
     monthBefore.addClass('flaticon-381-back-2 text-white')
     monthBefore.removeClass('material-icons')
