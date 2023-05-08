@@ -13,13 +13,13 @@ class BikeController extends Controller
      */
     public function index()
     {
-        $data=[
-            'title'=> 'Data Motor | SMAC',
-            'judul'=> 'Data Motor',
+        $data = [
+            'title' => 'Data Motor | SMAC',
+            'judul' => 'Data Motor',
             'breadcumb1' => 'Master',
             'breadcumb2' => 'Data Motor',
         ];
-        return view('motor.index',$data);
+        return view('motor.index', $data);
     }
 
     /**
@@ -74,19 +74,20 @@ class BikeController extends Controller
     {
         if ($request->ajax()) {
             $query = Bike::all();
-            
-            return DataTables::of($query)->addColumn('action', function($row){
-                    $actionBtn =
-                    '<button class="btn btn-info btn-sm info-motor-button" data-id="'.$row->id.'"><i class="flaticon-381-view-2"></i></button>';
-                    return $actionBtn;
+
+            return DataTables::of($query)->addColumn('action', function ($row) {
+                $actionBtn =
+                    '<button class="btn btn-info btn-sm info-motor-button" data-id="' . $row->id . '"><i class="flaticon-381-view-2"></i></button>';
+                return $actionBtn;
             })
-            ->make(true);
+                ->make(true);
         }
     }
 
     public function get_motor(Request $request)
     {
         $motor = Bike::where('id', $request->id)->first();
+        $motor->berlaku_sampai = tanggal_hari($motor->berlaku_sampai);
         return response()->json(['success' => $motor]);
     }
 }

@@ -3,8 +3,7 @@
 <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
 <div id="pesan" data-flash="{{ session('success') }}"></div>
 <div class="col-12">
-    <a href="/pembelian/create" class="btn btn-rounded btn-primary mb-3"><span class="btn-icon-left text-primary"><i
-                class="fa fa-plus color-primary"></i>
+    <a href="/pembelian/create" class="btn btn-rounded btn-primary mb-3"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i>
         </span>Tambah Data Pembelian</a>
     <div class="card">
         <div class="card-header">
@@ -57,14 +56,11 @@
                     <div class="card">
                         <div class="card-body">
                             <div id="accordion-two" class="accordion accordion-primary-solid">
-                                <div class="accordion__item">
-                                    <div class="accordion__header collapsed" data-toggle="collapse"
-                                        data-target="#bordered_collapseOne"> <span
-                                            class="accordion__header--text text-white">Data Penjual</span>
+                                <div class="accordion__item d-none" id="data-individu">
+                                    <div class="accordion__header collapsed" data-toggle="collapse" data-target="#bordered_collapseZero"> <span class="accordion__header--text text-white">Data Penjual</span>
                                         <span class="accordion__header--indicator"></span>
                                     </div>
-                                    <div id="bordered_collapseOne" class="collapse accordion__body"
-                                        data-parent="#accordion-two">
+                                    <div id="bordered_collapseZero" class="collapse accordion__body" data-parent="#accordion-two">
                                         <div class="accordion__body--text">
                                             <div class="table-responsive">
                                                 <table class="table header-border table-responsive-sm table-striped">
@@ -78,21 +74,6 @@
                                                             <td>Nama</td>
                                                             <td>:</td>
                                                             <td><span id="nama"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Tempat Lahir</td>
-                                                            <td>:</td>
-                                                            <td><span id="tempat-lahir"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Tanggal Lahir</td>
-                                                            <td>:</td>
-                                                            <td><span id="tanggal-lahir"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Jenis Kelamin</td>
-                                                            <td>:</td>
-                                                            <td><span id="jenis-kelamin"></span></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Nomor Telepon</td>
@@ -110,14 +91,36 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion__item">
-                                    <div class="accordion__header collapsed" data-toggle="collapse"
-                                        data-target="#bordered_collapseTwo"> <span
-                                            class="accordion__header--text text-white">Data Motor</span>
+                                <div class="accordion__item d-none" id="data-dealer">
+                                    <div class="accordion__header collapsed" data-toggle="collapse" data-target="#bordered_collapseOne"> <span class="accordion__header--text text-white">Data Dealer</span>
                                         <span class="accordion__header--indicator"></span>
                                     </div>
-                                    <div id="bordered_collapseTwo" class="collapse accordion__body"
-                                        data-parent="#accordion-two">
+                                    <div id="bordered_collapseOne" class="collapse accordion__body" data-parent="#accordion-two">
+                                        <div class="accordion__body--text">
+                                            <div class="table-responsive">
+                                                <table class="table header-border table-responsive-sm table-striped">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Nama Petugas</td>
+                                                            <td>:</td>
+                                                            <td><span id="nama-petugas"></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Nama Dealer</td>
+                                                            <td>:</td>
+                                                            <td><span id="dealer"></span></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion__item">
+                                    <div class="accordion__header collapsed" data-toggle="collapse" data-target="#bordered_collapseTwo"> <span class="accordion__header--text text-white">Data Motor</span>
+                                        <span class="accordion__header--indicator"></span>
+                                    </div>
+                                    <div id="bordered_collapseTwo" class="collapse accordion__body" data-parent="#accordion-two">
                                         <div class="accordion__body--text">
                                             <div class="table-responsive">
                                                 <table class="table header-border table-responsive-sm table-striped">
@@ -189,13 +192,10 @@
                                     </div>
                                 </div>
                                 <div class="accordion__item">
-                                    <div class="accordion__header collapsed" data-toggle="collapse"
-                                        data-target="#bordered_collapseThree"> <span
-                                            class="accordion__header--text text-white">Data Pembelian</span>
+                                    <div class="accordion__header collapsed" data-toggle="collapse" data-target="#bordered_collapseThree"> <span class="accordion__header--text text-white">Data Pembelian</span>
                                         <span class="accordion__header--indicator"></span>
                                     </div>
-                                    <div id="bordered_collapseThree" class="collapse accordion__body"
-                                        data-parent="#accordion-two">
+                                    <div id="bordered_collapseThree" class="collapse accordion__body" data-parent="#accordion-two">
                                         <div class="accordion__body--text">
                                             <div class="table-responsive">
                                                 <table class="table header-border table-responsive-sm table-striped">
@@ -250,9 +250,9 @@
     const flashData = $('#pesan').data('flash');
     if (flashData) {
         Swal.fire(
-            'Good job!',
-            flashData,
-            'success'
+            'Good job!'
+            , flashData
+            , 'success'
         )
     }
 

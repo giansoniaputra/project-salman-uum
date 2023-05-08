@@ -106,6 +106,7 @@ $(document).ready(function () {
                     $("#tempat_lahir").val(response.success.tempat_lahir)
                     $("#tanggal_lahir").val(response.success.tanggal_lahir)
                     $("#jenis_kelamin").val(response.success.jenis_kelamin)
+                    $("#no_telepon").val(response.success.no_telepon)
                     $("#alamat").html(response.success.alamat)
                     NProgress.done();
                 } else {
@@ -113,6 +114,7 @@ $(document).ready(function () {
                     $("#tempat_lahir").val('')
                     $("#tanggal_lahir").val('')
                     $("#jenis_kelamin").val('Laki-Laki')
+                    $("#no_telepon").val('')
                     $("#alamat").html('')
                     NProgress.done();
                 }
@@ -128,21 +130,27 @@ $(document).ready(function () {
 
         $.ajax({
             data: {
-                id : id
+                id: id
             },
             url: "/getDataTransaksi",
             type: 'GET',
             dataType: 'json',
-            success: function(response) {
+            success: function (response) {
                 // console.log(response);
                 // console.log(response.success.consumer.nik)
-                $("#nik").html(response.success.consumer.nik);
-                $("#nama").html(response.success.consumer.nama);
-                $("#tempat-lahir").html(response.success.consumer.tempat_lahir);
-                $("#tanggal-lahir").html(response.success.tanggal_lahir);
-                $("#jenis-kelamin").html(response.success.consumer.jenis_kelamin);
-                $("#no-telepon").html(response.success.consumer.no_telepon);
-                $("#alamat").html(response.success.consumer.alamat);
+                if(response.success.consumer.penjual == "INDIVIDU"){
+                    $("#data-individu").removeClass("d-none")
+                    $("#data-dealer").addClass("d-none")
+                    $("#nik").html(response.success.consumer.nik);
+                    $("#nama").html(response.success.consumer.nama);
+                    $("#no-telepon").html(response.success.consumer.no_telepon);
+                    $("#alamat").html(response.success.consumer.alamat);
+                } else if(response.success.consumer.penjual == "DEALER"){
+                    $("#data-dealer").removeClass("d-none")
+                    $("#data-individu").addClass("d-none")
+                    $("#nama-petugas").html(response.success.consumer.nama);
+                    $("#dealer").html(response.success.consumer.dealer);
+                }
 
                 $("#no-polisi").html(response.success.motor.no_polisi);
                 $("#merk").html(response.success.motor.merek);
@@ -154,8 +162,8 @@ $(document).ready(function () {
                 $("#bahan-bakar").html(response.success.motor.bahan_bakar);
                 $("#bpkb").html(response.success.motor.bpkb);
                 $("#berlaku-sampai").html(response.success.berlaku_sampai);
-                $("#foto-bpkb").html('<button data-img="/storage/'+response.success.motor.photo_bpkb+'" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>');
-                $("#foto-stnk").html('<button data-img="/storage/'+response.success.motor.photo_stnk+'" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>');
+                $("#foto-bpkb").html('<button data-img="/storage/' + response.success.motor.photo_bpkb + '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>');
+                $("#foto-stnk").html('<button data-img="/storage/' + response.success.motor.photo_stnk + '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>');
 
                 $("#tanggal-beli").html(response.success.tanggal_beli);
                 $("#harga-beli").html(response.success.harga);
@@ -227,22 +235,48 @@ $(document).ready(function () {
         });
     }
 
-    $("#modal-detail").on("click", '.look-img-stnk' ,function(){
+    $("#modal-detail").on("click", '.look-img-stnk', function () {
         let image = $(this).attr("data-img");
         // alert(image);
-        $("#img-photo").html('<img src="'+image+'" alt="" class="img-fluid" style="width: 800px">')
+        $("#img-photo").html('<img src="' + image + '" alt="" class="img-fluid" style="width: 800px">')
         $("#judul-modal-photo").html('Photo STNK')
         $("#modal-image").modal('show');
     })
 
-    $("#modal-detail").on("click", '.look-img-bpkb' ,function(){
+    $("#modal-detail").on("click", '.look-img-bpkb', function () {
         let image = $(this).attr("data-img");
         // alert(image);
-        $("#img-photo").html('<img src="'+image+'" alt="" class="img-fluid" style="width: 800px">')
+        $("#img-photo").html('<img src="' + image + '" alt="" class="img-fluid" style="width: 800px">')
         $("#judul-modal-photo").html('Photo BPKB')
         $("#modal-image").modal('show');
     })
+    
+    //LOAD CONTENT CONSUMER
+    $("#penjual").on('change', function () {
+        $("#penjual").removeClass("is-invalid")
+        if ($("#penjual").val() == "INDIVIDU") {
+            $(".tab-content").css({
+                "height" : "452.75px"
+            })
+            $("#consumer-content-dealer").addClass("d-none")
+            $("#consumer-content-individu").removeClass("d-none")
+        } else if($("#penjual").val() == "DEALER") {
+            $(".tab-content").css({
+                "height" : "210px"
+            })
+            $("#consumer-content-individu").addClass("d-none")
+            $("#consumer-content-dealer").removeClass("d-none")
+        } else if($("#penjual").val() == ""){
+            $(".tab-content").css({
+                "height" : "110px"
+            })
+            $("#consumer-content-individu").addClass("d-none")
+            $("#consumer-content-dealer").addClass("d-none")
+        }
+    })
 })
+
+
 
 function previewImageBPKB() {
     const image = document.querySelector('#photo_bpkb');

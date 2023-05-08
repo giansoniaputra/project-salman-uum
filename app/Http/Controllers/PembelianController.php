@@ -19,13 +19,13 @@ class PembelianController extends Controller
      */
     public function index()
     {
-        $data=[
-            'title'=> 'Pembelian | SMAC',
-            'judul'=> 'Pembelian',
+        $data = [
+            'title' => 'Pembelian | SMAC',
+            'judul' => 'Pembelian',
             'breadcumb1' => 'Transaksi',
             'breadcumb2' => 'Pembelian',
         ];
-        return view('pembelian.index',$data);
+        return view('pembelian.index', $data);
     }
 
     /**
@@ -33,15 +33,14 @@ class PembelianController extends Controller
      */
     public function create()
     {
-        $data=[
-            'title'=> 'Tambah Transaksi Pembelian | SMAC',
-            'judul'=> 'Tambah Transaksi Pembelian',
+        $data = [
+            'title' => 'Tambah Transaksi Pembelian | SMAC',
+            'judul' => 'Tambah Transaksi Pembelian',
             'breadcumb1' => 'Pembelian',
             'breadcumb2' => 'Tambah Transaksi Pembelian',
 
         ];
-        return view('pembelian.create',$data);
-    
+        return view('pembelian.create', $data);
     }
 
     /**
@@ -49,119 +48,171 @@ class PembelianController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [
-            'nik' => 'required',
-            'nama' => 'required',
-            'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
-            'no_telepon' => 'required',
-            'alamat' => 'required',
-            'merek' => 'required',
-            'daya' => 'required',
-            'tahun_pembuatan' => 'required',
-            'warna' => 'required',
-            'no_rangka' => 'required',
-            'bpkb' => 'required',
-            'type' => 'required',
-            'bahan_bakar' => 'required',
-            'no_polisi' => 'required',
-            'berlaku_sampai' => 'required',
-            'harga_beli' => 'required',
-            'tanggal_beli' => 'required',
-            'photo_stnk' => 'image|file|max:3072',
-            'photo_bpkb' => 'image|file|max:3072',
-        ];
-        $pesan = [
-            'nik.required' => 'Tidak boleh Kosong' ,
-            'nama.required' => 'Tidak boleh Kosong' ,
-            'tempat_lahir.required' => 'Tidak boleh Kosong' ,
-            'tanggal_lahir.required' => 'Tidak boleh Kosong' ,
-            'no_telepon.required' => 'Tidak boleh Kosong' ,
-            'alamat.required' => 'Tidak boleh Kosong' ,
-            'merek.required' => 'Tidak boleh Kosong',
-            'daya.required' => 'Tidak boleh Kosong',
-            'tahun_pembuatan.required' => 'Tidak boleh Kosong',
-            'warna.required' => 'Tidak boleh Kosong',
-            'no_rangka.required' => 'Tidak boleh Kosong',
-            'bpkb.required' => 'Tidak boleh Kosong',
-            'type.required' => 'Tidak boleh Kosong',
-            'bahan_bakar.required' => 'Tidak boleh Kosong',
-            'no_polisi.required' => 'Tidak boleh Kosong',
-            'berlaku_sampai.required' => 'Tidak boleh Kosong',
-            'harga_beli.required' => 'Tidak boleh Kosong',
-            'tanggal_beli.required' => 'Tidak boleh Kosong',
-            'photo_stnk.image' => 'File Harus Berupa Gambar',
-            'photo_bpkb.image' => 'File Harus Berupa Gambar',
-            'photo_stnk.max' => 'Gambar Minimal Berukuran 3MB',
-            'photo_bpkb.max' => 'Gambar Minimal Berukuran 3MB',
-         ];
-         $validator = Validator::make($request->all(),$rules, $pesan);
-         if ($validator->fails()) {
+        if ($request->penjual == "INDIVIDU") {
+            $rules = [
+                'penjual' => 'required',
+                'nik' => 'required',
+                'nama' => 'required',
+                'no_telepon' => 'required',
+                'alamat' => 'required',
+                'merek' => 'required',
+                'daya' => 'required',
+                'tahun_pembuatan' => 'required',
+                'warna' => 'required',
+                'no_rangka' => 'required',
+                'bpkb' => 'required',
+                'type' => 'required',
+                'bahan_bakar' => 'required',
+                'no_polisi' => 'required',
+                'berlaku_sampai' => 'required',
+                'harga_beli' => 'required',
+                'tanggal_beli' => 'required',
+                'photo_stnk' => 'image|file|max:3072',
+                'photo_bpkb' => 'image|file|max:3072',
+            ];
+            $pesan = [
+                'penjual.required' => 'Tidak boleh Kosong',
+                'nik.required' => 'Tidak boleh Kosong',
+                'nama.required' => 'Tidak boleh Kosong',
+                'no_telepon.required' => 'Tidak boleh Kosong',
+                'alamat.required' => 'Tidak boleh Kosong',
+                'merek.required' => 'Tidak boleh Kosong',
+                'daya.required' => 'Tidak boleh Kosong',
+                'tahun_pembuatan.required' => 'Tidak boleh Kosong',
+                'warna.required' => 'Tidak boleh Kosong',
+                'no_rangka.required' => 'Tidak boleh Kosong',
+                'bpkb.required' => 'Tidak boleh Kosong',
+                'type.required' => 'Tidak boleh Kosong',
+                'bahan_bakar.required' => 'Tidak boleh Kosong',
+                'no_polisi.required' => 'Tidak boleh Kosong',
+                'berlaku_sampai.required' => 'Tidak boleh Kosong',
+                'harga_beli.required' => 'Tidak boleh Kosong',
+                'tanggal_beli.required' => 'Tidak boleh Kosong',
+                'photo_stnk.image' => 'File Harus Berupa Gambar',
+                'photo_bpkb.image' => 'File Harus Berupa Gambar',
+                'photo_stnk.max' => 'Gambar Minimal Berukuran 3MB',
+                'photo_bpkb.max' => 'Gambar Minimal Berukuran 3MB',
+            ];
+        } else if ($request->penjual == "DEALER") {
+            $rules = [
+                'penjual' => 'required',
+                'dealer' => 'required',
+                'nama_kang' => 'required',
+                'merek' => 'required',
+                'daya' => 'required',
+                'tahun_pembuatan' => 'required',
+                'warna' => 'required',
+                'no_rangka' => 'required',
+                'bpkb' => 'required',
+                'type' => 'required',
+                'bahan_bakar' => 'required',
+                'no_polisi' => 'required',
+                'berlaku_sampai' => 'required',
+                'harga_beli' => 'required',
+                'tanggal_beli' => 'required',
+                'photo_stnk' => 'image|file|max:3072',
+                'photo_bpkb' => 'image|file|max:3072',
+            ];
+            $pesan = [
+                'penjual.required' => 'Tidak boleh Kosong',
+                'dealer.required' => 'Tidak boleh Kosong',
+                'nama_kang.required' => 'Tidak boleh Kosong',
+                'merek.required' => 'Tidak boleh Kosong',
+                'daya.required' => 'Tidak boleh Kosong',
+                'tahun_pembuatan.required' => 'Tidak boleh Kosong',
+                'warna.required' => 'Tidak boleh Kosong',
+                'no_rangka.required' => 'Tidak boleh Kosong',
+                'bpkb.required' => 'Tidak boleh Kosong',
+                'type.required' => 'Tidak boleh Kosong',
+                'bahan_bakar.required' => 'Tidak boleh Kosong',
+                'no_polisi.required' => 'Tidak boleh Kosong',
+                'berlaku_sampai.required' => 'Tidak boleh Kosong',
+                'harga_beli.required' => 'Tidak boleh Kosong',
+                'tanggal_beli.required' => 'Tidak boleh Kosong',
+                'photo_stnk.image' => 'File Harus Berupa Gambar',
+                'photo_bpkb.image' => 'File Harus Berupa Gambar',
+                'photo_stnk.max' => 'Gambar Minimal Berukuran 3MB',
+                'photo_bpkb.max' => 'Gambar Minimal Berukuran 3MB',
+            ];
+        } else if ($request->penjual == "") {
+            $rules = [
+                'penjual' => 'required',
+            ];
+            $pesan = [
+                'penjual.required' => 'Tidak boleh Kosong',
+            ];
+        }
+        $validator = Validator::make($request->all(), $rules, $pesan);
+        if ($validator->fails()) {
             return redirect()
                 ->back()
                 ->with('error', 'Pastikan anda menginput dengan benar')
                 ->withErrors($validator)
                 ->withInput();
         } else {
-         $consumer = Consumer::where('nik', $request->nik)->first();
+            $consumer = Consumer::where('nik', $request->nik)->first();
 
-        if(!$consumer){
-            $data_consumer = [
-                'unique' => Str::random(36),
-                'nik' => $request->nik,
-                'nama' => ucwords(strtolower($request->nama)),
-                'tempat_lahir' => ucwords(strtolower($request->tempat_lahir)),
-                'tanggal_lahir' => $request->tanggal_lahir,
-                'jenis_kelamin' => $request->jenis_kelamin,
-                'no_telepon' => $request->no_telepon,
-                'alamat' => $request->alamat,
-             ];
-
-             Consumer::create($data_consumer);
+            if (!$consumer) {
+                if ($request->penjual == "INDIVIDU") {
+                    $data_consumer = [
+                        'unique' => Str::random(36),
+                        'penjual' => $request->penjual,
+                        'nik' => $request->nik,
+                        'nama' => ucwords(strtolower($request->nama)),
+                        'no_telepon' => $request->no_telepon,
+                        'alamat' => $request->alamat,
+                    ];
+                } else if ($request->penjual == "DEALER") {
+                    $data_consumer = [
+                        'unique' => Str::random(36),
+                        'penjual' => $request->penjual,
+                        'nama' => ucwords(strtolower($request->nama_kang)),
+                        'dealer' => strtoupper($request->dealer),
+                    ];
+                }
+                Consumer::create($data_consumer);
             }
-        $path1 = $request->file('photo_stnk')->store('stnk');
-        $path2 = $request->file('photo_bpkb')->store('bpkb');
-        $data_motor = [
-            'unique' => Str::random(26),
-            'merek' => ucwords(strtolower($request->merek)),
-            'daya' => $request->daya,
-            'tahun_pembuatan' => $request->tahun_pembuatan,
-            'warna' => ucwords(strtolower($request->warna)),
-            'no_rangka' => $request->no_rangka,
-            'bpkb' => $request->bpkb,
-            'type' => $request->type,
-            'bahan_bakar' => ucwords(strtolower($request->bahan_bakar)),
-            'no_polisi' => strtoupper($request->no_polisi),
-            'berlaku_sampai' => $request->berlaku_sampai,
-            'status' => 'READY STOCK',
-            'photo_stnk' => $path1,
-            'photo_bpkb' => $path2,
-        ];
-        Bike::create($data_motor);
+            $path1 = $request->file('photo_stnk')->store('stnk');
+            $path2 = $request->file('photo_bpkb')->store('bpkb');
+            $data_motor = [
+                'unique' => Str::random(26),
+                'merek' => ucwords(strtolower($request->merek)),
+                'daya' => $request->daya,
+                'tahun_pembuatan' => $request->tahun_pembuatan,
+                'warna' => ucwords(strtolower($request->warna)),
+                'no_rangka' => $request->no_rangka,
+                'bpkb' => $request->bpkb,
+                'type' => $request->type,
+                'bahan_bakar' => ucwords(strtolower($request->bahan_bakar)),
+                'no_polisi' => strtoupper($request->no_polisi),
+                'berlaku_sampai' => $request->berlaku_sampai,
+                'status' => 'READY STOCK',
+                'photo_stnk' => $path1,
+                'photo_bpkb' => $path2,
+            ];
+            Bike::create($data_motor);
 
-        if($consumer) {
-            $consumer_id = $consumer->id;
-        } else {
-            $last_consumer = Consumer::orderBy('id', 'DESC')->first();
-            $consumer_id = $last_consumer->id;
+            if ($consumer) {
+                $consumer_id = $consumer->id;
+            } else {
+                $last_consumer = Consumer::orderBy('id', 'DESC')->first();
+                $consumer_id = $last_consumer->id;
+            }
+
+            $last_motor = Bike::orderBy('id', 'DESC')->first();
+
+            $data_transaksi = [
+                'unique' => Str::random(36),
+                'consumer_id' => $consumer_id,
+                'bike_id' => $last_motor->id,
+                'tanggal_beli' => $request->tanggal_beli,
+                'harga_beli' => $request->harga_beli,
+            ];
+
+            Buy::create($data_transaksi);
+
+            return redirect('/pembelian')->with('success', 'Data Transaksi Berhasil Ditambahkan');
         }
-
-        $last_motor = Bike::orderBy('id', 'DESC')->first();
-        
-        $data_transaksi = [
-            'unique' => Str::random(36),
-            'consumer_id' => $consumer_id,
-            'bike_id' => $last_motor->id,
-            'tanggal_beli' => $request->tanggal_beli,
-            'harga_beli' => $request->harga_beli,
-        ];
-
-        Buy::create($data_transaksi);
-
-        return redirect('/pembelian')->with('success', 'Data Transaksi Berhasil Ditambahkan');
-            
-        }
-        
     }
 
     /**
@@ -177,15 +228,14 @@ class PembelianController extends Controller
      */
     public function edit(Buy $buy)
     {
-        
     }
 
     public function page_edit(Buy $buy)
     {
-        
+
         $data = [
-            'title'=> 'Edit Pembelian | SMAC',
-            'judul'=> 'Edit Data Pembelian',
+            'title' => 'Edit Pembelian | SMAC',
+            'judul' => 'Edit Data Pembelian',
             'breadcumb1' => 'Pembelian',
             'breadcumb2' => 'Edit Data Pembelian',
             'beli' => $buy,
@@ -193,7 +243,7 @@ class PembelianController extends Controller
             'consumer' => $buy->consumer,
 
         ];
-        return view('pembelian.edit',$data);
+        return view('pembelian.edit', $data);
     }
 
     /**
@@ -224,12 +274,12 @@ class PembelianController extends Controller
             'photo_bpkb' => 'image|file|max:3072',
         ];
         $pesan = [
-            'nik.required' => 'Tidak boleh Kosong' ,
-            'nama.required' => 'Tidak boleh Kosong' ,
-            'tempat_lahir.required' => 'Tidak boleh Kosong' ,
-            'tanggal_lahir.required' => 'Tidak boleh Kosong' ,
-            'no_telepon.required' => 'Tidak boleh Kosong' ,
-            'alamat.required' => 'Tidak boleh Kosong' ,
+            'nik.required' => 'Tidak boleh Kosong',
+            'nama.required' => 'Tidak boleh Kosong',
+            'tempat_lahir.required' => 'Tidak boleh Kosong',
+            'tanggal_lahir.required' => 'Tidak boleh Kosong',
+            'no_telepon.required' => 'Tidak boleh Kosong',
+            'alamat.required' => 'Tidak boleh Kosong',
             'merek.required' => 'Tidak boleh Kosong',
             'daya.required' => 'Tidak boleh Kosong',
             'tahun_pembuatan.required' => 'Tidak boleh Kosong',
@@ -246,9 +296,9 @@ class PembelianController extends Controller
             'photo_bpkb.image' => 'File Harus Berupa Gambar',
             'photo_stnk.max' => 'Gambar Minimal Berukuran 3MB',
             'photo_bpkb.max' => 'Gambar Minimal Berukuran 3MB',
-         ];
-         $validator = Validator::make($request->all(),$rules, $pesan);
-         if ($validator->fails()) {
+        ];
+        $validator = Validator::make($request->all(), $rules, $pesan);
+        if ($validator->fails()) {
             return redirect()
                 ->back()
                 ->with('error', 'Pastikan anda menginput dengan benar')
@@ -269,12 +319,12 @@ class PembelianController extends Controller
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'no_telepon' => $request->no_telepon,
                 'alamat' => $request->alamat,
-             ];
+            ];
 
-             Consumer::where('id', $consumer->id)->update($data_consumer);
+            Consumer::where('id', $consumer->id)->update($data_consumer);
 
             //  Update Motor
-             if($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') != NULL){
+            if ($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') != NULL) {
                 $data_motor = [
                     'merek' => ucwords(strtolower($request->merek)),
                     'daya' => $request->daya,
@@ -288,11 +338,11 @@ class PembelianController extends Controller
                     'berlaku_sampai' => $request->berlaku_sampai,
                     'photo_bpkb' => $request->file('photo_bpkb')->store('bpkb'),
                 ];
-                if($request->oldImageBPKB != NULL){
+                if ($request->oldImageBPKB != NULL) {
                     Storage::delete($request->oldImageBPKB);
                 }
                 Bike::where('id', $motor->id)->update($data_motor);
-            } elseif($request->file('photo_stnk') != NULL && $request->file('photo_bpkb') == NULL){
+            } elseif ($request->file('photo_stnk') != NULL && $request->file('photo_bpkb') == NULL) {
                 $data_motor = [
                     'merek' => ucwords(strtolower($request->merek)),
                     'daya' => $request->daya,
@@ -306,11 +356,11 @@ class PembelianController extends Controller
                     'berlaku_sampai' => $request->berlaku_sampai,
                     'photo_stnk' => $request->file('photo_stnk')->store('stnk'),
                 ];
-                if($request->oldImageSTNK != NULL){
+                if ($request->oldImageSTNK != NULL) {
                     Storage::delete($request->oldImageSTNK);
                 }
                 Bike::where('id', $motor->id)->update($data_motor);
-            } elseif($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') == NULL){
+            } elseif ($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') == NULL) {
                 $data_motor = [
                     'merek' => ucwords(strtolower($request->merek)),
                     'daya' => $request->daya,
@@ -324,7 +374,7 @@ class PembelianController extends Controller
                     'berlaku_sampai' => $request->berlaku_sampai,
                 ];
                 Bike::where('id', $motor->id)->update($data_motor);
-            } elseif($request->file('photo_stnk') != NULL && $request->file('photo_bpkb') != NULL){
+            } elseif ($request->file('photo_stnk') != NULL && $request->file('photo_bpkb') != NULL) {
                 $data_motor = [
                     'merek' => ucwords(strtolower($request->merek)),
                     'daya' => $request->daya,
@@ -339,10 +389,10 @@ class PembelianController extends Controller
                     'photo_bpkb' => $request->file('photo_bpkb')->store('bpkb'),
                     'photo_stnk' => $request->file('photo_stnk')->store('stnk'),
                 ];
-                if($request->oldImageSTNK != NULL){
+                if ($request->oldImageSTNK != NULL) {
                     Storage::delete($request->oldImageSTNK);
                 }
-                if($request->oldImageBPKB != NULL){
+                if ($request->oldImageBPKB != NULL) {
                     Storage::delete($request->oldImageBPKB);
                 }
                 Bike::where('id', $beli->id)->update($data_motor);
@@ -364,7 +414,7 @@ class PembelianController extends Controller
     {
         $data = Consumer::where('nik', $request->nik)->first();
 
-        if($data){
+        if ($data) {
             return response()->json(['success' => $data]);
         } else {
             return response()->json(['errors' => 'data belum terdaftar']);
@@ -375,25 +425,25 @@ class PembelianController extends Controller
     {
         if ($request->ajax()) {
             $query = DB::table('bikes')
-                    ->join('buys', 'bikes.id', '=' , 'buys.bike_id');
+                ->join('buys', 'bikes.id', '=', 'buys.bike_id');
             $data = $query->get();
 
-            foreach ($data as $row){
+            foreach ($data as $row) {
                 $row->tgl_beli = tanggal_hari($row->tanggal_beli);
                 $row->harga = rupiah($row->harga_beli);
             }
-            
-            return DataTables::of($data)->addColumn('action', function($row){
-                    $actionBtn =
-                    '<button class="btn btn-info btn-sm info-button" data-id="'.$row->id.'"><i class="flaticon-381-view-2"></i></button>
-                    <a href="/edit-transaksi/'.$row->unique.'" class="btn btn-success btn-sm edit-button" data-id="'.$row->id.'"><i class="flaticon-381-edit-1"></i></a>
+
+            return DataTables::of($data)->addColumn('action', function ($row) {
+                $actionBtn =
+                    '<button class="btn btn-info btn-sm info-button" data-id="' . $row->id . '"><i class="flaticon-381-view-2"></i></button>
+                    <a href="/edit-transaksi/' . $row->unique . '" class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="flaticon-381-edit-1"></i></a>
                     
                     <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
-                        <button type="button" class="btn btn-danger btn-sm delete-button" data-token="'.csrf_token().'" data-id="'.$row->id.'"><i class="flaticon-381-trash-1"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-id="' . $row->id . '"><i class="flaticon-381-trash-1"></i></button>
                     </form>';
-                    return $actionBtn;
+                return $actionBtn;
             })
-            ->make(true);
+                ->make(true);
         }
     }
 
@@ -409,10 +459,124 @@ class PembelianController extends Controller
             'consumer' => $consumer,
             'harga' => rupiah($buy->harga_beli),
             'tanggal_beli' => tanggal_hari($buy->tanggal_beli),
-            'tanggal_lahir' => tanggal_hari($consumer->tanggal_lahir),
             'berlaku_sampai' => tanggal_hari($motor->berlaku_sampai)
         ];
 
         return response()->json(['success' => $data]);
     }
+
+    // public function load_individu(Request $request)
+    // {
+    //     if($request->penjual == "INDIVIDU"){
+    //         echo '
+    //         <div class="row form-material">
+    //         <div class="col-lg-6 mb-2">
+    //             <div class="form-group">
+    //                 <label class="text-label" for="nik">NIK</label>
+    //                 <input type="text" name="nik" id="nik" class="form-control @error("
+    //                     nik") is-invalid @enderror"
+    //                     value="{{ old("nik") }}"
+    //                     placeholder="Masukan NIK">
+    //                 @error("nik")
+    //                     <div class="invalid-feedback">
+    //                         {{ $message }}
+    //                     </div>
+    //                 @enderror
+    //             </div>
+    //         </div>
+    //         <div class="col-lg-6 mb-2">
+    //             <div class="form-group">
+    //                 <label class="text-label" for="nama">Nama Lengkap</label>
+    //                 <input type="text" name="nama" id="nama" class="form-control @error("
+    //                     nama") is-invalid @enderror"
+    //                     value="{{ old("nama") }}"
+    //                     placeholder="Masukan Nama Lengkap">
+    //                 @error("nama")
+    //                     <div class="invalid-feedback">
+    //                         {{ $message }}
+    //                     </div>
+    //                 @enderror
+    //             </div>
+    //         </div>
+    //         <div class="col-lg-6 mb-2">
+    //             <label class="text-label" for="tanggal_lahir">Tempat Tanggal Lahir</label>
+    //             <div class="form-row">
+    //                 <div class="input-group mb-3 col-sm-6">
+    //                     <div class="input-group-append">
+    //                         <span class="input-group-text"><i
+    //                                 class="flaticon-381-location-4"></i></span>
+    //                     </div>
+    //                     <input type="text" class="form-control @error(" tempat_lahir")
+    //                         is-invalid @enderror"
+    //                         value="{{ old("tempat_lahir") }}"
+    //                         placeholder="Masukan Tempat Lahir" name="tempat_lahir"
+    //                         id="tempat_lahir">
+    //                     @error("tempat_lahir")
+    //                         <div class="invalid-feedback">
+    //                             {{ $message }}
+    //                         </div>
+    //                     @enderror
+    //                 </div>
+    //                 <div class="input-group mb-3 col-sm-6">
+    //                     <div class="input-group-append">
+    //                         <span class="input-group-text"><i
+    //                                 class="flaticon-381-calendar-1"></i></span>
+    //                     </div>
+    //                     <input type="text" class="form-control @error(" tanggal_lahir")
+    //                         is-invalid @enderror"
+    //                         value="{{ old("tanggal_lahir") }}"
+    //                         placeholder="Masukan Tanggal Lahir" name="tanggal_lahir"
+    //                         id="tanggal_lahir">
+    //                     @error("tanggal_lahir")
+    //                         <div class="invalid-feedback">
+    //                             {{ $message }}
+    //                         </div>
+    //                     @enderror
+    //                 </div>
+    //             </div>
+    //         </div>
+    //         <div class="col-lg-3 mb-2">
+    //             <label class="text-label" for="jenis_kelamin">Jenis Kelamin</label>
+    //             <select class="form-control @error(" jenis_kelamin") is-invalid @enderror"
+    //                 value="{{ old("jenis_kelamin") }}"
+    //                 name="jenis_kelamin" id="jenis_kelamin">
+    //                 <option value="Laki-Laki">Laki-Laki</option>
+    //                 <option value="Perempuan">Perempuan</option>
+    //             </select>
+    //             @error("jenis_kelamin")
+    //                 <div class="invalid-feedback">
+    //                     {{ $message }}
+    //                 </div>
+    //             @enderror
+    //         </div>
+    //     </div>
+    //     <div class="col-lg-12 mb-5">
+    //         <div class="form-group">
+    //             <label class="text-label" for="no_telepon">Nomor Telepon</label>
+    //             <input class="form-control @error(" no_telepon") is-invalid @enderror"
+    //                 name="no_telepon" id="no_telepon"
+    //                 value="{{ old("no_telepon") }}">
+    //             @error("no_telepon")
+    //                 <div class="invalid-feedback">
+    //                     {{ $message }}
+    //                 </div>
+    //             @enderror
+    //         </div>
+    //     </div>
+    //     <div class="col-lg-12 mb-5">
+    //         <div class="form-group">
+    //             <label class="text-label" for="alamat">Alamat</label>
+    //             <textarea class="form-control @error(" alamat") is-invalid @enderror"
+    //                 rows="4" name="alamat"
+    //                 id="alamat">{{ old("alamat") }}</textarea>
+    //             @error("alamat")
+    //                 <div class="invalid-feedback">
+    //                     {{ $message }}
+    //                 </div>
+    //             @enderror
+    //         </div>
+    //     </div>
+    //         ';
+    //     }
+    // }
 }

@@ -14,12 +14,11 @@ return new class extends Migration
         Schema::create('consumers', function (Blueprint $table) {
             $table->id();
             $table->uuid('unique')->unique();
-            $table->string('nik', 16);
+            $table->string('penjual');
+            $table->string('nik', 16)->nullable();
             $table->string('nama', 225);
-            $table->string('tempat_lahir');
-            $table->date('tanggal_lahir');
-            $table->string('jenis_kelamin');
-            $table->string('alamat');
+            $table->string('dealer')->nullable();
+            $table->string('alamat')->nullable();
             $table->string('no_telepon')->nullable();
             $table->string('photo_ktp')->nullable();
             $table->timestamps();
