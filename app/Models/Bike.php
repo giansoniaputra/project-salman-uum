@@ -10,6 +10,11 @@ class Bike extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    public function consumer()
+    {
+        return $this->hasMany(Consumer::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'unique';

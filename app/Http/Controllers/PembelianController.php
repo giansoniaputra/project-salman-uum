@@ -150,10 +150,10 @@ class PembelianController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $consumer = Consumer::where('nik', $request->nik)->first();
-
-            if (!$consumer) {
-                if ($request->penjual == "INDIVIDU") {
+            $consumer = Consumer::where('nama', '=', $request->nama)->where('nik', '=', $request->nik)->first();
+            $consumer2 = Consumer::where('nama', '=', $request->nama_kang)->where('dealer', '=', $request->dealer)->first();
+            if ($consumer == NULL && $consumer2 == NULL) {
+                if ($consumer == NULL && $request->dealer == NULL) {
                     $data_consumer = [
                         'unique' => Str::random(36),
                         'penjual' => $request->penjual,
@@ -162,16 +162,29 @@ class PembelianController extends Controller
                         'no_telepon' => $request->no_telepon,
                         'alamat' => $request->alamat,
                     ];
-                } else if ($request->penjual == "DEALER") {
+                    Consumer::create($data_consumer);
+                } else if ($consumer2 == NULL && $request->nik == NULL) {
                     $data_consumer = [
                         'unique' => Str::random(36),
                         'penjual' => $request->penjual,
                         'nama' => ucwords(strtolower($request->nama_kang)),
                         'dealer' => strtoupper($request->dealer),
                     ];
+                    Consumer::create($data_consumer);
                 }
-                Consumer::create($data_consumer);
             }
+
+            if ($consumer || $consumer2) {
+                if ($consumer) {
+                    $consumer_id = $consumer->id;
+                } else if ($consumer2) {
+                    $consumer_id = $consumer2->id;
+                }
+            } else if ($consumer == NULL || $consumer2 == NULL) {
+                $last_consumer = Consumer::orderBy('id', 'DESC')->first();
+                $consumer_id = $last_consumer->id;
+            }
+
             if ($request->file('photo_stnk') != NULL && $request->file('photo_bpkb') != NULL) {
                 $path1 = $request->file('photo_stnk')->store('stnk');
                 $path2 = $request->file('photo_bpkb')->store('bpkb');
@@ -190,6 +203,7 @@ class PembelianController extends Controller
                     'status' => 'READY STOCK',
                     'photo_stnk' => $path1,
                     'photo_bpkb' => $path2,
+                    'consumer_id' => $consumer_id,
                 ];
             } else if ($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') != NULL) {
                 $path2 = $request->file('photo_bpkb')->store('bpkb');
@@ -207,6 +221,7 @@ class PembelianController extends Controller
                     'berlaku_sampai' => $request->berlaku_sampai,
                     'status' => 'READY STOCK',
                     'photo_bpkb' => $path2,
+                    'consumer_id' => $consumer_id,
                 ];
             } else if ($request->file('photo_stnk') != NULL && $request->file('photo_bpkb') == NULL) {
                 $path2 = $request->file('photo_stnk')->store('stnk');
@@ -224,6 +239,7 @@ class PembelianController extends Controller
                     'berlaku_sampai' => $request->berlaku_sampai,
                     'status' => 'READY STOCK',
                     'photo_stnk' => $path2,
+                    'consumer_id' => $consumer_id,
                 ];
             } else if ($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') == NULL) {
                 $data_motor = [
@@ -239,16 +255,10 @@ class PembelianController extends Controller
                     'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
                     'status' => 'READY STOCK',
+                    'consumer_id' => $consumer_id,
                 ];
             }
             Bike::create($data_motor);
-
-            if ($consumer) {
-                $consumer_id = $consumer->id;
-            } else {
-                $last_consumer = Consumer::orderBy('id', 'DESC')->first();
-                $consumer_id = $last_consumer->id;
-            }
 
             $last_motor = Bike::orderBy('id', 'DESC')->first();
 
@@ -560,119 +570,4 @@ class PembelianController extends Controller
 
         return response()->json(['success' => $data]);
     }
-
-    // public function load_individu(Request $request)
-    // {
-    //     if($request->penjual == "INDIVIDU"){
-    //         echo '
-    //         <div class="row form-material">
-    //         <div class="col-lg-6 mb-2">
-    //             <div class="form-group">
-    //                 <label class="text-label" for="nik">NIK</label>
-    //                 <input type="text" name="nik" id="nik" class="form-control @error("
-    //                     nik") is-invalid @enderror"
-    //                     value="{{ old("nik") }}"
-    //                     placeholder="Masukan NIK">
-    //                 @error("nik")
-    //                     <div class="invalid-feedback">
-    //                         {{ $message }}
-    //                     </div>
-    //                 @enderror
-    //             </div>
-    //         </div>
-    //         <div class="col-lg-6 mb-2">
-    //             <div class="form-group">
-    //                 <label class="text-label" for="nama">Nama Lengkap</label>
-    //                 <input type="text" name="nama" id="nama" class="form-control @error("
-    //                     nama") is-invalid @enderror"
-    //                     value="{{ old("nama") }}"
-    //                     placeholder="Masukan Nama Lengkap">
-    //                 @error("nama")
-    //                     <div class="invalid-feedback">
-    //                         {{ $message }}
-    //                     </div>
-    //                 @enderror
-    //             </div>
-    //         </div>
-    //         <div class="col-lg-6 mb-2">
-    //             <label class="text-label" for="tanggal_lahir">Tempat Tanggal Lahir</label>
-    //             <div class="form-row">
-    //                 <div class="input-group mb-3 col-sm-6">
-    //                     <div class="input-group-append">
-    //                         <span class="input-group-text"><i
-    //                                 class="flaticon-381-location-4"></i></span>
-    //                     </div>
-    //                     <input type="text" class="form-control @error(" tempat_lahir")
-    //                         is-invalid @enderror"
-    //                         value="{{ old("tempat_lahir") }}"
-    //                         placeholder="Masukan Tempat Lahir" name="tempat_lahir"
-    //                         id="tempat_lahir">
-    //                     @error("tempat_lahir")
-    //                         <div class="invalid-feedback">
-    //                             {{ $message }}
-    //                         </div>
-    //                     @enderror
-    //                 </div>
-    //                 <div class="input-group mb-3 col-sm-6">
-    //                     <div class="input-group-append">
-    //                         <span class="input-group-text"><i
-    //                                 class="flaticon-381-calendar-1"></i></span>
-    //                     </div>
-    //                     <input type="text" class="form-control @error(" tanggal_lahir")
-    //                         is-invalid @enderror"
-    //                         value="{{ old("tanggal_lahir") }}"
-    //                         placeholder="Masukan Tanggal Lahir" name="tanggal_lahir"
-    //                         id="tanggal_lahir">
-    //                     @error("tanggal_lahir")
-    //                         <div class="invalid-feedback">
-    //                             {{ $message }}
-    //                         </div>
-    //                     @enderror
-    //                 </div>
-    //             </div>
-    //         </div>
-    //         <div class="col-lg-3 mb-2">
-    //             <label class="text-label" for="jenis_kelamin">Jenis Kelamin</label>
-    //             <select class="form-control @error(" jenis_kelamin") is-invalid @enderror"
-    //                 value="{{ old("jenis_kelamin") }}"
-    //                 name="jenis_kelamin" id="jenis_kelamin">
-    //                 <option value="Laki-Laki">Laki-Laki</option>
-    //                 <option value="Perempuan">Perempuan</option>
-    //             </select>
-    //             @error("jenis_kelamin")
-    //                 <div class="invalid-feedback">
-    //                     {{ $message }}
-    //                 </div>
-    //             @enderror
-    //         </div>
-    //     </div>
-    //     <div class="col-lg-12 mb-5">
-    //         <div class="form-group">
-    //             <label class="text-label" for="no_telepon">Nomor Telepon</label>
-    //             <input class="form-control @error(" no_telepon") is-invalid @enderror"
-    //                 name="no_telepon" id="no_telepon"
-    //                 value="{{ old("no_telepon") }}">
-    //             @error("no_telepon")
-    //                 <div class="invalid-feedback">
-    //                     {{ $message }}
-    //                 </div>
-    //             @enderror
-    //         </div>
-    //     </div>
-    //     <div class="col-lg-12 mb-5">
-    //         <div class="form-group">
-    //             <label class="text-label" for="alamat">Alamat</label>
-    //             <textarea class="form-control @error(" alamat") is-invalid @enderror"
-    //                 rows="4" name="alamat"
-    //                 id="alamat">{{ old("alamat") }}</textarea>
-    //             @error("alamat")
-    //                 <div class="invalid-feedback">
-    //                     {{ $message }}
-    //                 </div>
-    //             @enderror
-    //         </div>
-    //     </div>
-    //         ';
-    //     }
-    // }
 }

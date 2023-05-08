@@ -23,40 +23,42 @@ use App\Http\Controllers\PenjualanController;
 //     return view('index');
 // });
 
-Route::get('/', [Dashboard::class,'index'])->middleware('auth');
-Route::get('/home', [Dashboard::class,'index'])->middleware('auth');
+Route::get('/', [Dashboard::class, 'index'])->middleware('auth');
+Route::get('/home', [Dashboard::class, 'index'])->middleware('auth');
 
-Route::resource('/penjualan',PenjualanController::class)->middleware('auth');
+Route::resource('/penjualan', PenjualanController::class)->middleware('auth');
 Route::resource('/auth', AuthController::class)->middleware('guest');
-Route::get('/auth/create', [AuthController::class,'register'])->middleware('auth');
-Route::get('/auth', [AuthController::class,'index'])->name('login')->middleware('guest');
+Route::get('/auth/create', [AuthController::class, 'register'])->middleware('auth');
+Route::get('/auth', [AuthController::class, 'index'])->name('login')->middleware('guest');
 
 // PEMBELIAN
-Route::resource('/pembelian',PembelianController::class)->middleware('auth');
-    // Cek apakah konsumen sudah terdaftar
+Route::resource('/pembelian', PembelianController::class)->middleware('auth');
+// Cek apakah konsumen sudah terdaftar
 Route::get('/cekNIK', [PembelianController::class, 'cek_nik'])->middleware('auth');
-    // Edit Data
+// Edit Data
 Route::get('/edit-transaksi/{buy:unique}', [PembelianController::class, 'page_edit'])->middleware('auth');
-    //Ambil Data Transaksi
+//Ambil Data Transaksi
 Route::get('/getDataTransaksi', [PembelianController::class, 'get_transaksi'])->middleware('auth');
-    //Load Individu
+//Load Individu
 // Route::get('/loadIndividu', [PembelianController::class, 'load_individu'])->middleware('auth');
 
 // DATA MOTOR
 Route::resource('/motor', BikeController::class)->middleware('auth');
-    //Ambil Data Motor
+//Ambil Data Motor
 Route::get('/getDataMotor', [BikeController::class, 'get_motor'])->middleware('auth');
 
 // DATA KONSUMEN
 Route::resource('/consumer', ConsumerController::class)->middleware('auth');
 
 // AUTHENTIKASI
-    // Login
+// Login
 Route::post('/authenticate', [AuthController::class, 'authenticate']);
-    // Logout
+// Logout
 Route::get('/logout', [AuthController::class, 'logout']);
 
 // DATATABLES
 Route::get('/datatablesPembelian', [PembelianController::class, 'dataTables'])->middleware('auth');
 Route::get('/datatablesMotor', [BikeController::class, 'dataTables'])->middleware('auth');
-
+Route::get('/datatablesIndividu', [ConsumerController::class, 'dataTables'])->middleware('auth');
+Route::get('/datatablesDealer', [ConsumerController::class, 'dataTables2'])->middleware('auth');
+Route::get('/dataTablesMotor', [ConsumerController::class, 'dataTablesMotor'])->middleware('auth');

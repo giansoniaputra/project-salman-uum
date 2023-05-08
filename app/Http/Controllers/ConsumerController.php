@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buy;
+use App\Models\Bike;
 use App\Models\Consumer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 
 class ConsumerController extends Controller
 {
@@ -12,13 +16,13 @@ class ConsumerController extends Controller
      */
     public function index()
     {
-        $data=[
-            'title'=> 'Data Pelanggan | SMAC',
-            'judul'=> 'Data Pelanggan',
+        $data = [
+            'title' => 'Data Pelanggan | SMAC',
+            'judul' => 'Data Pelanggan',
             'breadcumb1' => 'Master',
             'breadcumb2' => 'Data Pelanggan',
         ];
-        return view('consumer.index',$data);
+        return view('consumer.index', $data);
     }
 
     /**
@@ -67,5 +71,44 @@ class ConsumerController extends Controller
     public function destroy(Consumer $consumer)
     {
         //
+    }
+
+    public function dataTables(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = Consumer::where('penjual', 'INDIVIDU')->get();
+            return DataTables::of($query)->addColumn('action', function ($row) {
+                $actionButton = '<button class="btn btn-success btn-sm info-button-individu" data-id="' . $row->id . '">Riwayat Penjualan</button>';
+                return $actionButton;
+            })->make(true);
+        }
+    }
+
+    public function dataTables2(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = Consumer::where('penjual', 'DEALER')->get();
+            return DataTables::of($query)->addColumn('action', function ($row) {
+                $actionButton = '<button class="btn btn-success btn-sm info-button-dealer" data-id="' . $row->id . '">Riwayat Penjualan</button>';
+                return $actionButton;
+            })->make(true);
+        }
+    }
+
+    public function dataTablesMotor(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = DB::table('bikes')
+                ->join('buys', 'bikes.id', '=', 'buys.bike_id')
+                ->where('bikes.consumer_id', '=', $request->id)
+                ->get();
+
+            foreach ($query as $row) {
+                $row->tanggal_beli = tanggal_hari($row->tanggal_beli);
+                $row->harga_beli = rupiah($row->harga_beli);
+            }
+
+            return DataTables::of($query)->make(true);
+        }
     }
 }
