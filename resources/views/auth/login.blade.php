@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Sistem Informasi SMAC</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
-    <link href="./css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+    <link href="/css/style.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
@@ -24,13 +24,17 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <div class="text-center mb-3">
-                                        <a href="index.html"><img src="images/logo-full.png" alt=""></a>
+                                        <a href="#"><img src="/images/logo-full.png" alt=""></a>
                                     </div>
                                     <h4 class="text-center mb-4 text-white">Sistem Informasi SMAC</h4>
                                     @if(session('error'))
-                                        <div class="alert alert-danger" role="alert">
-                                            {{ session('error') }}
-                                        </div>
+                                    <div class="alert alert-danger solid alert-dismissible fade show">
+                                        
+                                        <svg viewBox="0 0 24 24" width="24 " height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                                        {{ session('error') }}
+                                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                                        </button>
+                                    </div>
                                     @endif
                                     <form action="/authenticate" method="post">
                                         @csrf
@@ -38,10 +42,10 @@
                                             <label class="mb-1 text-white"><strong>Email</strong></label>
                                             <input type="email"
                                                 class="form-control @error('email') is-invalid @enderror"
-                                                placeholder="Masukan Email" name="email" id="email">
+                                                placeholder="Masukan Email" name="email" id="email" value="{{old('email')}}">
                                             @error('email')
                                                 <div class="invalid-feedback">
-                                                    {{ $message }}
+                                                    {{ 'Email Tidak Boleh Kosong!' }}
                                                 </div>
                                             @enderror
                                         </div>
@@ -51,7 +55,7 @@
                                                 class="form-control @error('password') is-invalid @enderror" placeholder="Masukan Password">
                                             @error('password')
                                                 <div class="invalid-feedback">
-                                                    {{ $message }}
+                                                    {{ 'Password Tidak Boleh Kosong!' }}
                                                 </div>
                                             @enderror
                                         </div>

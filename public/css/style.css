@@ -1950,7 +1950,7 @@ pre {
   .form-control:focus {
     color: #495057;
     background-color: #fff;
-    border-color: #00facd;
+    border-color: #003163;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 122, 100, 0.25); }
   .form-control::placeholder {
@@ -3158,7 +3158,7 @@ input[type="button"].btn-block {
   .custom-control-input:focus ~ .custom-control-label::before {
     box-shadow: 0 0 0 0.2rem rgba(0, 122, 100, 0.25); }
   .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
-    border-color: #00facd; }
+    border-color: #003163; }
   .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
     color: #fff;
     background-color: #2effd9;
@@ -3253,7 +3253,7 @@ input[type="button"].btn-block {
   border-radius: 0.75rem;
   appearance: none; }
   .custom-select:focus {
-    border-color: #00facd;
+    border-color: #003163;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 122, 100, 0.25); }
     .custom-select:focus::-ms-value {
@@ -3301,7 +3301,7 @@ input[type="button"].btn-block {
   margin: 0;
   opacity: 0; }
   .custom-file-input:focus ~ .custom-file-label {
-    border-color: #00facd;
+    border-color: #003163;
     box-shadow: 0 0 0 0.2rem rgba(0, 122, 100, 0.25); }
   .custom-file-input[disabled] ~ .custom-file-label, .custom-file-input:disabled ~ .custom-file-label {
     background-color: #e9ecef; }
@@ -16637,8 +16637,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 [data-primary="color_3"] .accordion-header-bg .accordion__header--primary {
   background-color: #003163; }
 [data-primary="color_3"] .alert-primary {
-  background: #00facd;
-  border-color: #00facd;
+  background: #003163;
+  border-color: #003163;
   color: #003163; }
 [data-primary="color_3"] .alert-alt.alert-primary {
   border-left: 4px solid #003163; }

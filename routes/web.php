@@ -55,6 +55,9 @@ Route::resource('/consumer', ConsumerController::class)->middleware('auth');
 Route::post('/authenticate', [AuthController::class, 'authenticate']);
 // Logout
 Route::get('/logout', [AuthController::class, 'logout']);
+    // Register
+Route::get('/register', [AuthController::class, 'index']);
+Route::post('/register', [AuthController::class, 'store']);
 
 // DATATABLES
 Route::get('/datatablesPembelian', [PembelianController::class, 'dataTables'])->middleware('auth');

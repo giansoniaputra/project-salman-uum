@@ -25,37 +25,71 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <div class="text-center mb-3">
-                                        <a href="index.html"><img src="images/logo-full.png" alt=""></a>
+                                        <a href="#"><img src="/images/logo-full.png" alt=""></a>
                                     </div>
                                     <h4 class="text-center mb-4 text-white">Silahkan Buat Akun</h4>
-                                    <form action="index.html">
+                                    <form action="/register" method="post">
+                                        @csrf
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Username</strong></label>
-                                            <input type="text" class="form-control" placeholder="Masukan Username">
+                                            <input type="text" name="name" id="name"
+                                                class="form-control @error('name') is-invalid @enderror"
+                                                placeholder="Masukan Username" value="{{old('name')}}">
+                                            @error('name')
+                                                <div class="invalid-feedback">
+                                                    {{ 'Username Tidak Boleh Kosong!' }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Email</strong></label>
-                                            <input type="email" class="form-control" placeholder="contoh@gmail.com">
+                                            <input type="email" name="email" id="email"
+                                                class="form-control @error('email') is-invalid @enderror"
+                                                placeholder="contoh@gmail.com" value="{{old('email')}}">
+                                            @error('email')
+                                                <div class="invalid-feedback">
+                                                    {{ 'Email Tidak Boleh Kosong!' }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Password</strong></label>
-                                            <input type="password" class="form-control"
+                                            <input type="password" name="password" id="password"
+                                                class="form-control @error('password') is-invalid @enderror"
                                                 placeholder="Masukan Password Anda" name="password" id="password">
+                                            @error('password')
+                                                <div class="invalid-feedback">
+                                                    {{ 'Password Tidak Boleh Kosong!' }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Konfirmasi Password</strong></label>
-                                            <input type="password" class="form-control"
-                                                placeholder="Masukan Password Anda" name="conf_password"
+                                            <input type="password"
+                                                class="form-control @error('conf_password') is-invalid @enderror"
+                                                placeholder="Masukan Konfirmasi Password Anda" name="conf_password"
                                                 id="conf_password">
+                                            @error('conf_password')
+                                                <div class="invalid-feedback">
+                                                    {{ 'Konfirmasi Password Tidak Boleh Kosong!' }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Pilih Role</strong></label>
-                                            <select class="form-control form-control-sm default-select">
-                                                <option selected>Pilih Role</option>
+                                            <select
+                                                class="form-control form-control-sm default-select @error('roles') is-invalid @enderror"
+                                                name="roles" id="roles" value="{{old('roles')}}">
+                                                <option value="">Pilih Role</option>
                                                 <option>Super Admin</option>
                                                 <option>Admin</option>
                                                 <option>Member</option>
                                             </select>
+                                            @error('roles')
+                                                <div class="invalid-feedback">
+                                                    {{ 'Role Tidak Boleh Kosong!' }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="text-center mt-4">
                                             <button type="submit"
@@ -72,36 +106,35 @@
     </div>
 
     <!--**********************************
-	Scripts
+ Scripts
 ***********************************-->
 
     <!-- Required vendors -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             let inputElement = $('input[name="conf_password"]');
             var feedbackElement = $('<div class="invalid-feedback"></div>');
             var feedbackElement2 = $('<div class="valid-feedback"></div>');
 
-            $("#conf_password").on("change", function () {
-                if ($("#password").val() !=  $("#conf_password").val()) {
+            $("#conf_password").on("change", function() {
+                if ($("#password").val() != $("#conf_password").val()) {
                     $(".pesan").html('')
                     inputElement.addClass('is-invalid');
                     inputElement.removeClass('is-valid');
                     feedbackElement.append($('<p class="text-danger pesan">Password Tidak Sama</p>'))
                     inputElement.after(feedbackElement)
-                } else if ($("#password").val() ==  $("#conf_password").val()) {
+                } else if ($("#password").val() == $("#conf_password").val()) {
                     inputElement.removeClass('is-invalid');
                     inputElement.addClass('is-valid');
                     feedbackElement2.append($('<p class="text-danger">Password Sesuai</p>'))
                 }
 
-                if($("#password").val() == ''){
+                if ($("#password").val() == '') {
                     inputElement.removeClass('is-valid');
                 }
             })
         })
-
     </script>
     <script src="./vendor/global/global.min.js"></script>
     <script src="./vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buy;
+use App\Models\Bike;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PenjualanController extends Controller
 {
@@ -16,6 +19,7 @@ class PenjualanController extends Controller
             'judul'=> 'Penjualan',
             'breadcumb1' => 'Transaksi',
             'breadcumb2' => 'Penjualan',
+            'no_polisi' => DB::table('bikes')->select('no_polisi')->get()
         ];
         return view('penjualan.index',$data);
     }
