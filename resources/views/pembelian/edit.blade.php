@@ -25,7 +25,10 @@
                         <form action="/pembelian/{{ $beli->unique }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
+                            <input type="hidden" name="oldImageBPKB" value="{{ $motor->photo_stnk }}">
+                            <input type="hidden" name="oldImageSTNK" value="{{ $motor->photo_bpkb }}">
                             <div id="data_konsumen" class="tab-pane" role="tabpanel">
+                                <input type="hidden" name="penjual" id="penjual" value="{{ $consumer->penjual }}">
                                 @if ($consumer->penjual == "INDIVIDU")
                                 <div id="consumer-content-individu" style="padding-bottom: 92.75px">
                                     <div class="row form-material">
