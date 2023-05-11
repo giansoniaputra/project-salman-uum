@@ -17,10 +17,10 @@ class ConsumerController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Data Pelanggan | SMAC',
-            'judul' => 'Data Pelanggan',
+            'title' => 'Data Konsumen | SMAC',
+            'judul' => 'Data Konsumen',
             'breadcumb1' => 'Master',
-            'breadcumb2' => 'Data Pelanggan',
+            'breadcumb2' => 'Data Konsumen',
         ];
         return view('consumer.index', $data);
     }

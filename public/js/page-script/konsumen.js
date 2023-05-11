@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var table = $('#dataTables').DataTable({
         createdRow: function (row, data, index) {
             $(row).addClass('selected')
@@ -119,12 +119,18 @@ $(document).ready(function() {
         ],
     });
 
-    $("#dataTables").on("click",'.info-button-individu' ,function(){
+    $("#dataTables").on("click", '.info-button-individu', function () {
+        let id = $(this).attr("data-id");
+        $("#data-motor").val(id)
+        $("#modal-motor").modal('show')
+        table3.ajax.reload()
+    })
+    $("#dataTables2").on("click", '.info-button-dealer', function () {
         let id = $(this).attr("data-id");
         $("#data-motor").val(id)
         $("#modal-motor").modal('show')
         table3.ajax.reload()
     })
 
-    
+
 })
