@@ -17,6 +17,9 @@ $(document).ready(function () {
                 },
             },
             {
+                "data": "nota"
+            },
+            {
                 "data": "merek"
             },
             {

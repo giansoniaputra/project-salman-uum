@@ -1,51 +1,54 @@
 (function ($) {
-    "use strict"
+    "use strict";
 
     // MAterial Date picker
-    $('#tanggal_lahir').bootstrapMaterialDatePicker({
+    $("#tanggal_lahir").bootstrapMaterialDatePicker({
         weekStart: 0,
-        time: false
+        time: false,
     });
-    $('#tanggal_beli').bootstrapMaterialDatePicker({
+    $("#tanggal_beli").bootstrapMaterialDatePicker({
         weekStart: 0,
-        time: false
+        time: false,
     });
-    $('#berlaku_sampai').bootstrapMaterialDatePicker({
+    $("#tanggal_jual").bootstrapMaterialDatePicker({
         weekStart: 0,
-        time: false
+        time: false,
     });
-    $('#tahun_pembuatan').bootstrapMaterialDatePicker({
+    $("#berlaku_sampai").bootstrapMaterialDatePicker({
         weekStart: 0,
-        time: false
+        time: false,
     });
-    $('#laporan_pertahun').bootstrapMaterialDatePicker({
+    $("#tahun_pembuatan").bootstrapMaterialDatePicker({
         weekStart: 0,
-        time: false
+        time: false,
     });
-    $('#laporan_perbulan').bootstrapMaterialDatePicker({
+    $("#laporan_pertahun").bootstrapMaterialDatePicker({
         weekStart: 0,
-        time: false
+        time: false,
     });
-    $('#laporan_perhari').bootstrapMaterialDatePicker({
+    $("#laporan_perbulan").bootstrapMaterialDatePicker({
         weekStart: 0,
-        time: false
+        time: false,
     });
-    $('#laporan_pertanggal').bootstrapMaterialDatePicker({
+    $("#laporan_perhari").bootstrapMaterialDatePicker({
         weekStart: 0,
-        time: false
+        time: false,
     });
-    $('#timepicker').bootstrapMaterialDatePicker({
-        format: 'HH:mm',
+    $("#laporan_pertanggal").bootstrapMaterialDatePicker({
+        weekStart: 0,
+        time: false,
+    });
+    $("#timepicker").bootstrapMaterialDatePicker({
+        format: "HH:mm",
         time: true,
-        date: false
+        date: false,
     });
-    $('#date-format').bootstrapMaterialDatePicker({
-        format: 'dddd DD MMMM YYYY - HH:mm'
-    });
-
-    $('#min-date').bootstrapMaterialDatePicker({
-        format: 'DD/MM/YYYY HH:mm',
-        minDate: new Date()
+    $("#date-format").bootstrapMaterialDatePicker({
+        format: "dddd DD MMMM YYYY - HH:mm",
     });
 
+    $("#min-date").bootstrapMaterialDatePicker({
+        format: "DD/MM/YYYY HH:mm",
+        minDate: new Date(),
+    });
 })(jQuery);

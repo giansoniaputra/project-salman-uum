@@ -28,7 +28,6 @@ use App\Http\Controllers\PenjualanController;
 Route::get('/', [Dashboard::class, 'index'])->middleware('auth');
 Route::get('/home', [Dashboard::class, 'index'])->middleware('auth');
 
-Route::resource('/penjualan', PenjualanController::class)->middleware('auth');
 Route::resource('/auth', AuthController::class)->middleware('guest');
 Route::get('/auth/create', [AuthController::class, 'register'])->middleware('auth');
 Route::get('/auth', [AuthController::class, 'index'])->name('login')->middleware('guest');
@@ -58,6 +57,10 @@ Route::resource('/laporan', LaporanController::class)->middleware('auth');
 // DATA KONSUMEN
 Route::resource('/consumer', ConsumerController::class)->middleware('auth');
 
+// PENJUALAN
+//Tambah Penjualan
+Route::resource('/penjualan', PenjualanController::class)->middleware('auth');
+Route::post('/tambahPenjualan', [PenjualanController::class, 'tambah_data'])->middleware('auth');
 
 
 // AUTHENTIKASI

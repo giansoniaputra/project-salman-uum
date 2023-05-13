@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bike;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class BikeController extends Controller
@@ -86,7 +87,8 @@ class BikeController extends Controller
 
     public function get_motor(Request $request)
     {
-        $motor = Bike::where('id', $request->id)->first();
+        $motor = DB::table('bikes')
+            ->join('buys', 'bikes.id', '=', 'buys.bike_id')->first();
         $motor->berlaku_sampai = tanggal_hari($motor->berlaku_sampai);
         return response()->json(['success' => $motor]);
     }

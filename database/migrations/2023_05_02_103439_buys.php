@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('buys', function (Blueprint $table) {
             $table->id();
             $table->uuid('unique')->unique();
+            $table->string('nota')->unique();
             $table->integer('consumer_id');
             $table->integer('bike_id');
             $table->date('tanggal_beli');

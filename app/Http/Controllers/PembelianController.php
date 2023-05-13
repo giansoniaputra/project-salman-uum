@@ -48,6 +48,7 @@ class PembelianController extends Controller
      */
     public function store(Request $request)
     {
+
         if ($request->penjual == "INDIVIDU") {
             $rules = [
                 'penjual' => 'required',
@@ -155,7 +156,7 @@ class PembelianController extends Controller
             if ($consumer == NULL && $consumer2 == NULL) {
                 if ($consumer == NULL && $request->dealer == NULL) {
                     $data_consumer = [
-                        'unique' => Str::random(36),
+                        'unique' => Str::orderedUuid(),
                         'penjual' => $request->penjual,
                         'nik' => $request->nik,
                         'nama' => ucwords(strtolower($request->nama)),
@@ -165,7 +166,7 @@ class PembelianController extends Controller
                     Consumer::create($data_consumer);
                 } else if ($consumer2 == NULL && $request->nik == NULL) {
                     $data_consumer = [
-                        'unique' => Str::random(36),
+                        'unique' => Str::orderedUuid(),
                         'penjual' => $request->penjual,
                         'nama' => ucwords(strtolower($request->nama_kang)),
                         'dealer' => strtoupper($request->dealer),
@@ -189,7 +190,7 @@ class PembelianController extends Controller
                 $path1 = $request->file('photo_stnk')->store('stnk');
                 $path2 = $request->file('photo_bpkb')->store('bpkb');
                 $data_motor = [
-                    'unique' => Str::random(26),
+                    'unique' => Str::orderedUuid(),
                     'merek' => ucwords(strtolower($request->merek)),
                     'daya' => $request->daya,
                     'tahun_pembuatan' => $request->tahun_pembuatan,
@@ -208,7 +209,7 @@ class PembelianController extends Controller
             } else if ($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') != NULL) {
                 $path2 = $request->file('photo_bpkb')->store('bpkb');
                 $data_motor = [
-                    'unique' => Str::random(26),
+                    'unique' => Str::orderedUuid(),
                     'merek' => ucwords(strtolower($request->merek)),
                     'daya' => $request->daya,
                     'tahun_pembuatan' => $request->tahun_pembuatan,
@@ -226,7 +227,7 @@ class PembelianController extends Controller
             } else if ($request->file('photo_stnk') != NULL && $request->file('photo_bpkb') == NULL) {
                 $path2 = $request->file('photo_stnk')->store('stnk');
                 $data_motor = [
-                    'unique' => Str::random(26),
+                    'unique' => Str::orderedUuid(),
                     'merek' => ucwords(strtolower($request->merek)),
                     'daya' => $request->daya,
                     'tahun_pembuatan' => $request->tahun_pembuatan,
@@ -243,7 +244,7 @@ class PembelianController extends Controller
                 ];
             } else if ($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') == NULL) {
                 $data_motor = [
-                    'unique' => Str::random(26),
+                    'unique' => Str::orderedUuid(),
                     'merek' => ucwords(strtolower($request->merek)),
                     'daya' => $request->daya,
                     'tahun_pembuatan' => $request->tahun_pembuatan,
@@ -259,12 +260,21 @@ class PembelianController extends Controller
                 ];
             }
             Bike::create($data_motor);
-
+            $trx = 'TRXBUY-00';
+            $last_trx = Buy::orderBy('id', 'DESC')->first();
+            if ($last_trx == NULL) {
+                $random_num = 1;
+            } else {
+                $last_nota = explode('-', $last_trx->nota);
+                $random_num = $last_nota[1] + 1;
+            }
+            $nota = $trx . $random_num;
             $last_motor = Bike::orderBy('id', 'DESC')->first();
 
             $data_transaksi = [
-                'unique' => Str::random(36),
+                'unique' => Str::orderedUuid(),
                 'consumer_id' => $consumer_id,
+                'nota' => $nota,
                 'bike_id' => $last_motor->id,
                 'tanggal_beli' => $request->tanggal_beli,
                 'harga_beli' => $request->harga_beli,

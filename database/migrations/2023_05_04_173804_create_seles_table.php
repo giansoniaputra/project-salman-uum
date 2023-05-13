@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('seles', function (Blueprint $table) {
             $table->id();
             $table->uuid('unique')->unique();
-            $table->integer('buy_id');
+            $table->string('nota')->unique();
+            $table->integer('bike_id');
             $table->date('tanggal_jual');
             $table->string('harga_beli');
             $table->string('harga_jual');
