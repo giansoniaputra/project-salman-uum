@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
     "use strict"
 
     // MAterial Date picker
@@ -15,6 +15,22 @@
         time: false
     });
     $('#tahun_pembuatan').bootstrapMaterialDatePicker({
+        weekStart: 0,
+        time: false
+    });
+    $('#laporan_pertahun').bootstrapMaterialDatePicker({
+        weekStart: 0,
+        time: false
+    });
+    $('#laporan_perbulan').bootstrapMaterialDatePicker({
+        weekStart: 0,
+        time: false
+    });
+    $('#laporan_perhari').bootstrapMaterialDatePicker({
+        weekStart: 0,
+        time: false
+    });
+    $('#laporan_pertanggal').bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false
     });

@@ -4,6 +4,8 @@ use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BikeController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PenjualanController;
@@ -47,8 +49,16 @@ Route::resource('/motor', BikeController::class)->middleware('auth');
 //Ambil Data Motor
 Route::get('/getDataMotor', [BikeController::class, 'get_motor'])->middleware('auth');
 
+// PROFILE
+Route::resource('/profile', ProfileController::class)->middleware('auth');
+
+// LAPORAN
+Route::resource('/laporan', LaporanController::class)->middleware('auth');
+
 // DATA KONSUMEN
 Route::resource('/consumer', ConsumerController::class)->middleware('auth');
+
+
 
 // AUTHENTIKASI
 // Login
