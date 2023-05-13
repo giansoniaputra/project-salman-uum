@@ -11,8 +11,7 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/dataTablesPenjualan",
-        columns: [
-            {
+        columns: [{
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 },
@@ -38,7 +37,9 @@ $(document).ready(function () {
                 searchable: true,
             },
         ],
-        order: [[0, "desc"]],
+        order: [
+            [0, "desc"]
+        ],
     });
     //LOAD CONTENT CASH
     $("#jenis_pembayaran").on("change", function () {
@@ -59,7 +60,9 @@ $(document).ready(function () {
         let id = $(this).val();
         $(this).removeClass("is-invalid");
         $.ajax({
-            data: { id: id },
+            data: {
+                id: id
+            },
             url: "/getDataMotor",
             type: "GET",
             dataType: "json",
@@ -108,12 +111,14 @@ $(document).ready(function () {
                     inputElement.addClass("is-invalid");
                     let feedbackElement = $(
                         '<div class="invalid-feedback ml-2 jumlah_bayar">' +
-                            response.error +
-                            "</div>"
+                        response.error +
+                        "</div>"
                     );
                     inputElement.after(feedbackElement);
                 } else if (response.success) {
+                    $("#modal-transaksi").modal('hide')
                     Swal.fire("Good job!", response.success, "success");
+                    table.ajax.reload()
                 }
             },
         });

@@ -113,7 +113,7 @@ class PenjualanController extends Controller
                 ];
                 Sele::create($data);
                 Bike::where('id', $request->no_polisi)->update(['status' => 'TERJUAL']);
-                return response()->json(['success' => 'Data penjualan berhasil ditambahkan']);
+                return response()->json(['success' => 'Data Penjualan Berhasil Ditambahkan']);
             }
         }
     }

@@ -514,7 +514,7 @@ class PembelianController extends Controller
                 Bike::where('id', $beli->id)->update($data_motor);
             }
 
-            return redirect('/pembelian')->with('success', 'Data Transaksi Berhasil Diubah');
+            return redirect('/pembelian')->with('success', 'Data Pembelian Berhasil Diubah');
         }
     }
 
