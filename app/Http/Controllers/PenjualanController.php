@@ -22,7 +22,7 @@ class PenjualanController extends Controller
             'judul' => 'Penjualan',
             'breadcumb1' => 'Transaksi',
             'breadcumb2' => 'Penjualan',
-            'no_polisi' => DB::table('bikes')->select('no_polisi', 'id')->get()
+            'no_polisi' => DB::table('bikes')->select('no_polisi', 'id')->where('status', 'READY STOCK')->get()
         ];
         return view('penjualan.index', $data);
     }
@@ -87,6 +87,7 @@ class PenjualanController extends Controller
                 if ($request->kembali < "0") {
                     return response()->json(['error' => 'Jumlah bayar tidak boleh kurang dari harga beli']);
                 }
+
                 $trx = 'TRXSALE-00';
                 $last_trx = Sele::orderBy('id', 'DESC')->first();
                 if ($last_trx == NULL) {
@@ -104,8 +105,8 @@ class PenjualanController extends Controller
                     'harga_beli' => $request->harga_beli,
                     'harga_jual' => $request->harga_jual,
                 ];
-
                 Sele::create($data);
+                Bike::where('id', $request->no_polisi)->update(['status' => 'TERJUAL']);
                 return response()->json(['success' => 'Data penjualan berhasil ditambahkan']);
             }
         }
