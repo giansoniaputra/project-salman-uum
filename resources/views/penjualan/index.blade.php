@@ -24,7 +24,7 @@
                                     <div class="form-row">
                                         <label class="text-label" for="no_polisi">No Polisi</label>
                                         <select id="single-select" name="no_polisi"
-                                            class="form-control @error('no_polisi') is-invalid @enderror"
+                                            class="form-control input-default @error('no_polisi') is-invalid @enderror"
                                             value="{{ old('no_polisi') }}" placeholder="Masukan No Polisi">
                                             <option value="">Pilih No Polisi</option>
                                             @foreach ($no_polisi as $row)
@@ -42,7 +42,7 @@
                                     <div class="form-row">
                                         <label class="text-label" for="merk">Merk</label>
                                         <input type="text" name="merk" id="merk"
-                                            class="form-control @error('merk') is-invalid @enderror"
+                                            class="form-control input-default @error('merk') is-invalid @enderror"
                                             value="{{ old('merk') }}" placeholder="Masukan Merk" disabled>
                                         @error('merk')
                                             <div class="invalid-feedback">
@@ -55,7 +55,7 @@
                                     <div class="form-row">
                                         <label class="text-label" for="warna">Warna</label>
                                         <input type="text" name="warna" id="warna"
-                                            class="form-control @error('warna') is-invalid @enderror"
+                                            class="form-control input-default @error('warna') is-invalid @enderror"
                                             value="{{ old('warna') }}" placeholder="Masukan Warna" disabled>
                                         @error('warna')
                                             <div class="invalid-feedback">
@@ -117,7 +117,7 @@
                                                 <span class="input-group-text">$</span>
                                             </div>
                                             <input type="text"
-                                                class="form-control input-default @error('harga_jual') is-invalid @enderror"
+                                                class="form-control input-default input-default @error('harga_jual') is-invalid @enderror"
                                                 value="{{ old('harga_jual') }}" placeholder="Masukan Harga Jual"
                                                 name="harga_jual" id="harga_jual">
                                             @error('harga_jual')
