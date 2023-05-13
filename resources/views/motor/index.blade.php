@@ -7,33 +7,90 @@
                     <h4 class="card-title">Data Motor</h4>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="dataTables" class="display min-w850 text-center">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>No Polisi</th>
-                                    <th>Merk</th>
-                                    <th>Warna</th>
-                                    <th>Tahun Pembuatan</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>No</th>
-                                    <th>No Polisi</th>
-                                    <th>Merk</th>
-                                    <th>Warna</th>
-                                    <th>Tahun Pembuatan</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot>
-                        </table>
+                    <!-- Nav tabs -->
+                    <div class="custom-tab-1">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tersedia"><i
+                                        class="la la-check-circle mr-2"></i>
+                                    Tersedia</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#terjual"><i
+                                        class="la la-cart-arrow-down mr-2"></i>
+                                    Terjual</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="tersedia" role="tabpanel">
+                                <div class="pt-4">
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table id="dataTables" class="display min-w850 text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>No Polisi</th>
+                                                        <th>Merk</th>
+                                                        <th>Warna</th>
+                                                        <th>Tahun Pembuatan</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>No Polisi</th>
+                                                        <th>Merk</th>
+                                                        <th>Warna</th>
+                                                        <th>Tahun Pembuatan</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="terjual">
+                                <div class="pt-4">
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table id="dataTables" class="display min-w850 text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>No Polisi</th>
+                                                        <th>Merk</th>
+                                                        <th>Warna</th>
+                                                        <th>Tahun Pembuatan</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>No Polisi</th>
+                                                        <th>Merk</th>
+                                                        <th>Warna</th>
+                                                        <th>Tahun Pembuatan</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
