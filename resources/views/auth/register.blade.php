@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
+    <link href="/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 </head>
 
 <body class="h-100">
@@ -33,8 +34,8 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Username</strong></label>
                                             <input type="text" name="name" id="name"
-                                                class="form-control @error('name') is-invalid @enderror"
-                                                placeholder="Masukan Username" value="{{old('name')}}">
+                                                class="form-control text-black @error('name') is-invalid @enderror"
+                                                placeholder="Masukan Username" value="{{ old('name') }}">
                                             @error('name')
                                                 <div class="invalid-feedback">
                                                     {{ 'Username Tidak Boleh Kosong!' }}
@@ -44,8 +45,8 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Email</strong></label>
                                             <input type="email" name="email" id="email"
-                                                class="form-control @error('email') is-invalid @enderror"
-                                                placeholder="contoh@gmail.com" value="{{old('email')}}">
+                                                class="form-control text-black @error('email') is-invalid @enderror"
+                                                placeholder="contoh@gmail.com" value="{{ old('email') }}">
                                             @error('email')
                                                 <div class="invalid-feedback">
                                                     {{ 'Email Tidak Boleh Kosong!' }}
@@ -55,7 +56,7 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Password</strong></label>
                                             <input type="password" name="password" id="password"
-                                                class="form-control @error('password') is-invalid @enderror"
+                                                class="form-control text-black @error('password') is-invalid @enderror"
                                                 placeholder="Masukan Password Anda" name="password" id="password">
                                             @error('password')
                                                 <div class="invalid-feedback">
@@ -66,7 +67,7 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Konfirmasi Password</strong></label>
                                             <input type="password"
-                                                class="form-control @error('conf_password') is-invalid @enderror"
+                                                class="form-control text-black @error('conf_password') is-invalid @enderror"
                                                 placeholder="Masukan Konfirmasi Password Anda" name="conf_password"
                                                 id="conf_password">
                                             @error('conf_password')
@@ -78,8 +79,8 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Pilih Role</strong></label>
                                             <select
-                                                class="form-control form-control-sm default-select @error('roles') is-invalid @enderror"
-                                                name="roles" id="roles" value="{{old('roles')}}">
+                                                class="form-control default-select @error('roles') is-invalid @enderror"
+                                                name="roles" id="roles" value="{{ old('roles') }}">
                                                 <option value="">Pilih Role</option>
                                                 <option>Super Admin</option>
                                                 <option>Admin</option>
@@ -136,10 +137,10 @@
             })
         })
     </script>
-    <script src="./vendor/global/global.min.js"></script>
-    <script src="./vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="./js/custom.min.js"></script>
-    <script src="./js/deznav-init.js"></script>
+    <script src="/vendor/global/global.min.js"></script>
+    <script src="/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="/js/custom.min.js"></script>
+    <script src="/js/deznav-init.js"></script>
 
 </body>
 

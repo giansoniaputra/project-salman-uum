@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
+    <link href="/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 </head>
 
 <body class="h-100">
@@ -52,7 +53,7 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Email</strong></label>
                                             <input type="email"
-                                                class="form-control @error('email') is-invalid @enderror"
+                                                class="form-control text-black @error('email') is-invalid @enderror"
                                                 placeholder="Masukan Email" name="email" id="email"
                                                 value="{{ old('email') }}">
                                             @error('email')
@@ -64,7 +65,7 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Password</strong></label>
                                             <input type="password" name="password" id="password"
-                                                class="form-control @error('password') is-invalid @enderror"
+                                                class="form-control text-black @error('password') is-invalid @enderror"
                                                 placeholder="Masukan Password">
                                             @error('password')
                                                 <div class="invalid-feedback">
@@ -98,10 +99,10 @@
     ***********************************-->
     <!-- Required vendors -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="./vendor/global/global.min.js"></script>
-    <script src="./vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="./js/custom.min.js"></script>
-    <script src="./js/deznav-init.js"></script>
+    <script src="/vendor/global/global.min.js"></script>
+    <script src="/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="/js/custom.min.js"></script>
+    <script src="/js/deznav-init.js"></script>
 
     <script>
         $(document).ready(function() {
