@@ -47,7 +47,7 @@
                                                 <div class="form-group">
                                                     <label class="text-label" for="nik">NIK</label>
                                                     <input type="text" name="nik" id="nik"
-                                                        class="form-control @error('nik')is-invalid @enderror"
+                                                        class="form-control input-default @error('nik')is-invalid @enderror"
                                                         value="{{ old('nik') }}" placeholder="Masukan NIK">
                                                     @error('nik')
                                                         <div class="invalid-feedback">
@@ -60,7 +60,7 @@
                                                 <div class="form-group">
                                                     <label class="text-label" for="nama">Nama Lengkap</label>
                                                     <input type="text" name="nama" id="nama"
-                                                        class="form-control @error('nama')is-invalid @enderror"
+                                                        class="form-control input-default @error('nama')is-invalid @enderror"
                                                         value="{{ old('nama') }}" placeholder="Masukan Nama Lengkap">
                                                     @error('nama')
                                                         <div class="invalid-feedback">
@@ -74,7 +74,8 @@
                                             <div class="col-lg-6 mb-5">
                                                 <div class="form-group">
                                                     <label class="text-label" for="no_telepon">Nomor Telepon</label>
-                                                    <input class="form-control @error('no_telepon')is-invalid @enderror"
+                                                    <input
+                                                        class="form-control input-default @error('no_telepon')is-invalid @enderror"
                                                         name="no_telepon" id="no_telepon" value="{{ old('no_telepon') }}">
                                                     @error('no_telepon')
                                                         <div class="invalid-feedback">
@@ -86,7 +87,8 @@
                                             <div class="col-lg-6 mb-5">
                                                 <div class="form-group">
                                                     <label class="text-label" for="alamat">Alamat</label>
-                                                    <textarea class="form-control @error('alamat')is-invalid @enderror" rows="2" name="alamat" id="alamat">{{ old('alamat') }}</textarea>
+                                                    <textarea class="form-control input-default @error('alamat')is-invalid @enderror" rows="2" name="alamat"
+                                                        id="alamat">{{ old('alamat') }}</textarea>
                                                     @error('alamat')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
@@ -102,7 +104,7 @@
                                                 <div class="form-group">
                                                     <label class="text-label" for="nama_kang">Nama Petugas</label>
                                                     <input type="text" name="nama_kang" id="nama_kang"
-                                                        class="form-control @error('nama_kang')is-invalid @enderror"
+                                                        class="form-control input-default @error('nama_kang')is-invalid @enderror"
                                                         value="{{ old('nama_kang') }}" placeholder="Masukan Nama Petugas">
                                                     @error('nama_kang')
                                                         <div class="invalid-feedback">
@@ -115,7 +117,7 @@
                                                 <div class="form-group">
                                                     <label class="text-label" for="dealer">Nama Dealer</label>
                                                     <input type="text" name="dealer" id="dealer"
-                                                        class="form-control @error('dealer')is-invalid @enderror"
+                                                        class="form-control input-default @error('dealer')is-invalid @enderror"
                                                         value="{{ old('dealer') }}" placeholder="Masukan Nama Dealer">
                                                     @error('dealer')
                                                         <div class="invalid-feedback">
@@ -133,7 +135,7 @@
                                             <div class="form-group">
                                                 <label class="text-label" for="merek">Merk</label>
                                                 <input type="text" name="merek" id="merek"
-                                                    class="form-control @error('merek')is-invalid @enderror"
+                                                    class="form-control input-default @error('merek')is-invalid @enderror"
                                                     value="{{ old('merek') }}" placeholder="Masukan Merk">
                                                 @error('merek')
                                                     <div class="invalid-feedback">
@@ -146,7 +148,7 @@
                                             <div class="form-group">
                                                 <label class="text-label" for="type">Tipe</label>
                                                 <input type="text" name="type" id="type"
-                                                    class="form-control @error('type')is-invalid @enderror"
+                                                    class="form-control input-default @error('type')is-invalid @enderror"
                                                     value="{{ old('type') }}" placeholder="Masukan Tipe">
                                                 @error('type')
                                                     <div class="invalid-feedback">
@@ -159,7 +161,7 @@
                                             <div class="form-group">
                                                 <label class="text-label" for="tahun_pembuatan">Tahun Pembuatan</label>
                                                 <input type="text" name="tahun_pembuatan"
-                                                    class="form-control @error('tahun_pembuatan') is-invalid @enderror"
+                                                    class="form-control input-default @error('tahun_pembuatan') is-invalid @enderror"
                                                     placeholder="Masukan Tahun Pembuatan"
                                                     value="{{ old('tahun_pembuatan') }}">
                                                 @error('tahun_pembuatan')
@@ -173,7 +175,7 @@
                                             <div class="form-group">
                                                 <label class="text-label" for="warna">Warna</label>
                                                 <input type="text" name="warna" id="warna"
-                                                    class="form-control @error('warna')is-invalid @enderror"
+                                                    class="form-control input-default @error('warna')is-invalid @enderror"
                                                     value="{{ old('warna') }}" placeholder="Masukan Warna">
                                                 @error('warna')
                                                     <div class="invalid-feedback">
@@ -186,7 +188,7 @@
                                             <div class="form-group">
                                                 <label class="text-label" for="daya">Daya</label>
                                                 <input type="text" name="daya" id="daya"
-                                                    class="form-control @error('daya')is-invalid @enderror"
+                                                    class="form-control input-default @error('daya')is-invalid @enderror"
                                                     value="{{ old('daya') }}" placeholder="Masukan Daya">
                                                 @error('daya')
                                                     <div class="invalid-feedback">
@@ -199,7 +201,7 @@
                                             <div class="form-group">
                                                 <label class="text-label" for="bahan_bakar">Bahan Bakar</label>
                                                 <input type="text" name="bahan_bakar" id="bahan_bakar"
-                                                    class="form-control @error('bahan_bakar')is-invalid @enderror"
+                                                    class="form-control input-default @error('bahan_bakar')is-invalid @enderror"
                                                     value="{{ old('bahan_bakar') }}" placeholder="Masukan Bahan Bakar">
                                                 @error('bahan_bakar')
                                                     <div class="invalid-feedback">
@@ -212,7 +214,7 @@
                                             <div class="form-group">
                                                 <label class="text-label" for="no_rangka">No Rangka</label>
                                                 <input type="text" name="no_rangka" id="no_rangka"
-                                                    class="form-control @error('no_rangka')is-invalid @enderror"
+                                                    class="form-control input-default @error('no_rangka')is-invalid @enderror"
                                                     value="{{ old('no_rangka') }}" placeholder="Masukan No Rangka">
                                                 @error('no_rangka')
                                                     <div class="invalid-feedback">
@@ -225,7 +227,7 @@
                                             <div class="form-group">
                                                 <label class="text-label" for="no_polisi">No Polisi</label>
                                                 <input type="text" name="no_polisi" id="no_polisi"
-                                                    class="form-control @error('no_polisi')is-invalid @enderror"
+                                                    class="form-control input-default @error('no_polisi')is-invalid @enderror"
                                                     value="{{ old('no_polisi') }}" placeholder="Masukan No Polisi">
                                                 @error('no_polisi')
                                                     <div class="invalid-feedback">
@@ -238,7 +240,7 @@
                                             <div class="form-group">
                                                 <label class="text-label" for="bpkb">BPKB</label>
                                                 <input type="text" name="bpkb" id="bpkb"
-                                                    class="form-control @error('bpkb')is-invalid @enderror"
+                                                    class="form-control input-default @error('bpkb')is-invalid @enderror"
                                                     value="{{ old('bpkb') }}" placeholder="Masukan BPKB">
                                                 @error('bpkb')
                                                     <div class="invalid-feedback">
@@ -250,12 +252,12 @@
                                         <div class="col-lg-6 mb-2">
                                             <label class="text-label" for="berlaku_sampai">Berlaku Sampai</label>
                                             <div class="input-group">
-                                                <div class="input-group-append">
+                                                <div class="input-group-append input-primary">
                                                     <span class="input-group-text"><i
                                                             class="flaticon-381-calendar-1"></i></span>
                                                 </div>
                                                 <input type="text"
-                                                    class="form-control @error('berlaku_sampai')is-invalid @enderror"
+                                                    class="form-control input-default @error('berlaku_sampai')is-invalid @enderror"
                                                     value="{{ old('berlaku_sampai') }}"
                                                     placeholder="Masukan Masa Berlaku" name="berlaku_sampai"
                                                     id="berlaku_sampai">
@@ -312,11 +314,11 @@
                                             <label class="text-label" for="harga_beli">Harga Beli</label>
                                             <div class="form-row">
                                                 <div class="input-group mb-3 col-sm-12">
-                                                    <div class="input-group-append">
+                                                    <div class="input-group-append input-primary">
                                                         <span class="input-group-text">Rp.</span>
                                                     </div>
                                                     <input type="text"
-                                                        class="form-control @error('harga_beli')is-invalid @enderror"
+                                                        class="form-control input-default @error('harga_beli')is-invalid @enderror"
                                                         value="{{ old('harga_beli') }}" placeholder="Masukan Harga Beli"
                                                         name="harga_beli" id="harga_beli">
                                                     @error('harga_beli')
@@ -331,12 +333,12 @@
                                             <label class="text-label" for="tanggal_beli">Tanggal Pembelian</label>
                                             <div class="form-row">
                                                 <div class="input-group mb-3 col-sm-12">
-                                                    <div class="input-group-append">
+                                                    <div class="input-group-append input-primary">
                                                         <span class="input-group-text"><i
                                                                 class="flaticon-381-calendar-1"></i></span>
                                                     </div>
                                                     <input type="text"
-                                                        class="form-control @error('tanggal_beli')is-invalid @enderror"
+                                                        class="form-control input-default @error('tanggal_beli')is-invalid @enderror"
                                                         value="{{ old('tanggal_beli') }}"
                                                         placeholder="Masukan Tanggal Pembelian" name="tanggal_beli"
                                                         id="tanggal_beli">
@@ -351,8 +353,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-success rounded-lg">Tambah
-                                                Transaksi</button>
+                                            <button type="submit" class="btn btn-rounded btn-primary"><span
+                                                    class="btn-icon-left text-primary"><i
+                                                        class="fa fa-plus color-primary"></i>
+                                                </span>Tambah Transaksi</button>
                                         </div>
                                     </div>
                                 </div>

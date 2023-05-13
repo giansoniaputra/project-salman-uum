@@ -78,7 +78,8 @@ class BikeController extends Controller
 
             return DataTables::of($query)->addColumn('action', function ($row) {
                 $actionBtn =
-                    '<button class="btn btn-info btn-sm info-motor-button" data-id="' . $row->id . '"><i class="flaticon-381-view-2"></i></button>';
+                    '<button class="btn btn-rounded btn-sm btn-primary info-motor-button" data-id="' . $row->id . '"><i class="flaticon-381-view-2"></i>
+                Detail Motor</button>';
                 return $actionBtn;
             })
                 ->make(true);

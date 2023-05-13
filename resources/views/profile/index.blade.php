@@ -8,28 +8,27 @@
                 </div>
                 <div class="card-body">
                     <div class="col-xl-12 col-lg-12">
-
-                        <div class="basic-form">
+                        <div class="basic-form mt-3">
                             <form>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Username</label>
+                                    <label class="col-sm-3 col-form-label mt-3">Username</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="">
+                                        <input type="text" class="form-control input-default" placeholder="">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Email</label>
+                                <div class="form-group row mt-3">
+                                    <label class="col-sm-3 col-form-label mt-3">Email</label>
                                     <div class="col-sm-9">
-                                        <input type="email" class="form-control" placeholder="">
+                                        <input type="email" class="form-control input-default" placeholder="">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Password</label>
+                                <div class="form-group row mt-3">
+                                    <label class="col-sm-3 col-form-label mt-3 mb-5">Password</label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control" placeholder="********">
+                                        <input type="password" class="form-control input-default" placeholder="********">
                                     </div>
                                 </div>
-                                <div class="basic-form custom_file_input">
+                                <div class="basic-form custom_file_input mb-5">
                                     <form action="#">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
