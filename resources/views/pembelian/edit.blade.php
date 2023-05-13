@@ -252,7 +252,7 @@
                                         <div class="col-lg-6 mb-2">
                                             <label class="text-label" for="berlaku_sampai">Berlaku Sampai</label>
                                             <div class="input-group">
-                                                <div class="input-group-append">
+                                                <div class="input-group-append input-primary">
                                                     <span class="input-group-text"><i
                                                             class="flaticon-381-calendar-1"></i></span>
                                                 </div>
@@ -314,7 +314,7 @@
                                             <label class="text-label" for="harga_beli">Harga Beli</label>
                                             <div class="form-row">
                                                 <div class="input-group mb-3 col-sm-12">
-                                                    <div class="input-group-append">
+                                                    <div class="input-group-append input-primary">
                                                         <span class="input-group-text">Rp.</span>
                                                     </div>
                                                     <input type="text"
@@ -334,7 +334,7 @@
                                             <label class="text-label" for="tanggal_beli">Tanggal Pembelian</label>
                                             <div class="form-row">
                                                 <div class="input-group mb-3 col-sm-12">
-                                                    <div class="input-group-append">
+                                                    <div class="input-group-append input-primary">
                                                         <span class="input-group-text"><i
                                                                 class="flaticon-381-calendar-1"></i></span>
                                                     </div>
@@ -356,8 +356,8 @@
                                         <div class="col d-flex justify-content-end">
                                             <button type="submit" class="btn btn-rounded btn-primary"><span
                                                     class="btn-icon-left text-primary"><i
-                                                        class="fa fa-plus color-primary"></i>
-                                                </span>Tambah Transaksi</button>
+                                                        class="flaticon-381-edit-1 color-primary"></i>
+                                                </span>Edit Data Pembelian</button>
                                         </div>
                                     </div>
                                 </div>

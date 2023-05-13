@@ -137,6 +137,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-rounded btn-danger" data-dismiss="modal"><span
+                            class="btn-icon-left text-danger"><i class="fa fa-close color-danger"></i>
+                        </span>Tutup</button>
+                </div>
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@
                         <div class="col-12">
                             <label class="text-label text-black" for="laporan_pertahun">Laporan Pertahun</label>
                             <div class="input-group mb-3">
-                                <div class="input-group-append">
+                                <div class="input-group-append input-primary">
                                     <span class="input-group-text"><i class="flaticon-381-calendar-6"></i></span>
                                 </div>
                                 <select class="form-control default-select" name="" id="">
@@ -22,22 +22,22 @@
                                     <option value="">2024</option>
                                     <option value="">2025</option>
                                 </select>
-                                <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-primary"><span
-                                            class="btn-icon-left text-primary"><i class="fa fa-download color-primary"></i>
+                                <div class="input-group-prepend ml-3 mr-3">
+                                    <button type="button" class="btn btn-rounded btn-success"><span
+                                            class="btn-icon-left text-success"><i class="fa fa-download color-success"></i>
                                         </span>Excel</button>
                                 </div>
                                 <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-danger"><span class="btn-icon-left text-danger"><i
-                                                class="fa fa-download color-danger"></i>
+                                    <button type="button" class="btn btn-rounded btn-danger"><span
+                                            class="btn-icon-left text-danger"><i class="fa fa-download color-danger"></i>
                                         </span>PDF</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-12 mt-5">
                             <label class="text-label text-black" for="laporan_perbulan">Laporan Perbulan</label>
                             <div class="input-group mb-3">
-                                <div class="input-group-append">
+                                <div class="input-group-append input-primary">
                                     <span class="input-group-text"><i class="flaticon-381-calendar-7"></i></span>
                                 </div>
                                 <select class="form-control default-select" name="" id="">
@@ -53,34 +53,34 @@
                                     <option value="">Oktober</option>
                                     <option value="">Desember</option>
                                 </select>
-                                <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-primary"><span
-                                            class="btn-icon-left text-primary"><i class="fa fa-download color-primary"></i>
+                                <div class="input-group-prepend ml-3 mr-3">
+                                    <button type="button" class="btn btn-rounded btn-success"><span
+                                            class="btn-icon-left text-success"><i class="fa fa-download color-success"></i>
                                         </span>Excel</button>
                                 </div>
                                 <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-danger"><span class="btn-icon-left text-danger"><i
-                                                class="fa fa-download color-danger"></i>
+                                    <button type="button" class="btn btn-rounded btn-danger"><span
+                                            class="btn-icon-left text-danger"><i class="fa fa-download color-danger"></i>
                                         </span>PDF</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-12 mt-5">
                             <label class="text-label text-black" for="laporan_pertanggal">Laporan Pertanggal</label>
                             <div class="input-group mb-3">
-                                <div class="input-group-append">
+                                <div class="input-group-append input-primary">
                                     <span class="input-group-text"><i class="flaticon-381-calendar-3"></i></span>
                                 </div>
                                 <input class="form-control input-daterange-datepicker" type="text" name="daterange"
                                     value="01/01/2015 - 01/31/2015">
-                                <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-primary"><span
-                                            class="btn-icon-left text-primary"><i class="fa fa-download color-primary"></i>
+                                <div class="input-group-prepend ml-3 mr-3">
+                                    <button type="button" class="btn btn-rounded btn-success"><span
+                                            class="btn-icon-left text-success"><i class="fa fa-download color-success"></i>
                                         </span>Excel</button>
                                 </div>
                                 <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-danger"><span class="btn-icon-left text-danger"><i
-                                                class="fa fa-download color-danger"></i>
+                                    <button type="button" class="btn btn-rounded btn-danger"><span
+                                            class="btn-icon-left text-danger"><i class="fa fa-download color-danger"></i>
                                         </span>PDF</button>
                                 </div>
                             </div>
