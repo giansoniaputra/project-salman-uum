@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('unique')->unique();
             $table->string('nota')->unique();
+            $table->string('pembeli');
             $table->integer('bike_id');
             $table->date('tanggal_jual');
             $table->string('harga_beli');

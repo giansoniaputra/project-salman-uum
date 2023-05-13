@@ -71,25 +71,37 @@ class BikeController extends Controller
         //
     }
 
-    public function dataTables(Request $request)
+    public function dataTablesReady(Request $request)
     {
         if ($request->ajax()) {
-            $query = Bike::all();
-
+            $query = Bike::where('status', 'READY STOCK')->get();
             return DataTables::of($query)->addColumn('action', function ($row) {
                 $actionBtn =
                     '<button class="btn btn-rounded btn-sm btn-primary info-motor-button" data-id="' . $row->id . '"><i class="flaticon-381-view-2"></i>
-                Detail Motor</button>';
+                    Detail Motor</button>';
                 return $actionBtn;
-            })
-                ->make(true);
+            })->make(true);
+        }
+    }
+    public function dataTablesTerjual(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = Bike::where('status', 'TERJUAL')->get();
+            return DataTables::of($query)->addColumn('action', function ($row) {
+                $actionBtn =
+                    '<button class="btn btn-rounded btn-sm btn-primary info-motor-button" data-id="' . $row->id . '"><i class="flaticon-381-view-2"></i>
+                    Detail Motor</button>';
+                return $actionBtn;
+            })->make(true);
         }
     }
 
     public function get_motor(Request $request)
     {
         $motor = DB::table('bikes')
-            ->join('buys', 'bikes.id', '=', 'buys.bike_id')->first();
+            ->join('buys', 'bikes.id', '=', 'buys.bike_id')
+            ->where('bikes.id', '=', $request->id)
+            ->first();
         $motor->berlaku_sampai = tanggal_hari($motor->berlaku_sampai);
         return response()->json(['success' => $motor]);
     }

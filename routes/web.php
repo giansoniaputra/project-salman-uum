@@ -78,3 +78,6 @@ Route::get('/datatablesMotor', [BikeController::class, 'dataTables'])->middlewar
 Route::get('/datatablesIndividu', [ConsumerController::class, 'dataTables'])->middleware('auth');
 Route::get('/datatablesDealer', [ConsumerController::class, 'dataTables2'])->middleware('auth');
 Route::get('/dataTablesMotor', [ConsumerController::class, 'dataTablesMotor'])->middleware('auth');
+Route::get('/dataTablesReady', [BikeController::class, 'dataTablesReady'])->middleware('auth');
+Route::get('/dataTablesTerjual', [BikeController::class, 'dataTablesTerjual'])->middleware('auth');
+Route::get('/dataTablesPenjualan', [PenjualanController::class, 'dataTables'])->middleware('auth');

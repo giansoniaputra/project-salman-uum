@@ -8,6 +8,7 @@ use App\Models\Sele;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
 class PenjualanController extends Controller
@@ -57,11 +58,13 @@ class PenjualanController extends Controller
                 'no_polisi' => 'required',
                 'jenis_pembayaran' => 'required',
                 'tanggal_jual' => 'required',
+                'nama_pembeli' => 'required',
             ];
             $pesan = [
                 'no_polisi.required' => 'Pilih Nomor Polisi',
                 'jenis_pembayaran.required' => 'Pilih Jenis Pembayaran',
                 'tanggal_jual.required' => 'Tidak boleh kosong',
+                'nama_pembeli.required' => 'Tidak boleh kosong',
             ];
         } else if ($request->jenis_pembayaran == 'CASH') {
             $rules = [
@@ -70,6 +73,7 @@ class PenjualanController extends Controller
                 'harga_jual' => 'required',
                 'jumlah_bayar' => 'required',
                 'tanggal_jual' => 'required',
+                'nama_pembeli' => 'required',
             ];
             $pesan = [
                 'no_polisi.required' => 'Pilih Nomor Polisi',
@@ -77,6 +81,7 @@ class PenjualanController extends Controller
                 'jumlah_bayar.required' => 'Tidak boleh kosong',
                 'harga_jual.required' => 'Tidak boleh kosong',
                 'tanggal_jual.required' => 'Tidak boleh kosong',
+                'nama_pembeli.required' => 'Tidak boleh kosong',
             ];
         }
         $validator = Validator::make($request->all(), $rules, $pesan);
@@ -100,6 +105,7 @@ class PenjualanController extends Controller
                 $data = [
                     'unique' => Str::orderedUuid(),
                     'nota' => $nota,
+                    'pembeli' => ucwords(strtolower($request->nama_pembeli)),
                     'bike_id' => $request->no_polisi,
                     'tanggal_jual' => $request->tanggal_jual,
                     'harga_beli' => $request->harga_beli,
@@ -142,5 +148,24 @@ class PenjualanController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function dataTables()
+    {
+        $query = DB::table('seles')
+            ->join('bikes', 'bikes.id', '=', 'seles.bike_id')
+            ->get();
+        foreach ($query as $row) {
+            $row->tanggal_jual = tanggal_hari($row->tanggal_jual);
+            $row->harga_jual = rupiah($row->harga_jual);
+        }
+        return DataTables::of($query)->addColumn('action', function ($row) {
+            $actionBtn =
+                '<a href="/edit-transaksi/' . $row->unique . '" class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="flaticon-381-edit-1"></i></a>
+                <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
+                    <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-id="' . $row->id . '"><i class="flaticon-381-trash-1"></i></button>
+                </form>';
+            return $actionBtn;
+        })->make(true);
     }
 }
