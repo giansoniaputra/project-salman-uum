@@ -53,7 +53,7 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Email</strong></label>
                                             <input type="email"
-                                                class="form-control text-black @error('email') is-invalid @enderror"
+                                                class="form-control input-default text-black @error('email') is-invalid @enderror"
                                                 placeholder="Masukan Email" name="email" id="email"
                                                 value="{{ old('email') }}">
                                             @error('email')
@@ -65,7 +65,7 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Password</strong></label>
                                             <input type="password" name="password" id="password"
-                                                class="form-control text-black @error('password') is-invalid @enderror"
+                                                class="form-control input-default text-black @error('password') is-invalid @enderror"
                                                 placeholder="Masukan Password">
                                             @error('password')
                                                 <div class="invalid-feedback">

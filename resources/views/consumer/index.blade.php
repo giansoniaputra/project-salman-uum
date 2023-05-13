@@ -13,11 +13,12 @@
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#data_pelanggan"><i
-                                        class="la la-home mr-2"></i>
+                                        class="la la-users mr-2"></i>
                                     Data Pelanggan</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#data_dealer"><i class="la la-user mr-2"></i>
+                                <a class="nav-link" data-toggle="tab" href="#data_dealer"><i
+                                        class="la la-user-tie mr-2"></i>
                                     Data
                                     Dealer</a>
                             </li>
@@ -59,7 +60,7 @@
                             <div class="tab-pane fade" id="data_dealer">
                                 <div class="pt-4">
                                     <div class="col-12">
-                                        <div class="table-responsive">
+                                        <div class="table-responsive col-lg-12">
                                             <table id="dataTables2" class="display min-w850 text-center">
                                                 <thead>
                                                     <tr>
@@ -105,31 +106,33 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="table-responsive">
-                            <table id="dataTablesMotor" class="display min-w850 text-center">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Merk</th>
-                                        <th>No Polisi</th>
-                                        <th>Warna</th>
-                                        <th>Tanggal Beli</th>
-                                        <th>Harga Beli</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                        <div class="col-12">
+                            <div class="table-responsive col-12">
+                                <table id="dataTablesMotor" class="display min-w850 text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Merk</th>
+                                            <th>No Polisi</th>
+                                            <th>Warna</th>
+                                            <th>Tanggal Beli</th>
+                                            <th>Harga Beli</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Merk</th>
-                                        <th>No Polisi</th>
-                                        <th>Warna</th>
-                                        <th>Tanggal Beli</th>
-                                        <th>Harga Beli</th>
-                                </tfoot>
-                            </table>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Merk</th>
+                                            <th>No Polisi</th>
+                                            <th>Warna</th>
+                                            <th>Tanggal Beli</th>
+                                            <th>Harga Beli</th>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">

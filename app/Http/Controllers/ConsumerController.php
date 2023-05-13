@@ -78,7 +78,8 @@ class ConsumerController extends Controller
         if ($request->ajax()) {
             $query = Consumer::where('penjual', 'INDIVIDU')->get();
             return DataTables::of($query)->addColumn('action', function ($row) {
-                $actionButton = '<button class="btn btn-success btn-sm info-button-individu" data-id="' . $row->id . '">Riwayat Penjualan</button>';
+                $actionButton = '<button class="btn btn-rounded btn-sm btn-primary info-button-individu" data-id="' . $row->id . '"><i class="fa fa-shopping-cart"></i>
+            Riwayat Penjualan</button>';
                 return $actionButton;
             })->make(true);
         }
@@ -89,7 +90,8 @@ class ConsumerController extends Controller
         if ($request->ajax()) {
             $query = Consumer::where('penjual', 'DEALER')->get();
             return DataTables::of($query)->addColumn('action', function ($row) {
-                $actionButton = '<button class="btn btn-success btn-sm info-button-dealer" data-id="' . $row->id . '">Riwayat Penjualan</button>';
+                $actionButton = '<button class="btn btn-rounded btn-sm btn-primary info-button-dealer" data-id="' . $row->id . '"><i class="fa fa-shopping-cart"></i>
+            Riwayat Penjualan</button>';
                 return $actionButton;
             })->make(true);
         }

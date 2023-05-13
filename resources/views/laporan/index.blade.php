@@ -23,13 +23,14 @@
                                     <option value="">2025</option>
                                 </select>
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-primary" type="button"><i class="flaticon-381-folder-4"></i>
-                                        Excel</button>
+                                    <button type="button" class="btn btn-primary"><span
+                                            class="btn-icon-left text-primary"><i class="fa fa-download color-primary"></i>
+                                        </span>Excel</button>
                                 </div>
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-danger text-white" type="button"><i
-                                            class="flaticon-381-folder-4"></i>
-                                        PDF</button>
+                                    <button type="button" class="btn btn-danger"><span class="btn-icon-left text-danger"><i
+                                                class="fa fa-download color-danger"></i>
+                                        </span>PDF</button>
                                 </div>
                             </div>
                         </div>
@@ -53,13 +54,14 @@
                                     <option value="">Desember</option>
                                 </select>
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-primary" type="button"><i class="flaticon-381-folder-4"></i>
-                                        Excel</button>
+                                    <button type="button" class="btn btn-primary"><span
+                                            class="btn-icon-left text-primary"><i class="fa fa-download color-primary"></i>
+                                        </span>Excel</button>
                                 </div>
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-danger text-white" type="button"><i
-                                            class="flaticon-381-folder-4"></i>
-                                        PDF</button>
+                                    <button type="button" class="btn btn-danger"><span class="btn-icon-left text-danger"><i
+                                                class="fa fa-download color-danger"></i>
+                                        </span>PDF</button>
                                 </div>
                             </div>
                         </div>
@@ -72,13 +74,14 @@
                                 <input class="form-control input-daterange-datepicker" type="text" name="daterange"
                                     value="01/01/2015 - 01/31/2015">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-primary" type="button"><i class="flaticon-381-folder-4"></i>
-                                        Excel</button>
+                                    <button type="button" class="btn btn-primary"><span
+                                            class="btn-icon-left text-primary"><i class="fa fa-download color-primary"></i>
+                                        </span>Excel</button>
                                 </div>
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-danger text-white" type="button"><i
-                                            class="flaticon-381-folder-4"></i>
-                                        PDF</button>
+                                    <button type="button" class="btn btn-danger"><span class="btn-icon-left text-danger"><i
+                                                class="fa fa-download color-danger"></i>
+                                        </span>PDF</button>
                                 </div>
                             </div>
                         </div>

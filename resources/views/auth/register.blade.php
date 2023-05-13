@@ -34,7 +34,7 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Username</strong></label>
                                             <input type="text" name="name" id="name"
-                                                class="form-control text-black @error('name') is-invalid @enderror"
+                                                class="form-control input-default text-black @error('name') is-invalid @enderror"
                                                 placeholder="Masukan Username" value="{{ old('name') }}">
                                             @error('name')
                                                 <div class="invalid-feedback">
@@ -45,7 +45,7 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Email</strong></label>
                                             <input type="email" name="email" id="email"
-                                                class="form-control text-black @error('email') is-invalid @enderror"
+                                                class="form-control input-default text-black @error('email') is-invalid @enderror"
                                                 placeholder="contoh@gmail.com" value="{{ old('email') }}">
                                             @error('email')
                                                 <div class="invalid-feedback">
@@ -56,7 +56,7 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Password</strong></label>
                                             <input type="password" name="password" id="password"
-                                                class="form-control text-black @error('password') is-invalid @enderror"
+                                                class="form-control input-default text-black @error('password') is-invalid @enderror"
                                                 placeholder="Masukan Password Anda" name="password" id="password">
                                             @error('password')
                                                 <div class="invalid-feedback">
@@ -67,7 +67,7 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Konfirmasi Password</strong></label>
                                             <input type="password"
-                                                class="form-control text-black @error('conf_password') is-invalid @enderror"
+                                                class="form-control input-default text-black @error('conf_password') is-invalid @enderror"
                                                 placeholder="Masukan Konfirmasi Password Anda" name="conf_password"
                                                 id="conf_password">
                                             @error('conf_password')

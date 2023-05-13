@@ -351,8 +351,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-success rounded-lg">Tambah
-                                                Transaksi</button>
+                                            <button type="submit" class="btn btn-rounded btn-primary"><span
+                                                    class="btn-icon-left text-primary"><i
+                                                        class="fa fa-plus color-primary"></i>
+                                                </span>Tambah Transaksi</button>
                                         </div>
                                     </div>
                                 </div>

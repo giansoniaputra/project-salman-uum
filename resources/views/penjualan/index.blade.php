@@ -28,8 +28,7 @@
                                             value="{{ old('no_polisi') }}" placeholder="Masukan No Polisi">
                                             <option value="">Pilih No Polisi</option>
                                             @foreach ($no_polisi as $row)
-                                            <option value="{{$row->no_polisi}}">{{$row->no_polisi}}</option>
-                                                
+                                                <option value="{{ $row->no_polisi }}">{{ $row->no_polisi }}</option>
                                             @endforeach
                                         </select>
                                         @error('no_polisi')
@@ -72,7 +71,8 @@
                                             <div class="input-group-append">
                                                 <span class="input-group-text"><i class="flaticon-381-id-card"></i></span>
                                             </div>
-                                            <select class="form-control @error('jenis_pembayaran') is-invalid @enderror"
+                                            <select
+                                                class="form-control default-select @error('jenis_pembayaran') is-invalid @enderror"
                                                 value="{{ old('jenis_pembayaran') }}" name="jenis_pembayaran"
                                                 id="jenis_pembayaran">
                                                 <option value="">Pilih Opsi Pembayaran</option>
@@ -98,7 +98,7 @@
                                                         class="flaticon-381-calendar-1"></i></span>
                                             </div>
                                             <input type="text"
-                                                class="form-control @error('tahun_pembuatan') is-invalid @enderror"
+                                                class="form-control input-default @error('tahun_pembuatan') is-invalid @enderror"
                                                 value="{{ old('tahun_pembuatan') }}" placeholder="Masukan Tahun Pembuatan"
                                                 name="tahun_pembuatan" id="tahun_pembuatan">
                                             @error('tahun_pembuatan')
@@ -117,7 +117,7 @@
                                                 <span class="input-group-text">$</span>
                                             </div>
                                             <input type="text"
-                                                class="form-control @error('harga_jual') is-invalid @enderror"
+                                                class="form-control input-default @error('harga_jual') is-invalid @enderror"
                                                 value="{{ old('harga_jual') }}" placeholder="Masukan Harga Jual"
                                                 name="harga_jual" id="harga_jual">
                                             @error('harga_jual')
@@ -136,7 +136,7 @@
                                                 <span class="input-group-text">$</span>
                                             </div>
                                             <input type="text"
-                                                class="form-control money @error('harga_beli') is-invalid @enderror"
+                                                class="form-control input-default @error('harga_beli') is-invalid @enderror"
                                                 value="{{ old('harga_beli') }}" placeholder="Masukan Harga Beli"
                                                 name="harga_beli" id="harga_beli">
                                             @error('harga_beli')
@@ -153,8 +153,12 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                            <button type="button" class="btn btn-primary">Simpan</button>
+                            <button type="button" class="btn btn-rounded btn-danger" data-dismiss="modal"><span
+                                    class="btn-icon-left text-danger"><i class="fa fa-close color-danger"></i>
+                                </span>Tutup</button>
+                            <button type="button" class="btn btn-rounded btn-primary"><span
+                                    class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i>
+                                </span>Tambah</button>
                         </div>
                     </div>
                 </div>
@@ -178,6 +182,25 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <td>1</td>
+                                <td>sadasd</td>
+                                <td>sdadsa</td>
+                                <td>sdasad</td>
+                                <td>sadsad</td>
+                                <td>saddsa</td>
+                                <td>
+                                    <button class="btn btn-info btn-sm info-button">
+                                        <i class="flaticon-381-view-2"></i>
+                                    </button>
+                                    <button class="btn btn-success btn-sm edit-button">
+                                        <i class="flaticon-381-edit-1"></i>
+                                    </button>
+                                    <button
+                                        class="btn
+                                            btn-danger btn-sm delete-button">
+                                        <i class="flaticon-381-trash-1"></i>
+                                    </button>
+                                </td>
                             </tbody>
                             <tfoot>
                                 <tr>
