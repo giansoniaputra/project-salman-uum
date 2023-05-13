@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\users;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +21,6 @@ class AuthController extends Controller
      */
     public function create()
     {
-        
     }
 
     public function register()
@@ -34,7 +33,7 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate ([
+        $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required',
@@ -44,14 +43,14 @@ class AuthController extends Controller
 
         $validatedData['roles'] = strtoupper($request->roles);
         $validatedData['password'] = bcrypt($request->password);
-        users::create($validatedData);
-        return redirect('/')->with('success','Akun Berhasil Didaftarkan');
+        user::create($validatedData);
+        return redirect('/')->with('success', 'Akun Berhasil Didaftarkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(users $users)
+    public function show(User $users)
     {
         //
     }
@@ -59,7 +58,7 @@ class AuthController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(users $users)
+    public function edit(User $users)
     {
         //
     }
@@ -67,7 +66,7 @@ class AuthController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, users $users)
+    public function update(Request $request, User $users)
     {
         //
     }
@@ -75,7 +74,7 @@ class AuthController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(users $users)
+    public function destroy(User $users)
     {
         //
     }
@@ -87,7 +86,6 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/auth');
-
     }
 
     public function authenticate(Request $request)
@@ -95,7 +93,7 @@ class AuthController extends Controller
         $credentials = $request->validate([
             'email' => 'required',
             'password' => 'required',
-        ],[
+        ], [
             'email.required' => 'Email tidak boleh kosong',
             'email.email' => 'Email harus valid',
             'password.required' => 'Email tidak boleh kosong',
