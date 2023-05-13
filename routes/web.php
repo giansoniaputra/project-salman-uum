@@ -55,7 +55,7 @@ Route::resource('/consumer', ConsumerController::class)->middleware('auth');
 Route::post('/authenticate', [AuthController::class, 'authenticate']);
 // Logout
 Route::get('/logout', [AuthController::class, 'logout']);
-    // Register
+// Register
 Route::get('/register', [AuthController::class, 'index']);
 Route::post('/register', [AuthController::class, 'store']);
 
