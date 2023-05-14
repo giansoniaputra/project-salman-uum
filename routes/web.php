@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BikeController;
+use App\Http\Controllers\ModalController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ConsumerController;
@@ -50,6 +51,9 @@ Route::get('/getDataMotor', [BikeController::class, 'get_motor'])->middleware('a
 
 // PROFILE
 Route::resource('/profile', ProfileController::class)->middleware('auth');
+
+// MODAL
+Route::resource('/modal', ModalController::class)->middleware('auth');
 
 // LAPORAN
 Route::resource('/laporan', LaporanController::class)->middleware('auth');

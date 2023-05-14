@@ -24,6 +24,11 @@
                     <li><a href="/motor">Data Motor</a></li>
                 </ul>
             </li>
+            <li><a href="/modal" class="ai-icon" aria-expanded="false">
+                    <i class="la la-dollar-sign"></i>
+                    <span class="nav-text">Modal</span>
+                </a>
+            </li>
             <li><a href="/laporan" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-print"></i>
                     <span class="nav-text">Laporan</span>
