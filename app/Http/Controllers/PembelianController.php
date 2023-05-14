@@ -277,7 +277,7 @@ class PembelianController extends Controller
                 'nota' => $nota,
                 'bike_id' => $last_motor->id,
                 'tanggal_beli' => $request->tanggal_beli,
-                'harga_beli' => $request->harga_beli,
+                'harga_beli' => preg_replace('/[,]/', '', $request->harga_beli),
             ];
 
             Buy::create($data_transaksi);
@@ -420,7 +420,6 @@ class PembelianController extends Controller
             $beli = Buy::where('unique', $buy)->first();
             $motor = Bike::where('id', $beli->bike_id)->first();
             $consumer = Consumer::where('id', $beli->consumer_id)->first();
-
             //Update Consumer
             if ($request->penjual == "INDIVIDU") {
                 $data_consumer = [
@@ -514,6 +513,12 @@ class PembelianController extends Controller
                 Bike::where('id', $beli->id)->update($data_motor);
             }
 
+            $data_pembelian = [
+                'tanggal_beli' => $request->tanggal_beli,
+                'harga_beli' => preg_replace('/[,]/', '', $request->harga_beli),
+            ];
+
+            Buy::where('unique', $buy)->update($data_pembelian);
             return redirect('/pembelian')->with('success', 'Data Pembelian Berhasil Diubah');
         }
     }

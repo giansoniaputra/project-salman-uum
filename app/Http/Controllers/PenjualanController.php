@@ -108,8 +108,8 @@ class PenjualanController extends Controller
                     'pembeli' => ucwords(strtolower($request->nama_pembeli)),
                     'bike_id' => $request->no_polisi,
                     'tanggal_jual' => $request->tanggal_jual,
-                    'harga_beli' => $request->harga_beli,
-                    'harga_jual' => $request->harga_jual,
+                    'harga_beli' => preg_replace('/[,]/', '', $request->harga_beli),
+                    'harga_jual' => preg_replace('/[,]/', '', $request->harga_jual),
                 ];
                 Sele::create($data);
                 Bike::where('id', $request->no_polisi)->update(['status' => 'TERJUAL']);

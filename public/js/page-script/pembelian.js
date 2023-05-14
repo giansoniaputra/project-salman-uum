@@ -278,18 +278,30 @@ $(document).ready(function () {
             });
             $("#consumer-content-dealer").addClass("d-none");
             $("#consumer-content-individu").removeClass("d-none");
+            $("#nama_kang").val("");
+            $("#dealer").val("");
         } else if ($("#penjual").val() == "DEALER") {
             $(".tab-content").css({
                 height: "210px",
             });
             $("#consumer-content-individu").addClass("d-none");
             $("#consumer-content-dealer").removeClass("d-none");
+            $("#nama").val("");
+            $("#nik").val("");
+            $("#alamat").val("");
+            $("#no_telepon").val("");
         } else if ($("#penjual").val() == "") {
             $(".tab-content").css({
                 height: "110px",
             });
             $("#consumer-content-individu").addClass("d-none");
             $("#consumer-content-dealer").addClass("d-none");
+            $("#nama_kang").val("");
+            $("#dealer").val("");
+            $("#nama").val("");
+            $("#nik").val("");
+            $("#alamat").val("");
+            $("#no_telepon").val("");
         }
     });
 });

@@ -11,7 +11,8 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/dataTablesPenjualan",
-        columns: [{
+        columns: [
+            {
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 },
@@ -37,9 +38,7 @@ $(document).ready(function () {
                 searchable: true,
             },
         ],
-        order: [
-            [0, "desc"]
-        ],
+        order: [[0, "desc"]],
     });
     //LOAD CONTENT CASH
     $("#jenis_pembayaran").on("change", function () {
@@ -61,7 +60,7 @@ $(document).ready(function () {
         $(this).removeClass("is-invalid");
         $.ajax({
             data: {
-                id: id
+                id: id,
             },
             url: "/getDataMotor",
             type: "GET",
@@ -71,6 +70,11 @@ $(document).ready(function () {
                 $("#warna").val(response.success.warna);
                 $("#tahun_pembuatan").val(response.success.tahun_pembuatan);
                 $("#harga_beli").val(response.success.harga_beli);
+                $("input.money").simpleMoneyFormat({
+                    currencySymbol: "Rp",
+                    decimalPlaces: 0,
+                    thousandsSeparator: ".",
+                });
             },
         });
     });
@@ -111,14 +115,14 @@ $(document).ready(function () {
                     inputElement.addClass("is-invalid");
                     let feedbackElement = $(
                         '<div class="invalid-feedback ml-2 jumlah_bayar">' +
-                        response.error +
-                        "</div>"
+                            response.error +
+                            "</div>"
                     );
                     inputElement.after(feedbackElement);
                 } else if (response.success) {
-                    $("#modal-transaksi").modal('hide')
+                    $("#modal-transaksi").modal("hide");
                     Swal.fire("Good job!", response.success, "success");
-                    table.ajax.reload()
+                    table.ajax.reload();
                 }
             },
         });
@@ -160,23 +164,37 @@ $(document).ready(function () {
     $("#jumlah_bayar").on("keyup", function () {
         let jual = $("#harga_jual").val();
         let bayar = $(this).val();
+        jual = jual.replace(/,/g, "");
+        bayar = bayar.replace(/,/g, "");
         if (bayar - jual < "0") {
             $("#kembali").val("");
         } else if (bayar - jual == "0") {
             $("#kembali").val("0");
         } else {
             $("#kembali").val(bayar - jual);
+            $("input.money").simpleMoneyFormat({
+                currencySymbol: "Rp",
+                decimalPlaces: 0,
+                thousandsSeparator: ".",
+            });
         }
     });
     $("#harga_jual").on("keyup", function () {
         let jual = $("#harga_jual").val();
         let bayar = $(this).val();
+        jual = jual.replace(/,/g, "");
+        bayar = bayar.replace(/,/g, "");
         if (bayar - jual < "0") {
             $("#kembali").val("");
         } else if (bayar - jual == "0") {
             $("#kembali").val("0");
         } else {
             $("#kembali").val(bayar - jual);
+            $("input.money").simpleMoneyFormat({
+                currencySymbol: "Rp",
+                decimalPlaces: 0,
+                thousandsSeparator: ".",
+            });
         }
     });
     //Reset
