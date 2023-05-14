@@ -54,6 +54,8 @@ Route::resource('/profile', ProfileController::class)->middleware('auth');
 
 // MODAL
 Route::resource('/modal', ModalController::class)->middleware('auth');
+//refresh page modal
+Route::get('/refreshPage', [ModalController::class, 'refresh_page'])->middleware('auth');
 
 // LAPORAN
 Route::resource('/laporan', LaporanController::class)->middleware('auth');
@@ -65,7 +67,6 @@ Route::resource('/consumer', ConsumerController::class)->middleware('auth');
 //Tambah Penjualan
 Route::resource('/penjualan', PenjualanController::class)->middleware('auth');
 Route::post('/tambahPenjualan', [PenjualanController::class, 'tambah_data'])->middleware('auth');
-
 
 // AUTHENTIKASI
 // Login

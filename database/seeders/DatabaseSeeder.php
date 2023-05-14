@@ -32,5 +32,9 @@ class DatabaseSeeder extends Seeder
             'roles' => 'SUPER ADMIN', // password
             'remember_token' => Str::random(10),
         ]);
+        \App\Models\Modal::factory()->create([
+            'unique' => Str::random(32),
+            'modal' => 0
+        ]);
     }
 }

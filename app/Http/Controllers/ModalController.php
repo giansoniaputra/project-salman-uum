@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sele;
+use App\Models\Modal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ModalController extends Controller
 {
@@ -11,11 +15,22 @@ class ModalController extends Controller
      */
     public function index()
     {
+        $modal = Modal::first();
+        $jumlah_asset =  DB::table('bikes')
+            ->join('buys', 'bikes.id', '=', 'buys.bike_id')
+            ->where('bikes.status', 'READY STOCK')
+            ->sum('buys.harga_beli');
+        $harga_beli = Sele::sum('harga_beli');
+        $harga_jual = Sele::sum('harga_jual');
         $data = [
             'title' => 'Halaman Modal | SMAC',
             'judul' => 'Halaman Modal',
             'breadcumb1' => 'Modal',
             'breadcumb2' => 'Halaman Modal',
+            'data' => $modal,
+            'bike_sele' => $jumlah_asset,
+            'sisa_modal' => $modal->modal - $jumlah_asset,
+            'laba' => $harga_jual - $harga_beli
         ];
         return view('modal.index', $data);
     }
@@ -33,13 +48,12 @@ class ModalController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Modal $modal)
     {
         //
     }
@@ -47,7 +61,7 @@ class ModalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Modal $modal)
     {
         //
     }
@@ -55,16 +69,50 @@ class ModalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Modal $modal)
     {
-        //
+        $rules = [
+            'modal' => 'required',
+        ];
+        $pesan = [
+            'modal.required' => 'Tidak boleh kosong'
+        ];
+        $validator = Validator::make($request->all(), $rules, $pesan);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()]);
+        } else {
+            $data = [
+                'modal' => preg_replace('/[,]/', '', $request->modal)
+            ];
+            Modal::where('unique', $request->unique)->update($data);
+            return response()->json(['success' => 'Modal Berhasil Diset']);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Modal $modal)
     {
         //
+    }
+
+    public function refresh_page(Request $request)
+    {
+        $modal = Modal::first();
+        $jumlah_asset =  DB::table('bikes')
+            ->join('buys', 'bikes.id', '=', 'buys.bike_id')
+            ->where('bikes.status', 'READY STOCK')
+            ->sum('buys.harga_beli');
+        $harga_beli = Sele::sum('harga_beli');
+        $harga_jual = Sele::sum('harga_jual');
+        $data = [
+            'data' => $modal->modal,
+            'bike_sele' => $jumlah_asset,
+            'sisa_modal' => $modal->modal - $jumlah_asset,
+            'laba' => $harga_jual - $harga_beli
+        ];
+
+        return response()->json(['success' => $data]);
     }
 }

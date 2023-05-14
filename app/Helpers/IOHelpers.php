@@ -42,5 +42,3 @@ if (! function_exists('tanggal_hari') || ! function_exists('rupiah')) {
     }
 
 }
-
-?>
