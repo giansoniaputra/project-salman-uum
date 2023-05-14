@@ -282,7 +282,7 @@ class PembelianController extends Controller
 
             Buy::create($data_transaksi);
 
-            return redirect('/pembelian')->with('success', 'Data Transaksi Berhasil Ditambahkan');
+            return redirect('/pembelian')->with('success', 'Data Pembelian Berhasil Ditambahkan');
         }
     }
 
