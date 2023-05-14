@@ -77,8 +77,11 @@ class BikeController extends Controller
             $query = Bike::where('status', 'READY STOCK')->get();
             return DataTables::of($query)->addColumn('action', function ($row) {
                 $actionBtn =
-                    '<button class="btn btn-rounded btn-sm btn-primary info-motor-button" data-id="' . $row->id . '"><i class="flaticon-381-view-2"></i>
-                    Detail Motor</button>';
+                    '<button class="btn btn-info btn-sm info-button info-motor-button" data-id="' . $row->id . '"><i class="flaticon-381-view-2"></i></button>
+                    
+                    <button class="btn btn-warning text-white btn-sm warning-button perbaikan-motor-button" data-id="' . $row->id . '"><i class="la la-screwdriver"></i></button>
+
+                    ';
                 return $actionBtn;
             })->make(true);
         }
