@@ -64,9 +64,13 @@ Route::resource('/laporan', LaporanController::class)->middleware('auth');
 Route::resource('/consumer', ConsumerController::class)->middleware('auth');
 
 // PENJUALAN
-//Tambah Penjualan
 Route::resource('/penjualan', PenjualanController::class)->middleware('auth');
+//Tambah Penjualan
 Route::post('/tambahPenjualan', [PenjualanController::class, 'tambah_data'])->middleware('auth');
+//Edit Penjualan
+Route::get('/ambilDataPenjualan', [PenjualanController::class, 'get_data'])->middleware('auth');
+//Update Penjualan
+Route::post('/updatePenjualan', [PenjualanController::class, 'update_data'])->middleware('auth');
 
 // AUTHENTIKASI
 // Login

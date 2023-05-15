@@ -134,12 +134,53 @@ class PenjualanController extends Controller
         //
     }
 
+    public function get_data(Request $request)
+    {
+        $data = DB::table('seles')
+            ->join('bikes', 'bikes.id', '=', 'seles.bike_id')
+            ->where('seles.id', $request->id)
+            ->first();
+        return response()->json(['data' => $data]);
+    }
+
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
         //
+    }
+
+    public function update_data(Request $request)
+    {
+        $rules = [
+            'harga_jual' => 'required',
+            'jumlah_bayar' => 'required',
+            'tanggal_jual' => 'required',
+            'nama_pembeli' => 'required',
+        ];
+        $pesan = [
+            'jumlah_bayar.required' => 'Tidak boleh kosong',
+            'harga_jual.required' => 'Tidak boleh kosong',
+            'tanggal_jual.required' => 'Tidak boleh kosong',
+            'nama_pembeli.required' => 'Tidak boleh kosong',
+        ];
+        $validator = Validator::make($request->all(), $rules, $pesan);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()]);
+        }
+        if ($request->kembali < "0") {
+            return response()->json(['error' => 'Jumlah bayar tidak boleh kurang dari harga beli']);
+        }
+
+        $data = [
+            'pembeli' => $request->nama_pembeli,
+            'harga_jual' => preg_replace('/[,]/', '', $request->harga_jual),
+            'tanggal_jual' => $request->tanggal_jual,
+        ];
+
+        Sele::where('id', $request->current_id)->update($data);
+        return response()->json(['success' => 'Data Penjualan Berhasil Diupdate']);
     }
 
     /**
@@ -161,7 +202,7 @@ class PenjualanController extends Controller
         }
         return DataTables::of($query)->addColumn('action', function ($row) {
             $actionBtn =
-                '<a href="/edit-transaksi/' . $row->unique . '" class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="flaticon-381-edit-1"></i></a>
+                '<button class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="flaticon-381-edit-1"></i></button>
                 <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
                     <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-id="' . $row->id . '"><i class="flaticon-381-trash-1"></i></button>
                 </form>';
