@@ -199,6 +199,6 @@ $(document).ready(function () {
     });
 
     $(".tab-terjual").on("click", function () {
-        document.getElementById("dataTables2").style.width = "1390px";
+        document.getElementById("dataTables2").style.width = "70vw";
     });
 });

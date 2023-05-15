@@ -121,14 +121,14 @@ $(document).ready(function () {
     });
 
     $("#dataTables").on("click", ".info-button-individu", function () {
-        document.getElementById("dataTablesMotor").style.width = "1390px";
+        document.getElementById("dataTablesMotor").style.width = "70px";
         let id = $(this).attr("data-id");
         $("#data-motor").val(id);
         $("#modal-motor").modal("show");
         table3.ajax.reload();
     });
     $("#dataTables2").on("click", ".info-button-dealer", function () {
-        document.getElementById("dataTablesMotor").style.width = "1390px";
+        document.getElementById("dataTablesMotor").style.width = "70px";
         let id = $(this).attr("data-id");
         $("#data-motor").val(id);
         $("#modal-motor").modal("show");
@@ -136,6 +136,6 @@ $(document).ready(function () {
     });
 
     $(".tab-comsumer").on("click", function () {
-        document.getElementById("dataTables2").style.width = "1390px";
+        document.getElementById("dataTables2").style.width = "70vw";
     });
 });
