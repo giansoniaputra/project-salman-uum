@@ -22,6 +22,10 @@
         weekStart: 0,
         time: false,
     });
+    $("#tanggal_perbaikan").bootstrapMaterialDatePicker({
+        weekStart: 0,
+        time: false,
+    });
     $("#laporan_pertahun").bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false,

@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\MaintenanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,10 @@ Route::get('/ambilDataPenjualan', [PenjualanController::class, 'get_data'])->mid
 //Update Penjualan
 Route::post('/updatePenjualan', [PenjualanController::class, 'update_data'])->middleware('auth');
 
+// MAINTENANCE
+Route::resource('/maintenance', MaintenanceController::class)->middleware('auth');
+Route::get('/getDataMaintenance', [MaintenanceController::class, 'get_maintenance'])->middleware('auth');
+
 // AUTHENTIKASI
 // Login
 Route::post('/authenticate', [AuthController::class, 'authenticate']);
@@ -90,3 +95,4 @@ Route::get('/dataTablesMotor', [ConsumerController::class, 'dataTablesMotor'])->
 Route::get('/dataTablesReady', [BikeController::class, 'dataTablesReady'])->middleware('auth');
 Route::get('/dataTablesTerjual', [BikeController::class, 'dataTablesTerjual'])->middleware('auth');
 Route::get('/dataTablesPenjualan', [PenjualanController::class, 'dataTables'])->middleware('auth');
+Route::get('/dataTablesMaintenance', [MaintenanceController::class, 'dataTables'])->middleware('auth');

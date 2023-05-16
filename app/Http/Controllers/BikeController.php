@@ -74,7 +74,13 @@ class BikeController extends Controller
     public function dataTablesReady(Request $request)
     {
         if ($request->ajax()) {
-            $query = Bike::where('status', 'READY STOCK')->get();
+            $query = DB::table('bikes as a')
+                ->join('buys as b', 'a.id', '=', 'b.bike_id')
+                ->select('a.*', 'b.harga_beli')
+                ->where('a.status', 'READY STOCK')->get();
+            foreach ($query as $row) {
+                $row->harga_beli = rupiah($row->harga_beli);
+            }
             return DataTables::of($query)->addColumn('action', function ($row) {
                 $actionBtn =
                     '<button class="btn btn-info btn-sm info-button info-motor-button" data-id="' . $row->id . '"><i class="flaticon-381-view-2"></i></button>
