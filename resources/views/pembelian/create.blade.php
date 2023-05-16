@@ -237,7 +237,7 @@
                                             <label class="text-label mb-3" for="photo_stnk">Foto STNK</label>
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input @error('photo_stnk')is-invalid @enderror" value="{{ old('photo_stnk') }}" name="photo_stnk" id="photo_stnk" onchange="previewImageSTNK()">
-                                                <label class="custom-file-label">Choose file</label>
+                                                <label class="custom-file-label">Pilih Gambar</label>
                                                 @error('photo_stnk')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -252,7 +252,7 @@
                                             <label class="text-label mb-3" for="photo_bpkb">Foto BPKB</label>
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input @error('photo_bpkb')is-invalid @enderror" value="{{ old('photo_bpkb') }}" name="photo_bpkb" name="photo_bpkb" id="photo_bpkb" onchange="previewImageBPKB()">
-                                                <label class="custom-file-label">Choose file</label>
+                                                <label class="custom-file-label">Pilih Gambar</label>
                                                 @error('photo_bpkb')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

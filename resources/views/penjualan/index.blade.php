@@ -126,7 +126,7 @@
                                                 <div class="input-group-append input-primary">
                                                     <span class="input-group-text">Rp.</span>
                                                 </div>
-                                                <input type="text" class="form-control money"
+                                                <input type="text" class="form-control input-default money"
                                                     placeholder="Masukan Harga Jual" name="harga_jual" id="harga_jual">
                                             </div>
                                         </div>
@@ -138,7 +138,7 @@
                                                 <div class="input-group-append input-primary">
                                                     <span class="input-group-text">Rp.</span>
                                                 </div>
-                                                <input type="text" class="form-control money"
+                                                <input type="text" class="form-control input-default money"
                                                     placeholder="Masukan Jumlah Bayar" name="jumlah_bayar"
                                                     id="jumlah_bayar">
                                             </div>
@@ -151,14 +151,144 @@
                                                 <div class="input-group-append input-primary">
                                                     <span class="input-group-text">Rp.</span>
                                                 </div>
-                                                <input type="text" class="form-control money" name="kembali"
-                                                    id="kembali" readonly
+                                                <input type="text" class="form-control input-default money"
+                                                    name="kembali" id="kembali" readonly
                                                     style="background-color: rgba(215, 218, 227, 0.3)">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div id="buys-content-kredit" class="d-none" style="padding-bottom: 92.75px">
+                                <div id="buys-content-kredit" class="row form-material d-none"
+                                    style="padding-bottom: 92.75px">
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="nik">NIK</label>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control input-default"
+                                                    placeholder="Masukan No NIK KTP" name="nik" id="nik">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="tempat_lahir">Tempat Lahir</label>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control input-default"
+                                                    placeholder="Masukan Tempat Lahir" name="tempat_lahir"
+                                                    id="tempat_lahir">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="tanggal_lahir">Tanggal Lahir</label>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <div class="input-group-append input-primary">
+                                                    <span class="input-group-text"><i
+                                                            class="flaticon-381-calendar-1"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control input-default"
+                                                    placeholder="Masukan Tanggal Lahir" name="tanggal_lahir"
+                                                    id="tanggal_lahir">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="jenis_kelamin">Jenis Kelamin</label>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <select class="form-control default-select" name="jenis_kelamin"
+                                                    id="jenis_kelamin">
+                                                    <option value="">Pilih Jenis Kelamin</option>
+                                                    <option value="COWO">Laki - Laki</option>
+                                                    <option value="CEWE">Perempuan</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="alamat">Alamat</label>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <textarea class="form-control input-default @error('alamat')is-invalid @enderror" rows="2" name="alamat"
+                                                    id="alamat" placeholder="Masukan Alamat">{{ old('alamat') }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="alamat">Upload Foto KTP</label>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Upload</span>
+                                                </div>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input">
+                                                    <label class="custom-file-label">Pilih Gambar</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="dp_bayar">DP Bayar</label>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <div class="input-group-append input-primary">
+                                                    <span class="input-group-text">Rp.</span>
+                                                </div>
+                                                <input type="text" class="form-control input-default money"
+                                                    name="dp_bayar" id="dp_bayar" readonly style="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="pencairan">Pencairan</label>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <div class="input-group-append input-primary">
+                                                    <span class="input-group-text">Rp.</span>
+                                                </div>
+                                                <input type="text" class="form-control input-default money"
+                                                    name="pencairan" id="pencairan" readonly style="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="angsuran">Angsuran</label>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <div class="input-group-append input-primary">
+                                                    <span class="input-group-text">Rp.</span>
+                                                </div>
+                                                <input type="text" class="form-control input-default money"
+                                                    name="angsuran" id="angsuran" readonly style="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="tenor">Tenor</label>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <div class="input-group-append input-primary">
+                                                    <span class="input-group-text">Rp.</span>
+                                                </div>
+                                                <input type="text" class="form-control input-default money"
+                                                    name="tenor" id="tenor" readonly style="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="komisi">Komisi</label>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <div class="input-group-append input-primary">
+                                                    <span class="input-group-text">Rp.</span>
+                                                </div>
+                                                <input type="text" class="form-control input-default money"
+                                                    name="komisi" id="komisi" readonly style="">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                         </div>
