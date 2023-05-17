@@ -26,6 +26,9 @@
                             @csrf
                             <div id="data_konsumen" class="tab-pane" role="tabpanel">
                                 <div class="row form-material">
+                                    <input type="hidden" value="{{ old('oldKTP') }}" name="oldKTP" id="oldKTP">
+                                </div>
+                                <div class="row form-material">
                                     <div class="col-lg-6 mb-2">
                                         <label class="text-label" for="penjual">Penjual</label><span class="text-danger">*</span>
                                         <select class="form-control @error('penjual') is-invalid @enderror" value="{{ old('penjual') }}" name="penjual" id="penjual">
@@ -86,6 +89,23 @@
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-material">
+                                        <div class="col-lg-6 mb-2" style="padding-bottom:300px">
+                                            <div class="form-group">
+                                                <label class="text-label mb-3" for="photo_ktp">Foto KTP</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input @error('photo_ktp')is-invalid @enderror" value="{{ old('photo_ktp') }}" name="photo_ktp" name="photo_ktp" id="photo_ktp" onchange="previewImageKTP()">
+                                                    <label class="custom-file-label">Pilih Gambar</label>
+                                                    @error('photo_ktp')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                    <img src="/storage/{{ old('oldKTP', '/ktp/default.png') }}" style="width: 250px" alt="" class="img-thumbnail mt-3 ml-5 image-ktp">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

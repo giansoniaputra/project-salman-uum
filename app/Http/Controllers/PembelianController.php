@@ -50,6 +50,7 @@ class PembelianController extends Controller
     {
 
         if ($request->penjual == "INDIVIDU") {
+            // Validasi jika penjual adalah individu
             $rules = [
                 'penjual' => 'required',
                 'nik' => 'required',
@@ -69,6 +70,7 @@ class PembelianController extends Controller
                 'tanggal_beli' => 'required',
                 'photo_stnk' => 'image|file|max:3072',
                 'photo_bpkb' => 'image|file|max:3072',
+                'photo_ktp' => 'image|file|max:3072',
             ];
             $pesan = [
                 'penjual.required' => 'Tidak boleh Kosong',
@@ -91,8 +93,12 @@ class PembelianController extends Controller
                 'photo_bpkb.image' => 'File Harus Berupa Gambar',
                 'photo_stnk.max' => 'Gambar Minimal Berukuran 3MB',
                 'photo_bpkb.max' => 'Gambar Minimal Berukuran 3MB',
+                'photo_ktp.image' => 'File Harus Berupa Gambar',
+                'photo_ktp.max' => 'Gambar Minimal Berukuran 3MB',
+
             ];
         } else if ($request->penjual == "DEALER") {
+            // Validasi apabila penjual adalah dealer
             $rules = [
                 'penjual' => 'required',
                 'dealer' => 'required',
@@ -132,6 +138,7 @@ class PembelianController extends Controller
                 'photo_bpkb.max' => 'Gambar Minimal Berukuran 3MB',
             ];
         } else if ($request->penjual == "") {
+            //Validasi jika input penjual kosong
             $rules = [
                 'penjual' => 'required',
             ];
@@ -139,27 +146,49 @@ class PembelianController extends Controller
                 'penjual.required' => 'Tidak boleh Kosong',
             ];
         }
+        //Inisialisasi Validator
         $validator = Validator::make($request->all(), $rules, $pesan);
         if ($validator->fails()) {
+            // Mengirim pesan validasi apabila ada inputan yang tidak tervalidasi
             return redirect()
                 ->back()
                 ->with('error', 'Pastikan anda menginput dengan benar')
                 ->withErrors($validator)
                 ->withInput();
         } else {
+            //JIKA SEMUA SUDAH TERVALIDASI------------------
+            //Cek apakah ada data costumer individu yang terdaftar di database
             $consumer = Consumer::where('nama', '=', $request->nama)->where('nik', '=', $request->nik)->first();
+            //Cek apakah ada data costumer dealer yang terdaftar di database
             $consumer2 = Consumer::where('nama', '=', $request->nama_kang)->where('dealer', '=', $request->dealer)->first();
+
+            // Jika dealer dan individu tidak ada dalam table maka create new consumer
             if ($consumer == NULL && $consumer2 == NULL) {
+                //Jika ternyata penjual adalah individu
                 if ($consumer == NULL && $request->dealer == NULL) {
-                    $data_consumer = [
-                        'unique' => Str::orderedUuid(),
-                        'penjual' => $request->penjual,
-                        'nik' => $request->nik,
-                        'nama' => ucwords(strtolower($request->nama)),
-                        'no_telepon' => $request->no_telepon,
-                        'alamat' => $request->alamat,
-                    ];
+                    if (!$request->photo_ktp) {
+                        $data_consumer = [
+                            'unique' => Str::orderedUuid(),
+                            'penjual' => $request->penjual,
+                            'nik' => $request->nik,
+                            'nama' => ucwords(strtolower($request->nama)),
+                            'no_telepon' => $request->no_telepon,
+                            'alamat' => $request->alamat,
+                        ];
+                    } else if ($request->photo_ktp) {
+                        $data_consumer = [
+                            'unique' => Str::orderedUuid(),
+                            'penjual' => $request->penjual,
+                            'nik' => $request->nik,
+                            'nama' => ucwords(strtolower($request->nama)),
+                            'no_telepon' => $request->no_telepon,
+                            'alamat' => $request->alamat,
+                            'photo_ktp' => $request->file('photo_ktp')->store('ktp')
+                        ];
+                    }
+
                     Consumer::create($data_consumer);
+                    //Jika ternyata penjual adalah dealer
                 } else if ($consumer2 == NULL && $request->nik == NULL) {
                     $data_consumer = [
                         'unique' => Str::orderedUuid(),
@@ -170,18 +199,34 @@ class PembelianController extends Controller
                     Consumer::create($data_consumer);
                 }
             }
-
+            // Jika dealer dan individu ternyata ada dalam table
             if ($consumer || $consumer2) {
+                //Jika data individu yang ada di table
                 if ($consumer) {
+                    //ambil current id dari individu
                     $consumer_id = $consumer->id;
+                    //Apabila user memasukan photo ktp
+                    if ($request->photo_ktp) {
+                        //masukan photo ktp ke storage dan ke table jika sebelumnya user tidak memiliki foto ktp
+                        Consumer::where('id', $consumer_id)->update(['photo_ktp' => $request->file('photo_ktp')->store('ktp')]);
+                        //menghapus foto ktp sebelumnya dari storage dan di ganti dengan yang baru apabila sebelumnya terdapat foto ktp
+                        if ($request->oldKTP) {
+                            Storage::delete($request->oldKTP);
+                        }
+                    }
+                    //Jika data dealer yang ada di table
                 } else if ($consumer2) {
+                    //ambil current id dari dealer
                     $consumer_id = $consumer2->id;
                 }
+                // Jika dealer dan individu ternyata tidak ada dalam table maka ambil id penjual yang baru saja di input ke table
             } else if ($consumer == NULL || $consumer2 == NULL) {
                 $last_consumer = Consumer::orderBy('id', 'DESC')->first();
                 $consumer_id = $last_consumer->id;
             }
 
+            //MEMASUKAN DATA MOTOR KE TABLE BIKES
+            //Jika user menginputkan foto stnk dan bpkb
             if ($request->file('photo_stnk') != NULL && $request->file('photo_bpkb') != NULL) {
                 $path1 = $request->file('photo_stnk')->store('stnk');
                 $path2 = $request->file('photo_bpkb')->store('bpkb');
@@ -201,6 +246,7 @@ class PembelianController extends Controller
                     'photo_bpkb' => $path2,
                     'consumer_id' => $consumer_id,
                 ];
+                //Jika user menginputkan foto bpkb dan tidak menginputkan foto bpkb
             } else if ($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') != NULL) {
                 $path2 = $request->file('photo_bpkb')->store('bpkb');
                 $data_motor = [
@@ -218,6 +264,7 @@ class PembelianController extends Controller
                     'photo_bpkb' => $path2,
                     'consumer_id' => $consumer_id,
                 ];
+                //Jika user menginputkan foto stnk dan tidak menginputkan foto stnk
             } else if ($request->file('photo_stnk') != NULL && $request->file('photo_bpkb') == NULL) {
                 $path2 = $request->file('photo_stnk')->store('stnk');
                 $data_motor = [
@@ -235,6 +282,7 @@ class PembelianController extends Controller
                     'photo_stnk' => $path2,
                     'consumer_id' => $consumer_id,
                 ];
+                //Jika user tidak samasekali menginputkan foto stnk dan foto bpkb
             } else if ($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') == NULL) {
                 $data_motor = [
                     'unique' => Str::orderedUuid(),
@@ -251,7 +299,11 @@ class PembelianController extends Controller
                     'consumer_id' => $consumer_id,
                 ];
             }
+            //Input data motor ke table
             Bike::create($data_motor);
+
+            //INPUT DATA PEMBELIAN KE TABLE BUYS
+            //Membuat generate nota
             $trx = 'TRXBUY-00';
             $last_trx = Buy::orderBy('id', 'DESC')->first();
             if ($last_trx == NULL) {

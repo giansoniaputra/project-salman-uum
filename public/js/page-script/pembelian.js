@@ -110,6 +110,11 @@ $(document).ready(function () {
                     $("#jenis_kelamin").val(response.success.jenis_kelamin);
                     $("#no_telepon").val(response.success.no_telepon);
                     $("#alamat").html(response.success.alamat);
+                    $(".image-ktp").attr(
+                        "src",
+                        "/storage/" + response.success.photo_ktp
+                    );
+                    $("#oldKTP").val(response.success.photo_ktp);
                     NProgress.done();
                 } else {
                     $("#nama").val("");
@@ -118,6 +123,8 @@ $(document).ready(function () {
                     $("#jenis_kelamin").val("Laki-Laki");
                     $("#no_telepon").val("");
                     $("#alamat").html("");
+                    $(".image-ktp").attr("src", "/storage/ktp/default.png");
+                    $("#oldKTP").val("");
                     NProgress.done();
                 }
             },
@@ -273,7 +280,7 @@ $(document).ready(function () {
         $("#penjual").removeClass("is-invalid");
         if ($("#penjual").val() == "INDIVIDU") {
             $(".tab-content").css({
-                height: "452.75px",
+                height: "852.75px",
             });
             $("#consumer-content-dealer").addClass("d-none");
             $("#consumer-content-individu").removeClass("d-none");
@@ -308,6 +315,16 @@ $(document).ready(function () {
 function previewImageBPKB() {
     const image = document.querySelector("#photo_bpkb");
     const imgPre = document.querySelector(".image-bpkb");
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image.files[0]);
+    oFReader.onload = function (oFREvent) {
+        imgPre.src = oFREvent.target.result;
+    };
+}
+function previewImageKTP() {
+    const image = document.querySelector("#photo_ktp");
+    const imgPre = document.querySelector(".image-ktp");
 
     const oFReader = new FileReader();
     oFReader.readAsDataURL(image.files[0]);
