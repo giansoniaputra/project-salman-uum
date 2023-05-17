@@ -386,6 +386,7 @@ class PembelianController extends Controller
                 'tanggal_beli' => 'required',
                 'photo_stnk' => 'image|file|max:3072',
                 'photo_bpkb' => 'image|file|max:3072',
+                'photo_ktp' => 'image|file|max:3072',
             ];
             $pesan = [
                 'penjual.required' => 'Tidak boleh Kosong',
@@ -408,6 +409,8 @@ class PembelianController extends Controller
                 'photo_bpkb.image' => 'File Harus Berupa Gambar',
                 'photo_stnk.max' => 'Gambar Minimal Berukuran 3MB',
                 'photo_bpkb.max' => 'Gambar Minimal Berukuran 3MB',
+                'photo_ktp.image' => 'File Harus Berupa Gambar',
+                'photo_ktp.max' => 'Gambar Minimal Berukuran 3MB',
             ];
         } else if ($request->penjual == "DEALER") {
             $rules = [
@@ -460,23 +463,28 @@ class PembelianController extends Controller
             $beli = Buy::where('unique', $buy)->first();
             $motor = Bike::where('id', $beli->bike_id)->first();
             $consumer = Consumer::where('id', $beli->consumer_id)->first();
+            $cek_consumer_lain = Consumer::where('nik', "=", $request->nik)->where('nik', "!=", $consumer->nik)->first();
+            // dd($cek_consumer_lain);
             //Update Consumer
             if ($request->penjual == "INDIVIDU") {
-                $data_consumer = [
-                    'nik' => $request->nik,
-                    'nama' => ucwords(strtolower($request->nama)),
-                    'no_telepon' => $request->no_telepon,
-                    'alamat' => $request->alamat,
-                ];
+                if (!$cek_consumer_lain) {
+                    $data_consumer = [
+                        'nik' => $request->nik,
+                        'nama' => ucwords(strtolower($request->nama)),
+                        'no_telepon' => $request->no_telepon,
+                        'alamat' => $request->alamat,
+                    ];
+                    Consumer::where('id', $consumer->id)->update($data_consumer);
+                }
             } else if ($request->penjual == "DEALER") {
                 $data_consumer = [
                     'penjual' => $request->penjual,
                     'nama' => ucwords(strtolower($request->nama_kang)),
                     'dealer' => strtoupper($request->dealer),
                 ];
+                Consumer::where('id', $consumer->id)->update($data_consumer);
             }
 
-            Consumer::where('id', $consumer->id)->update($data_consumer);
 
             //  Update Motor
             if ($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') != NULL) {
@@ -488,13 +496,15 @@ class PembelianController extends Controller
                     'bpkb' => $request->bpkb,
                     'nama_bpkb' => $request->nama_bpkb,
                     'type' => $request->type,
-
                     'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
                     'photo_bpkb' => $request->file('photo_bpkb')->store('bpkb'),
                 ];
                 if ($request->oldImageBPKB != NULL) {
                     Storage::delete($request->oldImageBPKB);
+                }
+                if ($cek_consumer_lain) {
+                    $data_motor['consumer_id'] = $cek_consumer_lain->id;
                 }
                 Bike::where('id', $motor->id)->update($data_motor);
             } elseif ($request->file('photo_stnk') != NULL && $request->file('photo_bpkb') == NULL) {
@@ -514,6 +524,9 @@ class PembelianController extends Controller
                 if ($request->oldImageSTNK != NULL) {
                     Storage::delete($request->oldImageSTNK);
                 }
+                if ($cek_consumer_lain) {
+                    $data_motor['consumer_id'] = $cek_consumer_lain->id;
+                }
                 Bike::where('id', $motor->id)->update($data_motor);
             } elseif ($request->file('photo_stnk') == NULL && $request->file('photo_bpkb') == NULL) {
                 $data_motor = [
@@ -528,6 +541,9 @@ class PembelianController extends Controller
                     'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
                 ];
+                if ($cek_consumer_lain) {
+                    $data_motor['consumer_id'] = $cek_consumer_lain->id;
+                }
                 Bike::where('id', $motor->id)->update($data_motor);
             } elseif ($request->file('photo_stnk') != NULL && $request->file('photo_bpkb') != NULL) {
                 $data_motor = [
@@ -550,6 +566,9 @@ class PembelianController extends Controller
                 if ($request->oldImageBPKB != NULL) {
                     Storage::delete($request->oldImageBPKB);
                 }
+                if ($cek_consumer_lain) {
+                    $data_motor['consumer_id'] = $cek_consumer_lain->id;
+                }
                 Bike::where('id', $beli->id)->update($data_motor);
             }
 
@@ -557,7 +576,9 @@ class PembelianController extends Controller
                 'tanggal_beli' => $request->tanggal_beli,
                 'harga_beli' => preg_replace('/[,]/', '', $request->harga_beli),
             ];
-
+            if ($cek_consumer_lain) {
+                $data_pembelian['consumer_id'] = $cek_consumer_lain->id;
+            }
             Buy::where('unique', $buy)->update($data_pembelian);
             return redirect('/pembelian')->with('success', 'Data Pembelian Berhasil Diubah');
         }

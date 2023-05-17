@@ -25,8 +25,11 @@
                         <form action="/pembelian/{{ $beli->unique }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <input type="hidden" name="oldImageBPKB" value="{{ $motor->photo_stnk }}">
-                            <input type="hidden" name="oldImageSTNK" value="{{ $motor->photo_bpkb }}">
+                            <div class="row form-material">
+                                <input type="text" name="oldImageBPKB" value="{{ $motor->photo_stnk }}">
+                                <input type="text" name="oldImageSTNK" value="{{ $motor->photo_bpkb }}">
+                                <input type="text" name="oldKTP" value="{{ $consumer->photo_ktp }}">
+                            </div>
                             <div id="data_konsumen" class="tab-pane" role="tabpanel">
                                 <input type="hidden" name="penjual" id="penjual" value="{{ $consumer->penjual }}">
                                 @if ($consumer->penjual == 'INDIVIDU')
@@ -76,6 +79,23 @@
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-material">
+                                        <div class="col-lg-6 mb-2" style="padding-bottom:200px">
+                                            <div class="form-group">
+                                                <label class="text-label mb-3" for="photo_ktp">Foto KTP</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input @error('photo_ktp')is-invalid @enderror" value="{{ old('photo_ktp') }}" name="photo_ktp" name="photo_ktp" id="photo_ktp" onchange="previewImageKTP()">
+                                                    <label class="custom-file-label">Pilih Gambar</label>
+                                                    @error('photo_ktp')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                    <img src="/storage/{{ old('oldKTP', $consumer->photo_ktp) }}" style="width: 250px" alt="" class="img-thumbnail mt-3 ml-5 image-ktp">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
