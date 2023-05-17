@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bike;
 use App\Models\Sele;
 use App\Models\Modal;
 use Illuminate\Http\Request;
@@ -30,7 +31,8 @@ class ModalController extends Controller
             'data' => $modal,
             'bike_sele' => $jumlah_asset,
             'sisa_modal' => $modal->modal - $jumlah_asset,
-            'laba' => $harga_jual - $harga_beli
+            'laba' => $harga_jual - $harga_beli,
+            'jumlah_unit' => Bike::where('status', 'READY STOCK')->count('id')
         ];
         return view('modal.index', $data);
     }

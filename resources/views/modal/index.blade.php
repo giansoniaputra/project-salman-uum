@@ -88,6 +88,24 @@
                             <div class="card-body">
                                 <div class="media align-items-center">
                                     <div class="media-body mr-3">
+                                        <h2 class="fs-20 text-white font-w600" id="refresh-asset">{{ $jumlah_unit }} Unit</h2>
+                                        <span class="text-white">Jumlah Unit</span>
+                                    </div>
+                                    <h1 class="la la-archive text-white"></h1>
+                                </div>
+                            </div>
+                            <div class="progress  rounded-0" style="height:4px;">
+                                <div class="progress-bar rounded-0 bg-red progress-animated" style="width: 90%; height:4px;" role="progressbar">
+                                    <span class="sr-only">90% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3  col-sm-6">
+                        <div class="card bg-primary">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="media-body mr-3">
                                         <h2 class="fs-20 text-white font-w600" id="refresh-sisa">{{ rupiah($sisa_modal) }}</h2>
                                         <span class="text-white">Sisa Modal</span>
                                     </div>
