@@ -87,7 +87,7 @@
                                             <div class="form-group">
                                                 <label class="text-label mb-3" for="photo_ktp">Foto KTP</label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input @error('photo_ktp')is-invalid @enderror" value="{{ old('photo_ktp') }}" name="photo_ktp" name="photo_ktp" id="photo_ktp" onchange="previewImageKTP()">
+                                                    <input type="file" class="custom-file-input @error('photo_ktp')is-invalid @enderror" name="photo_ktp" name="photo_ktp" id="photo_ktp" onchange="previewImageKTP()">
                                                     <label class="custom-file-label">Pilih Gambar</label>
                                                     @error('photo_ktp')
                                                     <div class="invalid-feedback">

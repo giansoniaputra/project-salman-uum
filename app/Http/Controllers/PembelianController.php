@@ -474,6 +474,12 @@ class PembelianController extends Controller
                         'no_telepon' => $request->no_telepon,
                         'alamat' => $request->alamat,
                     ];
+                    if ($request->photo_ktp) {
+                        $data_consumer['photo_ktp'] = $request->file('photo_ktp')->store('ktp');
+                        if ($request->oldKTP) {
+                            Storage::delete($request->oldKTP);
+                        }
+                    }
                     Consumer::where('id', $consumer->id)->update($data_consumer);
                 }
             } else if ($request->penjual == "DEALER") {
