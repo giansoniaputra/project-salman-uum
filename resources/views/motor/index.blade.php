@@ -146,24 +146,19 @@
                                                             <td><span id="tahun-pembuatan"></span></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Daya</td>
-                                                            <td>:</td>
-                                                            <td><span id="daya"></span></td>
-                                                        </tr>
-                                                        <tr>
                                                             <td>No Rangka</td>
                                                             <td>:</td>
                                                             <td><span id="no-rangka"></span></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Bahan Bakar</td>
-                                                            <td>:</td>
-                                                            <td><span id="bahan-bakar"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>BPKB</td>
+                                                            <td>No. BPKB</td>
                                                             <td>:</td>
                                                             <td><span id="bpkb"></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Nama BPKB</td>
+                                                            <td>:</td>
+                                                            <td><span id="nama-bpkb"></span></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Berlaku Sampai</td>

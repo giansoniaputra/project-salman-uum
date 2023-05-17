@@ -119,10 +119,9 @@ $(document).ready(function () {
                 $("#tipe").html(response.success.type);
                 $("#warna").html(response.success.warna);
                 $("#tahun-pembuatan").html(response.success.tahun_pembuatan);
-                $("#daya").html(response.success.daya);
                 $("#no-rangka").html(response.success.no_rangka);
-                $("#bahan-bakar").html(response.success.bahan_bakar);
                 $("#bpkb").html(response.success.bpkb);
+                $("#nama-bpkb").html(response.success.nama_bpkb);
                 $("#berlaku-sampai").html(response.success.berlaku_sampai);
                 $("#foto-bpkb").html(
                     '<button data-img="/storage/' +
@@ -154,10 +153,9 @@ $(document).ready(function () {
                 $("#tipe").html(response.success.type);
                 $("#warna").html(response.success.warna);
                 $("#tahun-pembuatan").html(response.success.tahun_pembuatan);
-                $("#daya").html(response.success.daya);
                 $("#no-rangka").html(response.success.no_rangka);
-                $("#bahan-bakar").html(response.success.bahan_bakar);
                 $("#bpkb").html(response.success.bpkb);
+                $("#nama-bpkb").html(response.success.nama_bpkb);
                 $("#berlaku-sampai").html(response.success.berlaku_sampai);
                 $("#foto-bpkb").html(
                     '<button data-img="/storage/' +

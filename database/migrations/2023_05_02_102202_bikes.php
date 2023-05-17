@@ -20,10 +20,9 @@ return new class extends Migration
             $table->string('type');
             $table->string('warna');
             $table->integer('tahun_pembuatan');
-            $table->string('daya');
             $table->string('no_rangka');
-            $table->string('bahan_bakar');
             $table->string('bpkb');
+            $table->string('nama_bpkb');
             $table->string('berlaku_sampai');
             $table->string('status');
             $table->string('photo_bpkb')->nullable();

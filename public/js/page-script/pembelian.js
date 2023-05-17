@@ -160,9 +160,8 @@ $(document).ready(function () {
                 $("#tahun-pembuatan").html(
                     response.success.motor.tahun_pembuatan
                 );
-                $("#daya").html(response.success.motor.daya);
                 $("#no-rangka").html(response.success.motor.no_rangka);
-                $("#bahan-bakar").html(response.success.motor.bahan_bakar);
+                $("#nama-bpkb").html(response.success.motor.nama_bpkb);
                 $("#bpkb").html(response.success.motor.bpkb);
                 $("#berlaku-sampai").html(response.success.berlaku_sampai);
                 $("#foto-bpkb").html(
