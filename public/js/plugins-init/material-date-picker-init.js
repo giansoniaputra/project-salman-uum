@@ -18,6 +18,10 @@
         weekStart: 0,
         time: false,
     });
+    $("#perpanjang_stnk").bootstrapMaterialDatePicker({
+        weekStart: 0,
+        time: false,
+    });
     $("#tahun_pembuatan").bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false,

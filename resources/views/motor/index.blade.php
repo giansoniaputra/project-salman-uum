@@ -166,6 +166,11 @@
                                                             <td><span id="berlaku-sampai"></span></td>
                                                         </tr>
                                                         <tr>
+                                                            <td>Perpanjang STNK</td>
+                                                            <td>:</td>
+                                                            <td><span id="perpanjang-stnk"></span></td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>Foto BPKB</td>
                                                             <td>:</td>
                                                             <td><span id="foto-bpkb"></span></td>

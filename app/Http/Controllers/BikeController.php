@@ -112,6 +112,7 @@ class BikeController extends Controller
             ->where('bikes.id', '=', $request->id)
             ->first();
         $motor->berlaku_sampai = tanggal_hari($motor->berlaku_sampai);
+        $motor->perpanjang_stnk = tanggal_hari($motor->perpanjang_stnk);
         return response()->json(['success' => $motor]);
     }
 }

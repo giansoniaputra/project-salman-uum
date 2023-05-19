@@ -177,6 +177,7 @@ $(document).ready(function () {
                 $("#nama-bpkb").html(response.success.motor.nama_bpkb);
                 $("#bpkb").html(response.success.motor.bpkb);
                 $("#berlaku-sampai").html(response.success.berlaku_sampai);
+                $("#perpanjang-stnk").html(response.success.perpanjang_stnk);
                 $("#foto-bpkb").html(
                     '<button data-img="/storage/' +
                         response.success.motor.photo_bpkb +

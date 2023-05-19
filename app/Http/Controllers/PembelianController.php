@@ -66,6 +66,7 @@ class PembelianController extends Controller
                 'type' => 'required',
                 'no_polisi' => 'required',
                 'berlaku_sampai' => 'required',
+                'perpanjang_stnk' => 'required',
                 'harga_beli' => 'required',
                 'tanggal_beli' => 'required',
                 'photo_stnk' => 'image|file|max:3072',
@@ -87,6 +88,7 @@ class PembelianController extends Controller
                 'type.required' => 'Tidak boleh Kosong',
                 'no_polisi.required' => 'Tidak boleh Kosong',
                 'berlaku_sampai.required' => 'Tidak boleh Kosong',
+                'perpanjang_stnk.required' => 'Tidak boleh kosong',
                 'harga_beli.required' => 'Tidak boleh Kosong',
                 'tanggal_beli.required' => 'Tidak boleh Kosong',
                 'photo_stnk.image' => 'File Harus Berupa Gambar',
@@ -112,6 +114,7 @@ class PembelianController extends Controller
                 'type' => 'required',
                 'no_polisi' => 'required',
                 'berlaku_sampai' => 'required',
+                'perpanjang_stnk' => 'required',
                 'harga_beli' => 'required',
                 'tanggal_beli' => 'required',
                 'photo_stnk' => 'image|file|max:3072',
@@ -130,6 +133,7 @@ class PembelianController extends Controller
                 'type.required' => 'Tidak boleh Kosong',
                 'no_polisi.required' => 'Tidak boleh Kosong',
                 'berlaku_sampai.required' => 'Tidak boleh Kosong',
+                'perpanjang_stnk.required' => 'Tidak boleh kosong',
                 'harga_beli.required' => 'Tidak boleh Kosong',
                 'tanggal_beli.required' => 'Tidak boleh Kosong',
                 'photo_stnk.image' => 'File Harus Berupa Gambar',
@@ -241,6 +245,7 @@ class PembelianController extends Controller
                     'type' => $request->type,
                     'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
+                    'perpanjang_stnk' => $request->perpanjang_stnk,
                     'status' => 'READY STOCK',
                     'photo_stnk' => $path1,
                     'photo_bpkb' => $path2,
@@ -260,6 +265,7 @@ class PembelianController extends Controller
                     'type' => $request->type,
                     'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
+                    'perpanjang_stnk' => $request->perpanjang_stnk,
                     'status' => 'READY STOCK',
                     'photo_bpkb' => $path2,
                     'consumer_id' => $consumer_id,
@@ -278,6 +284,7 @@ class PembelianController extends Controller
                     'type' => $request->type,
                     'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
+                    'perpanjang_stnk' => $request->perpanjang_stnk,
                     'status' => 'READY STOCK',
                     'photo_stnk' => $path2,
                     'consumer_id' => $consumer_id,
@@ -295,6 +302,7 @@ class PembelianController extends Controller
                     'type' => $request->type,
                     'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
+                    'perpanjang_stnk' => $request->perpanjang_stnk,
                     'status' => 'READY STOCK',
                     'consumer_id' => $consumer_id,
                 ];
@@ -382,6 +390,7 @@ class PembelianController extends Controller
                 'type' => 'required',
                 'no_polisi' => 'required',
                 'berlaku_sampai' => 'required',
+                'perpanjang_stnk' => 'required',
                 'harga_beli' => 'required',
                 'tanggal_beli' => 'required',
                 'photo_stnk' => 'image|file|max:3072',
@@ -403,6 +412,7 @@ class PembelianController extends Controller
                 'type.required' => 'Tidak boleh Kosong',
                 'no_polisi.required' => 'Tidak boleh Kosong',
                 'berlaku_sampai.required' => 'Tidak boleh Kosong',
+                'perpanjang_stnk.required' => 'Tidak boleh Kosong',
                 'harga_beli.required' => 'Tidak boleh Kosong',
                 'tanggal_beli.required' => 'Tidak boleh Kosong',
                 'photo_stnk.image' => 'File Harus Berupa Gambar',
@@ -426,6 +436,7 @@ class PembelianController extends Controller
                 'type' => 'required',
                 'no_polisi' => 'required',
                 'berlaku_sampai' => 'required',
+                'perpanjang_stnk' => 'required',
                 'harga_beli' => 'required',
                 'tanggal_beli' => 'required',
                 'photo_stnk' => 'image|file|max:3072',
@@ -444,6 +455,7 @@ class PembelianController extends Controller
                 'type.required' => 'Tidak boleh Kosong',
                 'no_polisi.required' => 'Tidak boleh Kosong',
                 'berlaku_sampai.required' => 'Tidak boleh Kosong',
+                'perpanjang_stnk.required' => 'Tidak boleh Kosong',
                 'harga_beli.required' => 'Tidak boleh Kosong',
                 'tanggal_beli.required' => 'Tidak boleh Kosong',
                 'photo_stnk.image' => 'File Harus Berupa Gambar',
@@ -504,6 +516,7 @@ class PembelianController extends Controller
                     'type' => $request->type,
                     'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
+                    'perpanjang_stnk' => $request->perpanjang_stnk,
                     'photo_bpkb' => $request->file('photo_bpkb')->store('bpkb'),
                 ];
                 if ($request->oldImageBPKB != NULL) {
@@ -525,6 +538,7 @@ class PembelianController extends Controller
 
                     'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
+                    'perpanjang_stnk' => $request->perpanjang_stnk,
                     'photo_stnk' => $request->file('photo_stnk')->store('stnk'),
                 ];
                 if ($request->oldImageSTNK != NULL) {
@@ -546,6 +560,7 @@ class PembelianController extends Controller
 
                     'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
+                    'perpanjang_stnk' => $request->perpanjang_stnk,
                 ];
                 if ($cek_consumer_lain) {
                     $data_motor['consumer_id'] = $cek_consumer_lain->id;
@@ -563,6 +578,7 @@ class PembelianController extends Controller
 
                     'no_polisi' => strtoupper($request->no_polisi),
                     'berlaku_sampai' => $request->berlaku_sampai,
+                    'perpanjang_stnk' => $request->perpanjang_stnk,
                     'photo_bpkb' => $request->file('photo_bpkb')->store('bpkb'),
                     'photo_stnk' => $request->file('photo_stnk')->store('stnk'),
                 ];
@@ -647,7 +663,8 @@ class PembelianController extends Controller
             'consumer' => $consumer,
             'harga' => rupiah($buy->harga_beli),
             'tanggal_beli' => tanggal_hari($buy->tanggal_beli),
-            'berlaku_sampai' => tanggal_hari($motor->berlaku_sampai)
+            'berlaku_sampai' => tanggal_hari($motor->berlaku_sampai),
+            'perpanjang_stnk' => tanggal_hari($motor->perpanjang_stnk)
         ];
 
         return response()->json(['success' => $data]);
