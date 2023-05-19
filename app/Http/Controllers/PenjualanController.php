@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Buy;
 use App\Models\Bike;
 use App\Models\Sele;
+use App\Models\Buyer;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -59,12 +60,16 @@ class PenjualanController extends Controller
                 'jenis_pembayaran' => 'required',
                 'tanggal_jual' => 'required',
                 'nama_pembeli' => 'required',
+                'nik' => 'required',
+                'alamat' => 'required',
             ];
             $pesan = [
                 'no_polisi.required' => 'Pilih Nomor Polisi',
                 'jenis_pembayaran.required' => 'Pilih Jenis Pembayaran',
                 'tanggal_jual.required' => 'Tidak boleh kosong',
                 'nama_pembeli.required' => 'Tidak boleh kosong',
+                'nik.required' => 'Tidak boleh kosong',
+                'alamat.required' => 'Tidak boleh kosong',
             ];
         } else if ($request->jenis_pembayaran == 'CASH') {
             $rules = [
@@ -74,6 +79,8 @@ class PenjualanController extends Controller
                 'jumlah_bayar' => 'required',
                 'tanggal_jual' => 'required',
                 'nama_pembeli' => 'required',
+                'nik' => 'required',
+                'alamat' => 'required',
             ];
             $pesan = [
                 'no_polisi.required' => 'Pilih Nomor Polisi',
@@ -82,6 +89,8 @@ class PenjualanController extends Controller
                 'harga_jual.required' => 'Tidak boleh kosong',
                 'tanggal_jual.required' => 'Tidak boleh kosong',
                 'nama_pembeli.required' => 'Tidak boleh kosong',
+                'nik.required' => 'Tidak boleh kosong',
+                'alamat.required' => 'Tidak boleh kosong',
             ];
         }
         $validator = Validator::make($request->all(), $rules, $pesan);
@@ -92,9 +101,23 @@ class PenjualanController extends Controller
                 if ($request->kembali < "0") {
                     return response()->json(['error' => 'Jumlah bayar tidak boleh kurang dari harga beli']);
                 }
-
+                //Cek apakah nik yang dikirim terdaftar di table buyers
+                $buyer = Buyer::where('nik', $request->nik)->first();
+                //Jika nik terdaftar di table
+                if (!$buyer) {
+                    //Jika nik tidak ada di table
+                    $data_buyer = [
+                        'unique' => Str::orderedUuid(),
+                        'nik' => $request->nik,
+                        'nama' => ucwords(strtolower($request->nama_pembeli)),
+                        'alamat' => $request->alamat,
+                    ];
+                    Buyer::create($data_buyer);
+                    //Ambil id buyer yang baru saja dimasukan ke table
+                }
+                //Membuat random nota
                 $trx = 'TRXSALE-00';
-                $last_trx = Sele::orderBy('id', 'DESC')->first();
+                $last_trx = Sele::latest()->first();;
                 if ($last_trx == NULL) {
                     $random_num = 1;
                 } else {
@@ -102,16 +125,21 @@ class PenjualanController extends Controller
                     $random_num = $last_nota[1] + 1;
                 }
                 $nota = $trx . $random_num;
-                $data = [
+                $data_sele = [
                     'unique' => Str::orderedUuid(),
                     'nota' => $nota,
-                    'pembeli' => ucwords(strtolower($request->nama_pembeli)),
                     'bike_id' => $request->no_polisi,
                     'tanggal_jual' => $request->tanggal_jual,
                     'harga_beli' => preg_replace('/[,]/', '', $request->harga_beli),
                     'harga_jual' => preg_replace('/[,]/', '', $request->harga_jual),
                 ];
-                Sele::create($data);
+                if ($buyer) {
+                    $data_sele['buyer_id'] = $buyer->id;
+                } else if (!$buyer) {
+                    $last_input = Buyer::latest()->first();
+                    $data_sele['buyer_id'] = $last_input->id;
+                }
+                Sele::create($data_sele);
                 Bike::where('id', $request->no_polisi)->update(['status' => 'TERJUAL']);
                 return response()->json(['success' => 'Data Penjualan Berhasil Ditambahkan']);
             }
@@ -195,6 +223,7 @@ class PenjualanController extends Controller
     {
         $query = DB::table('seles')
             ->join('bikes', 'bikes.id', '=', 'seles.bike_id')
+            ->join('buyers', 'buyers.id', '=', 'seles.buyer_id')
             ->get();
         foreach ($query as $row) {
             $row->tanggal_jual = tanggal_hari($row->tanggal_jual);

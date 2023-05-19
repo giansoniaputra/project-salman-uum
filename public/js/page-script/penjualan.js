@@ -18,7 +18,7 @@ $(document).ready(function () {
                 },
             },
             {
-                data: "pembeli",
+                data: "nama",
             },
             {
                 data: "no_polisi",
@@ -252,6 +252,7 @@ $(document).ready(function () {
         $.each(errors, function (field, messages) {
             let inputElement = $("input[name=" + field + "]");
             let selectElement = $("select[name=" + field + "]");
+            let textAreaElement = $("textarea[name=" + field + "]");
             let feedbackElement = $(
                 '<div class="invalid-feedback ml-2"></div>'
             );
@@ -270,6 +271,10 @@ $(document).ready(function () {
             if (selectElement.length > 0) {
                 selectElement.addClass("is-invalid");
                 selectElement.after(feedbackElement);
+            }
+            if (textAreaElement.length > 0) {
+                textAreaElement.addClass("is-invalid");
+                textAreaElement.after(feedbackElement);
             }
         });
     }

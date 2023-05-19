@@ -26,9 +26,9 @@
                             @csrf
                             @method('PUT')
                             <div class="row form-material">
-                                <input type="text" name="oldImageBPKB" value="{{ $motor->photo_stnk }}">
-                                <input type="text" name="oldImageSTNK" value="{{ $motor->photo_bpkb }}">
-                                <input type="text" name="oldKTP" value="{{ $consumer->photo_ktp }}">
+                                <input type="hidden" name="oldImageBPKB" value="{{ $motor->photo_stnk }}">
+                                <input type="hidden" name="oldImageSTNK" value="{{ $motor->photo_bpkb }}">
+                                <input type="hidden" name="oldKTP" value="{{ $consumer->photo_ktp }}">
                             </div>
                             <div id="data_konsumen" class="tab-pane" role="tabpanel">
                                 <input type="hidden" name="penjual" id="penjual" value="{{ $consumer->penjual }}">

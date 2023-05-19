@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('seles', function (Blueprint $table) {
+        Schema::create('buyers', function (Blueprint $table) {
             $table->id();
             $table->uuid('unique')->unique();
-            $table->string('nota')->unique();
-            $table->string('buyer_id');
-            $table->integer('bike_id');
-            $table->date('tanggal_jual');
-            $table->string('harga_beli');
-            $table->string('harga_jual');
+            $table->string('nik');
+            $table->string('nama');
+            $table->string('tempat_lahir')->nullable();
+            $table->date('tanggal_lahir')->nullable();
+            $table->string('alamat');
+            $table->string('photo_ktp')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('seles');
+        Schema::dropIfExists('buyers');
     }
 };

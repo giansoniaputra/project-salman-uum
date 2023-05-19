@@ -15,19 +15,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="javascript:;">
+                        <form action="javascript:;" enctype="multipart/form-data" id="form-penjualan">
                             @csrf
                             <div class="current-id"></div>
                             <div class="row form-material">
-                                <div class="col-lg-12 mb-3">
-                                    <div class="form-row">
-                                        <label class="text-label" for="nama_pembeli">Nama Pembeli</label>
-                                        <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control">
-                                    </div>
-                                </div>
                                 <div class="col-lg-12 mb-3" id="no-polisi">
                                     <div class="form-row">
-                                        <label class="text-label" for="no_polisi">No Polisi</label>
+                                        <label class="text-label" for="no_polisi">No Polisi</label><span class="text-danger">*</span>
                                         <select id="single-select" name="no_polisi" class="form-control no-polisi" placeholder="Masukan No Polisi">
                                             <option value="">Pilih No Polisi</option>
                                             @foreach ($no_polisi as $row)
@@ -74,7 +68,43 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tanggal_jual">Tanggal Penjualan</label>
+                                    <label class="text-label" for="nik">NIK</label><span class="text-danger">*</span>
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control input-default" placeholder="Masukan No NIK KTP" name="nik" id="nik">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <div class="form-row">
+                                        <label class="text-label" for="nama_pembeli">Nama Pembeli</label><span class="text-danger">*</span>
+                                        <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <label class="text-label" for="alamat">Alamat</label><span class="text-danger">*</span>
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <textarea class="form-control input-default" rows="2" name="alamat" id="alamat" placeholder="Masukan Alamat"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <label class="text-label" for="alamat">Upload Foto KTP</label>
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Upload</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input">
+                                                <label class="custom-file-label">Pilih Gambar</label><span class="text-danger">*</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <label class="text-label" for="tanggal_jual">Tanggal Penjualan</label><span class="text-danger">*</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -85,9 +115,9 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="jenis_pembayaran">Jenis Pembayaran</label>
+                                    <label class="text-label" for="jenis_pembayaran">Jenis Pembayaran</label><span class="text-danger">*</span>
                                     <div class="form-row">
-                                        <div class="input-group">
+                                        <div class="input-group col-lg-12">
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text"><i class="flaticon-381-id-card"></i></span>
                                             </div>
@@ -102,7 +132,7 @@
                             </div>
                             <div id="buys-content-cash" class="row form-material d-none" style="padding-bottom: 92.75px">
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="harga_jual">Harga Jual</label>
+                                    <label class="text-label" for="harga_jual">Harga Jual</label><span class="text-danger">*</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -113,7 +143,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="jumlah_bayar">Jumlah Bayar</label>
+                                    <label class="text-label" for="jumlah_bayar">Jumlah Bayar</label><span class="text-danger">*</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -137,15 +167,7 @@
                             </div>
                             <div id="buys-content-kredit" class="row form-material d-none" style="padding-bottom: 92.75px">
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="nik">NIK</label>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control input-default" placeholder="Masukan No NIK KTP" name="nik" id="nik">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tempat_lahir">Tempat Lahir</label>
+                                    <label class="text-label" for="tempat_lahir">Tempat Lahir</label><span class="text-danger">*</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <input type="text" class="form-control input-default" placeholder="Masukan Tempat Lahir" name="tempat_lahir" id="tempat_lahir">
@@ -153,7 +175,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tanggal_lahir">Tanggal Lahir</label>
+                                    <label class="text-label" for="tanggal_lahir">Tanggal Lahir</label><span class="text-danger">*</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -164,7 +186,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="jenis_kelamin">Jenis Kelamin</label>
+                                    <label class="text-label" for="jenis_kelamin">Jenis Kelamin</label><span class="text-danger">*</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <select class="form-control default-select" name="jenis_kelamin" id="jenis_kelamin">
@@ -176,29 +198,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="alamat">Alamat</label>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <textarea class="form-control input-default @error('alamat')is-invalid @enderror" rows="2" name="alamat" id="alamat" placeholder="Masukan Alamat">{{ old('alamat') }}</textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="alamat">Upload Foto KTP</label>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Upload</span>
-                                            </div>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input">
-                                                <label class="custom-file-label">Pilih Gambar</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="dp_bayar">DP Bayar</label>
+                                    <label class="text-label" for="dp_bayar">DP Bayar</label><span class="text-danger">*</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -209,7 +209,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="pencairan">Pencairan</label>
+                                    <label class="text-label" for="pencairan">Pencairan</label><span class="text-danger">*</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -220,7 +220,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="angsuran">Angsuran</label>
+                                    <label class="text-label" for="angsuran">Angsuran</label><span class="text-danger">*</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -231,7 +231,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tenor">Tenor</label>
+                                    <label class="text-label" for="tenor">Tenor</label><span class="text-danger">*</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -242,7 +242,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="komisi">Komisi</label>
+                                    <label class="text-label" for="komisi">Komisi</label><span class="text-danger">*</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -304,7 +304,6 @@
 <script src="/js/simple.money.format.js"></script>
 <script src="/js/simple.money.format.init.js"></script>
 {{-- !Simple Money Format --}}
-<script src="/js/page-script/pembelian.js"></script>
 <script src="/js/page-script/penjualan.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
