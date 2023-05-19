@@ -34,7 +34,7 @@
                     <span class="nav-text">Laporan</span>
                 </a>
             </li>
-            <li><a href="#" class="ai-icon" aria-expanded="false">
+            <li><a href="/setting" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-settings-2"></i>
                     <span class="nav-text">Setting</span>
                 </a>

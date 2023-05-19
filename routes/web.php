@@ -7,6 +7,7 @@ use App\Http\Controllers\BikeController;
 use App\Http\Controllers\ModalController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PenjualanController;
@@ -72,6 +73,9 @@ Route::post('/tambahPenjualan', [PenjualanController::class, 'tambah_data'])->mi
 Route::get('/ambilDataPenjualan', [PenjualanController::class, 'get_data'])->middleware('auth');
 //Update Penjualan
 Route::post('/updatePenjualan', [PenjualanController::class, 'update_data'])->middleware('auth');
+
+// SETTING
+Route::resource('/setting', SettingController::class)->middleware('auth');
 
 // MAINTENANCE
 Route::resource('/maintenance', MaintenanceController::class)->middleware('auth');
