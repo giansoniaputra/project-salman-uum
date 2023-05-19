@@ -119,9 +119,16 @@ $(document).ready(function () {
             },
         ],
     });
+    //Memasukan Gambar Ke Modal
+    $("#dataTables").on("click", ".info-button-ktp", function () {
+        let ktp = $(this).attr("data-ktp");
+        $("#modal-ktp .modal-body img").attr("src", "/storage/" + ktp);
+        $("#modal-ktp").modal("show");
+    });
 
+    //Memasukan data individu ke modal
     $("#dataTables").on("click", ".info-button-individu", function () {
-        document.getElementById("dataTablesMotor").style.width = "70vw";
+        document.getElementById("dataTablesMotor").style.width = "53vw";
         let id = $(this).attr("data-id");
         $("#data-motor").val(id);
         $("#modal-motor").modal("show");

@@ -219,6 +219,12 @@ class PenjualanController extends Controller
         //
     }
 
+    public function cek_nik(Request $request)
+    {
+        $query = Buyer::where('nik', $request->nik)->first();
+        return response()->json(['success' => $query]);
+    }
+
     public function dataTables()
     {
         $query = DB::table('seles')

@@ -65,7 +65,7 @@
                                     <div id="bordered_collapseZero" class="collapse accordion__body" data-parent="#accordion-two">
                                         <div class="accordion__body--text">
                                             <div class="table-responsive">
-                                                <table class="table header-border table-responsive-sm table-striped">
+                                                <table class="table header-border table-responsive-sm table-striped" id="table_konsumen">
                                                     <tbody>
                                                         <tr>
                                                             <td>NIK</td>

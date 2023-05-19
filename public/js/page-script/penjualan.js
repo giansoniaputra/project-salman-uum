@@ -94,6 +94,7 @@ $(document).ready(function () {
         $("#jumlah_bayar").val("");
         $("#nama_pembeli").val("");
         $("#tanggal_jual").val("");
+        $("#alamat").html("");
         $("#harga_jual").removeClass("is-invalid");
         $("#jumlah_bayar").removeClass("is-invalid");
         $(".current-id").html("");
@@ -111,11 +112,51 @@ $(document).ready(function () {
         $("#buys-content-cash").addClass("d-none");
         $("#harga_jual").val("");
         $("#jumlah_bayar").val("");
+        $("#alamat").html("");
         $("#harga_jual").removeClass("is-invalid");
         $("#jumlah_bayar").removeClass("is-invalid");
         $("#nama_pembeli").val("");
         $("#tanggal_jual").val("");
         $(".current-id").html("");
+    });
+    //Ketika NIK terdaftar di table
+    $("#nik").on("keyup", function () {
+        NProgress.start();
+        let nik = $(this).val();
+        $.ajax({
+            data: {
+                nik: nik,
+            },
+            url: "/cekNikPembeli",
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                if (response.success) {
+                    $("#nama_pembeli").val(response.success.nama);
+                    $("#alamat").html(response.success.alamat);
+                    $("#nama_pembeli").css({
+                        "background-color": "rgba(215, 218, 227, 0.3)",
+                    });
+                    $("#alamat").css({
+                        "background-color": "rgba(215, 218, 227, 0.3)",
+                    });
+                    // $(".image-ktp").attr(
+                    //     "src",
+                    //     "/storage/" + response.success.photo_ktp
+                    // );
+                    // $("#oldKTP").val(response.success.photo_ktp);
+                    NProgress.done();
+                } else {
+                    $("#nama_pembeli").val("");
+                    $("#alamat").html("");
+                    $("#nama_pembeli").removeAttr("style");
+                    $("#alamat").removeAttr("style");
+                    // $(".image-ktp").attr("src", "/storage/ktp/default.png");
+                    // $("#oldKTP").val("");
+                    NProgress.done();
+                }
+            },
+        });
     });
     $("#btn-add-data").on("click", function () {
         let element =
@@ -149,6 +190,24 @@ $(document).ready(function () {
                     );
                     inputElement.after(feedbackElement);
                 } else if (response.success) {
+                    $("#merk").val("");
+                    $("#warna").val("");
+                    $("#tahun_pembuatan").val("");
+                    $("#harga_beli").val("");
+                    $(".no-polisi").val(null).trigger("change");
+                    $("#current-no-polisi").html("");
+                    $("#no-polisi").removeClass("d-none");
+                    $("#jenis_pembayaran").val("");
+                    $("#jenis_pembayaran").removeAttr("disabled style");
+                    $("#buys-content-cash").addClass("d-none");
+                    $("#harga_jual").val("");
+                    $("#jumlah_bayar").val("");
+                    $("#nama_pembeli").val("");
+                    $("#tanggal_jual").val("");
+                    $("#harga_jual").removeClass("is-invalid");
+                    $("#jumlah_bayar").removeClass("is-invalid");
+                    $(".current-id").html("");
+                    $("#alamat").html("");
                     $("#modal-transaksi").modal("hide");
                     Swal.fire("Good job!", response.success, "success");
                     table.ajax.reload();
