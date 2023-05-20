@@ -92,12 +92,16 @@ $(document).ready(function () {
         $("#buys-content-cash").addClass("d-none");
         $("#harga_jual").val("");
         $("#jumlah_bayar").val("");
+        $("#nik").val("");
+        $("#kembali").val("");
         $("#nama_pembeli").val("");
         $("#tanggal_jual").val("");
         $("#alamat").html("");
         $("#harga_jual").removeClass("is-invalid");
         $("#jumlah_bayar").removeClass("is-invalid");
         $(".current-id").html("");
+        $("#photo_ktp").html("");
+        $("#img-ktp img").attr("src", "/storage/ktp/default.png");
     });
     $(".modal-footer").on("click", ".btn-danger", function () {
         $("#merk").val("");
@@ -112,12 +116,16 @@ $(document).ready(function () {
         $("#buys-content-cash").addClass("d-none");
         $("#harga_jual").val("");
         $("#jumlah_bayar").val("");
+        $("#nik").val("");
+        $("#kembali").val("");
         $("#alamat").html("");
         $("#harga_jual").removeClass("is-invalid");
         $("#jumlah_bayar").removeClass("is-invalid");
         $("#nama_pembeli").val("");
         $("#tanggal_jual").val("");
         $(".current-id").html("");
+        $("#photo_ktp").html("");
+        $("#img-ktp img").attr("src", "/storage/ktp/default.png");
     });
     //Ketika NIK terdaftar di table
     $("#nik").on("keyup", function () {
@@ -140,6 +148,8 @@ $(document).ready(function () {
                     $("#alamat").css({
                         "background-color": "rgba(215, 218, 227, 0.3)",
                     });
+                    $("#nama_pembeli").removeClass("is-invalid");
+                    $("#alamat").removeClass("is-invalid");
                     // $(".image-ktp").attr(
                     //     "src",
                     //     "/storage/" + response.success.photo_ktp
@@ -177,18 +187,48 @@ $(document).ready(function () {
             type: "POST",
             dataType: "json",
             success: function (response) {
-                if (response.errors) {
+                // console.log(response.image);
+                if (
+                    response.errors ||
+                    response.error ||
+                    response.error_ktp ||
+                    response.error_ktp_type
+                ) {
                     displayErrors(response.errors);
-                } else if (response.error) {
-                    // console.log(response.error);
-                    let inputElement = $('input[name="jumlah_bayar"]');
-                    inputElement.addClass("is-invalid");
-                    let feedbackElement = $(
-                        '<div class="invalid-feedback ml-2 jumlah_bayar">' +
-                            response.error +
-                            "</div>"
-                    );
-                    inputElement.after(feedbackElement);
+                    if (response.error) {
+                        let inputElement = $('input[name="jumlah_bayar"]');
+                        inputElement.addClass("is-invalid");
+                        let feedbackElement = $(
+                            '<div class="invalid-feedback ml-2 jumlah_bayar">' +
+                                response.error +
+                                "</div>"
+                        );
+                        inputElement.after(feedbackElement);
+                    }
+                    if (response.error_ktp) {
+                        let inputElement = $('input[name="photo_ktp"]');
+                        let inputElement2 = $('input[name="photo-ktp"]');
+                        inputElement2.addClass("is-invalid");
+                        inputElement.addClass("is-invalid");
+                        let feedbackElement = $(
+                            '<div class="invalid-feedback ml-2 photo-ktp-error">' +
+                                response.error_ktp.photo_ktp +
+                                "</div>"
+                        );
+                        inputElement.after(feedbackElement);
+                    }
+                    if (response.error_ktp_type) {
+                        let inputElement2 = $('input[name="photo-ktp"]');
+                        inputElement2.addClass("is-invalid");
+                        let inputElement = $('input[name="photo_ktp"]');
+                        inputElement.addClass("is-invalid");
+                        let feedbackElement = $(
+                            '<div class="invalid-feedback ml-2 photo-ktp-error-file">' +
+                                response.error_ktp_type +
+                                "</div>"
+                        );
+                        inputElement.after(feedbackElement);
+                    }
                 } else if (response.success) {
                     $("#merk").val("");
                     $("#warna").val("");
@@ -202,12 +242,16 @@ $(document).ready(function () {
                     $("#buys-content-cash").addClass("d-none");
                     $("#harga_jual").val("");
                     $("#jumlah_bayar").val("");
+                    $("#nik").val("");
+                    $("#kembali").val("");
                     $("#nama_pembeli").val("");
                     $("#tanggal_jual").val("");
                     $("#harga_jual").removeClass("is-invalid");
                     $("#jumlah_bayar").removeClass("is-invalid");
                     $(".current-id").html("");
                     $("#alamat").html("");
+                    $("#photo_ktp").html("");
+                    $("#img-ktp img").attr("src", "/storage/ktp/default.png");
                     $("#modal-transaksi").modal("hide");
                     Swal.fire("Good job!", response.success, "success");
                     table.ajax.reload();
@@ -305,7 +349,9 @@ $(document).ready(function () {
         // menghapus class 'is-invalid' dan pesan error sebelumnya
         $("input.form-control").removeClass("is-invalid");
         $("select.form-control").removeClass("is-invalid");
-        $("div.invalid-feedback").remove();
+        $("div.invalid-feedback").each(function () {
+            $("div.invalid-feedback").remove();
+        });
 
         // menampilkan pesan error baru
         $.each(errors, function (field, messages) {
@@ -318,7 +364,7 @@ $(document).ready(function () {
 
             $.each(messages, function (index, message) {
                 feedbackElement.append(
-                    $('<p class="p-0 m-0">' + message + "</p>")
+                    $('<p class="p-0 m-0 text-center">' + message + "</p>")
                 );
             });
 
@@ -335,6 +381,30 @@ $(document).ready(function () {
                 textAreaElement.addClass("is-invalid");
                 textAreaElement.after(feedbackElement);
             }
+            inputElement.each(function () {
+                if (inputElement.attr("type") == "text") {
+                    inputElement.on("click", function () {
+                        $(this).removeClass("is-invalid");
+                    });
+                    inputElement.on("change", function () {
+                        $(this).removeClass("is-invalid");
+                    });
+                } else if (inputElement.attr("type") == "date") {
+                    inputElement.on("change", function () {
+                        $(this).removeClass("is-invalid");
+                    });
+                }
+            });
+            textAreaElement.each(function () {
+                textAreaElement.on("click", function () {
+                    $(this).removeClass("is-invalid");
+                });
+            });
+            selectElement.each(function () {
+                selectElement.on("click", function () {
+                    $(this).removeClass("is-invalid");
+                });
+            });
         });
     }
 
@@ -387,7 +457,7 @@ $(document).ready(function () {
         $(".jumlah_bayar").remove();
     });
 });
-
+//Hendler Icon Material Date Time
 let monthBefore = $(".dtp-select-month-before .material-icons");
 monthBefore.addClass("flaticon-381-back-2 text-white");
 monthBefore.removeClass("material-icons");
@@ -417,3 +487,19 @@ let yearRangeAfter = $(".dtp-select-year-range.after .material-icons");
 yearRangeAfter.addClass("flaticon-381-download text-dark");
 yearRangeAfter.removeClass("material-icons");
 yearRangeAfter.html("");
+
+//Show Gambar KTP
+function previewImageKTP() {
+    document.getElementById("photo_ktp").classList.remove("is-invalid");
+    document.getElementById("photo-ktp").classList.remove("is-invalid");
+    const image = document.querySelector("#photo-ktp");
+    const imgPre = document.querySelector("#img-ktp img");
+    const photo_ktp = document.querySelector("#photo_ktp");
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image.files[0]);
+    oFReader.onload = function (oFREvent) {
+        imgPre.src = oFREvent.target.result;
+        photo_ktp.value = oFREvent.target.result;
+    };
+}

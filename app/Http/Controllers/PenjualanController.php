@@ -8,7 +8,9 @@ use App\Models\Sele;
 use App\Models\Buyer;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
@@ -93,9 +95,42 @@ class PenjualanController extends Controller
                 'alamat.required' => 'Tidak boleh kosong',
             ];
         }
+        //Mengubah base64 menjadi file image
+
+        if ($request->photo_ktp) {
+            $jenis_file = explode(":", $request->photo_ktp);
+            $jenis_file2 = explode("/", $jenis_file[1]);
+            $jenis_foto = $jenis_file2[0];
+        }
+        // Validasi Photo KTP
+        $validator_photo_ktp = Validator::make([
+            'photo_ktp' => base64_encode($request->photo_ktp),
+        ], [
+            'photo_ktp' => 'max:' . (2 * 1024 * 1024) // Batasan ukuran 2 megabyte
+        ], [
+            'photo_ktp.max' => 'Ukuran tidak boleh lebih dari 2MB.',
+        ]);
+        //Validasi base64 apakah sebuah gambar
+        //Validasi Inputan yang Lain
         $validator = Validator::make($request->all(), $rules, $pesan);
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()]);
+            $send_error = [
+                'errors' => $validator->errors(),
+            ];
+            if ($validator_photo_ktp->fails()) {
+                $send_error['error_ktp'] = $validator_photo_ktp->errors();
+            }
+            if ($request->photo_ktp && $jenis_foto != 'image') {
+                $send_error['error_ktp_type'] = 'File harus berupa gambar';
+            }
+            return response()->json($send_error);
+        } else if ($validator_photo_ktp->fails()) {
+            $send_error = [
+                'error_ktp' => $validator_photo_ktp->errors(),
+            ];
+            return response()->json($send_error);
+        } else if ($jenis_foto != 'image') {
+            return response()->json(['error_ktp_type' => 'File harus berupa gambar',]);
         } else {
             if ($request->jenis_pembayaran == 'CASH') {
                 if ($request->kembali < "0") {
@@ -112,6 +147,26 @@ class PenjualanController extends Controller
                         'nama' => ucwords(strtolower($request->nama_pembeli)),
                         'alamat' => $request->alamat,
                     ];
+                    //Upload jika ada gambar
+                    if ($request->photo_ktp) {
+                        $base_Image = $request->photo_ktp;  // your base64 encoded
+
+                        $jenis_file = explode(":", $request->photo_ktp);
+                        $jenis_file2 = explode("/", $jenis_file[1]);
+                        $jenis_file3 = explode(";", $jenis_file2[1]);
+                        $jenis_foto = $jenis_file3[0];
+                        if ($jenis_foto == 'jpeg') {
+                            $base_Image = str_replace('data:image/jpeg;base64,', '', $base_Image);
+                        } else if ($jenis_foto == 'jpg') {
+                            $base_Image = str_replace('data:image/jpg;base64,', '', $base_Image);
+                        } else if ($jenis_foto == 'png') {
+                            $base_Image = str_replace('data:image/png;base64,', '', $base_Image);
+                        }
+                        $base_Image = str_replace(' ', '+', $base_Image);
+                        $name_Image = Str::random(40) . '.' . 'png';
+                        File::put(storage_path() . '/app/public/ktp_pembeli/' . $name_Image, base64_decode($base_Image));
+                        $data_buyer['photo_ktp'] = $name_Image;
+                    }
                     Buyer::create($data_buyer);
                     //Ambil id buyer yang baru saja dimasukan ke table
                 }

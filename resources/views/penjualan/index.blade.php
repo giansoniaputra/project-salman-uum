@@ -78,7 +78,7 @@
                                 <div class="col-lg-12 mb-3">
                                     <div class="form-row">
                                         <label class="text-label" for="nama_pembeli">Nama Pembeli</label><span class="text-danger">*</span>
-                                        <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control">
+                                        <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control" placeholder="Masukan Nama Pembeli">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
@@ -97,11 +97,16 @@
                                                 <span class="input-group-text">Upload</span>
                                             </div>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input">
-                                                <label class="custom-file-label">Pilih Gambar</label><span class="text-danger">*</span>
+                                                <input type="file" class="custom-file-input" name="photo-ktp" id="photo-ktp" onchange="previewImageKTP()">
+                                                <label class="custom-file-label">Pilih Gambar</label>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-lg-12 mb-3 text-center" id="img-ktp">
+                                    <img src="/storage/ktp/default.png" alt="" class="img-fluid" width="200px">
+                                    <br>
+                                    <input type="hidden" name="photo_ktp" id="photo_ktp">
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     <label class="text-label" for="tanggal_jual">Tanggal Penjualan</label><span class="text-danger">*</span>
