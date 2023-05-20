@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->uuid('unique')->unique();
             $table->string('nota')->unique();
-            $table->string('buyer_id');
+            $table->integer('buyer_id');
             $table->integer('bike_id');
             $table->date('tanggal_jual');
-            $table->string('harga_beli');
-            $table->string('harga_jual');
+            $table->integer('harga_beli');
+            $table->integer('harga_jual');
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('consumer_id');
             $table->integer('bike_id');
             $table->date('tanggal_beli');
-            $table->string('harga_beli');
+            $table->integer('harga_beli');
             $table->string('ket')->nullable();
             $table->timestamps();
         });
