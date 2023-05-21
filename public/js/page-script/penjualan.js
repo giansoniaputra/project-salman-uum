@@ -466,10 +466,9 @@ $(document).ready(function () {
         $(this).removeClass("is-invalid");
         $(".jumlah_bayar").remove();
     });
-});
-//Hendler Icon Material Date Time
+    //Hendler Icon Material Date Time
 let monthBefore = $(".dtp-select-month-before .material-icons");
-monthBefore.addClass("flaticon-381-back-2 text-white");
+monthBefore.addClass("fa fa-arrow-left fa-lg text-white");
 monthBefore.removeClass("material-icons");
 monthBefore.html("");
 
@@ -494,9 +493,11 @@ yearRangeBefore.removeClass("material-icons");
 yearRangeBefore.html("");
 
 let yearRangeAfter = $(".dtp-select-year-range.after .material-icons");
-yearRangeAfter.addClass("flaticon-381-download text-dark");
+yearRangeAfter.addClass("fa fa-arrow-down fa-lg text-dark");
 yearRangeAfter.removeClass("material-icons");
 yearRangeAfter.html("");
+});
+
 
 //Show Gambar KTP
 function previewImageKTP() {
