@@ -468,7 +468,6 @@ $(document).ready(function () {
         $(this).removeClass("is-invalid");
         $(".jumlah_bayar").remove();
     });
-
 });
 //Hendler Icon Material Date Time
 let monthBefore = $(".dtp-select-month-before .material-icons");

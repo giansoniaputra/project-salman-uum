@@ -3,8 +3,13 @@
 <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
 <div id="pesan" data-flash="{{ session('success') }}"></div>
 <div class="col-12">
+    @if ($modal->modal==0)
+    <button type="button" class="btn btn-rounded btn-primary mb-3" id="button-no-modal"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i>
+        </span>Tambah Data Penjualan</button>
+    @else
     <a href="/pembelian/create" class="btn btn-rounded btn-primary mb-3"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i>
         </span>Tambah Data Pembelian</a>
+    @endif
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">Data Transaksi Pembelian</h4>

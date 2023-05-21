@@ -330,6 +330,15 @@ $(document).ready(function () {
             $("#no_telepon").val("");
         }
     });
+    $("#button-no-modal").on('click',function(){
+        //Alert jika modal 0
+        Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Anda Belum Memasukan Modal, Silahkan Input Modal',
+        footer: '<a href="/modal">Input Modal Disini</a>'
+        })
+    })
 });
 
 function previewImageBPKB() {
