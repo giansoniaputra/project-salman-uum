@@ -17,10 +17,6 @@ class ModalController extends Controller
     public function index()
     {
         $modal = Modal::first();
-        $jumlah_asset =  DB::table('bikes')
-            ->join('buys', 'bikes.id', '=', 'buys.bike_id')
-            ->where('bikes.status', 'READY STOCK')
-            ->sum('buys.harga_beli');
         $harga_beli = Sele::sum('harga_beli');
         $harga_jual = Sele::sum('harga_jual');
         $data = [
@@ -29,8 +25,8 @@ class ModalController extends Controller
             'breadcumb1' => 'Modal',
             'breadcumb2' => 'Informasi Modal',
             'data' => $modal,
-            'bike_sele' => $jumlah_asset,
-            'sisa_modal' => $modal->modal - $jumlah_asset,
+            'bike_sele' => Modal::jumlah_asset(),
+            'sisa_modal' => $modal->modal - Modal::jumlah_asset(),
             'laba' => $harga_jual - $harga_beli,
             'jumlah_unit' => Bike::where('status', 'READY STOCK')->count('id')
         ];

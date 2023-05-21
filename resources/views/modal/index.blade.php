@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="progress  rounded-0" style="height:4px;">
-                                <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: {{ $bike_sele/($bike_sele+$sisa_modal) }}%; height:4px;" role="progressbar">
+                                <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 90%; height:4px;" role="progressbar">
                                     <span class="sr-only">90% Complete</span>
                                 </div>
                             </div>

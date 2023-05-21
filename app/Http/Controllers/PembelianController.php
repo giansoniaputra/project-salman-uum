@@ -162,6 +162,18 @@ class PembelianController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
+            // Ambil Modal
+            $modal = Modal::first();
+            //Ambil semua asset
+            $asset = Modal::jumlah_asset();
+            //Jika Modal tidak mencukupi
+            if (($modal->modal - $asset) < preg_replace('/[,]/', '', $request->harga_beli)) {
+                return redirect()
+                    ->back()
+                    ->with('error', 'Modal tidak mencukupi')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
             //JIKA SEMUA SUDAH TERVALIDASI------------------
             //Cek apakah ada data costumer individu yang terdaftar di database
             $consumer = Consumer::where('nama', '=', $request->nama)->where('nik', '=', $request->nik)->first();
