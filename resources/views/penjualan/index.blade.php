@@ -79,20 +79,22 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <div class="form-row">
-                                        <label class="text-label" for="nama_pembeli">Nama Pembeli</label><span
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="nik">NIK</label><span
                                             class="text-danger">*</span>
-                                        <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control"
-                                            placeholder="Masukan Nama Pembeli">
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control input-default"
+                                                    placeholder="Masukan No NIK KTP" name="nik" id="nik">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-lg-12 mb-3">
                                         <div class="form-row">
                                             <label class="text-label" for="nama_pembeli">Nama Pembeli</label><span
                                                 class="text-danger">*</span>
                                             <input type="text" name="nama_pembeli" id="nama_pembeli"
-                                                placeholder="Masukan Nama Pembeli" class="form-control">
+                                                class="form-control" placeholder="Masukan Nama Pembeli">
                                         </div>
                                     </div>
                                     <div class="col-lg-12 mb-3">
@@ -103,27 +105,41 @@
                                                 <textarea class="form-control input-default" rows="2" name="alamat" id="alamat"
                                                     placeholder="Masukan Alamat"></textarea>
                                             </div>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="photo-ktp"
-                                                    id="photo-ktp" onchange="previewImageKTP()">
-                                                <label class="custom-file-label">Pilih Gambar</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="alamat">Upload Foto KTP</label>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Upload</span>
+                                                </div>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" name="photo-ktp"
+                                                        id="photo-ktp" onchange="previewImageKTP()">
+                                                    <label class="custom-file-label">Pilih Gambar</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-12 mb-3 text-center" id="img-ktp">
-                                    <img src="/storage/ktp/default.png" alt="" class="img-fluid" width="200px">
-                                    <br>
-                                    <input type="hidden" name="photo_ktp" id="photo_ktp">
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tanggal_jual">Tanggal Penjualan</label><span
-                                        class="text-danger">*</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text"><i
-                                                        class="flaticon-381-calendar-1"></i></span>
+                                    <div class="col-lg-12 mb-3 text-center" id="img-ktp">
+                                        <img src="/storage/ktp/default.png" alt="" class="img-fluid"
+                                            width="200px">
+                                        <br>
+                                        <input type="hidden" name="photo_ktp" id="photo_ktp">
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="text-label" for="tanggal_jual">Tanggal Penjualan</label><span
+                                            class="text-danger">*</span>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <div class="input-group-append input-primary">
+                                                    <span class="input-group-text"><i
+                                                            class="flaticon-381-calendar-1"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control input-default"
+                                                    placeholder="Masukan Tanggal Penjualan" name="tanggal_jual"
+                                                    id="tanggal_jual">
                                             </div>
                                         </div>
                                     </div>
@@ -240,8 +256,7 @@
                                                     <span class="input-group-text">Rp.</span>
                                                 </div>
                                                 <input type="text" class="form-control input-default money"
-                                                    name="dp_bayar" id="dp_bayar" placeholder="Masukan DP Bayar"
-                                                    readonly style="">
+                                                    name="dp_bayar" id="dp_bayar" readonly style="">
                                             </div>
                                         </div>
                                     </div>
@@ -254,8 +269,7 @@
                                                     <span class="input-group-text">Rp.</span>
                                                 </div>
                                                 <input type="text" class="form-control input-default money"
-                                                    name="pencairan" id="pencairan" placeholder="Masukan Pencairan"
-                                                    readonly style="">
+                                                    name="pencairan" id="pencairan" readonly style="">
                                             </div>
                                         </div>
                                     </div>
@@ -268,8 +282,7 @@
                                                     <span class="input-group-text">Rp.</span>
                                                 </div>
                                                 <input type="text" class="form-control input-default money"
-                                                    name="angsuran" id="angsuran" placeholder="Masukan Angsuran"
-                                                    readonly style="">
+                                                    name="angsuran" id="angsuran" readonly style="">
                                             </div>
                                         </div>
                                     </div>
@@ -282,8 +295,7 @@
                                                     <span class="input-group-text">Rp.</span>
                                                 </div>
                                                 <input type="text" class="form-control input-default money"
-                                                    name="tenor" id="tenor" placeholder="Masukan Tenor" readonly
-                                                    style="">
+                                                    name="tenor" id="tenor" readonly style="">
                                             </div>
                                         </div>
                                     </div>
@@ -296,8 +308,7 @@
                                                     <span class="input-group-text">Rp.</span>
                                                 </div>
                                                 <input type="text" class="form-control input-default money"
-                                                    name="komisi" id="komisi" placeholder="Masukan Komisi" readonly
-                                                    style="">
+                                                    name="komisi" id="komisi" readonly style="">
                                             </div>
                                         </div>
                                     </div>
@@ -349,8 +360,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
     {{-- Simple Money Format --}}
