@@ -24,10 +24,10 @@ class ModalController extends Controller
         $harga_beli = Sele::sum('harga_beli');
         $harga_jual = Sele::sum('harga_jual');
         $data = [
-            'title' => 'Halaman Modal | SMAC',
-            'judul' => 'Halaman Modal',
+            'title' => 'Informasi Modal | SMAC',
+            'judul' => 'Informasi Modal',
             'breadcumb1' => 'Modal',
-            'breadcumb2' => 'Halaman Modal',
+            'breadcumb2' => 'Informasi Modal',
             'data' => $modal,
             'bike_sele' => $jumlah_asset,
             'sisa_modal' => $modal->modal - $jumlah_asset,

@@ -32,6 +32,11 @@
                                             class="btn-icon-left text-danger"><i class="fa fa-download color-danger"></i>
                                         </span>PDF</button>
                                 </div>
+                                <div class="input-group-prepend ml-3 mr-3">
+                                    <button type="button" class="btn btn-rounded btn-primary"><span
+                                            class="btn-icon-left text-primary"><i class="fa fa-print color-danger"></i>
+                                        </span>Print</button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 mt-5">
@@ -63,6 +68,11 @@
                                             class="btn-icon-left text-danger"><i class="fa fa-download color-danger"></i>
                                         </span>PDF</button>
                                 </div>
+                                <div class="input-group-prepend ml-3 mr-3">
+                                    <button type="button" class="btn btn-rounded btn-primary"><span
+                                            class="btn-icon-left text-primary"><i class="fa fa-print color-danger"></i>
+                                        </span>Print</button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 mt-5">
@@ -82,6 +92,11 @@
                                     <button type="button" class="btn btn-rounded btn-danger"><span
                                             class="btn-icon-left text-danger"><i class="fa fa-download color-danger"></i>
                                         </span>PDF</button>
+                                </div>
+                                <div class="input-group-prepend ml-3 mr-3">
+                                    <button type="button" class="btn btn-rounded btn-primary"><span
+                                            class="btn-icon-left text-primary"><i class="fa fa-print color-danger"></i>
+                                        </span>Print</button>
                                 </div>
                             </div>
                         </div>

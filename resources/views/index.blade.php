@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="progress  rounded-0" style="height:4px;">
-                    <div class="progress-bar rounded-0 bg-red progress-animated" style="width: 50%; height:4px;"
+                    <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 50%; height:4px;"
                         role="progressbar">
                         <span class="sr-only">50% Complete</span>
                     </div>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="progress  rounded-0" style="height:4px;">
-                    <div class="progress-bar rounded-0 bg-red progress-animated" style="width: 90%; height:4px;"
+                    <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 90%; height:4px;"
                         role="progressbar">
                         <span class="sr-only">90% Complete</span>
                     </div>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="progress  rounded-0" style="height:4px;">
-                    <div class="progress-bar rounded-0 bg-red progress-animated" style="width: 30%; height:4px;"
+                    <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 30%; height:4px;"
                         role="progressbar">
                         <span class="sr-only">30% Complete</span>
                     </div>
@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="progress  rounded-0" style="height:4px;">
-                    <div class="progress-bar rounded-0 bg-red progress-animated" style="width: 94%; height:4px;"
+                    <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 94%; height:4px;"
                         role="progressbar">
                         <span class="sr-only">94% Complete</span>
                     </div>
