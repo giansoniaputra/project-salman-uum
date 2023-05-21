@@ -11,8 +11,7 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/datatablesPembelian",
-        columns: [
-            {
+        columns: [{
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 },
@@ -41,7 +40,9 @@ $(document).ready(function () {
                 searchable: true,
             },
         ],
-        order: [[0, "desc"]],
+        order: [
+            [0, "desc"]
+        ],
     });
     // RESET
     // $("#nik").on('click', function () {
@@ -173,13 +174,13 @@ $(document).ready(function () {
                 $("#berlaku-sampai").html(response.success.berlaku_sampai);
                 $("#foto-bpkb").html(
                     '<button data-img="/storage/' +
-                        response.success.motor.photo_bpkb +
-                        '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
+                    response.success.motor.photo_bpkb +
+                    '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
                 );
                 $("#foto-stnk").html(
                     '<button data-img="/storage/' +
-                        response.success.motor.photo_stnk +
-                        '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
+                    response.success.motor.photo_stnk +
+                    '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
                 );
 
                 $("#tanggal-beli").html(response.success.tanggal_beli);
@@ -189,32 +190,32 @@ $(document).ready(function () {
     });
 
     let monthBefore = $(".dtp-select-month-before .material-icons");
-    monthBefore.addClass("flaticon-381-back-2 text-white");
+    monthBefore.addClass("fa fa-arrow-left fa-lg text-white");
     monthBefore.removeClass("material-icons");
     monthBefore.html("");
 
     let yearBefore = $(".dtp-select-year-before .material-icons");
-    yearBefore.addClass("flaticon-381-back-2 text-white");
+    yearBefore.addClass("fa fa-arrow-left fa-lg text-white");
     yearBefore.removeClass("material-icons");
     yearBefore.html("");
 
     let monthAfter = $(".dtp-select-month-after .material-icons");
-    monthAfter.addClass("flaticon-381-next-1 text-white");
+    monthAfter.addClass("fa fa-arrow-right fa-lg text-white");
     monthAfter.removeClass("material-icons");
     monthAfter.html("");
 
     let yearAfter = $(".dtp-select-year-after .material-icons");
-    yearAfter.addClass("flaticon-381-next-1 text-white");
+    yearAfter.addClass("fa fa-arrow-right fa-lg text-white");
     yearAfter.removeClass("material-icons");
     yearAfter.html("");
 
     let yearRangeBefore = $(".dtp-select-year-range.before .material-icons");
-    yearRangeBefore.addClass("flaticon-381-upload-1 text-dark");
+    yearRangeBefore.addClass("fa fa-arrow-up fa-lg text-dark");
     yearRangeBefore.removeClass("material-icons");
     yearRangeBefore.html("");
 
     let yearRangeAfter = $(".dtp-select-year-range.after .material-icons");
-    yearRangeAfter.addClass("flaticon-381-download text-dark");
+    yearRangeAfter.addClass("fa fa-arrow-down fa-lg text-dark");
     yearRangeAfter.removeClass("material-icons");
     yearRangeAfter.html("");
 
@@ -256,8 +257,8 @@ $(document).ready(function () {
         // alert(image);
         $("#img-photo").html(
             '<img src="' +
-                image +
-                '" alt="" class="img-fluid" style="width: 800px">'
+            image +
+            '" alt="" class="img-fluid" style="width: 800px">'
         );
         $("#judul-modal-photo").html("Photo STNK");
         $("#modal-image").modal("show");
@@ -268,8 +269,8 @@ $(document).ready(function () {
         // alert(image);
         $("#img-photo").html(
             '<img src="' +
-                image +
-                '" alt="" class="img-fluid" style="width: 800px">'
+            image +
+            '" alt="" class="img-fluid" style="width: 800px">'
         );
         $("#judul-modal-photo").html("Photo BPKB");
         $("#modal-image").modal("show");
@@ -322,6 +323,7 @@ function previewImageBPKB() {
         imgPre.src = oFREvent.target.result;
     };
 }
+
 function previewImageKTP() {
     const image = document.querySelector("#photo_ktp");
     const imgPre = document.querySelector(".image-ktp");

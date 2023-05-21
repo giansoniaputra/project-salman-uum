@@ -121,7 +121,7 @@ class MaintenanceController extends Controller
             ];
             Buy::where('bike_id', $request->bike_id)->update($refresh);
 
-            return response()->json(['success' => 'Berhasil Melakukan Diupdate', 'refresh' => $refresh]);
+            return response()->json(['success' => 'Berhasil Melakukan Update', 'refresh' => $refresh]);
         }
     }
 

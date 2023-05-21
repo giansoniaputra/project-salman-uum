@@ -11,14 +11,11 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/dataTablesReady",
-        columnDefs: [
-            {
-                targets: [5], // index kolom atau sel yang ingin diatur
-                className: "status-motor", // kelas CSS untuk memposisikan isi ke tengah
-            },
-        ],
-        columns: [
-            {
+        columnDefs: [{
+            targets: [5], // index kolom atau sel yang ingin diatur
+            className: "status-motor", // kelas CSS untuk memposisikan isi ke tengah
+        }, ],
+        columns: [{
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 },
@@ -49,7 +46,9 @@ $(document).ready(function () {
                 searchable: true,
             },
         ],
-        order: [[0, "desc"]],
+        order: [
+            [0, "desc"]
+        ],
     });
 
     var table2 = $("#dataTables2").DataTable({
@@ -64,14 +63,11 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/dataTablesTerjual",
-        columnDefs: [
-            {
-                targets: [5], // index kolom atau sel yang ingin diatur
-                className: "status-motor", // kelas CSS untuk memposisikan isi ke tengah
-            },
-        ],
-        columns: [
-            {
+        columnDefs: [{
+            targets: [5], // index kolom atau sel yang ingin diatur
+            className: "status-motor", // kelas CSS untuk memposisikan isi ke tengah
+        }, ],
+        columns: [{
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 },
@@ -99,7 +95,9 @@ $(document).ready(function () {
                 searchable: true,
             },
         ],
-        order: [[0, "desc"]],
+        order: [
+            [0, "desc"]
+        ],
     });
 
     $("#dataTables").on("click", ".info-motor-button", function () {
@@ -125,13 +123,13 @@ $(document).ready(function () {
                 $("#berlaku-sampai").html(response.success.berlaku_sampai);
                 $("#foto-bpkb").html(
                     '<button data-img="/storage/' +
-                        response.success.photo_bpkb +
-                        '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
+                    response.success.photo_bpkb +
+                    '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
                 );
                 $("#foto-stnk").html(
                     '<button data-img="/storage/' +
-                        response.success.photo_stnk +
-                        '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
+                    response.success.photo_stnk +
+                    '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
                 );
             },
         });
@@ -159,13 +157,13 @@ $(document).ready(function () {
                 $("#berlaku-sampai").html(response.success.berlaku_sampai);
                 $("#foto-bpkb").html(
                     '<button data-img="/storage/' +
-                        response.success.photo_bpkb +
-                        '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
+                    response.success.photo_bpkb +
+                    '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
                 );
                 $("#foto-stnk").html(
                     '<button data-img="/storage/' +
-                        response.success.photo_stnk +
-                        '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
+                    response.success.photo_stnk +
+                    '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
                 );
             },
         });
@@ -180,8 +178,8 @@ $(document).ready(function () {
         // alert(image);
         $("#img-photo").html(
             '<img src="' +
-                image +
-                '" alt="" class="img-fluid" style="width: 800px">'
+            image +
+            '" alt="" class="img-fluid" style="width: 800px">'
         );
         $("#judul-modal-photo").html("Photo STNK");
         $("#modal-image").modal("show");
@@ -192,8 +190,8 @@ $(document).ready(function () {
         // alert(image);
         $("#img-photo").html(
             '<img src="' +
-                image +
-                '" alt="" class="img-fluid" style="width: 800px">'
+            image +
+            '" alt="" class="img-fluid" style="width: 800px">'
         );
         $("#judul-modal-photo").html("Photo BPKB");
         $("#modal-image").modal("show");
@@ -207,7 +205,9 @@ $(document).ready(function () {
     $("#dataTables").on("click", ".perbaikan-motor-button", function () {
         let id = $(this).attr("data-id");
         $.ajax({
-            data: { id: id },
+            data: {
+                id: id
+            },
             url: "/getDataMotor",
             type: "GET",
             dataType: "json",
@@ -220,9 +220,9 @@ $(document).ready(function () {
                         currency: "IDR",
                         minimumFractionDigits: 0,
                     })
-                        .format(response.success.harga_beli)
-                        .replace("Rp", "")
-                        .replace(/\./g, ",")
+                    .format(response.success.harga_beli)
+                    .replace("Rp", "")
+                    .replace(/\./g, ",")
                 );
             },
         });
@@ -282,14 +282,11 @@ $(document).ready(function () {
                 d.id = $("#bike_id").val();
             },
         },
-        columnDefs: [
-            {
-                targets: [2], // index kolom atau sel yang ingin diatur
-                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
-            },
-        ],
-        columns: [
-            {
+        columnDefs: [{
+            targets: [2], // index kolom atau sel yang ingin diatur
+            className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
+        }, ],
+        columns: [{
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 },
@@ -340,9 +337,9 @@ $(document).ready(function () {
                             currency: "IDR",
                             minimumFractionDigits: 0,
                         })
-                            .format(response.refresh.harga_beli)
-                            .replace("Rp", "")
-                            .replace(/\./g, ",")
+                        .format(response.refresh.harga_beli)
+                        .replace("Rp", "")
+                        .replace(/\./g, ",")
                     );
                     Swal.fire("Good job!", response.success, "success");
                 }
@@ -356,9 +353,9 @@ $(document).ready(function () {
         ".edit-maintenance-button",
         function () {
             let btn_cencel =
-                '<button type="button" class="btn btn-rounded btn-warning btn-cencel-update"><span class="btn-icon-left text-danger"><i class="fa fa-close color-danger"></i></span>Batal Edit</button>';
+                '<button type="button" class="btn btn-rounded btn-warning btn-cencel-update"><span class="btn-icon-left text-warning"><i class="fa fa-close color-warning"></i></span><span class="text-white">Batal Edit</span></button>';
             let btn_update =
-                '<button type="button" class="btn btn-rounded btn-primary" id="update-data"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i></span>Update</button>';
+                '<button type="button" class="btn btn-rounded btn-primary" id="update-data"><span class="btn-icon-left text-primary"><i class="fa fa-pencil color-primary"></i></span>Ubah</button>';
             $(".method").html(
                 '<input type="hidden" name="_method" value="PUT">'
             );
@@ -368,7 +365,9 @@ $(document).ready(function () {
             let unique = $(this).attr("data-unique");
             NProgress.start();
             $.ajax({
-                data: { unique: unique },
+                data: {
+                    unique: unique
+                },
                 url: "/getDataMaintenance",
                 type: "GET",
                 dataType: "json",
@@ -383,9 +382,9 @@ $(document).ready(function () {
                             currency: "IDR",
                             minimumFractionDigits: 0,
                         })
-                            .format(response.success.biaya)
-                            .replace("Rp", "")
-                            .replace(/\./g, ",")
+                        .format(response.success.biaya)
+                        .replace("Rp", "")
+                        .replace(/\./g, ",")
                     );
                     $("#current_unique").val(response.success.unique);
                     NProgress.done();
@@ -443,9 +442,9 @@ $(document).ready(function () {
                             currency: "IDR",
                             minimumFractionDigits: 0,
                         })
-                            .format(response.refresh.harga_beli)
-                            .replace("Rp", "")
-                            .replace(/\./g, ",")
+                        .format(response.refresh.harga_beli)
+                        .replace("Rp", "")
+                        .replace(/\./g, ",")
                     );
                     $(".method").html("");
                     Swal.fire("Good job!", response.success, "success");
@@ -502,9 +501,9 @@ $(document).ready(function () {
                                     currency: "IDR",
                                     minimumFractionDigits: 0,
                                 })
-                                    .format(response.refresh.harga_beli)
-                                    .replace("Rp", "")
-                                    .replace(/\./g, ",")
+                                .format(response.refresh.harga_beli)
+                                .replace("Rp", "")
+                                .replace(/\./g, ",")
                             );
                             Swal.fire("Deleted!", response.success, "success");
                         },
@@ -560,4 +559,33 @@ $(document).ready(function () {
             });
         });
     }
+    let monthBefore = $(".dtp-select-month-before .material-icons");
+    monthBefore.addClass("fa fa-arrow-left fa-lg text-white");
+    monthBefore.removeClass("material-icons");
+    monthBefore.html("");
+
+    let yearBefore = $(".dtp-select-year-before .material-icons");
+    yearBefore.addClass("fa fa-arrow-left fa-lg text-white");
+    yearBefore.removeClass("material-icons");
+    yearBefore.html("");
+
+    let monthAfter = $(".dtp-select-month-after .material-icons");
+    monthAfter.addClass("fa fa-arrow-right fa-lg text-white");
+    monthAfter.removeClass("material-icons");
+    monthAfter.html("");
+
+    let yearAfter = $(".dtp-select-year-after .material-icons");
+    yearAfter.addClass("fa fa-arrow-right fa-lg text-white");
+    yearAfter.removeClass("material-icons");
+    yearAfter.html("");
+
+    let yearRangeBefore = $(".dtp-select-year-range.before .material-icons");
+    yearRangeBefore.addClass("fa fa-arrow-up fa-lg text-dark");
+    yearRangeBefore.removeClass("material-icons");
+    yearRangeBefore.html("");
+
+    let yearRangeAfter = $(".dtp-select-year-range.after .material-icons");
+    yearRangeAfter.addClass("fa fa-arrow-down fa-lg text-dark");
+    yearRangeAfter.removeClass("material-icons");
+    yearRangeAfter.html("");
 });

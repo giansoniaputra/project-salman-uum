@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>{{$title}}</title>
+    <title>{{ $title }}</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
     <!-- Datatable -->
@@ -29,7 +29,7 @@
     <link href="/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
 
-    
+
     {{-- JQuery --}}
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link
@@ -63,9 +63,9 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
+            <a href="/" class="brand-logo">
                 <img class="logo-abbr" src="/images/logo.png" alt="">
-                
+
                 <img class="logo-compact" src="/images/smac with subtext transparent gede.png" alt="">
                 <img class="brand-title" src="/images/smac with subtext transparent gede.png" alt="">
             </a>
@@ -101,7 +101,8 @@
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
                                     <div class="header-info">
-                                        <span class="text-black">Halo, <strong>{{ auth()->user()->name }}</strong></span>
+                                        <span class="text-black">Halo,
+                                            <strong>{{ auth()->user()->name }}</strong></span>
                                         <p class="fs-12 mb-0">{{ auth()->user()->roles }}</p>
                                     </div>
                                     <img src="/images/profile/IMG_7064 (Custom).jpg" class="rounded-circle user_img"
@@ -125,7 +126,8 @@
                                             stroke-linejoin="round">
                                             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                             <polyline points="16 17 21 12 16 7"></polyline>
-                                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                                            <line x1="21" y1="12" x2="9" y2="12">
+                                            </line>
                                         </svg>
                                         <span class="ml-2">Logout </span>
                                     </a>
@@ -156,7 +158,7 @@
 
                 </div>
 
-                
+
 
                 <!-- row -->
                 @yield('container')
@@ -210,15 +212,15 @@
     <script src="/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Form validate init -->
     <script src="/js/plugins-init/jquery.validate-init.js"></script>
-   <!-- Form Steps -->
-	<script src="/vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js"></script>
-	
-	<script>
-		$(document).ready(function(){
-			// SmartWizard initialize
-			$('#smartwizard').smartWizard(); 
-		});
-	</script>
+    <!-- Form Steps -->
+    <script src="/vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // SmartWizard initialize
+            $('#smartwizard').smartWizard();
+        });
+    </script>
 
     <!-- Daterangepicker -->
     <!-- momment js is must -->

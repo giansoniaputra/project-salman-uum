@@ -15,7 +15,7 @@ class SettingController extends Controller
             'title' => 'Setting | SMAC',
             'judul' => 'Setting',
             'breadcumb1' => 'Setting',
-            'breadcumb2' => 'Ubah Setting',
+            'breadcumb2' => 'Detail Setting',
         ];
         return view('setting.index', $data);
     }

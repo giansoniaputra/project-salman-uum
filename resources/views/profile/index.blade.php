@@ -32,7 +32,7 @@
                                     <form action="#">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">Ubah Foto Profile</span>
+                                                <span class="input-group-text">Edit Foto Profile</span>
                                             </div>
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input">
@@ -43,7 +43,10 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Ubah Profile</button>
+                                        <button type="submit" class="btn btn-rounded btn-primary"><span
+                                                class="btn-icon-left text-primary"><i
+                                                    class="flaticon-381-edit-1 color-primary"></i>
+                                            </span>Edit Profile</button>
                                     </div>
                                 </div>
                             </form>

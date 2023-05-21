@@ -11,8 +11,7 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/dataTablesPenjualan",
-        columns: [
-            {
+        columns: [{
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 },
@@ -38,7 +37,9 @@ $(document).ready(function () {
                 searchable: true,
             },
         ],
-        order: [[0, "desc"]],
+        order: [
+            [0, "desc"]
+        ],
     });
     //LOAD CONTENT CASH
     $("#jenis_pembayaran").on("change", function () {
@@ -144,8 +145,8 @@ $(document).ready(function () {
                     inputElement.addClass("is-invalid");
                     let feedbackElement = $(
                         '<div class="invalid-feedback ml-2 jumlah_bayar">' +
-                            response.error +
-                            "</div>"
+                        response.error +
+                        "</div>"
                     );
                     inputElement.after(feedbackElement);
                 } else if (response.success) {
@@ -163,7 +164,9 @@ $(document).ready(function () {
             '<input type="hidden" name="current_id" value="' + id + '">'
         );
         $.ajax({
-            data: { id: id },
+            data: {
+                id: id
+            },
             url: "/ambilDataPenjualan",
             type: "GET",
             dataType: "json",
@@ -224,8 +227,8 @@ $(document).ready(function () {
                     inputElement.addClass("is-invalid");
                     let feedbackElement = $(
                         '<div class="invalid-feedback ml-2 jumlah_bayar">' +
-                            response.error +
-                            "</div>"
+                        response.error +
+                        "</div>"
                     );
                     inputElement.after(feedbackElement);
                 } else if (response.success) {
@@ -327,34 +330,34 @@ $(document).ready(function () {
         $(this).removeClass("is-invalid");
         $(".jumlah_bayar").remove();
     });
+
+    let monthBefore = $(".dtp-select-month-before .material-icons");
+    monthBefore.addClass("fa fa-arrow-left fa-lg text-white");
+    monthBefore.removeClass("material-icons");
+    monthBefore.html("");
+
+    let yearBefore = $(".dtp-select-year-before .material-icons");
+    yearBefore.addClass("fa fa-arrow-left fa-lg text-white");
+    yearBefore.removeClass("material-icons");
+    yearBefore.html("");
+
+    let monthAfter = $(".dtp-select-month-after .material-icons");
+    monthAfter.addClass("fa fa-arrow-right fa-lg text-white");
+    monthAfter.removeClass("material-icons");
+    monthAfter.html("");
+
+    let yearAfter = $(".dtp-select-year-after .material-icons");
+    yearAfter.addClass("fa fa-arrow-right fa-lg text-white");
+    yearAfter.removeClass("material-icons");
+    yearAfter.html("");
+
+    let yearRangeBefore = $(".dtp-select-year-range.before .material-icons");
+    yearRangeBefore.addClass("fa fa-arrow-up fa-lg text-dark");
+    yearRangeBefore.removeClass("material-icons");
+    yearRangeBefore.html("");
+
+    let yearRangeAfter = $(".dtp-select-year-range.after .material-icons");
+    yearRangeAfter.addClass("fa fa-arrow-down fa-lg text-dark");
+    yearRangeAfter.removeClass("material-icons");
+    yearRangeAfter.html("");
 });
-
-let monthBefore = $(".dtp-select-month-before .material-icons");
-monthBefore.addClass("flaticon-381-back-2 text-white");
-monthBefore.removeClass("material-icons");
-monthBefore.html("");
-
-let yearBefore = $(".dtp-select-year-before .material-icons");
-yearBefore.addClass("flaticon-381-back-2 text-white");
-yearBefore.removeClass("material-icons");
-yearBefore.html("");
-
-let monthAfter = $(".dtp-select-month-after .material-icons");
-monthAfter.addClass("flaticon-381-next-1 text-white");
-monthAfter.removeClass("material-icons");
-monthAfter.html("");
-
-let yearAfter = $(".dtp-select-year-after .material-icons");
-yearAfter.addClass("flaticon-381-next-1 text-white");
-yearAfter.removeClass("material-icons");
-yearAfter.html("");
-
-let yearRangeBefore = $(".dtp-select-year-range.before .material-icons");
-yearRangeBefore.addClass("flaticon-381-upload-1 text-dark");
-yearRangeBefore.removeClass("material-icons");
-yearRangeBefore.html("");
-
-let yearRangeAfter = $(".dtp-select-year-range.after .material-icons");
-yearRangeAfter.addClass("flaticon-381-download text-dark");
-yearRangeAfter.removeClass("material-icons");
-yearRangeAfter.html("");
