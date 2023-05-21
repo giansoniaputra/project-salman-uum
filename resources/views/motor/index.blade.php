@@ -198,145 +198,145 @@
             </div>
         </div>
     </div>
-
-    {{-- Modal --}}
-    <div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modal-perbaikan-motor">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Maintenance Motor</h5>
-                    <button type="button" class="close btn-close-maintenance" data-dismiss="modal"><span>&times;</span>
-                    </button>
-                </div>
-                <form action="javascript:;">
-                    @csrf
-                    <div class="modal-body p-1">
-                        <div class="col-xl-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="basic-form">
-                                        <input type="hidden" name="bike_id" id="bike_id" value="0">
-                                        <input type="hidden" name="current_unique" id="current_unique">
-                                        <div class="method"></div>
-                                        <div class="form-row mb-3">
-                                            <div class="col-md-12">
-                                                <label class="text-label" for="no_polisi">No Polisi</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control input-default" id="no_polisi" readonly style="background-color: rgba(215, 218, 227, 0.3)">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row mb-3">
-                                            <div class="col-md-12">
-                                                <label class="text-label" for="merek">Merk</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control input-default" id="merek" readonly style="background-color: rgba(215, 218, 227, 0.3)">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row mb-3">
-                                            <label class="text-label" for="harga_beli">Harga Beli</label>
+</div>
+{{-- Modal --}}
+<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modal-perbaikan-motor">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Maintenance Motor</h5>
+                <button type="button" class="close btn-close-maintenance" data-dismiss="modal"><span>&times;</span>
+                </button>
+            </div>
+            <form action="javascript:;">
+                @csrf
+                <div class="modal-body p-1">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <input type="hidden" name="bike_id" id="bike_id" value="0">
+                                    <input type="hidden" name="current_unique" id="current_unique">
+                                    <div class="method"></div>
+                                    <div class="form-row mb-3">
+                                        <div class="col-md-12">
+                                            <label class="text-label" for="no_polisi">No Polisi</label>
                                             <div class="input-group">
-                                                <div class="input-group-append input-primary">
-                                                    <span class="input-group-text">Rp.</span>
-                                                </div>
-                                                <input type="text" class="form-control input-default money" name="harga_beli" id="harga_beli" readonly style="background-color: rgba(215, 218, 227, 0.3)">
-
-                                            </div>
-                                        </div>
-                                        <div class="form-row mb-3">
-                                            <label class="text-label" for="jenis_perbaikan">Jenis Maintenance</label>
-                                            <div class="input-group">
-                                                <div class="input-group-append input-primary">
-                                                    <span class="input-group-text"><i class="la la-screwdriver"></i></span>
-                                                </div>
-                                                <input type="text" class="form-control input-default" placeholder="Masukan Jenis Maintenance" id="jenis_perbaikan" name="jenis_perbaikan">
-                                            </div>
-                                        </div>
-                                        <div class="form-row mb-3">
-                                            <label class="text-label" for="tanggal_perbaikan">Tanggal
-                                                Maintenance</label>
-                                            <div class="input-group">
-                                                <div class="input-group-append input-primary">
-                                                    <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
-                                                </div>
-                                                <input type="text" class="form-control input-default" placeholder="Masukan Tanggal Penjualan" name="tanggal_perbaikan" id="tanggal_perbaikan">
-                                            </div>
-                                        </div>
-                                        <div class="form-row mb-3">
-                                            <label class="text-label" for="biaya">Biaya</label>
-                                            <div class="input-group">
-                                                <div class="input-group-append input-primary">
-                                                    <span class="input-group-text">Rp.</span>
-                                                </div>
-                                                <input type="text" class="form-control input-default money" placeholder="Masukan Biaya" name="biaya" id="biaya">
-
+                                                <input type="text" class="form-control input-default" id="no_polisi" readonly style="background-color: rgba(215, 218, 227, 0.3)">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-12">
-                            <div class="tab-pane fade show active" id="tersedia" role="tabpanel">
-                                <div class="pt-4">
-                                    <div class="col-12">
-                                        <div class="table-responsive">
-                                            <table id="dataTablesMaintenance" class="display min-w850 text-center">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No</th>
-                                                        <th>Tanggal Maintenance</th>
-                                                        <th>Jenis Maintenance</th>
-                                                        <th>Biaya</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>No</th>
-                                                        <th>Tanggal Maintenance</th>
-                                                        <th>Jenis Maintenance</th>
-                                                        <th>Biaya</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </tfoot>
-                                            </table>
+                                    <div class="form-row mb-3">
+                                        <div class="col-md-12">
+                                            <label class="text-label" for="merek">Merk</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control input-default" id="merek" readonly style="background-color: rgba(215, 218, 227, 0.3)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mb-3">
+                                        <label class="text-label" for="harga_beli">Harga Beli</label>
+                                        <div class="input-group">
+                                            <div class="input-group-append input-primary">
+                                                <span class="input-group-text">Rp.</span>
+                                            </div>
+                                            <input type="text" class="form-control input-default money" name="harga_beli" id="harga_beli" readonly style="background-color: rgba(215, 218, 227, 0.3)">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-row mb-3">
+                                        <label class="text-label" for="jenis_perbaikan">Jenis Maintenance</label>
+                                        <div class="input-group">
+                                            <div class="input-group-append input-primary">
+                                                <span class="input-group-text"><i class="la la-screwdriver"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control input-default" placeholder="Masukan Jenis Maintenance" id="jenis_perbaikan" name="jenis_perbaikan">
+                                        </div>
+                                    </div>
+                                    <div class="form-row mb-3">
+                                        <label class="text-label" for="tanggal_perbaikan">Tanggal
+                                            Maintenance</label>
+                                        <div class="input-group">
+                                            <div class="input-group-append input-primary">
+                                                <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control input-default" placeholder="Masukan Tanggal Penjualan" name="tanggal_perbaikan" id="tanggal_perbaikan">
+                                        </div>
+                                    </div>
+                                    <div class="form-row mb-3">
+                                        <label class="text-label" for="biaya">Biaya</label>
+                                        <div class="input-group">
+                                            <div class="input-group-append input-primary">
+                                                <span class="input-group-text">Rp.</span>
+                                            </div>
+                                            <input type="text" class="form-control input-default money" placeholder="Masukan Biaya" name="biaya" id="biaya">
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer"></div>
-                </form>
+                    <div class="col-xl-12">
+                        <div class="tab-pane fade show active" id="tersedia" role="tabpanel">
+                            <div class="pt-4">
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <table id="dataTablesMaintenance" class="display min-w850 text-center">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Tanggal Maintenance</th>
+                                                    <th>Jenis Maintenance</th>
+                                                    <th>Biaya</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Tanggal Maintenance</th>
+                                                    <th>Jenis Maintenance</th>
+                                                    <th>Biaya</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{-- Modal Gambar --}}
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="modal-image">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header primary">
+                <h5 class="modal-title text-black" id="judul-modal-photo"></h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="img-photo" class="d-flex justify-content-center align-items-center"></div>
             </div>
         </div>
     </div>
+</div>
+{{-- Simple Money Format --}}
+<script src="/js/simple.money.format.js"></script>
+<script src="/js/simple.money.format.init.js"></script>
 
-    {{-- Modal Gambar --}}
-    <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="modal-image">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header primary">
-                    <h5 class="modal-title text-black" id="judul-modal-photo"></h5>
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div id="img-photo" class="d-flex justify-content-center align-items-center"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Simple Money Format --}}
-    <script src="/js/simple.money.format.js"></script>
-    <script src="/js/simple.money.format.init.js"></script>
-
-    {{-- !Simple Money Format --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
-    <script src="/js/page-script/motor.js"></script>
-    @endsection
+{{-- !Simple Money Format --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+<script src="/js/page-script/motor.js"></script>
+@endsection
