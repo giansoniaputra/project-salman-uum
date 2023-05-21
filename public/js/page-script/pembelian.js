@@ -11,22 +11,27 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/datatablesPembelian",
-        columns: [{
+        columns: [
+            {
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 },
+                orderable: false,
             },
             {
                 data: "nota",
             },
             {
                 data: "merek",
+                orderable: false,
             },
             {
                 data: "no_polisi",
+                orderable: false,
             },
             {
                 data: "warna",
+                orderable: false,
             },
             {
                 data: "tgl_beli",
@@ -36,13 +41,11 @@ $(document).ready(function () {
             },
             {
                 data: "action",
-                orderable: true,
+                orderable: false,
                 searchable: true,
             },
         ],
-        order: [
-            [0, "desc"]
-        ],
+        order: [[0, "desc"]],
     });
     // RESET
     // $("#nik").on('click', function () {
@@ -181,13 +184,13 @@ $(document).ready(function () {
                 $("#perpanjang-stnk").html(response.success.perpanjang_stnk);
                 $("#foto-bpkb").html(
                     '<button data-img="/storage/' +
-                    response.success.motor.photo_bpkb +
-                    '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
+                        response.success.motor.photo_bpkb +
+                        '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
                 );
                 $("#foto-stnk").html(
                     '<button data-img="/storage/' +
-                    response.success.motor.photo_stnk +
-                    '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
+                        response.success.motor.photo_stnk +
+                        '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
                 );
 
                 $("#tanggal-beli").html(response.success.tanggal_beli);
@@ -264,8 +267,8 @@ $(document).ready(function () {
         // alert(image);
         $("#img-photo").html(
             '<img src="' +
-            image +
-            '" alt="" class="img-fluid" style="width: 800px">'
+                image +
+                '" alt="" class="img-fluid" style="width: 800px">'
         );
         $("#judul-modal-photo").html("Photo STNK");
         $("#modal-image").modal("show");
@@ -276,8 +279,8 @@ $(document).ready(function () {
         // alert(image);
         $("#img-photo").html(
             '<img src="' +
-            image +
-            '" alt="" class="img-fluid" style="width: 800px">'
+                image +
+                '" alt="" class="img-fluid" style="width: 800px">'
         );
         $("#judul-modal-photo").html("Photo BPKB");
         $("#modal-image").modal("show");
@@ -330,15 +333,15 @@ $(document).ready(function () {
             $("#no_telepon").val("");
         }
     });
-    $("#button-no-modal").on('click',function(){
+    $("#button-no-modal").on("click", function () {
         //Alert jika modal 0
         Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Anda Belum Memasukan Modal, Silahkan Input Modal',
-        footer: '<a href="/modal">Input Modal Disini</a>'
-        })
-    })
+            icon: "error",
+            title: "Oops...",
+            text: "Anda Belum Memasukan Modal, Silahkan Input Modal",
+            footer: '<a href="/modal">Input Modal Disini</a>',
+        });
+    });
 });
 
 function previewImageBPKB() {

@@ -11,11 +11,14 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/dataTablesReady",
-        columnDefs: [{
-            targets: [5], // index kolom atau sel yang ingin diatur
-            className: "status-motor", // kelas CSS untuk memposisikan isi ke tengah
-        }, ],
-        columns: [{
+        columnDefs: [
+            {
+                targets: [5], // index kolom atau sel yang ingin diatur
+                className: "status-motor", // kelas CSS untuk memposisikan isi ke tengah
+            },
+        ],
+        columns: [
+            {
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 },
@@ -46,9 +49,7 @@ $(document).ready(function () {
                 searchable: true,
             },
         ],
-        order: [
-            [0, "desc"]
-        ],
+        order: [[0, "desc"]],
     });
 
     var table2 = $("#dataTables2").DataTable({
@@ -63,11 +64,14 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/dataTablesTerjual",
-        columnDefs: [{
-            targets: [5], // index kolom atau sel yang ingin diatur
-            className: "status-motor", // kelas CSS untuk memposisikan isi ke tengah
-        }, ],
-        columns: [{
+        columnDefs: [
+            {
+                targets: [5], // index kolom atau sel yang ingin diatur
+                className: "status-motor", // kelas CSS untuk memposisikan isi ke tengah
+            },
+        ],
+        columns: [
+            {
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 },
@@ -95,9 +99,7 @@ $(document).ready(function () {
                 searchable: true,
             },
         ],
-        order: [
-            [0, "desc"]
-        ],
+        order: [[0, "desc"]],
     });
 
     $("#dataTables").on("click", ".info-motor-button", function () {
@@ -124,13 +126,13 @@ $(document).ready(function () {
                 $("#perpanjang-stnk").html(response.success.perpanjang_stnk);
                 $("#foto-bpkb").html(
                     '<button data-img="/storage/' +
-                    response.success.photo_bpkb +
-                    '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
+                        response.success.photo_bpkb +
+                        '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
                 );
                 $("#foto-stnk").html(
                     '<button data-img="/storage/' +
-                    response.success.photo_stnk +
-                    '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
+                        response.success.photo_stnk +
+                        '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
                 );
             },
         });
@@ -159,13 +161,13 @@ $(document).ready(function () {
                 $("#perpanjang-stnk").html(response.success.perpanjang_stnk);
                 $("#foto-bpkb").html(
                     '<button data-img="/storage/' +
-                    response.success.photo_bpkb +
-                    '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
+                        response.success.photo_bpkb +
+                        '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
                 );
                 $("#foto-stnk").html(
                     '<button data-img="/storage/' +
-                    response.success.photo_stnk +
-                    '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
+                        response.success.photo_stnk +
+                        '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
                 );
             },
         });
@@ -180,8 +182,8 @@ $(document).ready(function () {
         // alert(image);
         $("#img-photo").html(
             '<img src="' +
-            image +
-            '" alt="" class="img-fluid" style="width: 800px">'
+                image +
+                '" alt="" class="img-fluid" style="width: 800px">'
         );
         $("#judul-modal-photo").html("Photo STNK");
         $("#modal-image").modal("show");
@@ -192,8 +194,8 @@ $(document).ready(function () {
         // alert(image);
         $("#img-photo").html(
             '<img src="' +
-            image +
-            '" alt="" class="img-fluid" style="width: 800px">'
+                image +
+                '" alt="" class="img-fluid" style="width: 800px">'
         );
         $("#judul-modal-photo").html("Photo BPKB");
         $("#modal-image").modal("show");
@@ -206,9 +208,15 @@ $(document).ready(function () {
     // MAINTENANCE
     $("#dataTables").on("click", ".perbaikan-motor-button", function () {
         let id = $(this).attr("data-id");
+        let btn_cencel =
+            '<button type="button" class="btn btn-rounded btn-danger btn-tutup-maintenance" data-dismiss="modal"><span class="btn-icon-left text-danger"><i class="fa fa-close color-danger"></i></span>Tutup</button>';
+        let btn_save =
+            '<button type="button" class="btn btn-rounded btn-primary" id="add-data"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i></span>Tambah</button>';
+        $("#modal-perbaikan-motor").modal("show");
+        $("#modal-perbaikan-motor .modal-footer").html(btn_cencel + btn_save);
         $.ajax({
             data: {
-                id: id
+                id: id,
             },
             url: "/getDataMotor",
             type: "GET",
@@ -222,9 +230,9 @@ $(document).ready(function () {
                         currency: "IDR",
                         minimumFractionDigits: 0,
                     })
-                    .format(response.success.harga_beli)
-                    .replace("Rp", "")
-                    .replace(/\./g, ",")
+                        .format(response.success.harga_beli)
+                        .replace("Rp", "")
+                        .replace(/\./g, ",")
                 );
             },
         });
@@ -232,12 +240,6 @@ $(document).ready(function () {
         document.getElementById("dataTablesMaintenance").style.width = "54vw";
         $("#bike_id").val(id);
         table3.ajax.reload();
-        let btn_cencel =
-            '<button type="button" class="btn btn-rounded btn-danger btn-tutup-maintenance" data-dismiss="modal"><span class="btn-icon-left text-danger"><i class="fa fa-close color-danger"></i></span>Tutup</button>';
-        let btn_save =
-            '<button type="button" class="btn btn-rounded btn-primary" id="add-data"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i></span>Tambah</button>';
-        $("#modal-perbaikan-motor").modal("show");
-        $("#modal-perbaikan-motor .modal-footer").html(btn_cencel + btn_save);
     });
 
     $("#biaya").on("keyup", function () {
@@ -284,11 +286,14 @@ $(document).ready(function () {
                 d.id = $("#bike_id").val();
             },
         },
-        columnDefs: [{
-            targets: [2], // index kolom atau sel yang ingin diatur
-            className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
-        }, ],
-        columns: [{
+        columnDefs: [
+            {
+                targets: [2], // index kolom atau sel yang ingin diatur
+                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
+            },
+        ],
+        columns: [
+            {
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 },
@@ -339,9 +344,9 @@ $(document).ready(function () {
                             currency: "IDR",
                             minimumFractionDigits: 0,
                         })
-                        .format(response.refresh.harga_beli)
-                        .replace("Rp", "")
-                        .replace(/\./g, ",")
+                            .format(response.refresh.harga_beli)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
                     );
                     Swal.fire("Good job!", response.success, "success");
                 }
@@ -368,7 +373,7 @@ $(document).ready(function () {
             NProgress.start();
             $.ajax({
                 data: {
-                    unique: unique
+                    unique: unique,
                 },
                 url: "/getDataMaintenance",
                 type: "GET",
@@ -384,9 +389,9 @@ $(document).ready(function () {
                             currency: "IDR",
                             minimumFractionDigits: 0,
                         })
-                        .format(response.success.biaya)
-                        .replace("Rp", "")
-                        .replace(/\./g, ",")
+                            .format(response.success.biaya)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
                     );
                     $("#current_unique").val(response.success.unique);
                     NProgress.done();
@@ -444,9 +449,9 @@ $(document).ready(function () {
                             currency: "IDR",
                             minimumFractionDigits: 0,
                         })
-                        .format(response.refresh.harga_beli)
-                        .replace("Rp", "")
-                        .replace(/\./g, ",")
+                            .format(response.refresh.harga_beli)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
                     );
                     $(".method").html("");
                     Swal.fire("Good job!", response.success, "success");
@@ -503,9 +508,9 @@ $(document).ready(function () {
                                     currency: "IDR",
                                     minimumFractionDigits: 0,
                                 })
-                                .format(response.refresh.harga_beli)
-                                .replace("Rp", "")
-                                .replace(/\./g, ",")
+                                    .format(response.refresh.harga_beli)
+                                    .replace("Rp", "")
+                                    .replace(/\./g, ",")
                             );
                             Swal.fire("Deleted!", response.success, "success");
                         },
