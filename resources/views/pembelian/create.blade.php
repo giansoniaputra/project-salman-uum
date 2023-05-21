@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="row form-material">
                                     <div class="col-lg-6 mb-2">
-                                        <label class="text-label" for="penjual">Penjual</label><span class="text-danger">*</span>
+                                        <label class="text-label" for="penjual">Penjual</label><span class="text-danger"> *</span>
                                         <select class="form-control @error('penjual') is-invalid @enderror" value="{{ old('penjual') }}" name="penjual" id="penjual">
                                             <option value="">Pilih Penjual</option>
                                             <option value="INDIVIDU">INDIVIDU</option>
@@ -47,7 +47,7 @@
                                     <div class="row form-material">
                                         <div class="col-lg-6 mb-2">
                                             <div class="form-group">
-                                                <label class="text-label" for="nik">NIK</label><span class="text-danger">*</span>
+                                                <label class="text-label" for="nik">NIK</label><span class="text-danger"> *</span>
                                                 <input type="text" name="nik" id="nik" class="form-control input-default @error('nik')is-invalid @enderror" value="{{ old('nik') }}" placeholder="Masukan NIK">
                                                 @error('nik')
                                                 <div class="invalid-feedback">
@@ -58,7 +58,7 @@
                                         </div>
                                         <div class="col-lg-6 mb-2 ">
                                             <div class="form-group">
-                                                <label class="text-label" for="nama">Nama Lengkap</label><span class="text-danger">*</span>
+                                                <label class="text-label" for="nama">Nama Lengkap</label><span class="text-danger"> *</span>
                                                 <input type="text" name="nama" id="nama" class="form-control input-default @error('nama')is-invalid @enderror" value="{{ old('nama') }}" placeholder="Masukan Nama Lengkap">
                                                 @error('nama')
                                                 <div class="invalid-feedback">
@@ -71,7 +71,7 @@
                                     <div class="row form-material">
                                         <div class="col-lg-6 mb-5">
                                             <div class="form-group">
-                                                <label class="text-label" for="no_telepon">Nomor Telepon</label><span class="text-danger">*</span>
+                                                <label class="text-label" for="no_telepon">Nomor Telepon</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control input-default @error('no_telepon')is-invalid @enderror" name="no_telepon" id="no_telepon" value="{{ old('no_telepon') }}" placeholder="Masukan Nomor Telepon">
                                                 @error('no_telepon')
                                                 <div class="invalid-feedback">
@@ -82,7 +82,7 @@
                                         </div>
                                         <div class="col-lg-6 mb-5">
                                             <div class="form-group">
-                                                <label class="text-label" for="alamat">Alamat</label><span class="text-danger">*</span>
+                                                <label class="text-label" for="alamat">Alamat</label><span class="text-danger"> *</span>
                                                 <textarea class="form-control input-default @error('alamat')is-invalid @enderror" rows="2" name="alamat" id="alamat" placeholder="Masukan Alamat">{{ old('alamat') }}</textarea>
                                                 @error('alamat')
                                                 <div class="invalid-feedback">
@@ -114,7 +114,7 @@
                                     <div class="row form-material">
                                         <div class="col-lg-6 mb-2">
                                             <div class="form-group">
-                                                <label class="text-label" for="nama_kang">Nama Petugas</label><span class="text-danger">*</span>
+                                                <label class="text-label" for="nama_kang">Nama Petugas</label><span class="text-danger"> *</span>
                                                 <input type="text" name="nama_kang" id="nama_kang" class="form-control input-default @error('nama_kang')is-invalid @enderror" value="{{ old('nama_kang') }}" placeholder="Masukan Nama Petugas">
                                                 @error('nama_kang')
                                                 <div class="invalid-feedback">
@@ -125,7 +125,7 @@
                                         </div>
                                         <div class="col-lg-6 mb-2">
                                             <div class="form-group">
-                                                <label class="text-label" for="dealer">Nama Dealer</label><span class="text-danger">*</span>
+                                                <label class="text-label" for="dealer">Nama Dealer</label><span class="text-danger"> *</span>
                                                 <input type="text" name="dealer" id="dealer" class="form-control input-default @error('dealer')is-invalid @enderror" value="{{ old('dealer') }}" placeholder="Masukan Nama Dealer">
                                                 @error('dealer')
                                                 <div class="invalid-feedback">
@@ -141,7 +141,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
-                                            <label class="text-label" for="merek">Merk</label><span class="text-danger">*</span>
+                                            <label class="text-label" for="merek">Merk</label><span class="text-danger"> *</span>
                                             <input type="text" name="merek" id="merek" class="form-control input-default @error('merek')is-invalid @enderror" value="{{ old('merek') }}" placeholder="Masukan Merk">
                                             @error('merek')
                                             <div class="invalid-feedback">
@@ -152,7 +152,7 @@
                                     </div>
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
-                                            <label class="text-label" for="type">Tipe</label><span class="text-danger">*</span>
+                                            <label class="text-label" for="type">Tipe</label><span class="text-danger"> *</span>
                                             <input type="text" name="type" id="type" class="form-control input-default @error('type')is-invalid @enderror" value="{{ old('type') }}" placeholder="Masukan Tipe">
                                             @error('type')
                                             <div class="invalid-feedback">
@@ -163,7 +163,7 @@
                                     </div>
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
-                                            <label class="text-label" for="tahun_pembuatan">Tahun Pembuatan</label><span class="text-danger">*</span>
+                                            <label class="text-label" for="tahun_pembuatan">Tahun Pembuatan</label><span class="text-danger"> *</span>
                                             <input type="text" name="tahun_pembuatan" class="form-control input-default @error('tahun_pembuatan') is-invalid @enderror" placeholder="Masukan Tahun Pembuatan" value="{{ old('tahun_pembuatan') }}">
                                             @error('tahun_pembuatan')
                                             <div class="invalid-feedback">
@@ -174,7 +174,7 @@
                                     </div>
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
-                                            <label class="text-label" for="warna">Warna</label><span class="text-danger">*</span>
+                                            <label class="text-label" for="warna">Warna</label><span class="text-danger"> *</span>
                                             <input type="text" name="warna" id="warna" class="form-control input-default @error('warna')is-invalid @enderror" value="{{ old('warna') }}" placeholder="Masukan Warna">
                                             @error('warna')
                                             <div class="invalid-feedback">
@@ -185,7 +185,7 @@
                                     </div>
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
-                                            <label class="text-label" for="no_rangka">No Rangka</label><span class="text-danger">*</span>
+                                            <label class="text-label" for="no_rangka">No Rangka</label><span class="text-danger"> *</span>
                                             <input type="text" name="no_rangka" id="no_rangka" class="form-control input-default @error('no_rangka')is-invalid @enderror" value="{{ old('no_rangka') }}" placeholder="Masukan No Rangka">
                                             @error('no_rangka')
                                             <div class="invalid-feedback">
@@ -196,7 +196,7 @@
                                     </div>
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
-                                            <label class="text-label" for="no_polisi">No Polisi</label><span class="text-danger">*</span>
+                                            <label class="text-label" for="no_polisi">No Polisi</label><span class="text-danger"> *</span>
                                             <input type="text" name="no_polisi" id="no_polisi" class="form-control input-default @error('no_polisi')is-invalid @enderror" value="{{ old('no_polisi') }}" placeholder="Masukan No Polisi">
                                             @error('no_polisi')
                                             <div class="invalid-feedback">
@@ -207,7 +207,7 @@
                                     </div>
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
-                                            <label class="text-label" for="bpkb">No. BPKB</label><span class="text-danger">*</span>
+                                            <label class="text-label" for="bpkb">No. BPKB</label><span class="text-danger"> *</span>
                                             <input type="text" name="bpkb" id="bpkb" class="form-control input-default @error('bpkb')is-invalid @enderror" value="{{ old('bpkb') }}" placeholder="Masukan BPKB">
                                             @error('bpkb')
                                             <div class="invalid-feedback">
@@ -218,7 +218,7 @@
                                     </div>
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
-                                            <label class="text-label" for="nama_bpkb">Nama BPKB</label><span class="text-danger">*</span>
+                                            <label class="text-label" for="nama_bpkb">Nama BPKB</label><span class="text-danger"> *</span>
                                             <input type="text" name="nama_bpkb" id="nama_bpkb" class="form-control input-default @error('nama_bpkb')is-invalid @enderror" value="{{ old('nama_bpkb') }}" placeholder="Masukan BPKB">
                                             @error('nama_bpkb')
                                             <div class="invalid-feedback">
@@ -228,7 +228,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6 mb-2">
-                                        <label class="text-label" for="berlaku_sampai">Berlaku Sampai</label><span class="text-danger">*</span>
+                                        <label class="text-label" for="berlaku_sampai">Berlaku Sampai</label><span class="text-danger"> *</span>
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
@@ -242,7 +242,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6 mb-2">
-                                        <label class="text-label" for="perpanjang_stnk">Perpanjang STNK</label><span class="text-danger">*</span>
+                                        <label class="text-label" for="perpanjang_stnk">Perpanjang STNK</label><span class="text-danger"> *</span>
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
@@ -290,7 +290,7 @@
                             <div id="harga" class="tab-pane" role="tabpanel">
                                 <div class="row form-material">
                                     <div class="col-lg-6 mb-2">
-                                        <label class="text-label" for="harga_beli">Harga Beli</label><span class="text-danger">*</span>
+                                        <label class="text-label" for="harga_beli">Harga Beli</label><span class="text-danger"> *</span>
                                         <div class="form-row">
                                             <div class="input-group mb-3 col-sm-12">
                                                 <div class="input-group-append input-primary">
@@ -306,7 +306,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6 mb-2">
-                                        <label class="text-label" for="tanggal_beli">Tanggal Pembelian</label><span class="text-danger">*</span>
+                                        <label class="text-label" for="tanggal_beli">Tanggal Pembelian</label><span class="text-danger"> *</span>
                                         <div class="form-row">
                                             <div class="input-group mb-3 col-sm-12">
                                                 <div class="input-group-append input-primary">

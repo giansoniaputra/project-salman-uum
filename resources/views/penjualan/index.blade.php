@@ -20,8 +20,8 @@
                             <div class="current-id"></div>
                             <div class="row form-material">
                                 <div class="col-lg-12 mb-3" id="no-polisi">
+                                    <label class="text-label" for="no_polisi">No Polisi</label><span class="text-danger"> *</span>
                                     <div class="form-row">
-                                        <label class="text-label" for="no_polisi">No Polisi</label><span class="text-danger"> *</span>
                                         <select id="single-select" name="no_polisi" class="form-control no-polisi" placeholder="Masukan No Polisi">
                                             <option value="">Pilih No Polisi</option>
                                             @foreach ($no_polisi as $row)
@@ -76,8 +76,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
+                                    <label class="text-label" for="nama_pembeli">Nama Pembeli</label><span class="text-danger"> *</span>
                                     <div class="form-row">
-                                        <label class="text-label" for="nama_pembeli">Nama Pembeli</label><span class="text-danger"> *</span>
                                         <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control" placeholder="Masukan Nama Pembeli">
                                     </div>
                                 </div>
@@ -209,7 +209,7 @@
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text">Rp.</span>
                                             </div>
-                                            <input type="text" class="form-control input-default money" name="dp_bayar" id="dp_bayar" readonly style="">
+                                            <input type="text" class="form-control input-default money" name="dp_bayar" id="dp_bayar" placeholder="Masukan DP Bayar" readonly style="">
                                         </div>
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text">Rp.</span>
                                             </div>
-                                            <input type="text" class="form-control input-default money" name="pencairan" id="pencairan" readonly style="">
+                                            <input type="text" class="form-control input-default money" name="pencairan" id="pencairan" placeholder=" Masukan Pencairan" readonly style="">
                                         </div>
                                     </div>
                                 </div>
@@ -231,7 +231,7 @@
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text">Rp.</span>
                                             </div>
-                                            <input type="text" class="form-control input-default money" name="angsuran" id="angsuran" readonly style="">
+                                            <input type="text" class="form-control input-default money" name="angsuran" id="angsuran" placeholder="Masukan Angsuran" readonly style="">
                                         </div>
                                     </div>
                                 </div>
@@ -242,7 +242,7 @@
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text">Rp.</span>
                                             </div>
-                                            <input type="text" class="form-control input-default money" name="tenor" id="tenor" readonly style="">
+                                            <input type="text" class="form-control input-default money" name="tenor" id="tenor" placeholder="Masukan Tenor" readonly style="">
                                         </div>
                                     </div>
                                 </div>
@@ -253,7 +253,7 @@
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text">Rp.</span>
                                             </div>
-                                            <input type="text" class="form-control input-default money" name="komisi" id="komisi" readonly style="">
+                                            <input type="text" class="form-control input-default money" name="komisi" id="komisi" placeholder="Masukan Komisi" readonly style="">
                                         </div>
                                     </div>
                                 </div>
