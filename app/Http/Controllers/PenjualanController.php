@@ -221,6 +221,7 @@ class PenjualanController extends Controller
     {
         $data = DB::table('seles')
             ->join('bikes', 'bikes.id', '=', 'seles.bike_id')
+            ->join('buyers', 'buyers.id', '=', 'seles.buyer_id')
             ->where('seles.id', $request->id)
             ->first();
         return response()->json(['data' => $data]);

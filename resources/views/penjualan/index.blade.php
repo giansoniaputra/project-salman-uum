@@ -126,7 +126,7 @@
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text"><i class="flaticon-381-id-card"></i></span>
                                             </div>
-                                            <select class="form-control default-select" name="jenis_pembayaran" id="jenis_pembayaran">
+                                            <select class="form-control" name="jenis_pembayaran" id="jenis_pembayaran">
                                                 <option value="">Pilih Opsi Pembayaran</option>
                                                 <option value="CASH">CASH</option>
                                                 <option value="KREDIT">KREDIT</option>

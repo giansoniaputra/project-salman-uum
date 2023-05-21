@@ -290,6 +290,13 @@ $(document).ready(function () {
                 $("#jenis_pembayaran").css({
                     "background-color": "rgba(215, 218, 227, 0.3",
                 });
+                $("#nik").val(response.data.nik);
+                $("#nama_pembeli").val(response.data.nama);
+                $("#alamat").html(response.data.alamat);
+                $("#img-ktp img").attr(
+                    "src",
+                    "/storage/ktp_pembeli/" + response.data.photo_ktp
+                );
                 $("#buys-content-cash").removeClass("d-none");
                 $("#harga_jual").val(response.data.harga_jual);
                 $("input.money").simpleMoneyFormat({
