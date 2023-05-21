@@ -21,7 +21,7 @@
                             <div class="row form-material">
                                 <div class="col-lg-12 mb-3" id="no-polisi">
                                     <div class="form-row">
-                                        <label class="text-label" for="no_polisi">No Polisi</label><span class="text-danger">*</span>
+                                        <label class="text-label" for="no_polisi">No Polisi</label><span class="text-danger"> *</span>
                                         <select id="single-select" name="no_polisi" class="form-control no-polisi" placeholder="Masukan No Polisi">
                                             <option value="">Pilih No Polisi</option>
                                             @foreach ($no_polisi as $row)
@@ -68,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="nik">NIK</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="nik">NIK</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <input type="text" class="form-control input-default" placeholder="Masukan No NIK KTP" name="nik" id="nik">
@@ -77,12 +77,12 @@
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     <div class="form-row">
-                                        <label class="text-label" for="nama_pembeli">Nama Pembeli</label><span class="text-danger">*</span>
+                                        <label class="text-label" for="nama_pembeli">Nama Pembeli</label><span class="text-danger"> *</span>
                                         <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control" placeholder="Masukan Nama Pembeli">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="alamat">Alamat</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="alamat">Alamat</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <textarea class="form-control input-default" rows="2" name="alamat" id="alamat" placeholder="Masukan Alamat"></textarea>
@@ -109,7 +109,7 @@
                                     <input type="hidden" name="photo_ktp" id="photo_ktp">
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tanggal_jual">Tanggal Penjualan</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="tanggal_jual">Tanggal Penjualan</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -120,7 +120,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="jenis_pembayaran">Jenis Pembayaran</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="jenis_pembayaran">Jenis Pembayaran</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -137,7 +137,7 @@
                             </div>
                             <div id="buys-content-cash" class="row form-material d-none" style="padding-bottom: 92.75px">
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="harga_jual">Harga Jual</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="harga_jual">Harga Jual</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -148,7 +148,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="jumlah_bayar">Jumlah Bayar</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="jumlah_bayar">Jumlah Bayar</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -172,7 +172,7 @@
                             </div>
                             <div id="buys-content-kredit" class="row form-material d-none" style="padding-bottom: 92.75px">
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tempat_lahir">Tempat Lahir</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="tempat_lahir">Tempat Lahir</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <input type="text" class="form-control input-default" placeholder="Masukan Tempat Lahir" name="tempat_lahir" id="tempat_lahir">
@@ -180,7 +180,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tanggal_lahir">Tanggal Lahir</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="tanggal_lahir">Tanggal Lahir</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -191,7 +191,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="jenis_kelamin">Jenis Kelamin</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="jenis_kelamin">Jenis Kelamin</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <select class="form-control default-select" name="jenis_kelamin" id="jenis_kelamin">
@@ -203,7 +203,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="dp_bayar">DP Bayar</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="dp_bayar">DP Bayar</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -214,7 +214,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="pencairan">Pencairan</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="pencairan">Pencairan</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -225,7 +225,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="angsuran">Angsuran</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="angsuran">Angsuran</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -236,7 +236,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tenor">Tenor</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="tenor">Tenor</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">
@@ -247,7 +247,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="komisi">Komisi</label><span class="text-danger">*</span>
+                                    <label class="text-label" for="komisi">Komisi</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
                                             <div class="input-group-append input-primary">

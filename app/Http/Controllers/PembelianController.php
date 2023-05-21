@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Buy;
 use App\Models\Bike;
+use App\Models\Modal;
 use App\Models\Consumer;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -24,6 +25,7 @@ class PembelianController extends Controller
             'judul' => 'Pembelian',
             'breadcumb1' => 'Transaksi',
             'breadcumb2' => 'Pembelian',
+            'modal' => Modal::first(),
         ];
         return view('pembelian.index', $data);
     }

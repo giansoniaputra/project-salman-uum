@@ -11,7 +11,8 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/dataTablesPenjualan",
-        columns: [{
+        columns: [
+            {
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 },
@@ -37,9 +38,7 @@ $(document).ready(function () {
                 searchable: true,
             },
         ],
-        order: [
-            [0, "desc"]
-        ],
+        order: [[0, "desc"]],
     });
     //LOAD CONTENT CASH
     $("#jenis_pembayaran").on("change", function () {
@@ -202,8 +201,8 @@ $(document).ready(function () {
                         inputElement.addClass("is-invalid");
                         let feedbackElement = $(
                             '<div class="invalid-feedback ml-2 jumlah_bayar">' +
-                            response.error +
-                            "</div>"
+                                response.error +
+                                "</div>"
                         );
                         inputElement.after(feedbackElement);
                     }
@@ -214,8 +213,8 @@ $(document).ready(function () {
                         inputElement.addClass("is-invalid");
                         let feedbackElement = $(
                             '<div class="invalid-feedback ml-2 photo-ktp-error">' +
-                            response.error_ktp.photo_ktp +
-                            "</div>"
+                                response.error_ktp.photo_ktp +
+                                "</div>"
                         );
                         inputElement.after(feedbackElement);
                     }
@@ -226,12 +225,11 @@ $(document).ready(function () {
                         inputElement.addClass("is-invalid");
                         let feedbackElement = $(
                             '<div class="invalid-feedback ml-2 photo-ktp-error-file">' +
-                            response.error_ktp_type +
-                            "</div>"
+                                response.error_ktp_type +
+                                "</div>"
                         );
                         inputElement.after(feedbackElement);
                     }
-
                 } else if (response.success) {
                     $("#merk").val("");
                     $("#warna").val("");
@@ -270,7 +268,7 @@ $(document).ready(function () {
         );
         $.ajax({
             data: {
-                id: id
+                id: id,
             },
             url: "/ambilDataPenjualan",
             type: "GET",
@@ -339,8 +337,8 @@ $(document).ready(function () {
                     inputElement.addClass("is-invalid");
                     let feedbackElement = $(
                         '<div class="invalid-feedback ml-2 jumlah_bayar">' +
-                        response.error +
-                        "</div>"
+                            response.error +
+                            "</div>"
                     );
                     inputElement.after(feedbackElement);
                 } else if (response.success) {
@@ -468,14 +466,12 @@ $(document).ready(function () {
         $(this).removeClass("is-invalid");
         $(".jumlah_bayar").remove();
     });
-
 });
 //Hendler Icon Material Date Time
 let monthBefore = $(".dtp-select-month-before .material-icons");
 monthBefore.addClass("flaticon-381-back-2 text-white");
 monthBefore.removeClass("material-icons");
 monthBefore.html("");
-
 
 let yearBefore = $(".dtp-select-year-before .material-icons");
 yearBefore.addClass("fa fa-arrow-left fa-lg text-white");
@@ -496,7 +492,6 @@ let yearRangeBefore = $(".dtp-select-year-range.before .material-icons");
 yearRangeBefore.addClass("fa fa-arrow-up fa-lg text-dark");
 yearRangeBefore.removeClass("material-icons");
 yearRangeBefore.html("");
-
 
 let yearRangeAfter = $(".dtp-select-year-range.after .material-icons");
 yearRangeAfter.addClass("flaticon-381-download text-dark");

@@ -247,7 +247,7 @@
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
                                             </div>
-                                            <input type="text" class="form-control input-default @error('perpanjang_stnk')is-invalid @enderror" value="{{ old('perpanjang_stnk') }}" placeholder="Masukan Masa Berlaku" name="perpanjang_stnk" id="perpanjang_stnk">
+                                            <input type="text" class="form-control input-default @error('perpanjang_stnk')is-invalid @enderror" value="{{ old('perpanjang_stnk') }}" placeholder="Masukan Perpanjang STNK" name="perpanjang_stnk" id="perpanjang_stnk">
                                             @error('perpanjang_stnk')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
