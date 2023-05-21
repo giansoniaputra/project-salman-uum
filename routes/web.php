@@ -73,6 +73,8 @@ Route::post('/tambahPenjualan', [PenjualanController::class, 'tambah_data'])->mi
 Route::get('/ambilDataPenjualan', [PenjualanController::class, 'get_data'])->middleware('auth');
 //Update Penjualan
 Route::post('/updatePenjualan', [PenjualanController::class, 'update_data'])->middleware('auth');
+//Cek Nik Penjual
+Route::get('/cekNikPembeli', [PenjualanController::class, 'cek_nik'])->middleware('auth');
 
 // SETTING
 Route::resource('/setting', SettingController::class)->middleware('auth');

@@ -33,8 +33,18 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
         \App\Models\Modal::factory()->create([
-            'unique' => Str::random(32),
+            'unique' => Str::orderedUuid(32),
             'modal' => 0
+        ]);
+        \App\Models\Consumer::factory()->create([
+            'unique' => Str::orderedUuid(32),
+            'penjual' => 'INDIVIDU',
+            'nik' => '3278090504000001',
+            'nama' => 'Gian Sonia',
+            'dealer' => null,
+            'alamat' => 'Citerewes',
+            'no_telepon' => '082321634181',
+            'photo_ktp' => null,
         ]);
     }
 }

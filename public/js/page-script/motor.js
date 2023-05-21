@@ -121,6 +121,7 @@ $(document).ready(function () {
                 $("#bpkb").html(response.success.bpkb);
                 $("#nama-bpkb").html(response.success.nama_bpkb);
                 $("#berlaku-sampai").html(response.success.berlaku_sampai);
+                $("#perpanjang-stnk").html(response.success.perpanjang_stnk);
                 $("#foto-bpkb").html(
                     '<button data-img="/storage/' +
                     response.success.photo_bpkb +
@@ -155,6 +156,7 @@ $(document).ready(function () {
                 $("#bpkb").html(response.success.bpkb);
                 $("#nama-bpkb").html(response.success.nama_bpkb);
                 $("#berlaku-sampai").html(response.success.berlaku_sampai);
+                $("#perpanjang-stnk").html(response.success.perpanjang_stnk);
                 $("#foto-bpkb").html(
                     '<button data-img="/storage/' +
                     response.success.photo_bpkb +

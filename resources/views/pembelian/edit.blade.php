@@ -131,7 +131,7 @@
                             </div>
                             <div id="data_motor" class="tab-pane" role="tabpanel">
                                 <div class="row">
-                                    <div class="col-lg-12 mb-2">
+                                    <div class="col-lg-6 mb-2">
                                         <div class="form-group">
                                             <label class="text-label" for="merek">Merk</label><span class="text-danger">*</span>
                                             <input type="text" name="merek" id="merek" class="form-control input-default @error('merek')is-invalid @enderror" value="{{ old('merek', $motor->merek) }}" placeholder="Masukan Merk">
@@ -227,6 +227,20 @@
                                             </div>
                                             <input type="text" class="form-control input-default @error('berlaku_sampai')is-invalid @enderror" value="{{ old('berlaku_sampai', $motor->berlaku_sampai) }}" placeholder="Masukan Masa Berlaku" name="berlaku_sampai" id="berlaku_sampai">
                                             @error('berlaku_sampai')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb-2">
+                                        <label class="text-label" for="perpanjang_stnk">Perpanjang STNK</label><span class="text-danger">*</span>
+                                        <div class="input-group">
+                                            <div class="input-group-append input-primary">
+                                                <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control input-default @error('perpanjang_stnk')is-invalid @enderror" value="{{ old('perpanjang_stnk', $motor->perpanjang_stnk) }}" placeholder="Masukan Masa Berlaku" name="perpanjang_stnk" id="perpanjang_stnk">
+                                            @error('perpanjang_stnk')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>

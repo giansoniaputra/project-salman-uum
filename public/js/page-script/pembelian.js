@@ -134,6 +134,7 @@ $(document).ready(function () {
 
     // Popup Modal Detail
     $("#dataTables").on("click", ".info-button", function () {
+        $("#table_konsumen tbody .info-ktp").remove();
         let id = $(this).attr("data-id");
         $("#modal-detail").modal("show");
 
@@ -154,6 +155,11 @@ $(document).ready(function () {
                     $("#nama").html(response.success.consumer.nama);
                     $("#no-telepon").html(response.success.consumer.no_telepon);
                     $("#alamat").html(response.success.consumer.alamat);
+                    $("#table_konsumen tbody").append(
+                        '<tr class="info-ktp"><td>Photo KTP</td><td>:</td><td><button data-img="/storage/' +
+                            response.success.consumer.photo_ktp +
+                            '" class="btn btn-sm btn-primary rounded text-white look-img-ktp">Lihat Gambar</button></td></tr>'
+                    );
                 } else if (response.success.consumer.penjual == "DEALER") {
                     $("#data-dealer").removeClass("d-none");
                     $("#data-individu").addClass("d-none");
@@ -172,6 +178,7 @@ $(document).ready(function () {
                 $("#nama-bpkb").html(response.success.motor.nama_bpkb);
                 $("#bpkb").html(response.success.motor.bpkb);
                 $("#berlaku-sampai").html(response.success.berlaku_sampai);
+                $("#perpanjang-stnk").html(response.success.perpanjang_stnk);
                 $("#foto-bpkb").html(
                     '<button data-img="/storage/' +
                     response.success.motor.photo_bpkb +
@@ -251,7 +258,7 @@ $(document).ready(function () {
             }
         });
     }
-
+    //Lihat Photo STNK
     $("#modal-detail").on("click", ".look-img-stnk", function () {
         let image = $(this).attr("data-img");
         // alert(image);
@@ -263,7 +270,7 @@ $(document).ready(function () {
         $("#judul-modal-photo").html("Photo STNK");
         $("#modal-image").modal("show");
     });
-
+    //Lihat Foto BPKB
     $("#modal-detail").on("click", ".look-img-bpkb", function () {
         let image = $(this).attr("data-img");
         // alert(image);
@@ -273,6 +280,18 @@ $(document).ready(function () {
             '" alt="" class="img-fluid" style="width: 800px">'
         );
         $("#judul-modal-photo").html("Photo BPKB");
+        $("#modal-image").modal("show");
+    });
+    //Lihat Foto KTP
+    $("#modal-detail").on("click", ".look-img-ktp", function () {
+        let image = $(this).attr("data-img");
+        // alert(image);
+        $("#img-photo").html(
+            '<img src="' +
+                image +
+                '" alt="" class="img-fluid" style="width: 800px">'
+        );
+        $("#judul-modal-photo").html("Photo KTP");
         $("#modal-image").modal("show");
     });
 
