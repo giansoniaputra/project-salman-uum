@@ -4,8 +4,10 @@
 <div id="pesan" data-flash="{{ session('success') }}"></div>
 <div class="row">
     <div class="col-12">
-        <button type="button" class="btn btn-rounded btn-primary mb-3" data-toggle="modal" data-target=".bd-example-modal-lg" id="btn-add-data"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i>
-            </span>Tambah Data Penjualan</button>
+        <button class="btn btn-icon btn-icon-start btn-primary mb-1" type="button" data-toggle="modal" data-target=".bd-example-modal-lg" id="btn-add-data">
+            <i data-acorn-icon="check"></i>
+            <span>Check</span>
+        </button>
         <div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modal-transaksi">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -307,10 +309,10 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
 {{-- Simple Money Format --}}
-<script src="/js/simple.money.format.js"></script>
-<script src="/js/simple.money.format.init.js"></script>
+<script src="/page-script/simple.money.format.js"></script>
+<script src="/page-script/simple.money.format.init.js"></script>
 {{-- !Simple Money Format --}}
-<script src="/js/page-script/penjualan.js"></script>
+<script src="/page-script/penjualan.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     const flashData = $('#pesan').data('flash');

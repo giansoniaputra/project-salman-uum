@@ -1,7 +1,7 @@
 <!-- User Menu Start -->
 <div class="user-container d-flex">
     <a href="#" class="d-flex user position-relative" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img class="profile" alt="profile" src="/img/profile/pp (Small).jpg" />
+        <img class="profile mt-3" alt="profile" src="/img/profile/pp (Small).jpg" />
         <div class="name"><span class="">Halo,
                 <strong>{{ auth()->user()->name }}</strong></span>
             <p class="cta-6 mt-1">{{ auth()->user()->roles }}</p>
@@ -54,12 +54,6 @@
             <i data-acorn-icon="lock-off" class="pin" data-acorn-size="18"></i>
         </a>
     </li>
-    <li class="list-inline-item">
-        <a href="#" id="colorButton">
-            <i data-acorn-icon="light-on" class="light" data-acorn-size="18"></i>
-            <i data-acorn-icon="light-off" class="dark" data-acorn-size="18"></i>
-        </a>
-    </li>
 </ul>
 <!-- Icons Menu End -->
 
@@ -79,13 +73,13 @@
             </a>
             <ul id="transaksi">
                 <li>
-                    <a href="/pembelian">
-                        <span class="label">Pembelian</span>
+                    <a href="/penjualan">
+                        <span class="label">Penjualan</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/penjualan">
-                        <span class="label">Penjualan</span>
+                    <a href="/pembelian">
+                        <span class="label">Pembelian</span>
                     </a>
                 </li>
             </ul>

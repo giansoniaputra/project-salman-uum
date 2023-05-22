@@ -8,12 +8,12 @@ class Dashboard extends Controller
 {
     public function index()
     {
-        $data=[
-            'title'=> 'Dashboard | SMAC',
-            'judul'=> 'Dashboard',
+        $data = [
+            'title' => 'Dashboards | SMAC',
+            'judul' => 'Dashboards',
             'breadcumb1' => 'Dashboard',
-            'breadcumb2' => 'Dashboard',
+            'breadcumb2' => 'Info Penjualan',
         ];
-        return view('index',$data);
+        return view('index', $data);
     }
 }

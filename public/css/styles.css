@@ -3999,22 +3999,22 @@ html[data-color=dark-sky] {
 *
 * Light Blue
 *
-* Theme variables.
+* Theme variables. yang kepakee
 *
 */
 html[data-color=light-blue] {
-  --primary: #1ea8e7;
-  --secondary: #6cdbef;
-  --tertiary: #5de3c8;
-  --quaternary: #558df3;
-  --primary-rgb: 30, 168, 231;
-  --secondary-rgb: 108, 219, 239;
-  --tertiary-rgb: 93, 227, 200;
-  --quaternary-rgb: 85, 141, 243;
-  --primary-darker: #1b9ad4;
-  --secondary-darker: #61c6d8;
-  --tertiary-darker: #54ccb4;
-  --quaternary-darker: #4c7dd6;
+  --primary: #003163;
+  --secondary: #022344;
+  --tertiary: #022344;
+  --quaternary: #022344;
+  --primary-rgb: #003163;
+  --secondary-rgb: #022344;
+  --tertiary-rgb: #022344;
+  --quaternary-rgb: #022344;
+  --primary-darker: #003163;
+  --secondary-darker: #022344;
+  --tertiary-darker: #022344;
+  --quaternary-darker: #022344;
   --body: #4e4e4e;
   --alternate: #7c7c7c;
   --muted: #afafaf;
@@ -4031,11 +4031,11 @@ html[data-color=light-blue] {
   --foreground-rgb: 255, 255, 255;
   --background-theme: #eaf0f1;
   --background-light: #f8f8f8;
-  --gradient-1: #1ea8e7;
-  --gradient-2: #21aff0;
-  --gradient-3: #23b3f4;
-  --gradient-1-lighter: #2abdff;
-  --gradient-1-darker: #1fa5e2;
+  --gradient-1: #003163;
+  --gradient-2: #003163;
+  --gradient-3: #003163;
+  --gradient-1-lighter: #003163;
+  --gradient-1-darker: #022344;
   --light-text: #fff;
   --dark-text: #343a40;
   --light-text-darker: #eeeeee;
