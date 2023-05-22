@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
@@ -258,21 +259,80 @@ class PenjualanController extends Controller
             'tanggal_jual.required' => 'Tidak boleh kosong',
         ];
         $validator = Validator::make($request->all(), $rules, $pesan);
+        // Validasi Photo KTP
+        $validator_photo_ktp = Validator::make([
+            'photo_ktp' => base64_encode($request->photo_ktp),
+        ], [
+            'photo_ktp' => 'max:' . (2 * 1024 * 1024) // Batasan ukuran 2 megabyte
+        ], [
+            'photo_ktp.max' => 'Ukuran tidak boleh lebih dari 2MB.',
+        ]);
+        //Validasi jenis file upload
+        if ($request->photo_ktp) {
+            $jenis_file = explode(":", $request->photo_ktp);
+            $jenis_file2 = explode("/", $jenis_file[1]);
+            $jenis_foto = $jenis_file2[0];
+        }
+
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()]);
-        }
-        if ($request->kembali < "0") {
-            return response()->json(['error' => 'Jumlah bayar tidak boleh kurang dari harga beli']);
-        }
+        } else if ($validator_photo_ktp->fails()) {
+            $send_error = [
+                'error_ktp' => $validator_photo_ktp->errors(),
+            ];
+            return response()->json($send_error);
+        } else if ($request->photo_ktp && $jenis_foto != 'image') {
+            return response()->json(['error_ktp_type' => 'File harus berupa gambar',]);
+        } else {
+            if ($request->kembali < "0") {
+                return response()->json(['error' => 'Jumlah bayar tidak boleh kurang dari harga beli']);
+            }
+            //Cek apakah user mengganti nik dengan user lain yang terdaftar
+            $cek_sele = Sele::where('id', $request->current_id)->first();
+            $cek_buyer = Buyer::where('id', $cek_sele->buyer_id)->first();
+            $cek_buyer_nik = Buyer::where('nik', "=", $request->nik)->where('nik', "!=", $cek_buyer->nik)->first();
 
-        $data = [
-            'harga_jual' => preg_replace('/[,]/', '', $request->harga_jual),
-            'tanggal_jual' => $request->tanggal_jual,
-            'jumlah_bayar' => preg_replace('/[,]/', '', $request->jumlah_bayar),
-        ];
+            $data_penjualan = [
+                'harga_jual' => preg_replace('/[,]/', '', $request->harga_jual),
+                'tanggal_jual' => $request->tanggal_jual,
+                'jumlah_bayar' => preg_replace('/[,]/', '', $request->jumlah_bayar),
+            ];
+            if ($cek_buyer_nik) {
+                $data_penjualan['buyer_id'] = $cek_buyer_nik->id;
+            }
+            $data_penjual = [
+                'nik' => $request->nik,
+                'nama' => $request->nama_pembeli,
+                'alamat' => $request->alamat,
+            ];
+            //Jika ada  upload foto
+            if ($request->photo_ktp) {
+                $base_Image = $request->photo_ktp;  // your base64 encoded
 
-        Sele::where('id', $request->current_id)->update($data);
-        return response()->json(['success' => 'Data Penjualan Berhasil Diupdate']);
+                $jenis_file = explode(":", $request->photo_ktp);
+                $jenis_file2 = explode("/", $jenis_file[1]);
+                $jenis_file3 = explode(";", $jenis_file2[1]);
+                $jenis_foto = $jenis_file3[0];
+                if ($jenis_foto == 'jpeg') {
+                    $base_Image = str_replace('data:image/jpeg;base64,', '', $base_Image);
+                } else if ($jenis_foto == 'jpg') {
+                    $base_Image = str_replace('data:image/jpg;base64,', '', $base_Image);
+                } else if ($jenis_foto == 'png') {
+                    $base_Image = str_replace('data:image/png;base64,', '', $base_Image);
+                }
+                $base_Image = str_replace(' ', '+', $base_Image);
+                $name_Image = Str::random(40) . '.' . 'png';
+                File::put(storage_path() . '/app/public/ktp_pembeli/' . $name_Image, base64_decode($base_Image));
+                if ($request->old_ktp) {
+                    Storage::delete($request->old_ktp);
+                }
+                $data_penjual['photo_ktp'] = $name_Image;
+            }
+            $buyer_id = Sele::where('id', $request->current_id)->first();
+            Buyer::where('id', $buyer_id->buyer_id)->update($data_penjual);
+            Sele::where('id', $request->current_id)->update($data_penjualan);
+            return response()->json(['success' => 'Data Penjualan Berhasil Diupdate']);
+        }
     }
 
     /**
@@ -284,9 +344,9 @@ class PenjualanController extends Controller
     }
 
     //Retur
-    public function retur_motor(Request $request)
+    public function retur_motor(Request $request, Sele $sele)
     {
-        $sele = Sele::where('id', $request->id)->first();
+        $sele = Sele::where('unique', $sele->unique)->first();
         //Membuat random no retur
         $trx = 'RETUR-SELE-00';
         $last_trx = Retur::latest()->first();;
@@ -310,9 +370,9 @@ class PenjualanController extends Controller
         ];
         Retur::create($data);
         Bike::where('id', $sele->bike_id)->update(['status' => 'READY STOCK']);
-        Sele::where('id', $request->id)->delete();
+        Sele::where('unique', $sele->unique)->delete();
 
-        return response()->json(['success' => 'Data Penjualan teleh Diretur']);
+        return redirect('/penjualan')->with('success', 'Data Penjualan teleh Diretur');
     }
 
     public function cek_nik(Request $request)
@@ -335,7 +395,7 @@ class PenjualanController extends Controller
         return DataTables::of($query)->addColumn('action', function ($row) {
             $actionBtn =
                 '<button class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="flaticon-381-edit-1"></i></button>
-                <button class="btn btn-warning btn-sm retur-button" data-id="' . $row->id . '" data-token="' . csrf_token() . '"><i class="flaticon-381-back-2 text-white"></i></button>
+                <button type="button" class="btn btn-warning btn-sm retur-button"  data-id="' . $row->unique . '"><i class="flaticon-381-back-2 text-white"></i></button>
                 <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
                     <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-id="' . $row->id . '"><i class="flaticon-381-trash-1"></i></button>
                 </form>';

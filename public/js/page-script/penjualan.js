@@ -93,6 +93,8 @@ $(document).ready(function () {
         $("#harga_jual").val("");
         $("#jumlah_bayar").val("");
         $("#nik").val("");
+        $("#old_ktp").val("");
+        $("#photo_ktp").val("");
         $("#kembali").val("");
         $("#nama_pembeli").val("");
         $("#tanggal_jual").val("");
@@ -101,11 +103,14 @@ $(document).ready(function () {
         $("#jumlah_bayar").removeClass("is-invalid");
         $(".current-id").html("");
         $("#photo_ktp").html("");
+        $("#photo-ktp").val("");
+        $("#photo-ktp").next(".custom-file-label").html("Pilih gambar");
         $("#img-ktp img").attr("src", "/storage/ktp/default.png");
     });
     $(".modal-footer").on("click", ".btn-danger", function () {
         $("#merk").val("");
         $("#warna").val("");
+        $("#old_ktp").val("");
         $("#tahun_pembuatan").val("");
         $("#harga_beli").val("");
         $(".no-polisi").val(null).trigger("change");
@@ -115,12 +120,15 @@ $(document).ready(function () {
         $("#jenis_pembayaran").removeAttr("disabled style");
         $("#buys-content-cash").addClass("d-none");
         $("#harga_jual").val("");
+        $("#photo_ktp").val("");
         $("#jumlah_bayar").val("");
         $("#nik").val("");
         $("#kembali").val("");
         $("#alamat").html("");
         $("#harga_jual").removeClass("is-invalid");
         $("#jumlah_bayar").removeClass("is-invalid");
+        $("#photo-ktp").val("");
+        $("#photo-ktp").next(".custom-file-label").html("Pilih gambar");
         $("#nama_pembeli").val("");
         $("#tanggal_jual").val("");
         $(".current-id").html("");
@@ -254,6 +262,10 @@ $(document).ready(function () {
                     $("#tanggal_jual").val("");
                     $("#harga_jual").removeClass("is-invalid");
                     $("#jumlah_bayar").removeClass("is-invalid");
+                    $("#photo-ktp").val("");
+                    $("#photo-ktp")
+                        .next(".custom-file-label")
+                        .html("Pilih gambar");
                     $(".current-id").html("");
                     $("#alamat").html("");
                     $("#photo_ktp").val("");
@@ -269,7 +281,7 @@ $(document).ready(function () {
     $("#dataTablesPenjualan").on("click", ".edit-button", function () {
         let id = $(this).attr("data-id");
         $(".current-id").html(
-            '<input type="hidden" name="current_id" value="' + id + '">'
+            '<input type="text" name="current_id" value="' + id + '">'
         );
         $.ajax({
             data: {
@@ -302,6 +314,7 @@ $(document).ready(function () {
                 $("#nik").val(response.data.nik);
                 $("#nama_pembeli").val(response.data.nama);
                 $("#alamat").html(response.data.alamat);
+                $("#old_ktp").val("ktp_pembeli/" + response.data.photo_ktp);
                 if (response.data.photo_ktp == null) {
                     $("#img-ktp img").attr("src", "/storage/ktp/default.png");
                 } else {
@@ -312,6 +325,10 @@ $(document).ready(function () {
                 }
                 $("#buys-content-cash").removeClass("d-none");
                 $("#harga_jual").val(response.data.harga_jual);
+                $("#jumlah_bayar").val(response.data.jumlah_bayar);
+                $("#kembali").val(
+                    response.data.jumlah_bayar - response.data.harga_jual
+                );
                 $("input.money").simpleMoneyFormat({
                     currencySymbol: "Rp",
                     decimalPlaces: 0,
@@ -355,12 +372,34 @@ $(document).ready(function () {
                     $("#modal-transaksi").modal("hide");
                     Swal.fire("Good job!", response.success, "success");
                     table.ajax.reload();
+                    $("#merk").val("");
+                    $("#warna").val("");
+                    $("#tahun_pembuatan").val("");
+                    $("#harga_beli").val("");
+                    $(".no-polisi").val(null).trigger("change");
+                    $("#current-no-polisi").html("");
+                    $("#no-polisi").removeClass("d-none");
+                    $("#jenis_pembayaran").val("");
+                    $("#jenis_pembayaran").removeAttr("disabled style");
+                    $("#buys-content-cash").addClass("d-none");
                     $("#harga_jual").val("");
-                    $("#jumlah_bayar").val("");
-                    $("#nama_pembeli").val("");
                     $("#photo_ktp").val("");
-                    $("#tanggal_jual").val("");
+                    $("#jumlah_bayar").val("");
+                    $("#old_ktp").val("");
+                    $("#nik").val("");
                     $("#kembali").val("");
+                    $("#nama_pembeli").val("");
+                    $("#tanggal_jual").val("");
+                    $("#alamat").html("");
+                    $("#photo-ktp").val("");
+                    $("#photo-ktp")
+                        .next(".custom-file-label")
+                        .html("Pilih gambar");
+                    $("#harga_jual").removeClass("is-invalid");
+                    $("#jumlah_bayar").removeClass("is-invalid");
+                    $(".current-id").html("");
+                    $("#photo_ktp").html("");
+                    $("#img-ktp img").attr("src", "/storage/ktp/default.png");
                 }
             },
         });
@@ -368,8 +407,7 @@ $(document).ready(function () {
 
     //Action Retur
     $("#dataTablesPenjualan").on("click", ".retur-button", function () {
-        let id = $(this).attr("data-id");
-        let token = $(this).attr("data-token");
+        let unique = $(this).attr("data-id");
         Swal.fire({
             title: "Yakin ingin meretur penjualan?",
             text: "Anda akan meretur penjualan motor",
@@ -380,22 +418,40 @@ $(document).ready(function () {
             confirmButtonText: "Ya, Retur!",
         }).then((result) => {
             if (result.isConfirmed) {
-                $.ajax({
-                    data: {
-                        id: id,
-                        _token: token,
-                    },
-                    url: "/returMotor",
-                    type: "POST",
-                    dataType: "json",
-                    success: function (response) {
-                        table.ajax.reload();
-                        Swal.fire("Succeess!", response.success, "success");
-                    },
-                });
+                document.location.href = "/returMotor/" + unique;
             }
         });
     });
+    // //Action Retur
+    // $("#dataTablesPenjualan").on("click", ".retur-button", function () {
+    //     let id = $(this).attr("data-id");
+    //     let token = $(this).attr("data-token");
+    //     Swal.fire({
+    //         title: "Yakin ingin meretur penjualan?",
+    //         text: "Anda akan meretur penjualan motor",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Ya, Retur!",
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             $.ajax({
+    //                 data: {
+    //                     id: id,
+    //                     _token: token,
+    //                 },
+    //                 url: "/returMotor",
+    //                 type: "POST",
+    //                 dataType: "json",
+    //                 success: function (response) {
+    //                     table.ajax.reload();
+    //                     Swal.fire("Succeess!", response.success, "success");
+    //                 },
+    //             });
+    //         }
+    //     });
+    // });
     //Hendler Error
     function displayErrors(errors) {
         // menghapus class 'is-invalid' dan pesan error sebelumnya
