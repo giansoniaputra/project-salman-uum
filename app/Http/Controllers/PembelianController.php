@@ -239,7 +239,7 @@ class PembelianController extends Controller
                 }
                 // Jika dealer dan individu ternyata tidak ada dalam table maka ambil id penjual yang baru saja di input ke table
             } else if ($consumer == NULL || $consumer2 == NULL) {
-                $last_consumer = Consumer::orderBy('id', 'DESC')->first();
+                $last_consumer = Consumer::latest()->first();
                 $consumer_id = $last_consumer->id;
             }
 
@@ -327,7 +327,7 @@ class PembelianController extends Controller
             //INPUT DATA PEMBELIAN KE TABLE BUYS
             //Membuat generate nota
             $trx = 'TRXBUY-00';
-            $last_trx = Buy::orderBy('id', 'DESC')->first();
+            $last_trx = Buy::latest()->first();
             if ($last_trx == NULL) {
                 $random_num = 1;
             } else {
@@ -335,7 +335,7 @@ class PembelianController extends Controller
                 $random_num = $last_nota[1] + 1;
             }
             $nota = $trx . $random_num;
-            $last_motor = Bike::orderBy('id', 'DESC')->first();
+            $last_motor = Bike::latest()->first();
 
             $data_transaksi = [
                 'unique' => Str::orderedUuid(),

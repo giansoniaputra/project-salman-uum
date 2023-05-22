@@ -150,19 +150,24 @@ $(document).ready(function () {
                     });
                     $("#nama_pembeli").removeClass("is-invalid");
                     $("#alamat").removeClass("is-invalid");
-                    // $(".image-ktp").attr(
-                    //     "src",
-                    //     "/storage/" + response.success.photo_ktp
-                    // );
-                    // $("#oldKTP").val(response.success.photo_ktp);
+                    if (response.success.photo_ktp == null) {
+                        $("#img-ktp img").attr(
+                            "src",
+                            "/storage/ktp/default.png"
+                        );
+                    } else {
+                        $("#img-ktp img").attr(
+                            "src",
+                            "/storage/ktp_pembeli/" + response.success.photo_ktp
+                        );
+                    }
                     NProgress.done();
                 } else {
                     $("#nama_pembeli").val("");
                     $("#alamat").html("");
                     $("#nama_pembeli").removeAttr("style");
                     $("#alamat").removeAttr("style");
-                    // $(".image-ktp").attr("src", "/storage/ktp/default.png");
-                    // $("#oldKTP").val("");
+                    $("#img-ktp img").attr("src", "/storage/ktp/default.png");
                     NProgress.done();
                 }
             },
@@ -251,7 +256,7 @@ $(document).ready(function () {
                     $("#jumlah_bayar").removeClass("is-invalid");
                     $(".current-id").html("");
                     $("#alamat").html("");
-                    $("#photo_ktp").html("");
+                    $("#photo_ktp").val("");
                     $("#img-ktp img").attr("src", "/storage/ktp/default.png");
                     $("#modal-transaksi").modal("hide");
                     Swal.fire("Good job!", response.success, "success");
@@ -274,6 +279,7 @@ $(document).ready(function () {
             type: "GET",
             dataType: "json",
             success: function (response) {
+                console.log(response);
                 let elementNoPolisi =
                     '<div class="form-row"><label class="text-label" for="curent_no_polisi">No Polisi</label><input type="text" id="curent_no_polisi" value="' +
                     response.data.no_polisi +
@@ -296,10 +302,14 @@ $(document).ready(function () {
                 $("#nik").val(response.data.nik);
                 $("#nama_pembeli").val(response.data.nama);
                 $("#alamat").html(response.data.alamat);
-                $("#img-ktp img").attr(
-                    "src",
-                    "/storage/ktp_pembeli/" + response.data.photo_ktp
-                );
+                if (response.data.photo_ktp == null) {
+                    $("#img-ktp img").attr("src", "/storage/ktp/default.png");
+                } else {
+                    $("#img-ktp img").attr(
+                        "src",
+                        "/storage/ktp_pembeli/" + response.data.photo_ktp
+                    );
+                }
                 $("#buys-content-cash").removeClass("d-none");
                 $("#harga_jual").val(response.data.harga_jual);
                 $("input.money").simpleMoneyFormat({
@@ -348,10 +358,42 @@ $(document).ready(function () {
                     $("#harga_jual").val("");
                     $("#jumlah_bayar").val("");
                     $("#nama_pembeli").val("");
+                    $("#photo_ktp").val("");
                     $("#tanggal_jual").val("");
                     $("#kembali").val("");
                 }
             },
+        });
+    });
+
+    //Action Retur
+    $("#dataTablesPenjualan").on("click", ".retur-button", function () {
+        let id = $(this).attr("data-id");
+        let token = $(this).attr("data-token");
+        Swal.fire({
+            title: "Yakin ingin meretur penjualan?",
+            text: "Anda akan meretur penjualan motor",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, Retur!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    data: {
+                        id: id,
+                        _token: token,
+                    },
+                    url: "/returMotor",
+                    type: "POST",
+                    dataType: "json",
+                    success: function (response) {
+                        table.ajax.reload();
+                        Swal.fire("Succeess!", response.success, "success");
+                    },
+                });
+            }
         });
     });
     //Hendler Error
@@ -467,37 +509,36 @@ $(document).ready(function () {
         $(".jumlah_bayar").remove();
     });
     //Hendler Icon Material Date Time
-let monthBefore = $(".dtp-select-month-before .material-icons");
-monthBefore.addClass("fa fa-arrow-left fa-lg text-white");
-monthBefore.removeClass("material-icons");
-monthBefore.html("");
+    let monthBefore = $(".dtp-select-month-before .material-icons");
+    monthBefore.addClass("fa fa-arrow-left fa-lg text-white");
+    monthBefore.removeClass("material-icons");
+    monthBefore.html("");
 
-let yearBefore = $(".dtp-select-year-before .material-icons");
-yearBefore.addClass("fa fa-arrow-left fa-lg text-white");
-yearBefore.removeClass("material-icons");
-yearBefore.html("");
+    let yearBefore = $(".dtp-select-year-before .material-icons");
+    yearBefore.addClass("fa fa-arrow-left fa-lg text-white");
+    yearBefore.removeClass("material-icons");
+    yearBefore.html("");
 
-let monthAfter = $(".dtp-select-month-after .material-icons");
-monthAfter.addClass("fa fa-arrow-right fa-lg text-white");
-monthAfter.removeClass("material-icons");
-monthAfter.html("");
+    let monthAfter = $(".dtp-select-month-after .material-icons");
+    monthAfter.addClass("fa fa-arrow-right fa-lg text-white");
+    monthAfter.removeClass("material-icons");
+    monthAfter.html("");
 
-let yearAfter = $(".dtp-select-year-after .material-icons");
-yearAfter.addClass("fa fa-arrow-right fa-lg text-white");
-yearAfter.removeClass("material-icons");
-yearAfter.html("");
+    let yearAfter = $(".dtp-select-year-after .material-icons");
+    yearAfter.addClass("fa fa-arrow-right fa-lg text-white");
+    yearAfter.removeClass("material-icons");
+    yearAfter.html("");
 
-let yearRangeBefore = $(".dtp-select-year-range.before .material-icons");
-yearRangeBefore.addClass("fa fa-arrow-up fa-lg text-dark");
-yearRangeBefore.removeClass("material-icons");
-yearRangeBefore.html("");
+    let yearRangeBefore = $(".dtp-select-year-range.before .material-icons");
+    yearRangeBefore.addClass("fa fa-arrow-up fa-lg text-dark");
+    yearRangeBefore.removeClass("material-icons");
+    yearRangeBefore.html("");
 
-let yearRangeAfter = $(".dtp-select-year-range.after .material-icons");
-yearRangeAfter.addClass("fa fa-arrow-down fa-lg text-dark");
-yearRangeAfter.removeClass("material-icons");
-yearRangeAfter.html("");
+    let yearRangeAfter = $(".dtp-select-year-range.after .material-icons");
+    yearRangeAfter.addClass("fa fa-arrow-down fa-lg text-dark");
+    yearRangeAfter.removeClass("material-icons");
+    yearRangeAfter.html("");
 });
-
 
 //Show Gambar KTP
 function previewImageKTP() {

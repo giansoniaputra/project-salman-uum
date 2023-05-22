@@ -75,6 +75,8 @@ Route::get('/ambilDataPenjualan', [PenjualanController::class, 'get_data'])->mid
 Route::post('/updatePenjualan', [PenjualanController::class, 'update_data'])->middleware('auth');
 //Cek Nik Penjual
 Route::get('/cekNikPembeli', [PenjualanController::class, 'cek_nik'])->middleware('auth');
+//Retur Motor
+Route::post('/returMotor', [PenjualanController::class, 'retur_motor'])->middleware('auth');
 
 // SETTING
 Route::resource('/setting', SettingController::class)->middleware('auth');

@@ -106,7 +106,7 @@
                                 <div class="col-lg-12 mb-3 text-center" id="img-ktp">
                                     <img src="/storage/ktp/default.png" alt="" class="img-fluid" width="200px">
                                     <br>
-                                    <input type="hidden" name="photo_ktp" id="photo_ktp">
+                                    <input type="text" name="photo_ktp" id="photo_ktp">
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     <label class="text-label" for="tanggal_jual">Tanggal Penjualan</label><span class="text-danger"> *</span>
@@ -126,7 +126,7 @@
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text"><i class="flaticon-381-id-card"></i></span>
                                             </div>
-                                            <select class="form-control default-select" name="jenis_pembayaran" id="jenis_pembayaran">
+                                            <select class="form-control" name="jenis_pembayaran" id="jenis_pembayaran">
                                                 <option value="">Pilih Opsi Pembayaran</option>
                                                 <option value="CASH">CASH</option>
                                                 <option value="KREDIT">KREDIT</option>

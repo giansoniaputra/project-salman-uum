@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Buy;
 use App\Models\Bike;
 use App\Models\Sele;
 use App\Models\Buyer;
+use App\Models\Retur;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -129,7 +131,7 @@ class PenjualanController extends Controller
                 'error_ktp' => $validator_photo_ktp->errors(),
             ];
             return response()->json($send_error);
-        } else if ($jenis_foto != 'image') {
+        } else if ($request->photo_ktp && $jenis_foto != 'image') {
             return response()->json(['error_ktp_type' => 'File harus berupa gambar',]);
         } else {
             if ($request->jenis_pembayaran == 'CASH') {
@@ -187,6 +189,7 @@ class PenjualanController extends Controller
                     'tanggal_jual' => $request->tanggal_jual,
                     'harga_beli' => preg_replace('/[,]/', '', $request->harga_beli),
                     'harga_jual' => preg_replace('/[,]/', '', $request->harga_jual),
+                    'jumlah_bayar' => preg_replace('/[,]/', '', $request->jumlah_bayar),
                 ];
                 if ($buyer) {
                     $data_sele['buyer_id'] = $buyer->id;
@@ -238,16 +241,21 @@ class PenjualanController extends Controller
     public function update_data(Request $request)
     {
         $rules = [
+            'nik' => 'required',
+            'nama_pembeli' => 'required',
+            'alamat' => 'required',
+            'harga_jual' => 'required',
             'harga_jual' => 'required',
             'jumlah_bayar' => 'required',
             'tanggal_jual' => 'required',
-            'nama_pembeli' => 'required',
         ];
         $pesan = [
+            'nik.required' => 'Tidak boleh kosong',
+            'nama_pembeli.required' => 'Tidak boleh kosong',
+            'alamat.required' => 'Tidak boleh kosong',
             'jumlah_bayar.required' => 'Tidak boleh kosong',
             'harga_jual.required' => 'Tidak boleh kosong',
             'tanggal_jual.required' => 'Tidak boleh kosong',
-            'nama_pembeli.required' => 'Tidak boleh kosong',
         ];
         $validator = Validator::make($request->all(), $rules, $pesan);
         if ($validator->fails()) {
@@ -258,9 +266,9 @@ class PenjualanController extends Controller
         }
 
         $data = [
-            'pembeli' => $request->nama_pembeli,
             'harga_jual' => preg_replace('/[,]/', '', $request->harga_jual),
             'tanggal_jual' => $request->tanggal_jual,
+            'jumlah_bayar' => preg_replace('/[,]/', '', $request->jumlah_bayar),
         ];
 
         Sele::where('id', $request->current_id)->update($data);
@@ -275,6 +283,38 @@ class PenjualanController extends Controller
         //
     }
 
+    //Retur
+    public function retur_motor(Request $request)
+    {
+        $sele = Sele::where('id', $request->id)->first();
+        //Membuat random no retur
+        $trx = 'RETUR-SELE-00';
+        $last_trx = Retur::latest()->first();;
+        if ($last_trx == NULL) {
+            $random_num = 1;
+        } else {
+            $last_no_retur = explode('-', $last_trx->no_retur);
+            $random_num = $last_no_retur[2] + 1;
+        }
+        $data = [
+            'unique' => Str::orderedUuid(),
+            'no_retur' => $trx . $random_num,
+            'nota' => $sele->nota,
+            'buyer_id' => $sele->buyer_id,
+            'bike_id' => $sele->bike_id,
+            'tanggal_jual' => $sele->tanggal_jual,
+            'tanggal_retur' => Carbon::now(),
+            'harga_beli' => $sele->harga_beli,
+            'harga_jual' => $sele->harga_jual,
+            'jumlah_bayar' => $sele->jumlah_bayar,
+        ];
+        Retur::create($data);
+        Bike::where('id', $sele->bike_id)->update(['status' => 'READY STOCK']);
+        Sele::where('id', $request->id)->delete();
+
+        return response()->json(['success' => 'Data Penjualan teleh Diretur']);
+    }
+
     public function cek_nik(Request $request)
     {
         $query = Buyer::where('nik', $request->nik)->first();
@@ -283,9 +323,10 @@ class PenjualanController extends Controller
 
     public function dataTables()
     {
-        $query = DB::table('seles')
-            ->join('bikes', 'bikes.id', '=', 'seles.bike_id')
-            ->join('buyers', 'buyers.id', '=', 'seles.buyer_id')
+        $query = DB::table('seles as a')
+            ->join('bikes as b', 'b.id', '=', 'a.bike_id')
+            ->join('buyers as c', 'c.id', '=', 'a.buyer_id')
+            ->select('a.*', 'b.no_polisi', 'b.merek', 'b.warna', 'b.status', 'c.nama')
             ->get();
         foreach ($query as $row) {
             $row->tanggal_jual = tanggal_hari($row->tanggal_jual);
@@ -294,6 +335,7 @@ class PenjualanController extends Controller
         return DataTables::of($query)->addColumn('action', function ($row) {
             $actionBtn =
                 '<button class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="flaticon-381-edit-1"></i></button>
+                <button class="btn btn-warning btn-sm retur-button" data-id="' . $row->id . '" data-token="' . csrf_token() . '"><i class="flaticon-381-back-2 text-white"></i></button>
                 <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
                     <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-id="' . $row->id . '"><i class="flaticon-381-trash-1"></i></button>
                 </form>';
