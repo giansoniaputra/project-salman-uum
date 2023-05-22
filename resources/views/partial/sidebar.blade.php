@@ -1,48 +1,148 @@
-<div class="deznav">
-    <div class="deznav-scroll">
-        <ul class="metismenu" id="menu">
-            <li><a href="/" class="ai-icon" aria-expanded="false">
-                    <i class="flaticon-381-home-2"></i>
-                    <span class="nav-text">Dashboard</span>
-                </a>
-            </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-381-notepad"></i>
-                    <span class="nav-text">Transaksi</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="/penjualan">Penjualan</a></li>
-                    <li><a href="/pembelian">Pembelian</a></li>
+<!-- User Menu Start -->
+<div class="user-container d-flex">
+    <a href="#" class="d-flex user position-relative" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img class="profile" alt="profile" src="/img/profile/pp (Small).jpg" />
+        <div class="name"><span class="">Halo,
+                <strong>{{ auth()->user()->name }}</strong></span>
+            <p class="cta-6 mt-1">{{ auth()->user()->roles }}</p>
+        </div>
+    </a>
+    <div class="dropdown-menu dropdown-menu-end user-menu wide">
+        <div class="row mb-1 ms-0 me-0">
+            <div class="col-6 ps-1 pe-1">
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="/profile">
+                            <i data-acorn-icon="user" class="me-2" data-acorn-size="17"></i>
+                            <span class="align-middle">Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/auth/create">
+                            <i data-acorn-icon="credit-card" class="me-2" data-acorn-size="17"></i>
+                            <span class="align-middle">Daftar</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-381-box-2"></i>
-                    <span class="nav-text">Master</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="/consumer">Data Konsumen</a></li>
-                    <li><a href="/motor">Data Motor</a></li>
+            </div>
+            <div class="col-6 pe-1 ps-1">
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="/setting">
+                            <i data-acorn-icon="gear" class="me-2" data-acorn-size="17"></i>
+                            <span class="align-middle">Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/logout">
+                            <i data-acorn-icon="logout" class="me-2" data-acorn-size="17"></i>
+                            <span class="align-middle">Logout</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
-            <li><a href="/modal" class="ai-icon" aria-expanded="false">
-                    <i class="la la-dollar-sign"></i>
-                    <span class="nav-text">Modal</span>
-                </a>
-            </li>
-            <li><a href="/laporan" class="ai-icon" aria-expanded="false">
-                    <i class="flaticon-381-print"></i>
-                    <span class="nav-text">Laporan</span>
-                </a>
-            </li>
-            <li><a href="/setting" class="ai-icon" aria-expanded="false">
-                    <i class="flaticon-381-settings-2"></i>
-                    <span class="nav-text">Setting</span>
-                </a>
-            </li>
-            <li><a href="/auth/create" class="ai-icon" aria-expanded="false">
-                    <i class="flaticon-381-id-card-1"></i>
-                    <span class="nav-text">Daftar Akun</span>
-                </a>
-            </li>
+            </div>
+        </div>
     </div>
+</div>
+<!-- User Menu End -->
+
+<!-- Icons Menu Start -->
+<ul class="list-unstyled list-inline text-center menu-icons">
+    <li class="list-inline-item">
+        <a href="#" id="pinButton" class="pin-button">
+            <i data-acorn-icon="lock-on" class="unpin" data-acorn-size="18"></i>
+            <i data-acorn-icon="lock-off" class="pin" data-acorn-size="18"></i>
+        </a>
+    </li>
+    <li class="list-inline-item">
+        <a href="#" id="colorButton">
+            <i data-acorn-icon="light-on" class="light" data-acorn-size="18"></i>
+            <i data-acorn-icon="light-off" class="dark" data-acorn-size="18"></i>
+        </a>
+    </li>
+</ul>
+<!-- Icons Menu End -->
+
+<!-- Menu Start -->
+<div class="menu-container flex-grow-1">
+    <ul id="menu" class="menu">
+        <li>
+            <a href="/">
+                <i data-acorn-icon="home-garage" class="icon" data-acorn-size="18"></i>
+                <span class="label">Dashboards</span>
+            </a>
+        </li>
+        <li>
+            <a href="#transaksi">
+                <i data-acorn-icon="cart" class="icon" data-acorn-size="18"></i>
+                <span class="label">Transaksi</span>
+            </a>
+            <ul id="transaksi">
+                <li>
+                    <a href="/pembelian">
+                        <span class="label">Pembelian</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/penjualan">
+                        <span class="label">Penjualan</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#master">
+                <i data-acorn-icon="archive" class="icon" data-acorn-size="18"></i>
+                <span class="label">Master</span>
+            </a>
+            <ul id="master">
+                <li>
+                    <a href="/consumer">
+                        <span class="label">Data Konsumen</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/motor">
+                        <span class="label">Data Motor</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="/modal">
+                <i data-acorn-icon="dollar" class="icon" data-acorn-size="18"></i>
+                <span class="label">Modal</span>
+            </a>
+        </li>
+        <li>
+            <a href="/laporan" data-href="Dashboards.html">
+                <i data-acorn-icon="print" class="icon" data-acorn-size="18"></i>
+                <span class="label">Laporan</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- Menu End -->
+
+<!-- Mobile Buttons Start -->
+<div class="mobile-buttons-container">
+    <!-- Scrollspy Mobile Button Start -->
+    <a href="#" id="scrollSpyButton" class="spy-button" data-bs-toggle="dropdown">
+        <i data-acorn-icon="menu-dropdown"></i>
+    </a>
+    <!-- Scrollspy Mobile Button End -->
+
+    <!-- Scrollspy Mobile Dropdown Start -->
+    <div class="dropdown-menu dropdown-menu-end" id="scrollSpyDropdown"></div>
+    <!-- Scrollspy Mobile Dropdown End -->
+
+    <!-- Menu Button Start -->
+    <a href="#" id="mobileMenuButton" class="menu-button">
+        <i data-acorn-icon="menu"></i>
+    </a>
+    <!-- Menu Button End -->
+</div>
+<!-- Mobile Buttons End -->
+</div>
+<div class="nav-shadow"></div>
 </div>
