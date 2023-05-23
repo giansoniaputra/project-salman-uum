@@ -148,6 +148,8 @@
 
             <script src="/js/cs/scrollspy.js"></script>
 
+            <script src="/js/cs/wizard.js"></script>
+
             <script src="/js/vendor/select2.full.min.js"></script>
 
             <script src="/js/vendor/datepicker/bootstrap-datepicker.min.js"></script>

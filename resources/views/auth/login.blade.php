@@ -77,14 +77,14 @@
                 <!-- Left Side End -->
 
                 <!-- Right Side Start -->
-                <div class="col-12 col-lg-auto h-100 pb-4 px-4 pt-0 p-lg-0">
+                <div class="col-12 col-lg-auto h-100 pb-4 px-4 pt-0 p-lg-0 text-center">
                     <div class="sw-lg-70 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 full-page-content-right-border">
                         <div class="sw-lg-50 px-5">
                             <div class="sh-11">
                                 <a href="/index.html">
                                     {{-- <div class="logo-default"> --}}
                                     <img src="/img/logo/smac white.png" alt="" style="width: 150px;" class="">
-                                    <h6 class="cta-2 mt-1 text-primary">Sistem Informasi Showroom Mandiri Utama Community</h6>
+                                    <h6 class="cta-2 mt-2 text-primary">Sistem Informasi Showroom Mandiri Utama Community</h6>
                                     {{-- </div> --}}
                                 </a>
                             </div>
