@@ -18,13 +18,12 @@ return new class extends Migration
             $table->integer('buyer_id');
             $table->integer('bike_id');
             $table->date('tanggal_jual');
-            $table->integer('harga_jual');
+            $table->integer('harga_beli');
             $table->integer('dp');
             $table->integer('pencairan');
             $table->integer('angsuran');
             $table->integer('tenor');
             $table->integer('komisi');
-            $table->string('photo_ktp');
             $table->timestamps();
         });
     }

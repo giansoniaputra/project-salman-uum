@@ -64,7 +64,7 @@ $(document).ready(function () {
             $("#buys-content-kredit").addClass("d-none");
         }
     });
-
+    //Ketika no pilisi diilih
     $(".no-polisi").on("change", function () {
         let id = $(this).val();
         $(this).removeClass("is-invalid");
@@ -88,7 +88,7 @@ $(document).ready(function () {
             },
         });
     });
-
+    //Reset ketika modal di tutup
     $(".tutup").on("click", function () {
         $("#merk").val("");
         $("#warna").val("");
@@ -121,6 +121,7 @@ $(document).ready(function () {
         $("#save-data").removeClass("save-data-kredit");
         $("#save-data").addClass("save-data");
     });
+    //Reset ketika tombol tutup di click
     $(".modal-footer").on("click", ".btn-danger", function () {
         $("#merk").val("");
         $("#warna").val("");
@@ -199,20 +200,20 @@ $(document).ready(function () {
             },
         });
     });
+    //Ketika menekan tombol tambah data penjualan
     $("#btn-add-data").on("click", function () {
         let element =
             '<button type="button" class="btn btn-rounded btn-primary save-data" id="save-data"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i></span>Tambah</button>';
         $("#btn-action").html(element);
         $(".current-id").html("");
     });
-    //action simpan
+    //Action Simpan
     $("#modal-transaksi").on("click", ".save-data", function () {
         let formdata = $("#modal-transaksi form").serializeArray();
         let data = {};
         $(formdata).each(function (index, obj) {
             data[obj.name] = obj.value;
         });
-        //JIka Pembayaran adalah Cash
         $.ajax({
             data: $("#modal-transaksi form").serialize(),
             url: "/rulesPenjualan",
@@ -264,8 +265,7 @@ $(document).ready(function () {
             },
         });
     });
-
-    //Action Simpan Cash
+    //Action Simpan Penjualan Cash
     $("#modal-transaksi").on("click", ".save-data-cash", function () {
         let formdata = $("#modal-transaksi form").serializeArray();
         let data = {};
@@ -361,6 +361,100 @@ $(document).ready(function () {
             },
         });
     });
+    //Action Simpan Penjualan Kredit
+    $("#modal-transaksi").on("click", ".save-data-kredit", function () {
+        let formdata = $("#modal-transaksi form").serializeArray();
+        let data = {};
+        $(formdata).each(function (index, obj) {
+            data[obj.name] = obj.value;
+        });
+        //JIka Pembayaran adalah Cash
+        $.ajax({
+            data: $("#modal-transaksi form").serialize(),
+            url: "/kredit",
+            type: "POST",
+            dataType: "json",
+            success: function (response) {
+                // console.log(response);
+                //     // console.log(response.image);
+                if (
+                    response.errors ||
+                    response.error ||
+                    response.error_ktp ||
+                    response.error_ktp_type
+                ) {
+                    displayErrors(response.errors);
+                    if (response.error) {
+                        let inputElement = $('input[name="jumlah_bayar"]');
+                        inputElement.addClass("is-invalid");
+                        let feedbackElement = $(
+                            '<div class="invalid-feedback ml-2 jumlah_bayar">' +
+                                response.error +
+                                "</div>"
+                        );
+                        inputElement.after(feedbackElement);
+                    }
+                    if (response.error_ktp) {
+                        let inputElement = $('input[name="photo_ktp"]');
+                        let inputElement2 = $('input[name="photo-ktp"]');
+                        inputElement2.addClass("is-invalid");
+                        inputElement.addClass("is-invalid");
+                        let feedbackElement = $(
+                            '<div class="invalid-feedback ml-2 photo-ktp-error">' +
+                                response.error_ktp.photo_ktp +
+                                "</div>"
+                        );
+                        inputElement.after(feedbackElement);
+                    }
+                    if (response.error_ktp_type) {
+                        let inputElement2 = $('input[name="photo-ktp"]');
+                        inputElement2.addClass("is-invalid");
+                        let inputElement = $('input[name="photo_ktp"]');
+                        inputElement.addClass("is-invalid");
+                        let feedbackElement = $(
+                            '<div class="invalid-feedback ml-2 photo-ktp-error-file">' +
+                                response.error_ktp_type +
+                                "</div>"
+                        );
+                        inputElement.after(feedbackElement);
+                    }
+                } else if (response.success) {
+                    $("#merk").val("");
+                    $("#warna").val("");
+                    $("#tahun_pembuatan").val("");
+                    $("#harga_beli").val("");
+                    $(".no-polisi").val(null).trigger("change");
+                    $("#current-no-polisi").html("");
+                    $("#no-polisi").removeClass("d-none");
+                    $("#jenis_pembayaran").val("");
+                    $("#jenis_pembayaran").removeAttr("disabled style");
+                    $("#buys-content-cash").addClass("d-none");
+                    $("#harga_jual").val("");
+                    $("#jumlah_bayar").val("");
+                    $("#nik").val("");
+                    $("#kembali").val("");
+                    $("#nama_pembeli").val("");
+                    $("#tanggal_jual").val("");
+                    $("#harga_jual").removeClass("is-invalid");
+                    $("#jumlah_bayar").removeClass("is-invalid");
+                    $("#photo-ktp").val("");
+                    $("#photo-ktp")
+                        .next(".custom-file-label")
+                        .html("Pilih gambar");
+                    $(".current-id").html("");
+                    $("#modal-transaksi #alamat").html("");
+                    $("#photo_ktp").val("");
+                    $("#img-ktp img").attr("src", "/storage/ktp/default.png");
+                    $("#modal-transaksi").modal("hide");
+                    $("#save-data").removeClass("save-data-cash");
+                    $("#save-data").removeClass("save-data-kredit");
+                    $("#save-data").addClass("save-data");
+                    Swal.fire("Good job!", response.success, "success");
+                    table.ajax.reload();
+                }
+            },
+        });
+    });
     //Ambil data penjualan yanag ingin di edit
     $("#dataTablesPenjualan").on("click", ".edit-button", function () {
         let id = $(this).attr("data-id");
@@ -426,7 +520,6 @@ $(document).ready(function () {
             },
         });
     });
-
     //Action Update
     $("#modal-transaksi").on("click", "#update-data", function () {
         let formdata = $("#modal-transaksi form").serializeArray();
@@ -492,7 +585,6 @@ $(document).ready(function () {
             },
         });
     });
-
     //Action Retur
     $("#dataTablesPenjualan").on("click", ".retur-button", function () {
         let unique = $(this).attr("data-id");
@@ -603,8 +695,7 @@ $(document).ready(function () {
             });
         });
     }
-
-    //Kembalian
+    //Autofill Kembalian
     $("#jumlah_bayar").on("keyup", function () {
         let jual = $("#harga_jual").val();
         let bayar = $(this).val();

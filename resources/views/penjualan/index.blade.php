@@ -197,8 +197,8 @@
                                         <div class="input-group">
                                             <select class="form-control default-select" name="jenis_kelamin" id="jenis_kelamin">
                                                 <option value="">Pilih Jenis Kelamin</option>
-                                                <option value="COWO">Laki - Laki</option>
-                                                <option value="CEWE">Perempuan</option>
+                                                <option value="Laki-Laki">Laki - Laki</option>
+                                                <option value="Perempuan">Perempuan</option>
                                             </select>
                                         </div>
                                     </div>
@@ -210,7 +210,7 @@
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text">Rp.</span>
                                             </div>
-                                            <input type="text" class="form-control input-default money" name="dp_bayar" id="dp_bayar" placeholder="Masukan DP Bayar" readonly style="">
+                                            <input type="text" class="form-control input-default money" name="dp_bayar" id="dp_bayar" placeholder="Masukan DP Bayar">
                                         </div>
                                     </div>
                                 </div>
@@ -221,7 +221,7 @@
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text">Rp.</span>
                                             </div>
-                                            <input type="text" class="form-control input-default money" name="pencairan" id="pencairan" placeholder=" Masukan Pencairan" readonly style="">
+                                            <input type="text" class="form-control input-default money" name="pencairan" id="pencairan" placeholder=" Masukan Pencairan">
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text">Rp.</span>
                                             </div>
-                                            <input type="text" class="form-control input-default money" name="angsuran" id="angsuran" placeholder="Masukan Angsuran" readonly style="">
+                                            <input type="text" class="form-control input-default money" name="angsuran" id="angsuran" placeholder="Masukan Angsuran">
                                         </div>
                                     </div>
                                 </div>
@@ -240,10 +240,7 @@
                                     <label class="text-label" for="tenor">Tenor</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            <input type="text" class="form-control input-default money" name="tenor" id="tenor" placeholder="Masukan Tenor" readonly style="">
+                                            <input type="number" class="form-control input-default" placeholder="Masukan Jangka Waktu" name="tenor" id="tenor">
                                         </div>
                                     </div>
                                 </div>
@@ -254,7 +251,7 @@
                                             <div class="input-group-append input-primary">
                                                 <span class="input-group-text">Rp.</span>
                                             </div>
-                                            <input type="text" class="form-control input-default money" name="komisi" id="komisi" placeholder="Masukan Komisi" readonly style="">
+                                            <input type="text" class="form-control input-default money" name="komisi" id="komisi" placeholder="Masukan Komisi">
                                         </div>
                                     </div>
                                 </div>
