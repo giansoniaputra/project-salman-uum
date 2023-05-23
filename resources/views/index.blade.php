@@ -1,92 +1,104 @@
 @extends('layout.main')
 @section('container')
-    <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
-    <div id="pesan" data-flash="{{ session('success') }}"></div>
-    <div class="row">
-        <div class="col-xl-3 col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="media align-items-center">
-                        <div class="media-body mr-3">
-                            <h2 class="fs-34 text-black font-w600">76</h2>
-                            <span>Jumlah Asset</span>
+<link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+<div id="pesan" data-flash="{{ session('success') }}"></div>
+<div class="row g-2">
+    <div class="col-12 col-sm-6 col-lg-6">
+        <div class="card sh-11 hover-scale-up cursor-pointer">
+            <div class="h-100 row g-0 card-body align-items-center py-3">
+                <div class="col-auto pe-3">
+                    <div class="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
+                        <i class="bi-bicycle icon-24 text-white"></i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row gx-2 d-flex align-content-center">
+                        <div class="col-12 col-xl d-flex">
+                            <div class="d-flex align-items-center lh-1-25">Jumlah Asset</div>
                         </div>
-                        <h1 class="flaticon-381-folder-5"></h1>
-                    </div>
-                </div>
-                <div class="progress  rounded-0" style="height:4px;">
-                    <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 50%; height:4px;"
-                        role="progressbar">
-                        <span class="sr-only">50% Complete</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3  col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="media align-items-center">
-                        <div class="media-body mr-3">
-                            <h2 class="fs-34 text-black font-w600">124,551</h2>
-                            <span>Penjualan Tahun Ini</span>
+                        <div class="col-12 col-xl-auto">
+                            <div class="cta-2 text-primary">22</div>
                         </div>
-                        <h1 class="flaticon-381-calendar-6"></h1>
-                    </div>
-                </div>
-                <div class="progress  rounded-0" style="height:4px;">
-                    <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 90%; height:4px;"
-                        role="progressbar">
-                        <span class="sr-only">90% Complete</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3  col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="media align-items-center">
-                        <div class="media-body mr-3">
-                            <h2 class="fs-34 text-black font-w600">442</h2>
-                            <span>Penjualan Bulan Ini</span>
-                        </div>
-                        <h1 class="flaticon-381-calendar-7"></h1>
-                    </div>
-                </div>
-                <div class="progress  rounded-0" style="height:4px;">
-                    <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 30%; height:4px;"
-                        role="progressbar">
-                        <span class="sr-only">30% Complete</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3  col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="media align-items-center">
-                        <div class="media-body mr-3">
-                            <h2 class="fs-34 text-black font-w600">$5,034</h2>
-                            <span>Penjualan Hari Ini</span>
-                        </div>
-                        <h1 class="flaticon-381-calendar-3"></h1>
-                    </div>
-                </div>
-                <div class="progress  rounded-0" style="height:4px;">
-                    <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 94%; height:4px;"
-                        role="progressbar">
-                        <span class="sr-only">94% Complete</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        const flashData = $('#pesan').data('flash');
-        if (flashData) {
-            Swal.fire(
-                'Good job!', flashData, 'success'
-            )
-        }
-    </script>
+
+    <div class="col-12 col-sm-6 col-lg-6">
+        <div class="card sh-11 hover-scale-up cursor-pointer">
+            <div class="h-100 row g-0 card-body align-items-center py-3">
+                <div class="col-auto pe-3">
+                    <div class="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
+                        <i class="bi-calendar-check-fill icon-20 text-white"></i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row gx-2 d-flex align-content-center">
+                        <div class="col-12 col-xl d-flex">
+                            <div class="d-flex align-items-center lh-1-25">Penjualan Tahun Ini</div>
+                        </div>
+                        <div class="col-12 col-xl-auto">
+                            <div class="cta-2 text-primary">35</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-6">
+        <div class="card sh-11 hover-scale-up cursor-pointer">
+            <div class="h-100 row g-0 card-body align-items-center py-3">
+                <div class="col-auto pe-3">
+                    <div class="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
+                        <i class="bi-calendar2-month-fill icon-20 text-white"></i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row gx-2 d-flex align-content-center">
+                        <div class="col-12 col-xl d-flex">
+                            <div class="d-flex align-items-center lh-1-25">Penjualan Bulan Ini</div>
+                        </div>
+                        <div class="col-12 col-xl-auto">
+                            <div class="cta-2 text-primary">14</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-6">
+        <div class="card sh-11 hover-scale-up cursor-pointer">
+            <div class="h-100 row g-0 card-body align-items-center py-3">
+                <div class="col-auto pe-3">
+                    <div class="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
+                        <i class="bi-calendar-date-fill icon-20 text-white"></i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row gx-2 d-flex align-content-center">
+                        <div class="col-12 col-xl d-flex">
+                            <div class="d-flex align-items-center lh-1-25">Penjualan Hari Ini</div>
+                        </div>
+                        <div class="col-12 col-xl-auto">
+                            <div class="cta-2 text-primary">3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const flashData = $('#pesan').data('flash');
+    if (flashData) {
+        Swal.fire(
+            'Good job!', flashData, 'success'
+        )
+    }
+
+</script>
 @endsection

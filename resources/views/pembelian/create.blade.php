@@ -9,339 +9,309 @@
                 <h4 class="card-title">Form Pembelian</h4>
             </div>
             <div class="card-body">
-                <div id="smartwizard" class="form-wizard order-create">
-                    <ul class="nav nav-wizard">
-                        <li><a class="nav-link link1" href="#data_konsumen">
-                                <span>1</span>
-                            </a></li>
-                        <li><a class="nav-link link2" href="#data_motor">
-                                <span>2</span>
-                            </a></li>
-                        <li><a class="nav-link link3" href="#harga">
-                                <span>3</span>
-                            </a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <form action="/pembelian" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div id="data_konsumen" class="tab-pane" role="tabpanel">
-                                <div class="row form-material">
-                                    <input type="hidden" value="{{ old('oldKTP') }}" name="oldKTP" id="oldKTP">
+                <!-- Basic Start -->
+                <div class="card mb-5 wizard" id="wizardBasic">
+                    <div class="card-header border-0 pb-0">
+                        <ul class="nav nav-tabs justify-content-center" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link text-center" href="#data_konsumen" role="tab">
+                                    <div class="mb-1 title d-none d-sm-block">Data Konsumen</div>
+                                    <div class="text-small description d-none d-md-block">Tambah Data Konsumen</div>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link text-center" href="#data_motor" role="tab">
+                                    <div class="mb-1 title d-none d-sm-block">Data Motor</div>
+                                    <div class="text-small description d-none d-md-block">Tambah Data Motor</div>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link text-center" href="#harga" role="tab">
+                                    <div class="mb-1 title d-none d-sm-block">Harga</div>
+                                    <div class="text-small description d-none d-md-block">Tambah Harga</div>
+                                </a>
+                            </li>
+                            <li class="nav-item d-none" role="presentation">
+                                <a class="nav-link text-center" href="#basicLast" role="tab"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body sh-35">
+                        <div class="tab-content">
+                            <div class="tab-pane fade" id="data_konsumen" role="tabpanel">
+                                {{-- <h5 class="card-title">Pilih Penjual terlebih dahulu</h5>
+                                <p class="card-text text-alternate mb-4">With supporting text below as a natural lead-in to additional content.</p> --}}
+                                <form action="/pembelian" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="form-floating col-md-12">
+                                            <input type="hidden" value="{{ old('oldKTP') }}" name="oldKTP" id="oldKTP">
+                                        </div>
+                                        <div class="form-floating mb-3 w-100 col-md-12">
+                                            <select class="select-floating @error('penjual') is-invalid @enderror penjual" value="{{ old('penjual') }}" name="penjual" id="selectFloating">
+                                                <option value="">Pilih Penjual</option>
+                                                <option value="INDIVIDU">INDIVIDU</option>
+                                                <option value="DEALER">DEALER</option>
+                                            </select>
+                                            @error('penjual')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                            <label class="text-label" for="penjual">&nbsp;&nbsp;Pilih Penjual<span class="text-danger"> *</label></span>
+                                        </div>
+                                        <div id="consumer-content-individu" class="d-none">
+                                            <div class="form-floating mb-3 col-md-6">
+                                                <input type="text" name="nik" id="nik" class="form-control @error('nik')is-invalid @enderror" value="{{ old('nik') }}" placeholder="Masukan NIK">
+                                                @error('nik')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                                <label class="text-label" for="nik">&nbsp;&nbsp;NIK<span class="text-danger"> *</span></label>
+                                            </div>
+                                            <div class="form-floating mb-3 col-md-6">
+                                                <input type="text" name="nama" id="nama" class="form-control @error('nama')is-invalid @enderror" value="{{ old('nama') }}" placeholder="Masukan Nama Lengkap">
+                                                @error('nama')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                                <label class="text-label" for="nama">&nbsp;&nbsp;Nama<span class="text-danger"> *</span></label>
+                                            </div>
+                                            <div class="form-floating mb-3 col-md-6">
+                                                <input type="text" class="form-control @error('no_telepon')is-invalid @enderror" name="no_telepon" id="no_telepon" value="{{ old('no_telepon') }}" placeholder="Masukan Nomor Telepon">
+                                                @error('no_telepon')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                                <label class="text-label" for="no_telepon">&nbsp;&nbsp;No Telepon<span class="text-danger"> *</span></label>
+                                            </div>
+                                            <div class="form-floating mb-3 col-md-6">
+                                                <textarea class="form-control @error('alamat')is-invalid @enderror" rows="2" name="alamat" id="alamat" placeholder="Masukan Alamat">{{ old('alamat') }}</textarea>
+                                                @error('alamat')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                                <label class="text-label" for="nama">&nbsp;&nbsp;Alamat<span class="text-danger"> *</span></label>
+                                            </div>
+                                        </div>
+                                        <div id="consumer-content-dealer" class="d-none">
+                                            <div class="form-floating mb-3 col-md-6">
+                                                <input type="text" name="nama_kang" id="nama_kang" class="form-control @error('nama_kang')is-invalid @enderror" value="{{ old('nama_kang') }}" placeholder="Masukan Nama Petugas">
+                                                @error('nama_kang')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                                <label class="text-label" for="nama_kang">&nbsp;&nbsp;Nama Petugas<span class="text-danger"> *</span></label>
+                                            </div>
+                                            <div class="form-floating mb-3 col-md-6">
+                                                <input type="text" name="dealer" id="dealer" class="form-control @error('dealer')is-invalid @enderror" value="{{ old('dealer') }}" placeholder="Masukan Nama Dealer">
+                                                @error('dealer')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                                <label class="text-label" for="dealer">&nbsp;&nbsp;Nama Dealer<span class="text-danger"> *</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="tab-pane fade" id="data_motor" role="tabpanel">
+                                {{-- <h5 class="card-title">Second Title</h5>
+                                         <p class="card-text text-alternate mb-4">With supporting text below as a natural lead-in to additional content.</p> --}}
+                                <div class="row">
+                                    <div class="form-floating col-md-12">
+                                        <input type="hidden" value="{{ old('oldKTP') }}" name="oldKTP" id="oldKTP">
+                                    </div>
+                                    <div class="form-floating mb-3 col-md-6">
+                                        <input type="text" name="merek" id="merek" class="form-control @error('merek')is-invalid @enderror" value="{{ old('merek') }}" placeholder="Masukan Merk">
+                                        @error('merek')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                        <label class="text-label" for="merek">&nbsp;&nbsp;Merk<span class="text-danger"> *</label></span>
+                                    </div>
+                                    <div class="form-floating mb-3 col-md-6">
+                                        <input type="text" name="type" id="type" class="form-control @error('type')is-invalid @enderror" value="{{ old('type') }}" placeholder="Masukan Tipe">
+                                        @error('type')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                        <label class="text-label" for="type">&nbsp;&nbsp;Tipe<span class="text-danger"> *</label></span>
+                                    </div>
+                                    <div class="form-floating mb-3 col-md-6">
+                                        <input type="text" name="tahun_pembuatan" class="form-control @error('tahun_pembuatan') is-invalid @enderror" placeholder="Masukan Tahun Pembuatan" value="{{ old('tahun_pembuatan') }}">
+                                        @error('tahun_pembuatan')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                        <label class="text-label" for="tahun_pembuatan">&nbsp;&nbsp;Tahun Pembuatan<span class="text-danger"> *</label></span>
+                                    </div>
+                                    <div class="form-floating mb-3 col-md-6">
+                                        <input type="text" name="warna" id="warna" class="form-control @error('warna')is-invalid @enderror" value="{{ old('warna') }}" placeholder="Masukan Warna">
+                                        @error('warna')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                        <label class="text-label" for="warna">&nbsp;&nbsp;Warna<span class="text-danger"> *</label></span>
+                                    </div>
+                                    <div class="form-floating mb-3 col-md-6">
+                                        <input type="text" name="no_rangka" id="no_rangka" class="form-control @error('no_rangka')is-invalid @enderror" value="{{ old('no_rangka') }}" placeholder="Masukan No Rangka">
+                                        @error('no_rangka')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                        <label class="text-label" for="no_rangka">&nbsp;&nbsp;No Rangka<span class="text-danger"> *</label></span>
+                                    </div>
+                                    <div class="form-floating mb-3 col-md-6">
+                                        <input type="text" name="no_polisi" id="no_polisi" class="form-control @error('no_polisi')is-invalid @enderror" value="{{ old('no_polisi') }}" placeholder="Masukan No Polisi">
+                                        @error('no_polisi')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                        <label class="text-label" for="no_polisi">&nbsp;&nbsp;No Polisi<span class="text-danger"> *</label></span>
+                                    </div>
+                                    <div class="form-floating mb-3 col-md-6">
+                                        <input type="text" name="bpkb" id="bpkb" class="form-control @error('bpkb')is-invalid @enderror" value="{{ old('bpkb') }}" placeholder="Masukan BPKB">
+                                        @error('bpkb')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                        <label class="text-label" for="bpkb">&nbsp;&nbsp;No BPKB<span class="text-danger"> *</label></span>
+                                    </div>
+                                    <div class="form-floating mb-3 col-md-6">
+                                        <input type="text" name="nama_bpkb" id="nama_bpkb" class="form-control @error('nama_bpkb')is-invalid @enderror" value="{{ old('nama_bpkb') }}" placeholder="Masukan BPKB">
+                                        @error('nama_bpkb')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                        <label class="text-label" for="nama_bpkb">&nbsp;&nbsp;Nama BPKB<span class="text-danger"> *</label></span>
+                                    </div>
+                                    <div class="form-floating mb-3 col-md-6">
+                                        <input type="text" class="date-picker form-control @error('berlaku_sampai')is-invalid @enderror" value="{{ old('berlaku_sampai') }}" placeholder="Masukan Masa Berlaku" name="berlaku_sampai" id="datePickerFloatingLabel">
+                                        @error('berlaku_sampai')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                        <label class="text-label" for="berlaku_sampai">&nbsp;&nbsp;Berlaku Sampai<span class="text-danger"> *</label></span>
+                                    </div>
+                                    <div class="form-floating mb-3 col-md-6">
+                                        <input type="text" class="date-picker form-control @error('perpanjang_stnk')is-invalid @enderror" value="{{ old('perpanjang_stnk') }}" placeholder="Masukan Perpanjang STNK" name="perpanjang_stnk" id="datePickerFloatingLabel">
+                                        @error('perpanjang_stnk')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                        <label class="text-label" for="perpanjang_stnk">&nbsp;&nbsp;Perpanjang STNK<span class="text-danger"> *</label></span>
+                                    </div>
+                                    <div class="form-floating mb-3 col-md-6">
+                                        <div class="input-group mb-3">
+                                            <input type="file" class="form-control @error('photo_stnk')is-invalid @enderror" value="{{ old('photo_stnk') }}" name="photo_stnk" id="photo_stnk" onchange="previewImageSTNK()">
+                                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                            @error('photo_stnk')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-floating mb-3 col-md-6">
+                                        <div class="input-group mb-3">
+                                            <input type="file" class="form-control @error('photo_bpkb')is-invalid @enderror" value="{{ old('photo_bpkb') }}" name="photo_bpkb" name="photo_bpkb" id="photo_bpkb" onchange="previewImageBPKB()">
+                                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                            @error('photo_bpkb')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="row form-material">
-                                    <div class="col-lg-6 mb-2">
-                                        <label class="text-label" for="penjual">Penjual</label><span class="text-danger"> *</span>
-                                        <select class="form-control @error('penjual') is-invalid @enderror" value="{{ old('penjual') }}" name="penjual" id="penjual">
-                                            <option value="">Pilih Penjual</option>
-                                            <option value="INDIVIDU">INDIVIDU</option>
-                                            <option value="DEALER">DEALER</option>
-                                        </select>
-                                        @error('penjual')
+                            </div>
+                            <div class="tab-pane fade" id="harga" role="tabpanel">
+                                {{-- <h5 class="card-title">Third Title</h5>
+                                <p class="card-text text-alternate mb-4">With supporting text below as a natural lead-in to additional content.</p> --}}
+                                <div class="row">
+                                    <div class="form-floating mb-3 col-6">
+                                        <input type="text" class="form-control money @error('harga_beli')is-invalid @enderror" value="{{ old('harga_beli') }}" placeholder="Masukan Harga Beli" name="harga_beli" id="harga_beli">
+                                        <label class="text-label" for="perpanjang_stnk">&nbsp;&nbsp;Perpanjang STNK<span class="text-danger"> *</label></span>
+                                        @error('harga_beli')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+
+                                    </div>
+                                    <div class="form-floating mb-3 col-6">
+                                        <input type="text" class="date-picker form-control input-default @error('tanggal_beli')is-invalid @enderror" value="{{ old('tanggal_beli') }}" placeholder="Masukan Tanggal Pembelian" name="tanggal_beli" id="datePickerFloatingLabel">
+                                        <label class="text-label" for="tanggal_beli">&nbsp;&nbsp;Tanggal Beli<span class="text-danger"> *</label></span>
+                                        @error('tanggal_beli')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
                                 </div>
-                                <div id="consumer-content-individu" class="d-none" style="padding-bottom: 92.75px">
-                                    <div class="row form-material">
-                                        <div class="col-lg-6 mb-2">
-                                            <div class="form-group">
-                                                <label class="text-label" for="nik">NIK</label><span class="text-danger"> *</span>
-                                                <input type="text" name="nik" id="nik" class="form-control input-default @error('nik')is-invalid @enderror" value="{{ old('nik') }}" placeholder="Masukan NIK">
-                                                @error('nik')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 mb-2 ">
-                                            <div class="form-group">
-                                                <label class="text-label" for="nama">Nama Lengkap</label><span class="text-danger"> *</span>
-                                                <input type="text" name="nama" id="nama" class="form-control input-default @error('nama')is-invalid @enderror" value="{{ old('nama') }}" placeholder="Masukan Nama Lengkap">
-                                                @error('nama')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row form-material">
-                                        <div class="col-lg-6 mb-5">
-                                            <div class="form-group">
-                                                <label class="text-label" for="no_telepon">Nomor Telepon</label><span class="text-danger"> *</span>
-                                                <input type="text" class="form-control input-default @error('no_telepon')is-invalid @enderror" name="no_telepon" id="no_telepon" value="{{ old('no_telepon') }}" placeholder="Masukan Nomor Telepon">
-                                                @error('no_telepon')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 mb-5">
-                                            <div class="form-group">
-                                                <label class="text-label" for="alamat">Alamat</label><span class="text-danger"> *</span>
-                                                <textarea class="form-control input-default @error('alamat')is-invalid @enderror" rows="2" name="alamat" id="alamat" placeholder="Masukan Alamat">{{ old('alamat') }}</textarea>
-                                                @error('alamat')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row form-material">
-                                        <div class="col-lg-6 mb-2" style="padding-bottom:300px">
-                                            <div class="form-group">
-                                                <label class="text-label mb-3" for="photo_ktp">Foto KTP</label>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input @error('photo_ktp')is-invalid @enderror" value="{{ old('photo_ktp') }}" name="photo_ktp" name="photo_ktp" id="photo_ktp" onchange="previewImageKTP()">
-                                                    <label class="custom-file-label">Pilih Gambar</label>
-                                                    @error('photo_ktp')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                    @enderror
-                                                    <img src="/storage/{{ old('oldKTP', '/ktp/default.png') }}" style="width: 250px" alt="" class="img-thumbnail mt-3 ml-5 image-ktp">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="consumer-content-dealer" class="d-none">
-                                    <div class="row form-material">
-                                        <div class="col-lg-6 mb-2">
-                                            <div class="form-group">
-                                                <label class="text-label" for="nama_kang">Nama Petugas</label><span class="text-danger"> *</span>
-                                                <input type="text" name="nama_kang" id="nama_kang" class="form-control input-default @error('nama_kang')is-invalid @enderror" value="{{ old('nama_kang') }}" placeholder="Masukan Nama Petugas">
-                                                @error('nama_kang')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 mb-2">
-                                            <div class="form-group">
-                                                <label class="text-label" for="dealer">Nama Dealer</label><span class="text-danger"> *</span>
-                                                <input type="text" name="dealer" id="dealer" class="form-control input-default @error('dealer')is-invalid @enderror" value="{{ old('dealer') }}" placeholder="Masukan Nama Dealer">
-                                                @error('dealer')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="tab-pane fade" id="basicLast" role="tabpanel">
+                                <div class="text-center mt-5">
+                                    <h5 class="card-title">Terima Kasih!</h5>
+                                    <p class="card-text text-alternate mb-4">Silahkan klik button dibawah untuk menambahkan</p>
+                                    <button class="btn btn-icon btn-icon-start btn-primary btn-add" type="button">
+                                        <i data-acorn-icon="plus"></i>
+                                        <span>Tambah Pembelian</span>
+                                    </button>
                                 </div>
                             </div>
-                            <div id="data_motor" class="tab-pane" role="tabpanel">
-                                <div class="row">
-                                    <div class="col-lg-6 mb-2">
-                                        <div class="form-group">
-                                            <label class="text-label" for="merek">Merk</label><span class="text-danger"> *</span>
-                                            <input type="text" name="merek" id="merek" class="form-control input-default @error('merek')is-invalid @enderror" value="{{ old('merek') }}" placeholder="Masukan Merk">
-                                            @error('merek')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <div class="form-group">
-                                            <label class="text-label" for="type">Tipe</label><span class="text-danger"> *</span>
-                                            <input type="text" name="type" id="type" class="form-control input-default @error('type')is-invalid @enderror" value="{{ old('type') }}" placeholder="Masukan Tipe">
-                                            @error('type')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <div class="form-group">
-                                            <label class="text-label" for="tahun_pembuatan">Tahun Pembuatan</label><span class="text-danger"> *</span>
-                                            <input type="text" name="tahun_pembuatan" class="form-control input-default @error('tahun_pembuatan') is-invalid @enderror" placeholder="Masukan Tahun Pembuatan" value="{{ old('tahun_pembuatan') }}">
-                                            @error('tahun_pembuatan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <div class="form-group">
-                                            <label class="text-label" for="warna">Warna</label><span class="text-danger"> *</span>
-                                            <input type="text" name="warna" id="warna" class="form-control input-default @error('warna')is-invalid @enderror" value="{{ old('warna') }}" placeholder="Masukan Warna">
-                                            @error('warna')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <div class="form-group">
-                                            <label class="text-label" for="no_rangka">No Rangka</label><span class="text-danger"> *</span>
-                                            <input type="text" name="no_rangka" id="no_rangka" class="form-control input-default @error('no_rangka')is-invalid @enderror" value="{{ old('no_rangka') }}" placeholder="Masukan No Rangka">
-                                            @error('no_rangka')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <div class="form-group">
-                                            <label class="text-label" for="no_polisi">No Polisi</label><span class="text-danger"> *</span>
-                                            <input type="text" name="no_polisi" id="no_polisi" class="form-control input-default @error('no_polisi')is-invalid @enderror" value="{{ old('no_polisi') }}" placeholder="Masukan No Polisi">
-                                            @error('no_polisi')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <div class="form-group">
-                                            <label class="text-label" for="bpkb">No. BPKB</label><span class="text-danger"> *</span>
-                                            <input type="text" name="bpkb" id="bpkb" class="form-control input-default @error('bpkb')is-invalid @enderror" value="{{ old('bpkb') }}" placeholder="Masukan BPKB">
-                                            @error('bpkb')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <div class="form-group">
-                                            <label class="text-label" for="nama_bpkb">Nama BPKB</label><span class="text-danger"> *</span>
-                                            <input type="text" name="nama_bpkb" id="nama_bpkb" class="form-control input-default @error('nama_bpkb')is-invalid @enderror" value="{{ old('nama_bpkb') }}" placeholder="Masukan BPKB">
-                                            @error('nama_bpkb')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <label class="text-label" for="berlaku_sampai">Berlaku Sampai</label><span class="text-danger"> *</span>
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control input-default @error('berlaku_sampai')is-invalid @enderror" value="{{ old('berlaku_sampai') }}" placeholder="Masukan Masa Berlaku" name="berlaku_sampai" id="berlaku_sampai">
-                                            @error('berlaku_sampai')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <label class="text-label" for="perpanjang_stnk">Perpanjang STNK</label><span class="text-danger"> *</span>
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control input-default @error('perpanjang_stnk')is-invalid @enderror" value="{{ old('perpanjang_stnk') }}" placeholder="Masukan Perpanjang STNK" name="perpanjang_stnk" id="perpanjang_stnk">
-                                            @error('perpanjang_stnk')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2" style="padding-bottom:300px">
-                                        <div class="form-group">
-                                            <label class="text-label mb-3" for="photo_stnk">Foto STNK</label>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input @error('photo_stnk')is-invalid @enderror" value="{{ old('photo_stnk') }}" name="photo_stnk" id="photo_stnk" onchange="previewImageSTNK()">
-                                                <label class="custom-file-label">Pilih Gambar</label>
-                                                @error('photo_stnk')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                                <img src="" style="width: 250px" alt="" class="img-thumbnail mt-3 ml-5 image-stnk">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2" style="padding-bottom:300px">
-                                        <div class="form-group">
-                                            <label class="text-label mb-3" for="photo_bpkb">Foto BPKB</label>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input @error('photo_bpkb')is-invalid @enderror" value="{{ old('photo_bpkb') }}" name="photo_bpkb" name="photo_bpkb" id="photo_bpkb" onchange="previewImageBPKB()">
-                                                <label class="custom-file-label">Pilih Gambar</label>
-                                                @error('photo_bpkb')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                                <img src="" style="width: 250px" alt="" class="img-thumbnail mt-3 ml-5 image-bpkb">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="harga" class="tab-pane" role="tabpanel">
-                                <div class="row form-material">
-                                    <div class="col-lg-6 mb-2">
-                                        <label class="text-label" for="harga_beli">Harga Beli</label><span class="text-danger"> *</span>
-                                        <div class="form-row">
-                                            <div class="input-group mb-3 col-sm-12">
-                                                <div class="input-group-append input-primary">
-                                                    <span class="input-group-text">Rp.</span>
-                                                </div>
-                                                <input type="text" class="form-control input-default money @error('harga_beli')is-invalid @enderror" value="{{ old('harga_beli') }}" placeholder="Masukan Harga Beli" name="harga_beli" id="harga_beli">
-                                                @error('harga_beli')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 mb-2">
-                                        <label class="text-label" for="tanggal_beli">Tanggal Pembelian</label><span class="text-danger"> *</span>
-                                        <div class="form-row">
-                                            <div class="input-group mb-3 col-sm-12">
-                                                <div class="input-group-append input-primary">
-                                                    <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
-                                                </div>
-                                                <input type="text" class="form-control input-default @error('tanggal_beli')is-invalid @enderror" value="{{ old('tanggal_beli') }}" placeholder="Masukan Tanggal Pembelian" name="tanggal_beli" id="tanggal_beli">
-                                                @error('tanggal_beli')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-rounded btn-primary"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i>
-                                            </span>Tambah Transaksi</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="card-footer text-center border-0 pt-1">
+                        <button class="btn btn-icon btn-icon-start btn-outline-primary btn-prev" type="button">
+                            <i data-acorn-icon="chevron-left"></i>
+                            <span>Back</span>
+                        </button>
+                        <button class="btn btn-icon btn-icon-end btn-outline-primary btn-next" type="button">
+                            <span>Next</span>
+                            <i data-acorn-icon="chevron-right"></i>
+                        </button>
                     </div>
                 </div>
+                <!-- Basic End -->
             </div>
         </div>
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
 {{-- Simple Money Format --}}
-<script src="/js/simple.money.format.js"></script>
-<script src="/js/simple.money.format.init.js"></script>
+<script src="/page-script/simple.money.format.js"></script>
+<script src="/page-script/simple.money.format.init.js"></script>
 {{-- !Simple Money Format --}}
-<script src="/js/page-script/pembelian.js"></script>
+
+
+{{-- Jquery --}}
+<script src="/page-script/pembelian.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     const flashData = $("#pesan").data("flash");

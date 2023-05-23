@@ -3,312 +3,532 @@
 <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
 <div id="pesan" data-flash="{{ session('success') }}"></div>
 <div class="row">
-    <div class="col-12">
-        <button type="button" class="btn btn-rounded btn-primary mb-3" data-toggle="modal" data-target=".bd-example-modal-lg" id="btn-add-data"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i>
-            </span>Tambah Data Penjualan</button>
-        <div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modal-transaksi">
-            <div class="modal-dialog modal-lg">
+    <div class="col">
+        <!-- Title and Top Buttons Start -->
+        <div class="page-title-container">
+            <div class="row">
+                <!-- Title Start -->
+                <div class="col-12 col-md-7">
+
+                </div>
+                <!-- Title End -->
+
+                <!-- Top Buttons Start -->
+                <div class="col-12 col-md-5 d-flex align-items-start justify-content-end">
+                    <!-- Add New Button Start -->
+                    <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable">
+                        <i data-acorn-icon="plus"></i>
+                        <span>Tambah Data</span>
+                    </button>
+                    <!-- Add New Button End -->
+
+                    <!-- Check Button Start -->
+                    <div class="btn-group ms-1 check-all-container">
+                        <div class="btn btn-outline-primary btn-custom-control p-0 ps-3 pe-2" id="datatableCheckAllButton">
+                            <span class="form-check float-end">
+                                <input type="checkbox" class="form-check-input" id="datatableCheckAll" />
+                            </span>
+                        </div>
+                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-offset="0,3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-submenu></button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <div class="dropdown dropstart dropdown-submenu">
+                                <button class="dropdown-item dropdown-toggle tag-datatable caret-absolute disabled" type="button">Tag</button>
+                                <div class="dropdown-menu">
+                                    <button class="dropdown-item tag-done" type="button">Done</button>
+                                    <button class="dropdown-item tag-new" type="button">New</button>
+                                    <button class="dropdown-item tag-sale" type="button">Sale</button>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item disabled delete-datatable" type="button">Delete</button>
+                        </div>
+                    </div>
+                    <!-- Check Button End -->
+                </div>
+                <!-- Top Buttons End -->
+            </div>
+        </div>
+        <!-- Title and Top Buttons End -->
+
+        <!-- Content Start -->
+        <div class="data-table-boxed">
+            <!-- Controls Start -->
+            <div class="row mb-2">
+                <!-- Search Start -->
+                <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-2 mb-1">
+                    <div class="d-inline-block float-md-start me-1 mb-1 search-input-container w-100 shadow bg-foreground">
+                        <input class="form-control datatable-search" placeholder="Search" data-datatable="#datatableBoxed" />
+                        <span class="search-magnifier-icon">
+                            <i data-acorn-icon="search"></i>
+                        </span>
+                        <span class="search-delete-icon d-none">
+                            <i data-acorn-icon="close"></i>
+                        </span>
+                    </div>
+                </div>
+                <!-- Search End -->
+
+                <div class="col-sm-12 col-md-7 col-lg-9 col-xxl-10 text-end mb-1">
+                    <div class="d-inline-block me-0 me-sm-3 float-start float-md-none">
+                        <!-- Add Button Start -->
+                        <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow add-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data" type="button">
+                            <i data-acorn-icon="plus"></i>
+                        </button>
+                        <!-- Add Button End -->
+
+                        <!-- Edit Button Start -->
+                        <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow edit-datatable disabled" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Data" type="button">
+                            <i data-acorn-icon="edit"></i>
+                        </button>
+                        <!-- Edit Button End -->
+
+                        <!-- Delete Button Start -->
+                        <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow disabled delete-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data" type="button">
+                            <i data-acorn-icon="bin"></i>
+                        </button>
+                        <!-- Delete Button End -->
+                    </div>
+                    <div class="d-inline-block">
+                        <!-- Print Button Start -->
+                        <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow datatable-print" data-bs-delay="0" data-datatable="#datatableBoxed" data-bs-toggle="tooltip" data-bs-placement="top" title="Print Data" type="button">
+                            <i data-acorn-icon="print"></i>
+                        </button>
+                        <!-- Print Button End -->
+
+                        <!-- Export Dropdown Start -->
+                        <div class="d-inline-block datatable-export" data-datatable="#datatableBoxed">
+                            <button class="btn p-0" data-bs-toggle="dropdown" type="button" data-bs-offset="0,3">
+                                <span class="btn btn-icon btn-icon-only btn-foreground-alternate shadow dropdown" data-bs-delay="0" data-bs-placement="top" data-bs-toggle="tooltip" title="Export Data">
+                                    <i data-acorn-icon="download"></i>
+                                </span>
+                            </button>
+                            <div class="dropdown-menu shadow dropdown-menu-end">
+                                <button class="dropdown-item export-copy" type="button">Copy</button>
+                                <button class="dropdown-item export-excel" type="button">Excel</button>
+                                <button class="dropdown-item export-cvs" type="button">CSV</button>
+                            </div>
+                        </div>
+                        <!-- Export Dropdown End -->
+
+                        <!-- Length Start -->
+                        <div class="dropdown-as-select d-inline-block datatable-length" data-datatable="#datatableBoxed" data-childSelector="span">
+                            <button class="btn p-0 shadow" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,3">
+                                <span class="btn btn-foreground-alternate dropdown-toggle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-delay="0" title="Item Count">
+                                    15 Items
+                                </span>
+                            </button>
+                            <div class="dropdown-menu shadow dropdown-menu-end">
+                                <a class="dropdown-item" href="#">10 Items</a>
+                                <a class="dropdown-item active" href="#">15 Items</a>
+                                <a class="dropdown-item" href="#">20 Items</a>
+                            </div>
+                        </div>
+                        <!-- Length End -->
+                    </div>
+                </div>
+            </div>
+            <!-- Controls End -->
+
+            <!-- Table Start -->
+            <div>
+                <table id="datatableBoxed" class="data-table nowrap hover">
+                    <thead>
+                        <tr>
+                            <th class="text-muted text-small text-uppercase">Name</th>
+                            <th class="text-muted text-small text-uppercase">Sales</th>
+                            <th class="text-muted text-small text-uppercase">Stock</th>
+                            <th class="text-muted text-small text-uppercase">Category</th>
+                            <th class="text-muted text-small text-uppercase">Tag</th>
+                            <th class="empty all">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Basler Brot</td>
+                            <td>213</td>
+                            <td>15</td>
+                            <td>Sourdough</td>
+                            <td>New</td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>Kommissbrot</td>
+                            <td>2321</td>
+                            <td>154</td>
+                            <td>Whole Wheat</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Lye Roll</td>
+                            <td>973</td>
+                            <td>39</td>
+                            <td>Sourdough</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Arepa</td>
+                            <td>213</td>
+                            <td>15</td>
+                            <td>Sourdough</td>
+                            <td>New</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Panettone</td>
+                            <td>563</td>
+                            <td>72</td>
+                            <td>Sourdough</td>
+                            <td>Done</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Saffron Bun</td>
+                            <td>98</td>
+                            <td>7</td>
+                            <td>Whole Wheat</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Ruisreikäleipä</td>
+                            <td>459</td>
+                            <td>90</td>
+                            <td>Whole Wheat</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>Bagel</td>
+                            <td>433</td>
+                            <td>37</td>
+                            <td>Multigrain</td>
+                            <td>Done</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Rúgbrauð</td>
+                            <td>802</td>
+                            <td>234</td>
+                            <td>Whole Wheat</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Yeast Karavai</td>
+                            <td>345</td>
+                            <td>22</td>
+                            <td>Multigrain</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Brioche</td>
+                            <td>334</td>
+                            <td>45</td>
+                            <td>Sourdough</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Pullman Loaf</td>
+                            <td>456</td>
+                            <td>23</td>
+                            <td>Multigrain</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Bammy</td>
+                            <td>1321</td>
+                            <td>554</td>
+                            <td>Whole Wheat</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Challah</td>
+                            <td>473</td>
+                            <td>29</td>
+                            <td>Sourdough</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Soda Bread</td>
+                            <td>1152</td>
+                            <td>84</td>
+                            <td>Whole Wheat</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Barmbrack</td>
+                            <td>854</td>
+                            <td>13</td>
+                            <td>Sourdough</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Dorayaki</td>
+                            <td>459</td>
+                            <td>90</td>
+                            <td>Whole Wheat</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Buccellato di Lucca</td>
+                            <td>1298</td>
+                            <td>212</td>
+                            <td>Multigrain</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Toast Bread</td>
+                            <td>2156</td>
+                            <td>732</td>
+                            <td>Multigrain</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Cheesymite Scroll</td>
+                            <td>452</td>
+                            <td>24</td>
+                            <td>Sourdough</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Baguette</td>
+                            <td>456</td>
+                            <td>33</td>
+                            <td>Sourdough</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Guernsey Gâche</td>
+                            <td>1958</td>
+                            <td>221</td>
+                            <td>Multigrain</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Bazlama</td>
+                            <td>858</td>
+                            <td>34</td>
+                            <td>Whole Wheat</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Bolillo</td>
+                            <td>333</td>
+                            <td>24</td>
+                            <td>Whole Wheat</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Chapati</td>
+                            <td>513</td>
+                            <td>72</td>
+                            <td>Sourdough</td>
+                            <td>Done</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Eggette</td>
+                            <td>802</td>
+                            <td>234</td>
+                            <td>Whole Wheat</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Bauernbrot</td>
+                            <td>633</td>
+                            <td>97</td>
+                            <td>Multigrain</td>
+                            <td>Done</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Flatbread</td>
+                            <td>945</td>
+                            <td>12</td>
+                            <td>Multigrain</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Hallulla</td>
+                            <td>534</td>
+                            <td>65</td>
+                            <td>Sourdough</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Cozonac</td>
+                            <td>98</td>
+                            <td>7</td>
+                            <td>Whole Wheat</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Table End -->
+        </div>
+        <!-- Content End -->
+
+        <!-- Add Edit Modal Start -->
+        <div class="modal modal-center fade" id="addEditModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Tambah Data Penjualan</h5>
-                        <button type="button" class="close tutup" data-dismiss="modal"><span>&times;</span>
-                        </button>
+                        <h5 class="modal-title" id="modalTitle">Tambah Data Penjualan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form action="javascript:;" enctype="multipart/form-data" id="form-penjualan">
-                            @csrf
                             <div class="current-id"></div>
-                            <div class="row form-material">
-                                <div class="col-lg-12 mb-3" id="no-polisi">
-                                    <label class="text-label" for="no_polisi">No Polisi</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <select id="single-select" name="no_polisi" class="form-control no-polisi" placeholder="Masukan No Polisi">
-                                            <option value="">Pilih No Polisi</option>
-                                            @foreach ($no_polisi as $row)
-                                            <option value="{{ $row->id }}">{{ $row->no_polisi }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3" id="current-no-polisi">
+                            @csrf
+                            <div class="form-floating mb-3 w-100">
+                                <select id="select2FloatingLabel" name="no_polisi" class="form-control no-polisi" placeholder="Masukan No Polisi">
+                                    <option value="">Pilih No Polisi</option>
+                                    @foreach ($no_polisi as $row)
+                                    <option value="{{ $row->id }}">{{ $row->no_polisi }}</option>
+                                    @endforeach
+                                </select>
+                                <label>No Polisi <span class="text-danger"> *</span></label>
+                            </div>
+                            <div class="form-floating mb-3" id="current-no-polisi">
 
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <div class="form-row">
-                                        <label class="text-label" for="merk">Merk</label>
-                                        <input type="text" name="merk" id="merk" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" disabled>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <div class="form-row">
-                                        <label class="text-label" for="warna">Warna</label>
-                                        <input type="text" name="warna" id="warna" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" disabled>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tahun_pembuatan">Tahun Pembuatan</label>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" name="tahun_pembuatan" id="tahun_pembuatan" disabled style="background-color: rgba(215, 218, 227, 0.3)">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="harga_beli">Harga Beli</label>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            <input type="text" class="form-control money" name="harga_beli" id="harga_beli" style="background-color: rgba(215, 218, 227, 0.3)" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="nik">NIK</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control input-default" placeholder="Masukan No NIK KTP" name="nik" id="nik">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="nama_pembeli">Nama Pembeli</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control" placeholder="Masukan Nama Pembeli">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="alamat">Alamat</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <textarea class="form-control input-default" rows="2" name="alamat" id="alamat" placeholder="Masukan Alamat"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="alamat">Upload Foto KTP</label>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Upload</span>
-                                            </div>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="photo-ktp" id="photo-ktp" onchange="previewImageKTP()">
-                                                <label class="custom-file-label">Pilih Gambar</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3 text-center" id="img-ktp">
-                                    <img src="/storage/ktp/default.png" alt="" class="img-fluid" width="200px">
-                                    <br>
-                                    <input type="hidden" name="photo_ktp" id="photo_ktp">
-                                    <input type="hidden" name="old_ktp" id="old_ktp">
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tanggal_jual">Tanggal Penjualan</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control input-default" placeholder="Masukan Tanggal Penjualan" name="tanggal_jual" id="tanggal_jual">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="jenis_pembayaran">Jenis Pembayaran</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text"><i class="flaticon-381-id-card"></i></span>
-                                            </div>
-                                            <select class="form-control" name="jenis_pembayaran" id="jenis_pembayaran">
-                                                <option value="">Pilih Opsi Pembayaran</option>
-                                                <option value="CASH">CASH</option>
-                                                <option value="KREDIT">KREDIT</option>
-                                            </select>
-                                        </div>
-                                    </div>
+
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="merk" id="merk" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" disabled>
+                                <label class="text-label" for="merk">Merk</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="warna" id="warna" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" disabled>
+                                <label>Warna</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="tahun_pembuatan" id="tahun_pembuatan" disabled style="background-color: rgba(215, 218, 227, 0.3)">
+                                <label for="tahun_pembuatan">Tahun Pembuatan</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control money" name="harga_beli" id="harga_beli" style="background-color: rgba(215, 218, 227, 0.3)" readonly>
+                                <label for="harga_beli">Harga Beli</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control " placeholder="Masukan No NIK KTP" name="nik" id="nik">
+                                <label class="text-label" for="nik">NIK<span class="text-danger"> *</span></label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control" placeholder="Masukan Nama Pembeli">
+                                <label class="text-label" for="nama_pembeli">Nama Pembeli<span class="text-danger"> *</span></label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control " rows="2" name="alamat" id="alamat" placeholder="Masukan Alamat"></textarea>
+                                <label class="text-label" for="alamat">Alamat<span class="text-danger"> *</span></label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" name="photo-ktp" id="photo-ktp" onchange="previewImageKTP()">
+                                    <label class="input-group-text" for="photo-ktp">Upload Foto KTP</label>
                                 </div>
                             </div>
-                            <div id="buys-content-cash" class="row form-material d-none" style="padding-bottom: 92.75px">
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="harga_jual">Harga Jual</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            <input type="text" class="form-control input-default money" placeholder="Masukan Harga Jual" name="harga_jual" id="harga_jual">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="jumlah_bayar">Jumlah Bayar</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            <input type="text" class="form-control input-default money" placeholder="Masukan Jumlah Bayar" name="jumlah_bayar" id="jumlah_bayar">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="kembali">Kembalian</label>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            <input type="text" class="form-control input-default money" name="kembali" id="kembali" readonly style="background-color: rgba(215, 218, 227, 0.3)">
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="date-picker form-control" placeholder="Masukan Tanggal Penjualan" id="datePickerFloatingLabel" />
+                                <label class="text-label" for="tanggal_jual">Tanggal Penjualan<span class="text-danger"> *</label></span>
                             </div>
-                            <div id="buys-content-kredit" class="row form-material d-none" style="padding-bottom: 92.75px">
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tempat_lahir">Tempat Lahir</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control input-default" placeholder="Masukan Tempat Lahir" name="tempat_lahir" id="tempat_lahir">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tanggal_lahir">Tanggal Lahir</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control input-default" placeholder="Masukan Tanggal Lahir" name="tanggal_lahir" id="tanggal_lahir">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="jenis_kelamin">Jenis Kelamin</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <select class="form-control default-select" name="jenis_kelamin" id="jenis_kelamin">
-                                                <option value="">Pilih Jenis Kelamin</option>
-                                                <option value="Laki-Laki">Laki - Laki</option>
-                                                <option value="Perempuan">Perempuan</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="dp_bayar">DP Bayar</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            <input type="text" class="form-control input-default money" name="dp_bayar" id="dp_bayar" placeholder="Masukan DP Bayar">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="pencairan">Pencairan</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            <input type="text" class="form-control input-default money" name="pencairan" id="pencairan" placeholder=" Masukan Pencairan">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="angsuran">Angsuran</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            <input type="text" class="form-control input-default money" name="angsuran" id="angsuran" placeholder="Masukan Angsuran">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="tenor">Tenor</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <input type="number" class="form-control input-default" placeholder="Masukan Jangka Waktu" name="tenor" id="tenor">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <label class="text-label" for="komisi">Komisi</label><span class="text-danger"> *</span>
-                                    <div class="form-row">
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            <input type="text" class="form-control input-default money" name="komisi" id="komisi" placeholder="Masukan Komisi">
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="form-floating mb-3 w-100">
+                                <select class="select-floating" id="selectFloating" name="jenis_pembayaran">
+                                    <option label="&nbsp;"></option>
+                                    <option value="CASH">CASH</option>
+                                    <option value="KREDIT">KREDIT</option>
+                                </select>
+                                <label class="text-label" for="jenis_pembayaran">Jenis Pembayaran<span class="text-danger"> *</label></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control money" placeholder="Masukan Harga Jual" name="harga_jual" id="harga_jual">
+                                <label class="text-label" for="harga_jual">Harga Jual<span class="text-danger"> *</label></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control money" placeholder="Masukan Jumlah Bayar" name="jumlah_bayar" id="jumlah_bayar">
+                                <label class="text-label" for="jumlah_bayar">Jumlah Bayar<span class="text-danger"> *</label></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control money" name="kembali" id="kembali" readonly style="background-color: rgba(215, 218, 227, 0.3)">
+                                <label class="text-label" for="kembali">Kembalian</label></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" placeholder="Masukan Tempat Lahir" name="tempat_lahir" id="tempat_lahir">
+                                <label class="text-label" for="tempat_lahir">Tempat Lahir<span class="text-danger"> *</label></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="date-picker form-control" placeholder="Masukan Tanggal Lahir" name="tanggal_lahir" id="datePickerFloatingLabel">
+                                <label class="text-label" for="tanggal_lahir">Tanggal Lahir<span class="text-danger"> *</label></span>
+                            </div>
+                            <div class="form-floating mb-3 w-100">
+                                <select class="select-floating" id="selectFloating" name="jenis_kelamin">
+                                    <option label="&nbsp;"></option>
+                                    <option value="COWO">Laki - Laki</option>
+                                    <option value="CEWE">Perempuan</option>
+                                </select>
+                                <label class="text-label" for="jenis_kelamin">Jenis Kelamin<span class="text-danger"> *</label></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control money" name="dp_bayar" id="dp_bayar" readonly style="">
+                                <label class="text-label" for="dp_bayar">DP Bayar</label></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control money" name="pencairan" id="pencairan" readonly style="">
+                                <label class="text-label" for="pencairan">Pencairan</label></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control money" name="angsuran" id="angsuran" readonly style="">
+                                <label class="text-label" for="angsuran">Angsuran</label></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control money" name="tenor" id="tenor" readonly style="">
+                                <label class="text-label" for="tenor">Tenor</label></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control money" name="komisi" id="komisi" readonly style="">
+                                <label class="text-label" for="komisi">Komisi</label></span>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-rounded btn-danger" data-dismiss="modal"><span class="btn-icon-left text-danger"><i class="fa fa-close color-danger"></i>
-                            </span>Tutup</button>
-                        <div id="btn-action"></div>
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" id="addEditConfirmButton" title="Tambah">Tambah</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Data Transaksi Penjualan</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="dataTablesPenjualan" class="display min-w850 text-center">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Pembeli</th>
-                                <th>No Polisi</th>
-                                <th>Merk</th>
-                                <th>Warna</th>
-                                <th>Harga Jual</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Pembeli</th>
-                                <th>No Polisi</th>
-                                <th>Merk</th>
-                                <th>Warna</th>
-                                <th>Harga Jual</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-        </div>
+        <!-- Add Edit Modal End -->
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
 {{-- Simple Money Format --}}
-<script src="/js/simple.money.format.js"></script>
-<script src="/js/simple.money.format.init.js"></script>
+<script src="/page-script/simple.money.format.js"></script>
+<script src="/page-script/simple.money.format.init.js"></script>
 {{-- !Simple Money Format --}}
-<script src="/js/page-script/penjualan.js"></script>
+<script src="/page-script/penjualan.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     const flashData = $('#pesan').data('flash');
