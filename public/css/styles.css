@@ -4005,16 +4005,16 @@ html[data-color=dark-sky] {
 html[data-color=light-blue] {
   --primary: #003163;
   --secondary: #022344;
-  --tertiary: #022344;
-  --quaternary: #022344;
+  --tertiary: #002e5b;
+  --quaternary: #004182;
   --primary-rgb: #003163;
   --secondary-rgb: #022344;
-  --tertiary-rgb: #022344;
-  --quaternary-rgb: #022344;
-  --primary-darker: #003163;
-  --secondary-darker: #022344;
-  --tertiary-darker: #022344;
-  --quaternary-darker: #022344;
+  --tertiary-rgb: #002e5b;
+  --quaternary-rgb: #004182;
+  --primary-darker: #002141;
+  --secondary-darker: #001932;
+  --tertiary-darker: #00152a;
+  --quaternary-darker: #001224;
   --body: #4e4e4e;
   --alternate: #7c7c7c;
   --muted: #afafaf;

@@ -39,8 +39,18 @@
     <!-- Vendor Styles Start -->
     <link rel="stylesheet" href="/css/vendor/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/vendor/OverlayScrollbars.min.css" />
-
     <!-- Vendor Styles End -->
+
+    <link rel="stylesheet" href="/css/vendor/datatables.min.css" />
+
+    <link rel="stylesheet" href="/css/vendor/select2.min.css" />
+
+    <link rel="stylesheet" href="/css/vendor/select2-bootstrap4.min.css" />
+
+    <link rel="stylesheet" href="/css/vendor/bootstrap-datepicker3.standalone.min.css" />
+
+    <link rel="stylesheet" href="/css/vendor/tagify.css" />
+
     <!-- Template Base Styles Start -->
     <link rel="stylesheet" href="/css/styles.css" />
     <!-- Template Base Styles End -->
@@ -136,6 +146,26 @@
             <script src="/icon/acorn-icons-interface.js"></script>
             <script src="/icon/acorn-icons-commerce.js"></script>
 
+            <script src="/js/cs/scrollspy.js"></script>
+
+            <script src="/js/vendor/select2.full.min.js"></script>
+
+            <script src="/js/vendor/datepicker/bootstrap-datepicker.min.js"></script>
+
+            <script src="/js/vendor/datepicker/locales/bootstrap-datepicker.es.min.js"></script>
+
+            <script src="/js/vendor/jquery.validate/jquery.validate.min.js"></script>
+
+            <script src="/js/vendor/jquery.validate/additional-methods.min.js"></script>
+
+            <script src="/js/vendor/bootstrap-submenu.js"></script>
+
+            <script src="/js/vendor/datatables.min.js"></script>
+
+            <script src="/js/vendor/mousetrap.min.js"></script>
+
+            <script src="/js/vendor/tagify.min.js"></script>
+
             <!-- Vendor Scripts End -->
 
             <!-- Template Base Scripts Start -->
@@ -146,7 +176,15 @@
             <script src="/js/base/settings.js"></script>
             <!-- Template Base Scripts End -->
             <!-- Page Specific Scripts Start -->
+            <script src="/js/cs/datatable.extend.js"></script>
 
+            <script src="/js/forms/controls.select2.js"></script>
+
+            <script src="/js/forms/controls.datepicker.js"></script>
+
+            <script src="/js/forms/layouts.js"></script>
+
+            <script src="/js/plugins/datatable.editableboxed.js"></script>
             <script src="/js/common.js"></script>
             <script src="/js/scripts.js"></script>
             <!-- Page Specific Scripts End -->
