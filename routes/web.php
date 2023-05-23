@@ -9,6 +9,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ConsumerController;
+use App\Http\Controllers\KreditController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\MaintenanceController;
@@ -67,7 +68,11 @@ Route::resource('/consumer', ConsumerController::class)->middleware('auth');
 
 // PENJUALAN
 Route::resource('/penjualan', PenjualanController::class)->middleware('auth');
-//Tambah Penjualan
+//Rules
+Route::resource('/penjualan', PenjualanController::class)->middleware('auth');
+//Rules Penjualan
+Route::post('/rulesPenjualan', [PenjualanController::class, 'rules_penjualan'])->middleware('auth');
+//Tambah Penjualan Cash
 Route::post('/tambahPenjualan', [PenjualanController::class, 'tambah_data'])->middleware('auth');
 //Edit Penjualan
 Route::get('/ambilDataPenjualan', [PenjualanController::class, 'get_data'])->middleware('auth');
@@ -77,6 +82,9 @@ Route::post('/updatePenjualan', [PenjualanController::class, 'update_data'])->mi
 Route::get('/cekNikPembeli', [PenjualanController::class, 'cek_nik'])->middleware('auth');
 //Retur Motor
 Route::get('/returMotor/{sele:unique}', [PenjualanController::class, 'retur_motor'])->middleware('auth');
+
+// PENJUALAN KREDIT
+Route::resource('/kredit', KreditController::class)->middleware('auth');
 
 // SETTING
 Route::resource('/setting', SettingController::class)->middleware('auth');

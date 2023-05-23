@@ -329,7 +329,11 @@ class PenjualanController extends Controller
                 $data_penjual['photo_ktp'] = $name_Image;
             }
             $buyer_id = Sele::where('id', $request->current_id)->first();
-            Buyer::where('id', $buyer_id->buyer_id)->update($data_penjual);
+            if ($cek_buyer_nik) {
+                Buyer::where('id', $cek_buyer_nik->buyer_id)->update($data_penjual);
+            } else {
+                Buyer::where('id', $buyer_id->buyer_id)->update($data_penjual);
+            }
             Sele::where('id', $request->current_id)->update($data_penjualan);
             return response()->json(['success' => 'Data Penjualan Berhasil Diupdate']);
         }
@@ -401,5 +405,56 @@ class PenjualanController extends Controller
                 </form>';
             return $actionBtn;
         })->make(true);
+    }
+
+    public function rules_penjualan(Request $request)
+    {
+        if ($request->jenis_pembayaran == '') {
+            $rules = [
+                'no_polisi' => 'required',
+                'jenis_pembayaran' => 'required',
+                'tanggal_jual' => 'required',
+                'nama_pembeli' => 'required',
+                'nik' => 'required',
+                'alamat' => 'required',
+            ];
+            $pesan = [
+                'no_polisi.required' => 'Pilih Nomor Polisi',
+                'jenis_pembayaran.required' => 'Pilih Jenis Pembayaran',
+                'tanggal_jual.required' => 'Tidak boleh kosong',
+                'nama_pembeli.required' => 'Tidak boleh kosong',
+                'nik.required' => 'Tidak boleh kosong',
+                'alamat.required' => 'Tidak boleh kosong',
+            ];
+
+            if ($request->photo_ktp) {
+                $jenis_file = explode(":", $request->photo_ktp);
+                $jenis_file2 = explode("/", $jenis_file[1]);
+                $jenis_foto = $jenis_file2[0];
+            }
+            // Validasi Photo KTP
+            $validator_photo_ktp = Validator::make([
+                'photo_ktp' => base64_encode($request->photo_ktp),
+            ], [
+                'photo_ktp' => 'max:' . (2 * 1024 * 1024) // Batasan ukuran 2 megabyte
+            ], [
+                'photo_ktp.max' => 'Ukuran tidak boleh lebih dari 2MB.',
+            ]);
+            //Validasi base64 apakah sebuah gambar
+            //Validasi Inputan yang Lain
+            $validator = Validator::make($request->all(), $rules, $pesan);
+            if ($validator->fails()) {
+                $send_error = [
+                    'errors' => $validator->errors(),
+                ];
+                if ($validator_photo_ktp->fails()) {
+                    $send_error['error_ktp'] = $validator_photo_ktp->errors();
+                }
+                if ($request->photo_ktp && $jenis_foto != 'image') {
+                    $send_error['error_ktp_type'] = 'File harus berupa gambar';
+                }
+                return response()->json($send_error);
+            }
+        }
     }
 }
