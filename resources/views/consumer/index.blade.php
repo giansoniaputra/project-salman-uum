@@ -156,5 +156,5 @@
         </div>
     </div>
 </div>
-<script src="/js/page-script/konsumen.js"></script>
+<script src="/page-script/konsumen.js"></script>
 @endsection

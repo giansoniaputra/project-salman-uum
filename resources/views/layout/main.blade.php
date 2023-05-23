@@ -178,6 +178,9 @@
             <script src="/js/base/settings.js"></script>
             <!-- Template Base Scripts End -->
             <!-- Page Specific Scripts Start -->
+
+            <script src="/js/forms/wizards.js"></script>
+
             <script src="/js/cs/datatable.extend.js"></script>
 
             <script src="/js/forms/controls.select2.js"></script>

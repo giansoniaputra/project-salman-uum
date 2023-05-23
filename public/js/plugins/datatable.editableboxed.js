@@ -158,7 +158,7 @@ class EditableBoxed {
   // Direct click from row title
   _onEditRowClick(rowToEdit) {
     this._rowToEdit = rowToEdit; // Passed from DatatableExtend via callback from settings
-    this._showModal('edit', 'Edit', 'Done');
+    this._showModal('edit', 'Edit Data', 'Edit');
     this._setForm();
   }
 
@@ -187,7 +187,7 @@ class EditableBoxed {
 
   // + Add New or just + button from top side click
   _onAddRowClick() {
-    this._showModal('add', 'Add New', 'Add');
+    this._showModal('tambah', 'Tambah Data', 'Tambah');
   }
 
   // Showing modal for an objective, add or edit

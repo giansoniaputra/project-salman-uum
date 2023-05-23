@@ -148,10 +148,10 @@
     </div>
 </div>
 {{-- Simple Money Format --}}
-<script src="/js/simple.money.format.js"></script>
-<script src="/js/simple.money.format.init.js"></script>
+<script src="/page-script/simple.money.format.js"></script>
+<script src="/page-script/simple.money.format.init.js"></script>
 {{-- !Simple Money Format --}}
-<script src="/js/page-script/modal.js"></script>
+<script src="/page-script/modal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     const flashData = $('#pesan').data('flash');
