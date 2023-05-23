@@ -148,6 +148,8 @@
 
             <script src="/js/cs/scrollspy.js"></script>
 
+            <script src="/js/cs/responsivetab.js"></script>
+
             <script src="/js/cs/wizard.js"></script>
 
             <script src="/js/vendor/select2.full.min.js"></script>
@@ -178,6 +180,8 @@
             <script src="/js/base/settings.js"></script>
             <!-- Template Base Scripts End -->
             <!-- Page Specific Scripts Start -->
+
+            <script src="/js/components/navs.js"></script>
 
             <script src="/js/forms/wizards.js"></script>
 

@@ -451,7 +451,7 @@
                                 </div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" placeholder="Masukan Tanggal Penjualan" id="datePickerFloatingLabel" />
+                                <input type="text" class="date-picker form-control" placeholder="Masukan Tanggal Penjualan" id="datePickerFloatingLabel" />
                                 <label class="text-label" for="tanggal_jual">Tanggal Penjualan<span class="text-danger"> *</label></span>
                             </div>
                             <div class="form-floating mb-3 w-100">
@@ -479,7 +479,7 @@
                                 <label class="text-label" for="tempat_lahir">Tempat Lahir<span class="text-danger"> *</label></span>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" placeholder="Masukan Tanggal Lahir" name="tanggal_lahir" id="tanggal_lahir">
+                                <input type="text" class="date-picker form-control" placeholder="Masukan Tanggal Lahir" name="tanggal_lahir" id="datePickerFloatingLabel">
                                 <label class="text-label" for="tanggal_lahir">Tanggal Lahir<span class="text-danger"> *</label></span>
                             </div>
                             <div class="form-floating mb-3 w-100">

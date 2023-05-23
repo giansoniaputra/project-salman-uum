@@ -70,6 +70,12 @@
 
                 <div class="col-sm-12 col-md-7 col-lg-9 col-xxl-10 text-end mb-1">
                     <div class="d-inline-block me-0 me-sm-3 float-start float-md-none">
+                        <!-- Info Button Start -->
+                        <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow detail-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail" type="button">
+                            <i data-acorn-icon="info-circle"></i>
+                        </button>
+                        <!-- Info Button End -->
+
                         <!-- Add Button Start -->
                         <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow add-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data" type="button">
                             <i data-acorn-icon="plus"></i>
