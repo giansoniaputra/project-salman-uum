@@ -4,7 +4,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Data Konsumen</h4>
+                <h4 class="card-title">Data Motor</h4>
             </div>
             <div class="card mb-3">
                 <div class="card-header border-0 pb-0">
@@ -42,12 +42,12 @@
 
                                             <!-- Top Buttons Start -->
                                             <div class="col-12 col-md-5 d-flex align-items-start justify-content-end">
-                                                <!-- Add New Button Start -->
+                                                {{-- <!-- Add New Button Start -->
                                                 <a href="/pembelian/create" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto">
                                                     <i data-acorn-icon="plus"></i>
                                                     <span>Tambah Data</span>
                                                 </a>
-                                                <!-- Add New Button End -->
+                                                <!-- Add New Button End --> --}}
 
                                                 <!-- Check Button Start -->
                                                 <div class="btn-group ms-1 check-all-container">
@@ -98,8 +98,8 @@
                                             <div class="col-sm-12 col-md-7 col-lg-9 col-xxl-10 text-end mb-1">
                                                 <div class="d-inline-block me-0 me-sm-3 float-start float-md-none">
                                                     <!-- Info Button Start -->
-                                                    <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow history-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Riwayat Pembelian" type="button">
-                                                        <i data-acorn-icon="cart"></i>
+                                                    <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow history-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail Motor" type="button">
+                                                        <i data-acorn-icon="info-circle"></i>
                                                     </button>
                                                     <!-- Info Button End -->
 
@@ -109,23 +109,23 @@
                                                     </button>
                                                     <!-- Maintenance Button End -->
 
-                                                    <!-- Add Button Start -->
+                                                    {{-- <!-- Add Button Start -->
                                                     <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow add-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data" type="button">
                                                         <i data-acorn-icon="plus"></i>
                                                     </button>
-                                                    <!-- Add Button End -->
+                                                    <!-- Add Button End --> --}}
 
-                                                    <!-- Edit Button Start -->
+                                                    {{-- <!-- Edit Button Start -->
                                                     <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow edit-datatable disabled" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Data" type="button">
                                                         <i data-acorn-icon="edit"></i>
                                                     </button>
-                                                    <!-- Edit Button End -->
+                                                    <!-- Edit Button End --> --}}
 
-                                                    <!-- Delete Button Start -->
+                                                    {{-- <!-- Delete Button Start -->
                                                     <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow disabled delete-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data" type="button">
                                                         <i data-acorn-icon="bin"></i>
                                                     </button>
-                                                    <!-- Delete Button End -->
+                                                    <!-- Delete Button End --> --}}
                                                 </div>
                                                 <div class="d-inline-block">
                                                     <!-- Print Button Start -->
@@ -170,268 +170,39 @@
 
                                         <!-- Table Start -->
                                         <div>
-                                            <table id="datatableBoxed" class="data-table nowrap hover">
+                                            <table id="datatableMotor_tersedia" class="data-table nowrap hover">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-muted text-small text-uppercase">Name</th>
-                                                        <th class="text-muted text-small text-uppercase">Sales</th>
-                                                        <th class="text-muted text-small text-uppercase">Stock</th>
-                                                        <th class="text-muted text-small text-uppercase">Category</th>
-                                                        <th class="text-muted text-small text-uppercase">Tag</th>
+                                                        <th class="text-muted text-small text-uppercase">No</th>
+                                                        <th class="text-muted text-small text-uppercase">Nama Pembeli</th>
+                                                        <th class="text-muted text-small text-uppercase">No Polisi</th>
+                                                        <th class="text-muted text-small text-uppercase">Merk</th>
+                                                        <th class="text-muted text-small text-uppercase">Warna</th>
+                                                        <th class="text-muted text-small text-uppercase">Harga Jual</th>
+                                                        <th class="text-muted text-small text-uppercase">Status</th>
                                                         <th class="empty all">&nbsp;</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>Basler Brot</td>
-                                                        <td>213</td>
-                                                        <td>15</td>
-                                                        <td>Sourdough</td>
-                                                        <td>New</td>
-                                                        <td></td>
-                                                    </tr>
 
-                                                    <tr>
-                                                        <td>Kommissbrot</td>
-                                                        <td>2321</td>
-                                                        <td>154</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Lye Roll</td>
-                                                        <td>973</td>
-                                                        <td>39</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Arepa</td>
-                                                        <td>213</td>
-                                                        <td>15</td>
-                                                        <td>Sourdough</td>
-                                                        <td>New</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Panettone</td>
-                                                        <td>563</td>
-                                                        <td>72</td>
-                                                        <td>Sourdough</td>
-                                                        <td>Done</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Saffron Bun</td>
-                                                        <td>98</td>
-                                                        <td>7</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Ruisreikäleipä</td>
-                                                        <td>459</td>
-                                                        <td>90</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Bagel</td>
-                                                        <td>433</td>
-                                                        <td>37</td>
-                                                        <td>Multigrain</td>
-                                                        <td>Done</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Rúgbrauð</td>
-                                                        <td>802</td>
-                                                        <td>234</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Yeast Karavai</td>
-                                                        <td>345</td>
-                                                        <td>22</td>
-                                                        <td>Multigrain</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Brioche</td>
-                                                        <td>334</td>
-                                                        <td>45</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Pullman Loaf</td>
-                                                        <td>456</td>
-                                                        <td>23</td>
-                                                        <td>Multigrain</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Bammy</td>
-                                                        <td>1321</td>
-                                                        <td>554</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Challah</td>
-                                                        <td>473</td>
-                                                        <td>29</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Soda Bread</td>
-                                                        <td>1152</td>
-                                                        <td>84</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Barmbrack</td>
-                                                        <td>854</td>
-                                                        <td>13</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Dorayaki</td>
-                                                        <td>459</td>
-                                                        <td>90</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Buccellato di Lucca</td>
-                                                        <td>1298</td>
-                                                        <td>212</td>
-                                                        <td>Multigrain</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Toast Bread</td>
-                                                        <td>2156</td>
-                                                        <td>732</td>
-                                                        <td>Multigrain</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Cheesymite Scroll</td>
-                                                        <td>452</td>
-                                                        <td>24</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Baguette</td>
-                                                        <td>456</td>
-                                                        <td>33</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Guernsey Gâche</td>
-                                                        <td>1958</td>
-                                                        <td>221</td>
-                                                        <td>Multigrain</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Bazlama</td>
-                                                        <td>858</td>
-                                                        <td>34</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Bolillo</td>
-                                                        <td>333</td>
-                                                        <td>24</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Chapati</td>
-                                                        <td>513</td>
-                                                        <td>72</td>
-                                                        <td>Sourdough</td>
-                                                        <td>Done</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Eggette</td>
-                                                        <td>802</td>
-                                                        <td>234</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Bauernbrot</td>
-                                                        <td>633</td>
-                                                        <td>97</td>
-                                                        <td>Multigrain</td>
-                                                        <td>Done</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Flatbread</td>
-                                                        <td>945</td>
-                                                        <td>12</td>
-                                                        <td>Multigrain</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Hallulla</td>
-                                                        <td>534</td>
-                                                        <td>65</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Cozonac</td>
-                                                        <td>98</td>
-                                                        <td>7</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
                                                 </tbody>
+                                                <tfoot>
+                                                    <th class="text-muted text-small text-uppercase">No</th>
+                                                    <th class="text-muted text-small text-uppercase">Nama Pembeli</th>
+                                                    <th class="text-muted text-small text-uppercase">No Polisi</th>
+                                                    <th class="text-muted text-small text-uppercase">Merk</th>
+                                                    <th class="text-muted text-small text-uppercase">Warna</th>
+                                                    <th class="text-muted text-small text-uppercase">Harga Jual</th>
+                                                    <th class="text-muted text-small text-uppercase">Status</th>
+                                                    <th class="empty all">&nbsp;</th>
+                                                </tfoot>
                                             </table>
                                         </div>
                                         <!-- Table End -->
                                     </div>
                                     <!-- Content End -->
 
-                                    <!-- Add Edit Modal Start -->
+                                    {{-- <!-- Add Edit Modal Start -->
                                     <div class="modal modal-center fade" id="addEditModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -449,7 +220,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Add Edit Modal End -->
+                                    <!-- Add Edit Modal End --> --}}
                                 </div>
                             </div>
                         </div>
@@ -467,12 +238,12 @@
 
                                             <!-- Top Buttons Start -->
                                             <div class="col-12 col-md-5 d-flex align-items-start justify-content-end">
-                                                <!-- Add New Button Start -->
-                                                <a href="/pembelian/create" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto">
-                                                    <i data-acorn-icon="plus"></i>
-                                                    <span>Tambah Data</span>
-                                                </a>
-                                                <!-- Add New Button End -->
+                                                {{-- <!-- Add New Button Start -->
+                                            <a href="/pembelian/create" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto">
+                                                <i data-acorn-icon="plus"></i>
+                                                <span>Tambah Data</span>
+                                            </a>
+                                            <!-- Add New Button End --> --}}
 
                                                 <!-- Check Button Start -->
                                                 <div class="btn-group ms-1 check-all-container">
@@ -523,28 +294,28 @@
                                             <div class="col-sm-12 col-md-7 col-lg-9 col-xxl-10 text-end mb-1">
                                                 <div class="d-inline-block me-0 me-sm-3 float-start float-md-none">
                                                     <!-- Info Button Start -->
-                                                    <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow history-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Riwayat Pembelian" type="button">
-                                                        <i data-acorn-icon="cart"></i>
+                                                    <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow history-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail Motor" type="button">
+                                                        <i data-acorn-icon="info-circle"></i>
                                                     </button>
                                                     <!-- Info Button End -->
 
-                                                    <!-- Add Button Start -->
-                                                    <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow add-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data" type="button">
-                                                        <i data-acorn-icon="plus"></i>
-                                                    </button>
-                                                    <!-- Add Button End -->
+                                                    {{-- <!-- Add Button Start -->
+                                                <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow add-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data" type="button">
+                                                    <i data-acorn-icon="plus"></i>
+                                                </button>
+                                                <!-- Add Button End --> --}}
 
-                                                    <!-- Edit Button Start -->
-                                                    <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow edit-datatable disabled" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Data" type="button">
-                                                        <i data-acorn-icon="edit"></i>
-                                                    </button>
-                                                    <!-- Edit Button End -->
+                                                    {{-- <!-- Edit Button Start -->
+                                                <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow edit-datatable disabled" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Data" type="button">
+                                                    <i data-acorn-icon="edit"></i>
+                                                </button>
+                                                <!-- Edit Button End --> --}}
 
-                                                    <!-- Delete Button Start -->
-                                                    <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow disabled delete-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data" type="button">
-                                                        <i data-acorn-icon="bin"></i>
-                                                    </button>
-                                                    <!-- Delete Button End -->
+                                                    {{-- <!-- Delete Button Start -->
+                                                <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow disabled delete-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data" type="button">
+                                                    <i data-acorn-icon="bin"></i>
+                                                </button>
+                                                <!-- Delete Button End --> --}}
                                                 </div>
                                                 <div class="d-inline-block">
                                                     <!-- Print Button Start -->
@@ -589,268 +360,37 @@
 
                                         <!-- Table Start -->
                                         <div>
-                                            <table id="datatableBoxed" class="data-table nowrap hover">
+                                            <table id="datatableMotor_terjual" class="data-table nowrap hover">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-muted text-small text-uppercase">Name</th>
-                                                        <th class="text-muted text-small text-uppercase">Sales</th>
-                                                        <th class="text-muted text-small text-uppercase">Stock</th>
-                                                        <th class="text-muted text-small text-uppercase">Category</th>
-                                                        <th class="text-muted text-small text-uppercase">Tag</th>
+                                                        <th class="text-muted text-small text-uppercase">No</th>
+                                                        <th class="text-muted text-small text-uppercase">No Polisi</th>
+                                                        <th class="text-muted text-small text-uppercase">Merk</th>
+                                                        <th class="text-muted text-small text-uppercase">Warna</th>
+                                                        <th class="text-muted text-small text-uppercase">Tahun Pembuatan</th>
+                                                        <th class="text-muted text-small text-uppercase">Status</th>
                                                         <th class="empty all">&nbsp;</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>Basler Brot</td>
-                                                        <td>213</td>
-                                                        <td>15</td>
-                                                        <td>Sourdough</td>
-                                                        <td>New</td>
-                                                        <td></td>
-                                                    </tr>
 
-                                                    <tr>
-                                                        <td>Kommissbrot</td>
-                                                        <td>2321</td>
-                                                        <td>154</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Lye Roll</td>
-                                                        <td>973</td>
-                                                        <td>39</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Arepa</td>
-                                                        <td>213</td>
-                                                        <td>15</td>
-                                                        <td>Sourdough</td>
-                                                        <td>New</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Panettone</td>
-                                                        <td>563</td>
-                                                        <td>72</td>
-                                                        <td>Sourdough</td>
-                                                        <td>Done</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Saffron Bun</td>
-                                                        <td>98</td>
-                                                        <td>7</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Ruisreikäleipä</td>
-                                                        <td>459</td>
-                                                        <td>90</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Bagel</td>
-                                                        <td>433</td>
-                                                        <td>37</td>
-                                                        <td>Multigrain</td>
-                                                        <td>Done</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Rúgbrauð</td>
-                                                        <td>802</td>
-                                                        <td>234</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Yeast Karavai</td>
-                                                        <td>345</td>
-                                                        <td>22</td>
-                                                        <td>Multigrain</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Brioche</td>
-                                                        <td>334</td>
-                                                        <td>45</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Pullman Loaf</td>
-                                                        <td>456</td>
-                                                        <td>23</td>
-                                                        <td>Multigrain</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Bammy</td>
-                                                        <td>1321</td>
-                                                        <td>554</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Challah</td>
-                                                        <td>473</td>
-                                                        <td>29</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Soda Bread</td>
-                                                        <td>1152</td>
-                                                        <td>84</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Barmbrack</td>
-                                                        <td>854</td>
-                                                        <td>13</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Dorayaki</td>
-                                                        <td>459</td>
-                                                        <td>90</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Buccellato di Lucca</td>
-                                                        <td>1298</td>
-                                                        <td>212</td>
-                                                        <td>Multigrain</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Toast Bread</td>
-                                                        <td>2156</td>
-                                                        <td>732</td>
-                                                        <td>Multigrain</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Cheesymite Scroll</td>
-                                                        <td>452</td>
-                                                        <td>24</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Baguette</td>
-                                                        <td>456</td>
-                                                        <td>33</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Guernsey Gâche</td>
-                                                        <td>1958</td>
-                                                        <td>221</td>
-                                                        <td>Multigrain</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Bazlama</td>
-                                                        <td>858</td>
-                                                        <td>34</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Bolillo</td>
-                                                        <td>333</td>
-                                                        <td>24</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Chapati</td>
-                                                        <td>513</td>
-                                                        <td>72</td>
-                                                        <td>Sourdough</td>
-                                                        <td>Done</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Eggette</td>
-                                                        <td>802</td>
-                                                        <td>234</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Bauernbrot</td>
-                                                        <td>633</td>
-                                                        <td>97</td>
-                                                        <td>Multigrain</td>
-                                                        <td>Done</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Flatbread</td>
-                                                        <td>945</td>
-                                                        <td>12</td>
-                                                        <td>Multigrain</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Hallulla</td>
-                                                        <td>534</td>
-                                                        <td>65</td>
-                                                        <td>Sourdough</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Cozonac</td>
-                                                        <td>98</td>
-                                                        <td>7</td>
-                                                        <td>Whole Wheat</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
                                                 </tbody>
+                                                <tfoot>
+                                                    <th class="text-muted text-small text-uppercase">No</th>
+                                                    <th class="text-muted text-small text-uppercase">No Polisi</th>
+                                                    <th class="text-muted text-small text-uppercase">Merk</th>
+                                                    <th class="text-muted text-small text-uppercase">Warna</th>
+                                                    <th class="text-muted text-small text-uppercase">Tahun Pembuatan</th>
+                                                    <th class="text-muted text-small text-uppercase">Status</th>
+                                                    <th class="empty all">&nbsp;</th>
+                                                </tfoot>
                                             </table>
                                         </div>
                                         <!-- Table End -->
                                     </div>
                                     <!-- Content End -->
 
-                                    <!-- Add Edit Modal Start -->
+                                    {{-- <!-- Add Edit Modal Start -->
                                     <div class="modal modal-center fade" id="addEditModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -868,265 +408,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Add Edit Modal End -->
+                                    <!-- Add Edit Modal End --> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-{{-- Modal --}}
-<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="modal-detail-motor">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Detail Motor</h5>
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div id="accordion-two" class="accordion accordion-primary-solid">
-                                <div class="accordion__item">
-                                    <div class="accordion__header collapsed" data-toggle="collapse" data-target="#bordered_collapseTwo"> <span class="accordion__header--text text-white">Data Motor</span>
-                                        <span class="accordion__header--indicator"></span>
-                                    </div>
-                                    <div id="bordered_collapseTwo" class="collapse accordion__body" data-parent="#accordion-two">
-                                        <div class="accordion__body--text">
-                                            <div class="table-responsive">
-                                                <table class="table header-border table-responsive-sm table-striped">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>No Polisi</td>
-                                                            <td>:</td>
-                                                            <td><span id="no-polisi"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Merk</td>
-                                                            <td>:</td>
-                                                            <td><span id="merk"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Tipe</td>
-                                                            <td>:</td>
-                                                            <td><span id="tipe"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Warna</td>
-                                                            <td>:</td>
-                                                            <td><span id="warna"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Tahun Pembuatan</td>
-                                                            <td>:</td>
-                                                            <td><span id="tahun-pembuatan"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>No Rangka</td>
-                                                            <td>:</td>
-                                                            <td><span id="no-rangka"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>No. BPKB</td>
-                                                            <td>:</td>
-                                                            <td><span id="bpkb"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Nama BPKB</td>
-                                                            <td>:</td>
-                                                            <td><span id="nama-bpkb"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Berlaku Sampai</td>
-                                                            <td>:</td>
-                                                            <td><span id="berlaku-sampai"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Perpanjang STNK</td>
-                                                            <td>:</td>
-                                                            <td><span id="perpanjang-stnk"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Foto BPKB</td>
-                                                            <td>:</td>
-                                                            <td><span id="foto-bpkb"></span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Foto STNK</td>
-                                                            <td>:</td>
-                                                            <td><span id="foto-stnk"></span></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-rounded btn-danger" data-dismiss="modal"><span class="btn-icon-left text-danger"><i class="fa fa-close color-danger"></i>
-                        </span>Tutup</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{{-- Modal --}}
-<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modal-perbaikan-motor">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Maintenance Motor</h5>
-                <button type="button" class="close btn-close-maintenance" data-dismiss="modal"><span>&times;</span>
-                </button>
-            </div>
-            <form action="javascript:;">
-                @csrf
-                <div class="modal-body p-1">
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="basic-form">
-                                    <input type="hidden" name="bike_id" id="bike_id" value="0">
-                                    <input type="hidden" name="current_unique" id="current_unique">
-                                    <div class="method"></div>
-                                    <div class="form-row mb-3">
-                                        <div class="col-md-12">
-                                            <label class="text-label" for="no_polisi">No Polisi</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control input-default" id="no_polisi" readonly style="background-color: rgba(215, 218, 227, 0.3)">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row mb-3">
-                                        <div class="col-md-12">
-                                            <label class="text-label" for="merek">Merk</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control input-default" id="merek" readonly style="background-color: rgba(215, 218, 227, 0.3)">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row mb-3">
-                                        <label class="text-label" for="harga_beli">Harga Beli</label>
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            <input type="text" class="form-control input-default money" name="harga_beli" id="harga_beli" readonly style="background-color: rgba(215, 218, 227, 0.3)">
-
-                                        </div>
-                                    </div>
-                                    <div class="form-row mb-3">
-                                        <label class="text-label" for="jenis_perbaikan">Jenis Maintenance</label>
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text"><i class="la la-screwdriver"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control input-default" placeholder="Masukan Jenis Maintenance" id="jenis_perbaikan" name="jenis_perbaikan">
-                                        </div>
-                                    </div>
-                                    <div class="form-row mb-3">
-                                        <label class="text-label" for="tanggal_perbaikan">Tanggal
-                                            Maintenance</label>
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control input-default" placeholder="Masukan Tanggal Penjualan" name="tanggal_perbaikan" id="tanggal_perbaikan">
-                                        </div>
-                                    </div>
-                                    <div class="form-row mb-3">
-                                        <label class="text-label" for="biaya">Biaya</label>
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            <input type="text" class="form-control input-default money" placeholder="Masukan Biaya" name="biaya" id="biaya">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-12">
-                        <div class="tab-pane fade show active" id="tersedia" role="tabpanel">
-                            <div class="pt-4">
-                                <div class="col-12">
-                                    <div class="table-responsive">
-                                        <table id="dataTablesMaintenance" class="display min-w850 text-center">
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Tanggal Maintenance</th>
-                                                    <th>Jenis Maintenance</th>
-                                                    <th>Biaya</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Tanggal Maintenance</th>
-                                                    <th>Jenis Maintenance</th>
-                                                    <th>Biaya</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer"></div>
-            </form>
-        </div>
-    </div>
-</div>
-
-{{-- Modal Gambar --}}
-<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="modal-image">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header primary">
-                <h5 class="modal-title text-black" id="judul-modal-photo"></h5>
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="img-photo" class="d-flex justify-content-center align-items-center"></div>
-            </div>
-        </div>
-    </div>
-</div>
-{{-- Simple Money Format --}}
-<script src="/js/simple.money.format.js"></script>
-<script src="/js/simple.money.format.init.js"></script>
-{{-- Modal Gambar --}}
-<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="modal-image">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header primary">
-                <h5 class="modal-title text-black" id="judul-modal-photo"></h5>
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="img-photo" class="d-flex justify-content-center align-items-center"></div>
             </div>
         </div>
     </div>

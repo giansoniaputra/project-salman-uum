@@ -98,8 +98,44 @@ class DatePickerControls {
   }
 
   _initFloatingLabel() {
-    jQuery('#datePickerFloatingLabel').datepicker({
+    jQuery('#perpanjang_stnk').datepicker({
+      language: 'id',
+      format: 'dd-mm-yyyy',
       autoclose: true,
     });
   }
+
+  _initFloatingLabel() {
+    jQuery('#berlaku_sampai').datepicker({
+      language: 'id',
+      format: 'dd-mm-yyyy',
+      autoclose: true,
+    });
+  }
+
+  _initFloatingLabel() {
+    jQuery('#tanggal_beli').datepicker({
+      language: 'id',
+      format: 'dd-mm-yyyy',
+      autoclose: true,
+    });
+  }
+
+  _initFloatingLabel() {
+    jQuery('#tanggal_jual').datepicker({
+      language: 'id',
+      format: 'dd-mm-yyyy',
+      autoclose: true,
+    });
+  }
+
+  _initFloatingLabel() {
+    jQuery('#tanggal_lahir').datepicker({
+      language: 'id',
+      format: 'dd-mm-yyyy',
+      autoclose: true,
+    });
+  }
+
+  
 }

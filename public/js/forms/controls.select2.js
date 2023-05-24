@@ -29,7 +29,7 @@ class Select2Controls {
 
   // Basic single select2
   _initSelect2Basic() {
-    jQuery('#select2Basic').select2({placeholder: ''});
+    jQuery('#no_polisi').select2({placeholder: ''});
   }
 
   // Basic multiple select2
@@ -134,7 +134,7 @@ class Select2Controls {
   // Floating label input select2
   _initFloatingLabel() {
     const _this = this;
-    jQuery('#selectFloating')
+    jQuery('#penjual')
       .select2({minimumResultsForSearch: Infinity, placeholder: ''})
       .on('select2:open', function (e) {
         jQuery(this).addClass('show');
@@ -143,7 +143,35 @@ class Select2Controls {
         _this._addFullClassToSelect2(this);
         jQuery(this).removeClass('show');
       });
-    this._addFullClassToSelect2(jQuery('#selectFloating'));
+    this._addFullClassToSelect2(jQuery('#penjual'));
+  }
+
+  _initFloatingLabel() {
+    const _this = this;
+    jQuery('#jenis_pembayaran')
+      .select2({minimumResultsForSearch: Infinity, placeholder: ''})
+      .on('select2:open', function (e) {
+        jQuery(this).addClass('show');
+      })
+      .on('select2:close', function (e) {
+        _this._addFullClassToSelect2(this);
+        jQuery(this).removeClass('show');
+      });
+    this._addFullClassToSelect2(jQuery('#jenis_pembayaran'));
+  }
+
+  _initFloatingLabel() {
+    const _this = this;
+    jQuery('#jenis_kelamin')
+      .select2({minimumResultsForSearch: Infinity, placeholder: ''})
+      .on('select2:open', function (e) {
+        jQuery(this).addClass('show');
+      })
+      .on('select2:close', function (e) {
+        _this._addFullClassToSelect2(this);
+        jQuery(this).removeClass('show');
+      });
+    this._addFullClassToSelect2(jQuery('#jenis_kelamin'));
   }
 
   // Helper method for floating label Select2

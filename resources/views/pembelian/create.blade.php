@@ -48,7 +48,7 @@
                                             <input type="hidden" value="{{ old('oldKTP') }}" name="oldKTP" id="oldKTP">
                                         </div>
                                         <div class="form-floating mb-3 w-100 col-md-12">
-                                            <select class="select-floating @error('penjual') is-invalid @enderror penjual" value="{{ old('penjual') }}" name="penjual" id="selectFloating">
+                                            <select class="select-floating @error('penjual') is-invalid @enderror penjual" value="{{ old('penjual') }}" name="penjual" id="penjual">
                                                 <option value="">Pilih Penjual</option>
                                                 <option value="INDIVIDU">INDIVIDU</option>
                                                 <option value="DEALER">DEALER</option>
@@ -61,61 +61,77 @@
                                             <label class="text-label" for="penjual">&nbsp;&nbsp;Pilih Penjual<span class="text-danger"> *</label></span>
                                         </div>
                                         <div id="consumer-content-individu" class="d-none">
-                                            <div class="form-floating mb-3 col-md-6">
-                                                <input type="text" name="nik" id="nik" class="form-control @error('nik')is-invalid @enderror" value="{{ old('nik') }}" placeholder="Masukan NIK">
-                                                @error('nik')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
+                                            <div class="row">
+                                                <div class="form-floating mb-3 col-md-6">
+                                                    <input type="text" name="nik" id="nik" class="form-control @error('nik')is-invalid @enderror" value="{{ old('nik') }}" placeholder="Masukan NIK">
+                                                    @error('nik')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                    <label class="text-label" for="nik">&nbsp;&nbsp;NIK<span class="text-danger"> *</span></label>
                                                 </div>
-                                                @enderror
-                                                <label class="text-label" for="nik">&nbsp;&nbsp;NIK<span class="text-danger"> *</span></label>
-                                            </div>
-                                            <div class="form-floating mb-3 col-md-6">
-                                                <input type="text" name="nama" id="nama" class="form-control @error('nama')is-invalid @enderror" value="{{ old('nama') }}" placeholder="Masukan Nama Lengkap">
-                                                @error('nama')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
+                                                <div class="form-floating mb-3 col-md-6">
+                                                    <input type="text" name="nama" id="nama" class="form-control @error('nama')is-invalid @enderror" value="{{ old('nama') }}" placeholder="Masukan Nama Lengkap">
+                                                    @error('nama')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                    <label class="text-label" for="nama">&nbsp;&nbsp;Nama<span class="text-danger"> *</span></label>
                                                 </div>
-                                                @enderror
-                                                <label class="text-label" for="nama">&nbsp;&nbsp;Nama<span class="text-danger"> *</span></label>
-                                            </div>
-                                            <div class="form-floating mb-3 col-md-6">
-                                                <input type="text" class="form-control @error('no_telepon')is-invalid @enderror" name="no_telepon" id="no_telepon" value="{{ old('no_telepon') }}" placeholder="Masukan Nomor Telepon">
-                                                @error('no_telepon')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
+                                                <div class="form-floating mb-3 col-md-6">
+                                                    <input type="text" class="form-control @error('no_telepon')is-invalid @enderror" name="no_telepon" id="no_telepon" value="{{ old('no_telepon') }}" placeholder="Masukan Nomor Telepon">
+                                                    @error('no_telepon')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                    <label class="text-label" for="no_telepon">&nbsp;&nbsp;No Telepon<span class="text-danger"> *</span></label>
                                                 </div>
-                                                @enderror
-                                                <label class="text-label" for="no_telepon">&nbsp;&nbsp;No Telepon<span class="text-danger"> *</span></label>
-                                            </div>
-                                            <div class="form-floating mb-3 col-md-6">
-                                                <textarea class="form-control @error('alamat')is-invalid @enderror" rows="2" name="alamat" id="alamat" placeholder="Masukan Alamat">{{ old('alamat') }}</textarea>
-                                                @error('alamat')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
+                                                <div class="form-floating mb-3 col-md-6">
+                                                    <textarea class="form-control @error('alamat')is-invalid @enderror" rows="2" name="alamat" id="alamat" placeholder="Masukan Alamat">{{ old('alamat') }}</textarea>
+                                                    @error('alamat')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                    <label class="text-label" for="alamat">&nbsp;&nbsp;Alamat<span class="text-danger"> *</span></label>
                                                 </div>
-                                                @enderror
-                                                <label class="text-label" for="nama">&nbsp;&nbsp;Alamat<span class="text-danger"> *</span></label>
+                                                <div class="input-group mb-3 col-md-12">
+                                                    <input type="file" class="form-control @error('photo_ktp')is-invalid @enderror" value="{{ old('photo_ktp') }}" name="photo_ktp" name="photo_ktp" id="photo_ktp" onchange="previewImageKTP()">
+                                                    <label class="input-group-text" for="inputGroupFile02">Upload Foto KTP</label>
+                                                    @error('photo_ktp')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-12 text-center">
+                                                    <img src="/storage/{{ old('oldKTP', '/ktp/default.png') }}" class="img-fluid sw-20 image-ktp" alt="Foto KTP" />
+                                                </div>
                                             </div>
                                         </div>
                                         <div id="consumer-content-dealer" class="d-none">
-                                            <div class="form-floating mb-3 col-md-6">
-                                                <input type="text" name="nama_kang" id="nama_kang" class="form-control @error('nama_kang')is-invalid @enderror" value="{{ old('nama_kang') }}" placeholder="Masukan Nama Petugas">
-                                                @error('nama_kang')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
+                                            <div class="row">
+                                                <div class="form-floating mb-3 col-md-6">
+                                                    <input type="text" name="nama_kang" id="nama_kang" class="form-control @error('nama_kang')is-invalid @enderror" value="{{ old('nama_kang') }}" placeholder="Masukan Nama Petugas">
+                                                    @error('nama_kang')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                    <label class="text-label" for="nama_kang">&nbsp;&nbsp;Nama Petugas<span class="text-danger"> *</span></label>
                                                 </div>
-                                                @enderror
-                                                <label class="text-label" for="nama_kang">&nbsp;&nbsp;Nama Petugas<span class="text-danger"> *</span></label>
-                                            </div>
-                                            <div class="form-floating mb-3 col-md-6">
-                                                <input type="text" name="dealer" id="dealer" class="form-control @error('dealer')is-invalid @enderror" value="{{ old('dealer') }}" placeholder="Masukan Nama Dealer">
-                                                @error('dealer')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
+                                                <div class="form-floating mb-3 col-md-6">
+                                                    <input type="text" name="dealer" id="dealer" class="form-control @error('dealer')is-invalid @enderror" value="{{ old('dealer') }}" placeholder="Masukan Nama Dealer">
+                                                    @error('dealer')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                    <label class="text-label" for="dealer">&nbsp;&nbsp;Nama Dealer<span class="text-danger"> *</span></label>
                                                 </div>
-                                                @enderror
-                                                <label class="text-label" for="dealer">&nbsp;&nbsp;Nama Dealer<span class="text-danger"> *</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -173,13 +189,13 @@
                                         <label class="text-label" for="no_rangka">&nbsp;&nbsp;No Rangka<span class="text-danger"> *</label></span>
                                     </div>
                                     <div class="form-floating mb-3 col-md-6">
-                                        <input type="text" name="no_polisi" id="no_polisi" class="form-control @error('no_polisi')is-invalid @enderror" value="{{ old('no_polisi') }}" placeholder="Masukan No Polisi">
-                                        @error('no_polisi')
+                                        <input type="text" name="no_polisi_input" id="no_polisi_input" class="form-control @error('no_polisi_input')is-invalid @enderror" value="{{ old('no_polisi_input') }}" placeholder="Masukan No Polisi">
+                                        @error('no_polisi_input')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                         @enderror
-                                        <label class="text-label" for="no_polisi">&nbsp;&nbsp;No Polisi<span class="text-danger"> *</label></span>
+                                        <label class="text-label" for="no_polisi_input">&nbsp;&nbsp;No Polisi<span class="text-danger"> *</label></span>
                                     </div>
                                     <div class="form-floating mb-3 col-md-6">
                                         <input type="text" name="bpkb" id="bpkb" class="form-control @error('bpkb')is-invalid @enderror" value="{{ old('bpkb') }}" placeholder="Masukan BPKB">
@@ -200,7 +216,7 @@
                                         <label class="text-label" for="nama_bpkb">&nbsp;&nbsp;Nama BPKB<span class="text-danger"> *</label></span>
                                     </div>
                                     <div class="form-floating mb-3 col-md-6">
-                                        <input type="text" class="date-picker form-control @error('berlaku_sampai')is-invalid @enderror" value="{{ old('berlaku_sampai') }}" placeholder="Masukan Masa Berlaku" name="berlaku_sampai" id="datePickerFloatingLabel">
+                                        <input type="text" class="date-picker form-control @error('berlaku_sampai')is-invalid @enderror" value="{{ old('berlaku_sampai') }}" placeholder="Masukan Masa Berlaku" name="berlaku_sampai" id="berlaku_sampai">
                                         @error('berlaku_sampai')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -209,7 +225,7 @@
                                         <label class="text-label" for="berlaku_sampai">&nbsp;&nbsp;Berlaku Sampai<span class="text-danger"> *</label></span>
                                     </div>
                                     <div class="form-floating mb-3 col-md-6">
-                                        <input type="text" class="date-picker form-control @error('perpanjang_stnk')is-invalid @enderror" value="{{ old('perpanjang_stnk') }}" placeholder="Masukan Perpanjang STNK" name="perpanjang_stnk" id="datePickerFloatingLabel">
+                                        <input type="text" class="date-picker form-control @error('perpanjang_stnk')is-invalid @enderror" value="{{ old('perpanjang_stnk') }}" placeholder="Masukan Perpanjang STNK" name="perpanjang_stnk" id="perpanjang_stnk">
                                         @error('perpanjang_stnk')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -220,24 +236,27 @@
                                     <div class="form-floating mb-3 col-md-6">
                                         <div class="input-group mb-3">
                                             <input type="file" class="form-control @error('photo_stnk')is-invalid @enderror" value="{{ old('photo_stnk') }}" name="photo_stnk" id="photo_stnk" onchange="previewImageSTNK()">
-                                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                            <label class="input-group-text" for="photo_stnk">Upload Foto STNK</label>
                                             @error('photo_stnk')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                             @enderror
                                         </div>
+                                        <img src="" class="img-fluid sw-20 image-stnk">
                                     </div>
+
                                     <div class="form-floating mb-3 col-md-6">
                                         <div class="input-group mb-3">
                                             <input type="file" class="form-control @error('photo_bpkb')is-invalid @enderror" value="{{ old('photo_bpkb') }}" name="photo_bpkb" name="photo_bpkb" id="photo_bpkb" onchange="previewImageBPKB()">
-                                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                            <label class="input-group-text" for="inputGroupFile02">Upload Foto BPKB</label>
                                             @error('photo_bpkb')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                             @enderror
                                         </div>
+                                        <img src="" class="img-fluid sw-20 image-bpkb">
                                     </div>
                                 </div>
                             </div>
@@ -253,10 +272,9 @@
                                             {{ $message }}
                                         </div>
                                         @enderror
-
                                     </div>
                                     <div class="form-floating mb-3 col-6">
-                                        <input type="text" class="date-picker form-control input-default @error('tanggal_beli')is-invalid @enderror" value="{{ old('tanggal_beli') }}" placeholder="Masukan Tanggal Pembelian" name="tanggal_beli" id="datePickerFloatingLabel">
+                                        <input type="text" class="date-picker form-control @error('tanggal_beli')is-invalid @enderror" value="{{ old('tanggal_beli') }}" placeholder="Masukan Tanggal Pembelian" name="tanggal_beli" id="tanggal_beli">
                                         <label class="text-label" for="tanggal_beli">&nbsp;&nbsp;Tanggal Beli<span class="text-danger"> *</label></span>
                                         @error('tanggal_beli')
                                         <div class="invalid-feedback">
@@ -279,6 +297,13 @@
                             </form>
                         </div>
                     </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <br>
                     <br>
                     <br>

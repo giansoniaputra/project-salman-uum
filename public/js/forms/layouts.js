@@ -55,7 +55,7 @@ class FormLayouts {
   _initFloatingLabelForm() {
     const _this = this;
     if (jQuery().select2) {
-      jQuery('#select2FloatingLabel')
+      jQuery('#penjual')
         .select2({minimumResultsForSearch: Infinity, placeholder: ''})
         .on('select2:open', function (e) {
           jQuery(this).addClass('show');
@@ -64,7 +64,31 @@ class FormLayouts {
           _this._addFullClassToSelect2(this);
           jQuery(this).removeClass('show');
         });
-      this._addFullClassToSelect2(jQuery('#select2FloatingLabel'));
+      this._addFullClassToSelect2(jQuery('#penjual'));
+    }
+    if (jQuery().select2) {
+      jQuery('#jenis_pembayaran')
+        .select2({minimumResultsForSearch: Infinity, placeholder: ''})
+        .on('select2:open', function (e) {
+          jQuery(this).addClass('show');
+        })
+        .on('select2:close', function (e) {
+          _this._addFullClassToSelect2(this);
+          jQuery(this).removeClass('show');
+        });
+      this._addFullClassToSelect2(jQuery('#jenis_pembayaran'));
+    }
+    if (jQuery().select2) {
+      jQuery('#jenis_kelamin')
+        .select2({minimumResultsForSearch: Infinity, placeholder: ''})
+        .on('select2:open', function (e) {
+          jQuery(this).addClass('show');
+        })
+        .on('select2:close', function (e) {
+          _this._addFullClassToSelect2(this);
+          jQuery(this).removeClass('show');
+        });
+      this._addFullClassToSelect2(jQuery('#jenis_kelamin'));
     }
     if (typeof Tagify !== 'undefined') {
       if (document.querySelector('#tagsFloatingLabel') !== null) {
@@ -72,8 +96,50 @@ class FormLayouts {
       }
     }
     if (jQuery().datepicker) {
-      jQuery('#datePickerFloatingLabel')
+      jQuery('#berlaku_sampai')
         .datepicker({
+          language: 'id',
+          format: 'dd-mm-yyyy',
+          autoclose: true,
+        })
+        .on('show', function (e) {
+          jQuery(this).addClass('show');
+        });
+
+        jQuery('#perpanjang_stnk')
+        .datepicker({
+          language: 'id',
+          format: 'dd-mm-yyyy',
+          autoclose: true,
+        })
+        .on('show', function (e) {
+          jQuery(this).addClass('show');
+        });
+
+        jQuery('#tanggal_beli')
+        .datepicker({
+          language: 'id',
+          format: 'dd-mm-yyyy',
+          autoclose: true,
+        })
+        .on('show', function (e) {
+          jQuery(this).addClass('show');
+        });
+
+        jQuery('#tanggal_jual')
+        .datepicker({
+          language: 'id',
+          format: 'dd-mm-yyyy',
+          autoclose: true,
+        })
+        .on('show', function (e) {
+          jQuery(this).addClass('show');
+        });
+
+        jQuery('#tanggal_lahir')
+        .datepicker({
+          language: 'id',
+          format: 'dd-mm-yyyy',
           autoclose: true,
         })
         .on('show', function (e) {

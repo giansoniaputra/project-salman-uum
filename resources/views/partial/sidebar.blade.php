@@ -61,7 +61,7 @@
 <div class="menu-container flex-grow-1">
     <ul id="menu" class="menu">
         <li>
-            <a href="/">
+            <a href="/home">
                 <i data-acorn-icon="home-garage" class="icon" data-acorn-size="18"></i>
                 <span class="label">Dashboards</span>
             </a>

@@ -2,8 +2,32 @@
 @section('container')
 <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
 <div id="pesan" data-flash="{{ session('success') }}"></div>
-<button type="button" class="btn btn-rounded btn-primary mb-3" data-toggle="modal" data-target=".bd-example-modal-lg"><span class="btn-icon-left text-primary"><i class="fa fa-money color-primary"></i>
-    </span>Set Modal Awal</button>
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modal_awal">Set Modal Awal</button>
+<!-- Modal  Launch Large-->
+<div class="modal fade" id="modal_awal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Set Modal Awal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="javascript:;">
+                @csrf
+                @method('put')
+                <input type="hidden" name="unique" id="unique" value="{{ $data->unique }}">
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-primary text-white" id="basic-addon1">Rp.</span>
+                        <input type="text" class="form-control input-default money" name="modal" id="modal" placeholder="Masukan Modal Awal" value="{{ $data->modal }}">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-primary" id="save-data-modal">Tambah Modal Awal</button>
+                </div>
+        </div>
+    </div>
+</div>
 <div class="row g-2">
     <div class="col-12 col-sm-6 col-lg-6">
         <div class="card sh-11 hover-scale-up cursor-pointer">

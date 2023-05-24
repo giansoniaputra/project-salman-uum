@@ -39,13 +39,13 @@
     <!-- Vendor Styles Start -->
     <link rel="stylesheet" href="/css/vendor/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/vendor/OverlayScrollbars.min.css" />
-    <!-- Vendor Styles End -->
-
-    <link rel="stylesheet" href="/css/vendor/datatables.min.css" />
 
     <link rel="stylesheet" href="/css/vendor/select2.min.css" />
 
     <link rel="stylesheet" href="/css/vendor/select2-bootstrap4.min.css" />
+    <!-- Vendor Styles End -->
+
+    <link rel="stylesheet" href="/css/vendor/datatables.min.css" />
 
     <link rel="stylesheet" href="/css/vendor/bootstrap-datepicker3.standalone.min.css" />
 
@@ -66,14 +66,14 @@
             <div class="nav-content d-flex">
                 <!-- Logo Start -->
 
-                <a href="/">
+                <a href="/home">
                     <!-- Logo can be added directly -->
                     <img src="/img/logo/smac transparent text only.png" alt="logo" style="width: 180px;" />
 
                     {{-- <!-- Or added via css to provide different ones for different color themes -->
                     <div class="img"></div> --}}
                 </a>
-                <h6 class="cta-4 mt-1 text-white">Riffat Jaya Motor</h6>
+                <h6 class="cta-4 mt-1 text-white">Riffat Jaya Motor - TSM</h6>
 
                 <!-- Logo End -->
 
@@ -84,7 +84,7 @@
                         <!-- Title and Top Buttons Start -->
                         <div class="page-title-container">
                             <div class="row">
-                                <h6 class="cta-1 mt-1 text-primary"><strong>Sistem Informasi Mandiri Utama Community</strong></h6>
+                                <h6 class="cta-1 mt-1 text-primary"><b>Sistem Informasi Mandiri Utama Community</b></h6>
                                 <h1 class="mt-5 pb-0 display-4">{{ $judul }}</h1>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
@@ -157,7 +157,7 @@
 
             <script src="/js/vendor/datepicker/bootstrap-datepicker.min.js"></script>
 
-            <script src="/js/vendor/datepicker/locales/bootstrap-datepicker.es.min.js"></script>
+            <script src="/js/vendor/datepicker/locales/bootstrap-datepicker.id.min.js"></script>
 
             <script src="/js/vendor/jquery.validate/jquery.validate.min.js"></script>
 
