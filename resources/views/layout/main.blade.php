@@ -57,6 +57,7 @@
 
     <link rel="stylesheet" href="/css/main.css" />
     <script src="/js/base/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </head>
 
 <body>
@@ -136,7 +137,7 @@
                 <!-- Layout Footer End -->
             </div>
             <!-- Vendor Scripts Start -->
-            <script src="/js/vendor/jquery-3.5.1.min.js"></script>
+            {{-- <script src="/js/vendor/jquery-3.5.1.min.js"></script> --}}
             <script src="/js/vendor/bootstrap.bundle.min.js"></script>
             <script src="/js/vendor/OverlayScrollbars.min.js"></script>
             <script src="/js/vendor/autoComplete.min.js"></script>

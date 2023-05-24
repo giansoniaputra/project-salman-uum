@@ -247,7 +247,7 @@
                                 <div class="row">
                                     <div class="form-floating mb-3 col-6">
                                         <input type="text" class="form-control money @error('harga_beli')is-invalid @enderror" value="{{ old('harga_beli') }}" placeholder="Masukan Harga Beli" name="harga_beli" id="harga_beli">
-                                        <label class="text-label" for="perpanjang_stnk">&nbsp;&nbsp;Perpanjang STNK<span class="text-danger"> *</label></span>
+                                        <label class="text-label" for="harga_beli">&nbsp;&nbsp;Harga Beli<span class="text-danger"> *</label></span>
                                         @error('harga_beli')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -270,7 +270,7 @@
                                 <div class="text-center mt-5">
                                     <h5 class="card-title">Terima Kasih!</h5>
                                     <p class="card-text text-alternate mb-4">Silahkan klik button dibawah untuk menambahkan</p>
-                                    <button class="btn btn-icon btn-icon-start btn-primary btn-add" type="button">
+                                    <button class="btn btn-icon btn-icon-start btn-primary btn-add" type="submit">
                                         <i data-acorn-icon="plus"></i>
                                         <span>Tambah Pembelian</span>
                                     </button>
