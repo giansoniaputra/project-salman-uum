@@ -398,7 +398,8 @@ class PenjualanController extends Controller
         }
         return DataTables::of($query)->addColumn('action', function ($row) {
             $actionBtn =
-                '<button class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="flaticon-381-edit-1"></i></button>
+                '<button class="btn btn-info btn-sm info-button-cash" data-id="' . $row->id . '"><i class="flaticon-381-view-2"></i></button>
+                <button class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="flaticon-381-edit-1"></i></button>
                 <button type="button" class="btn btn-warning btn-sm retur-button"  data-id="' . $row->unique . '"><i class="flaticon-381-back-2 text-white"></i></button>
                 <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
                     <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-id="' . $row->id . '"><i class="flaticon-381-trash-1"></i></button>
@@ -455,6 +456,16 @@ class PenjualanController extends Controller
                 }
                 return response()->json($send_error);
             }
+        }
+    }
+
+    public function refresh_no_polisi(Request $request)
+    {
+        $no_polisi = DB::table('bikes')->select('no_polisi', 'id')->where('status', 'READY STOCK')->get();
+        echo '<option value="">Pilih No Polisi</option>
+                    ';
+        foreach ($no_polisi as $row) {
+            echo '<option value="' . $row->id . '">' . $row->no_polisi . '</option>';
         }
     }
 }

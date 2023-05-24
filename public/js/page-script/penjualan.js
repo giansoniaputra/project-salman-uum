@@ -40,6 +40,47 @@ $(document).ready(function () {
         ],
         order: [[0, "desc"]],
     });
+    var tableKredit = $("#dataTablesPenjualanKredit").DataTable({
+        createdRow: function (row, data, index) {
+            $(row).addClass("selected");
+        },
+        processing: true,
+        responsive: true,
+        searching: true,
+        bLengthChange: true,
+        info: false,
+        ordering: true,
+        serverSide: true,
+        ajax: "/dataTablesPenjualanKredit",
+        columns: [
+            {
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                },
+            },
+            {
+                data: "nama",
+            },
+            {
+                data: "no_polisi",
+            },
+            {
+                data: "merek",
+            },
+            {
+                data: "warna",
+            },
+            {
+                data: "harga_jual",
+            },
+            {
+                data: "action",
+                orderable: true,
+                searchable: true,
+            },
+        ],
+        order: [[0, "desc"]],
+    });
     //LOAD CONTENT CASH
     $("#jenis_pembayaran").on("change", function () {
         $("#jenis_pembayaran").removeClass("is-invalid");
@@ -100,6 +141,7 @@ $(document).ready(function () {
         $("#jenis_pembayaran").val("");
         $("#jenis_pembayaran").removeAttr("disabled style");
         $("#buys-content-cash").addClass("d-none");
+        $("#buys-content-kredit").addClass("d-none");
         $("#harga_jual").val("");
         $("#jumlah_bayar").val("");
         $("#nik").val("");
@@ -120,6 +162,16 @@ $(document).ready(function () {
         $("#save-data").removeClass("save-data-cash");
         $("#save-data").removeClass("save-data-kredit");
         $("#save-data").addClass("save-data");
+
+        $("#tempat_lahir").removeClass("is-invalid");
+        $("#tanggal_lahir").removeClass("is-invalid");
+        $("#jenis_kelamin").removeClass("is-invalid");
+        $("#harga_jual_kredit").removeClass("is-invalid");
+        $("#dp_bayar").removeClass("is-invalid");
+        $("#pencairan").removeClass("is-invalid");
+        $("#angsuran").removeClass("is-invalid");
+        $("#tenor").removeClass("is-invalid");
+        $("#komisi").removeClass("is-invalid");
     });
     //Reset ketika tombol tutup di click
     $(".modal-footer").on("click", ".btn-danger", function () {
@@ -134,6 +186,7 @@ $(document).ready(function () {
         $("#jenis_pembayaran").val("");
         $("#jenis_pembayaran").removeAttr("disabled style");
         $("#buys-content-cash").addClass("d-none");
+        $("#buys-content-kredit").addClass("d-none");
         $("#harga_jual").val("");
         $("#photo_ktp").val("");
         $("#jumlah_bayar").val("");
@@ -153,6 +206,16 @@ $(document).ready(function () {
         $("#save-data").removeClass("save-data-cash");
         $("#save-data").removeClass("save-data-kredit");
         $("#save-data").addClass("save-data");
+        //remove is-invalid krdit
+        $("#tempat_lahir").removeClass("is-invalid");
+        $("#tanggal_lahir").removeClass("is-invalid");
+        $("#jenis_kelamin").removeClass("is-invalid");
+        $("#harga_jual_kredit").removeClass("is-invalid");
+        $("#dp_bayar").removeClass("is-invalid");
+        $("#pencairan").removeClass("is-invalid");
+        $("#angsuran").removeClass("is-invalid");
+        $("#tenor").removeClass("is-invalid");
+        $("#komisi").removeClass("is-invalid");
     });
     //Ketika NIK terdaftar di table
     $("#nik").on("keyup", function () {
@@ -357,6 +420,14 @@ $(document).ready(function () {
 
                     Swal.fire("Good job!", response.success, "success");
                     table.ajax.reload();
+
+                    $.ajax({
+                        url: "/refreshNoPolisi",
+                        type: "GET",
+                        success: function (response) {
+                            $(".refresh-no-polisi").html(response);
+                        },
+                    });
                 }
             },
         });
@@ -451,6 +522,13 @@ $(document).ready(function () {
                     $("#save-data").addClass("save-data");
                     Swal.fire("Good job!", response.success, "success");
                     table.ajax.reload();
+                    $.ajax({
+                        url: "/refreshNoPolisi",
+                        type: "GET",
+                        success: function (response) {
+                            $(".refresh-no-polisi").html(response);
+                        },
+                    });
                 }
             },
         });
@@ -469,7 +547,7 @@ $(document).ready(function () {
             type: "GET",
             dataType: "json",
             success: function (response) {
-                console.log(response);
+                // console.log(response);
                 let elementNoPolisi =
                     '<div class="form-row"><label class="text-label" for="curent_no_polisi">No Polisi</label><input type="text" id="curent_no_polisi" value="' +
                     response.data.no_polisi +
@@ -533,18 +611,47 @@ $(document).ready(function () {
             type: "POST",
             dataType: "json",
             success: function (response) {
-                if (response.errors) {
+                if (
+                    response.errors ||
+                    response.error ||
+                    response.error_ktp ||
+                    response.error_ktp_type
+                ) {
                     displayErrors(response.errors);
-                } else if (response.error) {
-                    // console.log(response.error);
-                    let inputElement = $('input[name="jumlah_bayar"]');
-                    inputElement.addClass("is-invalid");
-                    let feedbackElement = $(
-                        '<div class="invalid-feedback ml-2 jumlah_bayar">' +
-                            response.error +
-                            "</div>"
-                    );
-                    inputElement.after(feedbackElement);
+                    if (response.error) {
+                        let inputElement = $('input[name="jumlah_bayar"]');
+                        inputElement.addClass("is-invalid");
+                        let feedbackElement = $(
+                            '<div class="invalid-feedback ml-2 jumlah_bayar">' +
+                                response.error +
+                                "</div>"
+                        );
+                        inputElement.after(feedbackElement);
+                    }
+                    if (response.error_ktp) {
+                        let inputElement = $('input[name="photo_ktp"]');
+                        let inputElement2 = $('input[name="photo-ktp"]');
+                        inputElement2.addClass("is-invalid");
+                        inputElement.addClass("is-invalid");
+                        let feedbackElement = $(
+                            '<div class="invalid-feedback ml-2 photo-ktp-error">' +
+                                response.error_ktp.photo_ktp +
+                                "</div>"
+                        );
+                        inputElement.after(feedbackElement);
+                    }
+                    if (response.error_ktp_type) {
+                        let inputElement2 = $('input[name="photo-ktp"]');
+                        inputElement2.addClass("is-invalid");
+                        let inputElement = $('input[name="photo_ktp"]');
+                        inputElement.addClass("is-invalid");
+                        let feedbackElement = $(
+                            '<div class="invalid-feedback ml-2 photo-ktp-error-file">' +
+                                response.error_ktp_type +
+                                "</div>"
+                        );
+                        inputElement.after(feedbackElement);
+                    }
                 } else if (response.success) {
                     $("#modal-transaksi").modal("hide");
                     Swal.fire("Good job!", response.success, "success");
@@ -581,6 +688,196 @@ $(document).ready(function () {
                     $("#save-data").removeClass("save-data-cash");
                     $("#save-data").removeClass("save-data-kredit");
                     $("#save-data").addClass("save-data");
+                }
+            },
+        });
+    });
+    //Ambil data penjualan kredit yang ingin di edit
+    $("#dataTablesPenjualanKredit").on(
+        "click",
+        ".edit-button-kredit",
+        function () {
+            let unique = $(this).attr("data-unique");
+            $(".current-id").html(
+                '<input type="text" name="current_unique" id="current-unique" value="' +
+                    unique +
+                    '"><input type="text" name="_method" value="PUT">'
+            );
+            $.ajax({
+                data: { unique: unique },
+                url: "/getDataKredit",
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    // console.log(response.success);
+                    let elementNoPolisi =
+                        '<div class="form-row"><label class="text-label" for="curent_no_polisi">No Polisi</label><input type="text" id="curent_no_polisi" value="' +
+                        response.data.no_polisi +
+                        '" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" disabled> </div>';
+                    $("#current-no-polisi").html(elementNoPolisi);
+                    $("#no-polisi").addClass("d-none");
+                    $("#modal-transaksi").modal("show");
+                    $(".no-polisi").val(response.data.bike_id);
+                    $("#nama_pembeli").val(response.data.pembeli);
+                    $("#merk").val(response.data.merek);
+                    $("#warna").val(response.data.warna);
+                    $("#tahun_pembuatan").val(response.data.tahun_pembuatan);
+                    $("#harga_beli").val(response.data.harga_beli);
+                    $("#tanggal_jual").val(response.data.tanggal_jual);
+                    $("#jenis_pembayaran").val("KREDIT");
+                    $("#jenis_pembayaran").attr("disabled", "disabled");
+                    $("#jenis_pembayaran").css({
+                        "background-color": "rgba(215, 218, 227, 0.3",
+                    });
+                    $("#nik").val(response.data.nik);
+                    $("#nama_pembeli").val(response.data.nama);
+                    $("#alamat").html(response.data.alamat);
+                    $("#old_ktp").val("ktp_pembeli/" + response.data.photo_ktp);
+                    if (response.data.photo_ktp == null) {
+                        $("#img-ktp img").attr(
+                            "src",
+                            "/storage/ktp/default.png"
+                        );
+                    } else {
+                        $("#img-ktp img").attr(
+                            "src",
+                            "/storage/ktp_pembeli/" + response.data.photo_ktp
+                        );
+                    }
+                    $("#buys-content-kredit").removeClass("d-none");
+                    $("#harga_jual").val(response.data.harga_jual);
+                    $("input.money").simpleMoneyFormat({
+                        currencySymbol: "Rp",
+                        decimalPlaces: 0,
+                        thousandsSeparator: ".",
+                    });
+
+                    //Menganti Button Action
+                    let element =
+                        '<button type="button" class="btn btn-rounded btn-primary" id="update-data-kredit"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i></span>Update</button>';
+                    $("#btn-action").html(element);
+
+                    //tambahan kolom bagi kredit
+                    $("#tempat_lahir").val(response.data.tempat_lahir);
+                    $("#tanggal_lahir").val(response.data.tanggal_lahir);
+                    $("#jenis_kelamin").val(response.data.jenis_kelamin);
+                    $("#harga_jual_kredit").val(response.data.harga_jual);
+                    $("#dp_bayar").val(response.data.dp);
+                    $("#pencairan").val(response.data.pencairan);
+                    $("#angsuran").val(response.data.angsuran);
+                    $("#tenor").val(response.data.tenor);
+                    $("#komisi").val(response.data.komisi);
+                },
+            });
+        }
+    );
+    //Action edit penjualan kredit
+    $("#modal-transaksi").on("click", "#update-data-kredit", function () {
+        let formdata = $("#modal-transaksi form").serializeArray();
+        let data = {};
+        $(formdata).each(function (index, obj) {
+            data[obj.name] = obj.value;
+        });
+        $.ajax({
+            data: $("#modal-transaksi form").serialize(),
+            url: "/kredit/" + $("#modal-transaksi #current-unique").val(),
+            type: "POST",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                if (
+                    response.errors ||
+                    response.error ||
+                    response.error_ktp ||
+                    response.error_ktp_type
+                ) {
+                    displayErrors(response.errors);
+                    if (response.error) {
+                        let inputElement = $('input[name="jumlah_bayar"]');
+                        inputElement.addClass("is-invalid");
+                        let feedbackElement = $(
+                            '<div class="invalid-feedback ml-2 jumlah_bayar">' +
+                                response.error +
+                                "</div>"
+                        );
+                        inputElement.after(feedbackElement);
+                    }
+                    if (response.error_ktp) {
+                        let inputElement = $('input[name="photo_ktp"]');
+                        let inputElement2 = $('input[name="photo-ktp"]');
+                        inputElement2.addClass("is-invalid");
+                        inputElement.addClass("is-invalid");
+                        let feedbackElement = $(
+                            '<div class="invalid-feedback ml-2 photo-ktp-error">' +
+                                response.error_ktp.photo_ktp +
+                                "</div>"
+                        );
+                        inputElement.after(feedbackElement);
+                    }
+                    if (response.error_ktp_type) {
+                        let inputElement2 = $('input[name="photo-ktp"]');
+                        inputElement2.addClass("is-invalid");
+                        let inputElement = $('input[name="photo_ktp"]');
+                        inputElement.addClass("is-invalid");
+                        let feedbackElement = $(
+                            '<div class="invalid-feedback ml-2 photo-ktp-error-file">' +
+                                response.error_ktp_type +
+                                "</div>"
+                        );
+                        inputElement.after(feedbackElement);
+                    }
+                } else {
+                    $("#modal-transaksi").modal("hide");
+                    Swal.fire("Good job!", response.success, "success");
+                    table.ajax.reload();
+                    $("#merk").val("");
+                    $("#warna").val("");
+                    $("#tahun_pembuatan").val("");
+                    $("#harga_beli").val("");
+                    $(".no-polisi").val(null).trigger("change");
+                    $("#current-no-polisi").html("");
+                    $("#no-polisi").removeClass("d-none");
+                    $("#jenis_pembayaran").val("");
+                    $("#jenis_pembayaran").removeAttr("disabled style");
+                    $("#buys-content-kredit").addClass("d-none");
+                    $("#photo_ktp").val("");
+                    $("#jumlah_bayar").val("");
+                    $("#old_ktp").val("");
+                    $("#nik").val("");
+                    $("#nama_pembeli").val("");
+                    $("#tanggal_jual").val("");
+                    $("#modal-transaksi #alamat").html("");
+                    $("#photo-ktp").val("");
+                    $("#photo-ktp")
+                        .next(".custom-file-label")
+                        .html("Pilih gambar");
+                    $(".current-id").html("");
+                    $("#photo_ktp").html("");
+                    $("#img-ktp img").attr("src", "/storage/ktp/default.png");
+
+                    $("#save-data").removeClass("save-data-cash");
+                    $("#save-data").removeClass("save-data-kredit");
+                    $("#save-data").addClass("save-data");
+
+                    $("#tempat_lahir").val("");
+                    $("#tanggal_lahir").val("");
+                    $("#jenis_kelamin").val("");
+                    $("#harga_jual_kredit").val("");
+                    $("#dp_bayar").val("");
+                    $("#pencairan").val("");
+                    $("#angsuran").val("");
+                    $("#tenor").val("");
+                    $("#komisi").val("");
+
+                    $("#tempat_lahir").removeClass("is-invalid");
+                    $("#tanggal_lahir").removeClass("is-invalid");
+                    $("#jenis_kelamin").removeClass("is-invalid");
+                    $("#harga_jual_kredit").removeClass("is-invalid");
+                    $("#dp_bayar").removeClass("is-invalid");
+                    $("#pencairan").removeClass("is-invalid");
+                    $("#angsuran").removeClass("is-invalid");
+                    $("#tenor").removeClass("is-invalid");
+                    $("#komisi").removeClass("is-invalid");
                 }
             },
         });

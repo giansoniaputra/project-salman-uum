@@ -22,7 +22,7 @@
                                 <div class="col-lg-12 mb-3" id="no-polisi">
                                     <label class="text-label" for="no_polisi">No Polisi</label><span class="text-danger"> *</span>
                                     <div class="form-row">
-                                        <select id="single-select" name="no_polisi" class="form-control no-polisi" placeholder="Masukan No Polisi">
+                                        <select id="single-select" name="no_polisi" class="form-control no-polisi refresh-no-polisi" placeholder="Masukan No Polisi">
                                             <option value="">Pilih No Polisi</option>
                                             @foreach ($no_polisi as $row)
                                             <option value="{{ $row->id }}">{{ $row->no_polisi }}</option>
@@ -195,11 +195,22 @@
                                     <label class="text-label" for="jenis_kelamin">Jenis Kelamin</label><span class="text-danger"> *</span>
                                     <div class="form-row">
                                         <div class="input-group">
-                                            <select class="form-control default-select" name="jenis_kelamin" id="jenis_kelamin">
+                                            <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
                                                 <option value="">Pilih Jenis Kelamin</option>
                                                 <option value="Laki-Laki">Laki - Laki</option>
                                                 <option value="Perempuan">Perempuan</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <label class="text-label" for="harga_jual_kredit">Harga Jual</label><span class="text-danger"> *</span>
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <div class="input-group-append input-primary">
+                                                <span class="input-group-text">Rp.</span>
+                                            </div>
+                                            <input type="text" class="form-control input-default money" placeholder="Masukan Harga Jual" name="harga_jual_kredit" id="harga_jual_kredit">
                                         </div>
                                     </div>
                                 </div>
@@ -273,6 +284,34 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="dataTablesPenjualan" class="display min-w850 text-center">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Pembeli</th>
+                                <th>No Polisi</th>
+                                <th>Merk</th>
+                                <th>Warna</th>
+                                <th>Harga Jual</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Pembeli</th>
+                                <th>No Polisi</th>
+                                <th>Merk</th>
+                                <th>Warna</th>
+                                <th>Harga Jual</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="table-responsive">
+                    <table id="dataTablesPenjualanKredit" class="display min-w850 text-center">
                         <thead>
                             <tr>
                                 <th>No</th>
