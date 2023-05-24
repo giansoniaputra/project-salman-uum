@@ -6,7 +6,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Data Penjualan</h4>
+                <h4 class="card-title">Data Motor</h4>
             </div>
             <div class="card mb-3">
                 <div class="card-header border-0 pb-0">
@@ -44,12 +44,12 @@
 
                                             <!-- Top Buttons Start -->
                                             <div class="col-12 col-md-5 d-flex align-items-start justify-content-end">
-                                                {{-- <!-- Add New Button Start -->
-                                                <a href="/pembelian/create" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto">
+                                                <!-- Add New Button Start -->
+                                                <button class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable">
                                                     <i data-acorn-icon="plus"></i>
                                                     <span>Tambah Data</span>
-                                                </a>
-                                                <!-- Add New Button End --> --}}
+                                                </button>
+                                                <!-- Add New Button End -->
 
                                                 <!-- Check Button Start -->
                                                 <div class="btn-group ms-1 check-all-container">
@@ -108,8 +108,8 @@
                                                     {{-- <!-- Maintenance Button Start -->
                                                     <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow maintenance-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Maintenance" type="button">
                                                         <i data-acorn-icon="tool"></i>
-                                                    </button> --}}
-                                                    <!-- Maintenance Button End -->
+                                                    </button>
+                                                    <!-- Maintenance Button End --> --}}
 
                                                     {{-- <!-- Add Button Start -->
                                                     <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow add-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data" type="button">
@@ -240,12 +240,12 @@
 
                                             <!-- Top Buttons Start -->
                                             <div class="col-12 col-md-5 d-flex align-items-start justify-content-end">
-                                                {{-- <!-- Add New Button Start -->
-                                            <a href="/pembelian/create" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto">
-                                                <i data-acorn-icon="plus"></i>
-                                                <span>Tambah Data</span>
-                                            </a>
-                                            <!-- Add New Button End --> --}}
+                                                <!-- Add New Button Start -->
+                                                <button class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable">
+                                                    <i data-acorn-icon="plus"></i>
+                                                    <span>Tambah Data</span>
+                                                </button>
+                                                <!-- Add New Button End -->
 
                                                 <!-- Check Button Start -->
                                                 <div class="btn-group ms-1 check-all-container">
@@ -393,6 +393,136 @@
                                         <!-- Table End -->
                                     </div>
                                     <!-- Content End -->
+
+                                    <!-- Add Edit Modal Start -->
+                                    <div class="modal modal-center fade" id="addEditModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalTitle">Tambah Data Penjualan</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="javascript:;" enctype="multipart/form-data" id="form-penjualan">
+                                                        <div class="current-id"></div>
+                                                        @csrf
+                                                        <div class="form-floating mb-3 w-100">
+                                                            <select id="no_polisi" name="no_polisi" class="form-control no-polisi" placeholder="Masukan No Polisi">
+                                                                <option label="&nbsp;"></option>
+                                                                @foreach ($no_polisi as $row)
+                                                                <option value="{{ $row->id }}">{{ $row->no_polisi }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <label>No Polisi <span class="text-danger"> *</span></label>
+                                                        </div>
+                                                        <div class="form-floating mb-3" id="current-no-polisi">
+
+
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" name="merk" id="merk" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" disabled>
+                                                            <label class="text-label" for="merk">Merk</label>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" name="warna" id="warna" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" disabled>
+                                                            <label>Warna</label>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control" name="tahun_pembuatan" id="tahun_pembuatan" disabled style="background-color: rgba(215, 218, 227, 0.3)">
+                                                            <label for="tahun_pembuatan">Tahun Pembuatan</label>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control money" name="harga_beli" id="harga_beli" style="background-color: rgba(215, 218, 227, 0.3)" readonly>
+                                                            <label for="harga_beli">Harga Beli</label>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control " placeholder="Masukan No NIK KTP" name="nik" id="nik">
+                                                            <label class="text-label" for="nik">NIK<span class="text-danger"> *</span></label>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control" placeholder="Masukan Nama Pembeli">
+                                                            <label class="text-label" for="nama_pembeli">Nama Pembeli<span class="text-danger"> *</span></label>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <textarea class="form-control " rows="2" name="alamat" id="alamat" placeholder="Masukan Alamat"></textarea>
+                                                            <label class="text-label" for="alamat">Alamat<span class="text-danger"> *</span></label>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <div class="input-group mb-3">
+                                                                <input type="file" class="form-control" name="photo-ktp" id="photo-ktp" onchange="previewImageKTP()">
+                                                                <label class="input-group-text" for="photo-ktp">Upload Foto KTP</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="date-picker form-control" placeholder="Masukan Tanggal Penjualan" id="tanggal_jual" />
+                                                            <label class="text-label" for="tanggal_jual">Tanggal Penjualan<span class="text-danger"> *</label></span>
+                                                        </div>
+                                                        <div class="form-floating mb-3 w-100">
+                                                            <select id="jenis_pembayaran" name="jenis_pembayaran">
+                                                                <option label="&nbsp;"></option>
+                                                                <option value="CASH">CASH</option>
+                                                                <option value="KREDIT">KREDIT</option>
+                                                            </select>
+                                                            <label class="text-label" for="jenis_pembayaran">Jenis Pembayaran<span class="text-danger"> *</label></span>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control money" placeholder="Masukan Harga Jual" name="harga_jual" id="harga_jual">
+                                                            <label class="text-label" for="harga_jual">Harga Jual<span class="text-danger"> *</label></span>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control money" placeholder="Masukan Jumlah Bayar" name="jumlah_bayar" id="jumlah_bayar">
+                                                            <label class="text-label" for="jumlah_bayar">Jumlah Bayar<span class="text-danger"> *</label></span>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control money" name="kembali" id="kembali" readonly style="background-color: rgba(215, 218, 227, 0.3)">
+                                                            <label class="text-label" for="kembali">Kembalian</label></span>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control" placeholder="Masukan Tempat Lahir" name="tempat_lahir" id="tempat_lahir">
+                                                            <label class="text-label" for="tempat_lahir">Tempat Lahir<span class="text-danger"> *</label></span>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="date-picker form-control" placeholder="Masukan Tanggal Lahir" name="tanggal_lahir" id="tanggal_lahir">
+                                                            <label class="text-label" for="tanggal_lahir">Tanggal Lahir<span class="text-danger"> *</label></span>
+                                                        </div>
+                                                        <div class="form-floating mb-3 w-100">
+                                                            <select id="jenis_kelamin" name="jenis_kelamin">
+                                                                <option label="&nbsp;"></option>
+                                                                <option value="COWO">Laki - Laki</option>
+                                                                <option value="CEWE">Perempuan</option>
+                                                            </select>
+                                                            <label class="text-label" for="jenis_kelamin">Jenis Kelamin<span class="text-danger"> *</label></span>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control money" name="dp_bayar" id="dp_bayar" readonly style="">
+                                                            <label class="text-label" for="dp_bayar">DP Bayar</label></span>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control money" name="pencairan" id="pencairan" readonly style="">
+                                                            <label class="text-label" for="pencairan">Pencairan</label></span>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control money" name="angsuran" id="angsuran" readonly style="">
+                                                            <label class="text-label" for="angsuran">Angsuran</label></span>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control money" name="tenor" id="tenor" readonly style="">
+                                                            <label class="text-label" for="tenor">Tenor</label></span>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control money" name="komisi" id="komisi" readonly style="">
+                                                            <label class="text-label" for="komisi">Komisi</label></span>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Batal</button>
+                                                    <button type="button" class="btn btn-primary" id="addEditConfirmButton" title="Tambah">Tambah</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add Edit Modal End -->
 
                                     {{-- <!-- Add Edit Modal Start -->
                                     <div class="modal modal-center fade" id="addEditModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">

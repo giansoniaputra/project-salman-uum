@@ -113,7 +113,7 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3 filled form-group tooltip-end-top">
-                                        <i data-acorn-icon="lock-off"></i>
+                                        <i data-acorn-icon="lock-on"></i>
                                         <input type="password" name="password" id="password" class="form-control input-default text-black @error('password') is-invalid @enderror" placeholder="Masukan Password">
                                         @error('password')
                                         <div class="invalid-feedback">
@@ -139,8 +139,8 @@
     <script src="/js/vendor/autoComplete.min.js"></script>
     <script src="/js/vendor/clamp.min.js"></script>
 
-    <script src="icon/acorn-icons.js"></script>
-    <script src="icon/acorn-icons-interface.js"></script>
+    <script src="/icon/acorn-icons.js"></script>
+    <script src="/icon/acorn-icons-interface.js"></script>
 
     <script src="/js/vendor/jquery.validate/jquery.validate.min.js"></script>
 
