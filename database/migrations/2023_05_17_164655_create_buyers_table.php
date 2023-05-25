@@ -16,6 +16,7 @@ return new class extends Migration
             $table->uuid('unique')->unique();
             $table->string('nik');
             $table->string('nama');
+            $table->string('jenis_kelamin')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->string('alamat');
