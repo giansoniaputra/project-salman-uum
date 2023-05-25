@@ -31,7 +31,7 @@
                         </div>
                         <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-offset="0,3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-submenu></button>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <div class="dropdown dropstart dropdown-submenu">
+                            {{-- <div class="dropdown dropstart dropdown-submenu">
                                 <button class="dropdown-item dropdown-toggle tag-datatable caret-absolute disabled" type="button">Tag</button>
                                 <div class="dropdown-menu">
                                     <button class="dropdown-item tag-done" type="button">Done</button>
@@ -39,8 +39,8 @@
                                     <button class="dropdown-item tag-sale" type="button">Sale</button>
                                 </div>
                             </div>
-                            <div class="dropdown-divider"></div>
-                            <button class="dropdown-item disabled delete-datatable" type="button">Delete</button>
+                            <div class="dropdown-divider"></div> --}}
+                            <button class="dropdown-item disabled delete-datatable_Pembelian" type="button">Delete</button>
                         </div>
                     </div>
                     <!-- Check Button End -->
@@ -77,19 +77,19 @@
                         <!-- Info Button End -->
 
                         {{-- <!-- Add Button Start -->
-                        <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow add-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data" type="button">
+                        <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow add-datatable_pembelian" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data" type="button">
                             <i data-acorn-icon="plus"></i>
                         </button>
                         <!-- Add Button End --> --}}
 
                         <!-- Edit Button Start -->
-                        <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow edit-datatable disabled" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Data" type="button">
+                        <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow edit-datatable_Pembelian disabled" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Data" type="button">
                             <i data-acorn-icon="edit"></i>
                         </button>
                         <!-- Edit Button End -->
 
                         <!-- Delete Button Start -->
-                        <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow disabled delete-datatable" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data" type="button">
+                        <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow disabled delete-datatable_Pembelian" data-bs-delay="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data" type="button">
                             <i data-acorn-icon="bin"></i>
                         </button>
                         <!-- Delete Button End -->
@@ -137,7 +137,7 @@
 
             <!-- Table Start -->
             <div>
-                <table id="datatablePembelian" class="data-table nowrap hover">
+                <table id="datatableBoxed_pembelian" class="data-table nowrap hover">
                     <thead>
                         <tr>
                             <th class="text-muted text-small text-uppercase">No</th>
@@ -147,36 +147,25 @@
                             <th class="text-muted text-small text-uppercase">Warna</th>
                             <th class="text-muted text-small text-uppercase">Tanggal Beli</th>
                             <th class="text-muted text-small text-uppercase">Harga Beli</th>
-                            <th class="text-muted text-small text-uppercase">Tag</th>
+                            {{-- <th class="text-muted text-small text-uppercase">Tag</th> --}}
                             <th class="empty all">&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
-                    <tfoot>
-                        <th class="text-muted text-small text-uppercase">No</th>
-                        <th class="text-muted text-small text-uppercase">No Transaksi</th>
-                        <th class="text-muted text-small text-uppercase">Merk</th>
-                        <th class="text-muted text-small text-uppercase">No Polisi</th>
-                        <th class="text-muted text-small text-uppercase">Warna</th>
-                        <th class="text-muted text-small text-uppercase">Tanggal Beli</th>
-                        <th class="text-muted text-small text-uppercase">Harga Beli</th>
-                        <th class="text-muted text-small text-uppercase">Tag</th>
-                        <th class="empty all">&nbsp;</th>
-                    </tfoot>
                 </table>
             </div>
             <!-- Table End -->
         </div>
         <!-- Content End -->
 
-        <!-- Add Edit Modal Start -->
-        <div class="modal modal-center fade" id="addEditModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        {{-- <!-- Add Edit Modal Start -->
+        <div class="modal modal-center fade" id="addEditModal_Pembelian" tabindex="-1" role="dialog" aria-labelledby="modalTitle_Pembelian" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalTitle">Tambah Data Penjualan</h5>
+                        <h5 class="modal-title" id="modalTitle_Pembelian">Tambah Data Pembelian</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -184,14 +173,15 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Batal</button>
-                        <button type="button" class="btn btn-primary" id="addEditConfirmButton" title="Tambah">Tambah</button>
+                        <button type="button" class="btn btn-primary" id="addEditConfirmButton_Pembelian" title="Tambah">Tambah</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Add Edit Modal End -->
+        <!-- Add Edit Modal End --> --}}
     </div>
 </div>
+<script src="/page-script/datatables/datatables-pembelian.js"></script>
 <script src="/page-script/pembelian.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>

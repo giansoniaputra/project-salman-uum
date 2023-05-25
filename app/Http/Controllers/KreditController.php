@@ -7,6 +7,7 @@ use App\Models\Buyer;
 use App\Models\Kredit;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,7 +18,14 @@ class KreditController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Penjualan Kredit | SMAC',
+            'judul' => 'Transaksi',
+            'breadcumb1' => 'Penjualan',
+            'breadcumb2' => 'Penjualan Kredit',
+            'no_polisi' => DB::table('bikes')->select('no_polisi', 'id')->where('status', 'READY STOCK')->get()
+        ];
+        return view('kredit.index', $data);
     }
 
     /**

@@ -100,7 +100,7 @@ class DatePickerControls {
   _initFloatingLabel() {
     jQuery('#perpanjang_stnk').datepicker({
       language: 'id',
-      format: 'dd-mm-yyyy',
+      format: 'yyyy/mm/dd',
       autoclose: true,
     });
   }
@@ -108,7 +108,7 @@ class DatePickerControls {
   _initFloatingLabel() {
     jQuery('#berlaku_sampai').datepicker({
       language: 'id',
-      format: 'dd-mm-yyyy',
+      format: 'yyyy/mm/dd',
       autoclose: true,
     });
   }
@@ -116,7 +116,7 @@ class DatePickerControls {
   _initFloatingLabel() {
     jQuery('#tanggal_beli').datepicker({
       language: 'id',
-      format: 'dd-mm-yyyy',
+      format: 'yyyy/mm/dd',
       autoclose: true,
     });
   }
@@ -124,7 +124,7 @@ class DatePickerControls {
   _initFloatingLabel() {
     jQuery('#tanggal_jual').datepicker({
       language: 'id',
-      format: 'dd-mm-yyyy',
+      format: 'yyyy/mm/dd',
       autoclose: true,
     });
   }
@@ -132,7 +132,7 @@ class DatePickerControls {
   _initFloatingLabel() {
     jQuery('#tanggal_lahir').datepicker({
       language: 'id',
-      format: 'dd-mm-yyyy',
+      format: 'yyyy/mm/dd',
       autoclose: true,
     });
   }

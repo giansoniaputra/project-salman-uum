@@ -25,10 +25,10 @@ class PenjualanController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Penjualan | SMAC',
-            'judul' => 'Penjualan',
-            'breadcumb1' => 'Transaksi',
-            'breadcumb2' => 'Penjualan',
+            'title' => 'Penjualan Cash | SMAC',
+            'judul' => 'Transaksi',
+            'breadcumb1' => 'Penjualan',
+            'breadcumb2' => 'Penjualan Cash',
             'no_polisi' => DB::table('bikes')->select('no_polisi', 'id')->where('status', 'READY STOCK')->get()
         ];
         return view('penjualan.index', $data);

@@ -102,7 +102,7 @@ class FormLayouts {
       jQuery('#berlaku_sampai')
         .datepicker({
           language: 'id',
-          format: 'dd-mm-yyyy',
+          format: 'yyyy/mm/dd',
           autoclose: true,
         })
         .on('show', function (e) {
@@ -112,7 +112,7 @@ class FormLayouts {
         jQuery('#perpanjang_stnk')
         .datepicker({
           language: 'id',
-          format: 'dd-mm-yyyy',
+          format: 'yyyy/mm/dd',
           autoclose: true,
         })
         .on('show', function (e) {
@@ -122,7 +122,7 @@ class FormLayouts {
         jQuery('#tanggal_beli')
         .datepicker({
           language: 'id',
-          format: 'dd-mm-yyyy',
+          format: 'yyyy/mm/dd',
           autoclose: true,
         })
         .on('show', function (e) {
@@ -132,7 +132,7 @@ class FormLayouts {
         jQuery('#tanggal_jual')
         .datepicker({
           language: 'id',
-          format: 'dd-mm-yyyy',
+          format: 'yyyy/mm/dd',
           autoclose: true,
         })
         .on('show', function (e) {
@@ -142,7 +142,7 @@ class FormLayouts {
         jQuery('#tanggal_lahir')
         .datepicker({
           language: 'id',
-          format: 'dd-mm-yyyy',
+          format: 'yyyy/mm/dd',
           autoclose: true,
         })
         .on('show', function (e) {

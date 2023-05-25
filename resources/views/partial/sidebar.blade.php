@@ -8,7 +8,7 @@
         </div>
     </a>
     <div class="dropdown-menu dropdown-menu-end user-menu wide">
-        <div class="row mb-1 ms-0 me-0">
+        <div class="row mb-0 ms-0 me-0">
             <div class="col-6 ps-1 pe-1">
                 <ul class="list-unstyled">
                     <li>
@@ -46,7 +46,7 @@
 </div>
 <!-- User Menu End -->
 
-<!-- Icons Menu Start -->
+{{-- <!-- Icons Menu Start -->
 <ul class="list-unstyled list-inline text-center menu-icons">
     <li class="list-inline-item">
         <a href="#" id="pinButton" class="pin-button">
@@ -55,7 +55,7 @@
         </a>
     </li>
 </ul>
-<!-- Icons Menu End -->
+<!-- Icons Menu End --> --}}
 
 <!-- Menu Start -->
 <div class="menu-container flex-grow-1">
@@ -73,9 +73,21 @@
             </a>
             <ul id="transaksi">
                 <li>
-                    <a href="/penjualan">
+                    <a href="#penjualan" data-href="Pages.Authentication.html">
                         <span class="label">Penjualan</span>
                     </a>
+                    <ul id="penjualan">
+                        <li>
+                            <a href="/penjualan">
+                                <span class="label">Penjualan Cash</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kredit">
+                                <span class="label">Penjualan Kredit</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="/pembelian">
