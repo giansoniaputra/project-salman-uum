@@ -189,8 +189,8 @@
                                         <label class="text-label" for="no_rangka">&nbsp;&nbsp;No Rangka<span class="text-danger"> *</label></span>
                                     </div>
                                     <div class="form-floating mb-3 col-md-6">
-                                        <input type="text" name="no_polisi_input" id="no_polisi_input" class="form-control @error('no_polisi_input')is-invalid @enderror" value="{{ old('no_polisi_input') }}" placeholder="Masukan No Polisi">
-                                        @error('no_polisi_input')
+                                        <input type="text" name="no_polisi" id="no_polisi_input" class="form-control @error('no_polisi')is-invalid @enderror" value="{{ old('no_polisi') }}" placeholder="Masukan No Polisi">
+                                        @error('no_polisi')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
