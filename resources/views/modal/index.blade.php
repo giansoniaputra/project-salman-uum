@@ -2,9 +2,9 @@
 @section('container')
 <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
 <div id="pesan" data-flash="{{ session('success') }}"></div>
-<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modal_awal">Set Modal Awal</button>
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modal-halaman-modal">Set Modal Awal</button>
 <!-- Modal  Launch Large-->
-<div class="modal fade" id="modal_awal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modal-halaman-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -25,6 +25,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                     <button type="button" class="btn btn-primary" id="save-data-modal">Tambah Modal Awal</button>
                 </div>
+            </form>
         </div>
     </div>
 </div>
@@ -43,7 +44,7 @@
                             <div class="d-flex align-items-center lh-1-25">Modal Awal</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="cta-2 text-primary">{{ rupiah($data->modal) }}</div>
+                            <div class="cta-2 text-primary" id="refresh-modal">{{ rupiah($data->modal) }}</div>
                         </div>
                     </div>
                 </div>
@@ -65,7 +66,7 @@
                             <div class="d-flex align-items-center lh-1-25">Jumlah Asset</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="cta-2 text-primary">{{ rupiah($bike_sele) }}</div>
+                            <div class="cta-2 text-primary" id="refresh-asset">{{ rupiah($bike_sele) }}</div>
                         </div>
                     </div>
                 </div>
@@ -109,7 +110,7 @@
                             <div class="d-flex align-items-center lh-1-25">Sisa Modal</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="cta-2 text-primary">{{ rupiah($sisa_modal) }}</div>
+                            <div class="cta-2 text-primary" id="refresh-sisa">{{ rupiah($sisa_modal) }}</div>
                         </div>
                     </div>
                 </div>
@@ -130,7 +131,7 @@
                             <div class="d-flex align-items-center lh-1-25">Laba</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="cta-2 text-primary">{{ rupiah($laba) }}</div>
+                            <div class="cta-2 text-primary" id="refresh-laba">{{ rupiah($laba) }}</div>
                         </div>
                     </div>
                 </div>
