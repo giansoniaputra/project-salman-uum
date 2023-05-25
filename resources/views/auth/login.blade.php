@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Sistem Informasi SMAC</title>
+    <title>Sistem Informasi SMAC | Login</title>
     <meta name="description" content="Login Page" />
     <!-- Favicon Tags Start -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/img/favicon/apple-touch-icon-57x57.png" />
@@ -81,7 +81,7 @@
                     <div class="sw-lg-70 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 full-page-content-right-border">
                         <div class="sw-lg-50 px-5">
                             <div class="sh-11">
-                                <a href="/index.html">
+                                <a href="javascript:void(0);">
                                     {{-- <div class="logo-default"> --}}
                                     <img src="/img/logo/smac white.png" alt="" style="width: 150px;" class="">
                                     <h6 class="cta-2 mt-2 text-primary"><b>Sistem Informasi Showroom Mandiri Utama Community</b></h6>

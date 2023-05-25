@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Acorn Admin Template | Register Page</title>
+    <title>Sistem Informasi SMAC | Daftar</title>
     <meta name="description" content="Register Page" />
     <!-- Favicon Tags Start -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/img/favicon/apple-touch-icon-57x57.png" />
@@ -37,6 +37,9 @@
     <link rel="stylesheet" href="/css/vendor/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/vendor/OverlayScrollbars.min.css" />
 
+    <link rel="stylesheet" href="/css/vendor/select2.min.css" />
+
+    <link rel="stylesheet" href="/css/vendor/select2-bootstrap4.min.css" />
     <!-- Vendor Styles End -->
     <!-- Template Base Styles Start -->
     <link rel="stylesheet" href="/css/styles.css" />
@@ -77,11 +80,11 @@
                 <!-- Left Side End -->
 
                 <!-- Right Side Start -->
-                <div class="col-12 col-lg-auto h-100 pb-4 px-4 pt-0 p-lg-0 text-center">
+                <div class="col-12 col-lg-auto h-100 pb-4 px-4 pt-0 p-lg-0">
                     <div class="sw-lg-70 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 full-page-content-right-border">
                         <div class="sw-lg-50 px-5">
                             <div class="sh-11">
-                                <a href="/index.html">
+                                <a href="/home">
                                     {{-- <div class="logo-default"> --}}
                                     <img src="/img/logo/smac white.png" alt="" style="width: 150px;" class="">
                                     <h6 class="cta-2 mt-2 text-primary"><b>Sistem Informasi Showroom Mandiri Utama Community</b></h6>
@@ -142,7 +145,7 @@
                                     </div>
                                     <div class="mb-3 filled form-group tooltip-end-top">
                                         <i data-acorn-icon="key"></i>
-                                        <select class="form-control default-select @error('roles') is-invalid @enderror" name="roles" id="roles" value="{{ old('roles') }}">
+                                        <select class="form-control @error('roles') is-invalid @enderror" name="roles" id="roles" value="{{ old('roles') }}">
                                             <option value="">Pilih Role</option>
                                             <option>Super Admin</option>
                                             <option>Admin</option>
@@ -154,7 +157,7 @@
                                         </div>
                                         @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-lg btn-primary">Daftar</button>
+                                    <button type="submit" class="btn btn-lg btn-primary mx-auto d-block">Daftar</button>
                                 </form>
                             </div>
                         </div>
@@ -175,6 +178,8 @@
     <script src="/icon/acorn-icons.js"></script>
     <script src="/icon/acorn-icons-interface.js"></script>
 
+    <script src="/js/vendor/select2.full.min.js"></script>
+
     <script src="/js/vendor/jquery.validate/jquery.validate.min.js"></script>
 
     <script src="/js/vendor/jquery.validate/additional-methods.min.js"></script>
@@ -189,8 +194,10 @@
     <script src="/js/base/settings.js"></script>
     <!-- Template Base Scripts End -->
     <!-- Page Specific Scripts Start -->
+    <script src="/js/forms/controls.select2.js"></script>
 
     <script src="/js/pages/auth.register.js"></script>
+    <script src="/js/forms/layouts.js"></script>
 
     <script src="/js/common.js"></script>
     <script src="/js/scripts.js"></script>

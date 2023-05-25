@@ -22,6 +22,9 @@ class FormLayouts {
     if (jQuery().select2) {
       jQuery('#selectBasic').select2({minimumResultsForSearch: Infinity, placeholder: ''});
     }
+    if (jQuery().select2) {
+      jQuery('#roles').select2({minimumResultsForSearch: Infinity, placeholder: ''});
+    }
     if (typeof Tagify !== 'undefined') {
       if (document.querySelector('#tagBasic') !== null) {
         new Tagify(document.querySelector('#tagBasic'));
