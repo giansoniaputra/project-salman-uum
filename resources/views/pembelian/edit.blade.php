@@ -38,7 +38,7 @@
                     </div>
                     <div class="card-body sh-35">
                         <div class="tab-content">
-                            <div class="tab-pane fade" id="data_konsumen" role="tabpanel">
+                            <div class="tab-pane fade" role="tabpanel">
                                 {{-- <h5 class="card-title">Pilih Penjual terlebih dahulu</h5>
                                 <p class="card-text text-alternate mb-4">With supporting text below as a natural lead-in to additional content.</p> --}}
                                 <form action="/pembelian/{{ $beli->unique }}" method="post" enctype="multipart/form-data">
@@ -131,6 +131,7 @@
                                         </div>
                                     </div>
                             </div>
+                            @endif
                         </div>
                         <div class="tab-pane fade" id="data_motor" role="tabpanel">
                             {{-- <h5 class="card-title">Second Title</h5>
