@@ -181,6 +181,209 @@
         <!-- Add Edit Modal End --> --}}
     </div>
 </div>
+<!-- Modal  Launch Large-->
+<div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detail Transaksi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion accordion-flush" id="data-individu">
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="flush-headingZero">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseZero" aria-expanded="false" aria-controls="flush-collapseZero">
+                                Data Individu
+                            </button>
+                        </div>
+                        <div id="flush-collapseZero" class="accordion-collapse collapse" aria-labelledby="flush-headingZero" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="table-responsive">
+                                    <table class="table header-border table-responsive-sm table-striped" id="table_konsumen">
+                                        <tbody>
+                                            <tr>
+                                                <td>NIK</td>
+                                                <td>:</td>
+                                                <td><span id="nik"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nama</td>
+                                                <td>:</td>
+                                                <td><span id="nama"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nomor Telepon</td>
+                                                <td>:</td>
+                                                <td><span id="no-telepon"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Alamat</td>
+                                                <td>:</td>
+                                                <td><span id="alamat"></span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="data-dealer">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                Data Non Individu
+                            </button>
+                        </div>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="table-responsive">
+                                    <table class="table header-border table-responsive-sm table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>Nama Petugas</td>
+                                                <td>:</td>
+                                                <td><span id="nama-petugas"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nama Dealer</td>
+                                                <td>:</td>
+                                                <td><span id="dealer"></span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                Data Motor
+                            </button>
+                        </div>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="table-responsive">
+                                    <table class="table header-border table-responsive-sm table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>No Polisi</td>
+                                                <td>:</td>
+                                                <td><span id="no-polisi"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Merk</td>
+                                                <td>:</td>
+                                                <td><span id="merk"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tipe</td>
+                                                <td>:</td>
+                                                <td><span id="tipe"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Warna</td>
+                                                <td>:</td>
+                                                <td><span id="warna"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tahun Pembuatan</td>
+                                                <td>:</td>
+                                                <td><span id="tahun-pembuatan"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>No Rangka</td>
+                                                <td>:</td>
+                                                <td><span id="no-rangka"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nomor BPKB</td>
+                                                <td>:</td>
+                                                <td><span id="bpkb"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nama BPKB</td>
+                                                <td>:</td>
+                                                <td><span id="nama-bpkb"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Berlaku Sampai</td>
+                                                <td>:</td>
+                                                <td><span id="berlaku-sampai"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Perpanjang STNK</td>
+                                                <td>:</td>
+                                                <td><span id="perpanjang-stnk"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Foto BPKB</td>
+                                                <td>:</td>
+                                                <td><span id="foto-bpkb"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Foto STNK</td>
+                                                <td>:</td>
+                                                <td><span id="foto-stnk"></span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="flush-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                Data Pembelian
+                            </button>
+                        </div>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="table-responsive">
+                                    <table class="table header-border table-responsive-sm table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>Tanggal Beli</td>
+                                                <td>:</td>
+                                                <td><span id="tanggal-beli"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Harga Beli</td>
+                                                <td>:</td>
+                                                <td><span id="harga-beli"></span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal  Launch Large Gambar-->
+<div class="modal fade" id="modal-image" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="judul-modal-photo"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="img-photo" class="d-flex justify-content-center align-items-center"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="/page-script/pembelian.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>

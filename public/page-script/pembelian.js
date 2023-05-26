@@ -159,7 +159,7 @@ $(document).ready(function () {
     });
 
     // Popup Modal Detail
-    $("#dataTables").on("click", ".info-button", function () {
+    $("#datatableBoxed_pembelian").on("click", ".info-button", function () {
         $("#table_konsumen tbody .info-ktp").remove();
         let id = $(this).attr("data-id");
         $("#modal-detail").modal("show");
@@ -299,7 +299,6 @@ $(document).ready(function () {
     //Lihat Foto BPKB
     $("#modal-detail").on("click", ".look-img-bpkb", function () {
         let image = $(this).attr("data-img");
-        l;
         // alert(image);
         $("#img-photo").html(
             '<img src="' +
