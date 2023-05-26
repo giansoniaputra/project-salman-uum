@@ -180,15 +180,6 @@
                                                     <tbody>
 
                                                     </tbody>
-                                                    <tfoot>
-                                                        <th class="text-muted text-small text-uppercase">No</th>
-                                                        <th class="text-muted text-small text-uppercase">Nama</th>
-                                                        <th class="text-muted text-small text-uppercase">NIK</th>
-                                                        <th class="text-muted text-small text-uppercase">No Telepon</th>
-                                                        <th class="text-muted text-small text-uppercase">Alamat</th>
-                                                        {{-- <th class="text-muted text-small text-uppercase">Tag</th> --}}
-                                                        <th class="empty all">&nbsp;</th>
-                                                    </tfoot>
                                                 </table>
                                             </div>
                                             <!-- Table End -->
