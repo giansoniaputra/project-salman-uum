@@ -1,8 +1,6 @@
 $(document).ready(function () {
-    let table = $("#dataTables").DataTable({
-        createdRow: function (row, data, index) {
-            $(row).addClass("selected");
-        },
+    let table = jQuery("#dataTables").DataTable({
+        buttons: [],
         processing: true,
         responsive: true,
         searching: true,
@@ -11,16 +9,19 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/dataTablesReady",
-        columnDefs: [
-            {
-                targets: [5], // index kolom atau sel yang ingin diatur
-                className: "status-motor", // kelas CSS untuk memposisikan isi ke tengah
-            },
-        ],
+        order: [], // Clearing default order
+        sDom: '<"row"<"col-sm-12"<"table-container"<"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
+        pageLength: 15,
         columns: [
             {
+                data: null,
+                orderable: false,
                 render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
+                    var pageInfo = jQuery("#dataTables")
+                        .DataTable()
+                        .page.info();
+                    var index = meta.row + pageInfo.start + 1;
+                    return index;
                 },
             },
             {
@@ -49,13 +50,28 @@ $(document).ready(function () {
                 searchable: true,
             },
         ],
-        order: [[0, "desc"]],
+        columnDefs: [
+            {
+                targets: [7], // index kolom atau sel yang ingin diatur
+                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
+            },
+            {
+                searchable: false,
+                orderable: false,
+                targets: 0, // Kolom nomor, dimulai dari 0
+            },
+        ],
+        order: [[0, "asc"]],
+        language: {
+            paginate: {
+                previous: '<i class="cs-chevron-left"></i>',
+                next: '<i class="cs-chevron-right"></i>',
+            },
+        },
     });
 
-    var table2 = $("#dataTables2").DataTable({
-        createdRow: function (row, data, index) {
-            $(row).addClass("selected");
-        },
+    let table2 = jQuery("#dataTables2").DataTable({
+        buttons: [],
         processing: true,
         responsive: true,
         searching: true,
@@ -64,16 +80,19 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/dataTablesTerjual",
-        columnDefs: [
-            {
-                targets: [5], // index kolom atau sel yang ingin diatur
-                className: "status-motor", // kelas CSS untuk memposisikan isi ke tengah
-            },
-        ],
+        order: [], // Clearing default order
+        sDom: '<"row"<"col-sm-12"<"table-container"<"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
+        pageLength: 15,
         columns: [
             {
+                data: null,
+                orderable: false,
                 render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
+                    var pageInfo = jQuery("#dataTables2")
+                        .DataTable()
+                        .page.info();
+                    var index = meta.row + pageInfo.start + 1;
+                    return index;
                 },
             },
             {
@@ -89,6 +108,9 @@ $(document).ready(function () {
                 data: "tahun_pembuatan",
             },
             {
+                data: "harga_beli",
+            },
+            {
                 data: "status",
                 orderable: true,
                 searchable: true,
@@ -99,7 +121,24 @@ $(document).ready(function () {
                 searchable: true,
             },
         ],
-        order: [[0, "desc"]],
+        columnDefs: [
+            {
+                targets: [7], // index kolom atau sel yang ingin diatur
+                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
+            },
+            {
+                searchable: false,
+                orderable: false,
+                targets: 0, // Kolom nomor, dimulai dari 0
+            },
+        ],
+        order: [[0, "asc"]],
+        language: {
+            paginate: {
+                previous: '<i class="cs-chevron-left"></i>',
+                next: '<i class="cs-chevron-right"></i>',
+            },
+        },
     });
 
     $("#dataTables").on("click", ".info-motor-button", function () {

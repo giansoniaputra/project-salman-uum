@@ -170,7 +170,7 @@
 
                                         <!-- Table Start -->
                                         <div>
-                                            <table id="datatableBoxed_motor_tersedia" class="data-table nowrap hover">
+                                            <table id="dataTables" class="data-table nowrap hover">
                                                 <thead>
                                                     <tr>
                                                         <th class="text-muted text-small text-uppercase">No</th>
@@ -180,7 +180,7 @@
                                                         <th class="text-muted text-small text-uppercase">Warna</th>
                                                         <th class="text-muted text-small text-uppercase">Harga Jual</th>
                                                         <th class="text-muted text-small text-uppercase">Status</th>
-                                                        <th class="empty all">&nbsp;</th>
+                                                        <th class="text-muted text-small text-uppercase">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -320,7 +320,7 @@
 
                                             <!-- Table Start -->
                                             <div>
-                                                <table id="datatableBoxed_motor_terjual" class="data-table nowrap hover">
+                                                <table id="dataTables2" class="data-table nowrap hover">
                                                     <thead>
                                                         <tr>
                                                             <th class="text-muted text-small text-uppercase">No</th>
@@ -329,7 +329,7 @@
                                                             <th class="text-muted text-small text-uppercase">Warna</th>
                                                             <th class="text-muted text-small text-uppercase">Tahun Pembuatan</th>
                                                             <th class="text-muted text-small text-uppercase">Status</th>
-                                                            <th class="empty all">&nbsp;</th>
+                                                            <th class="text-muted text-small text-uppercase">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -373,7 +373,6 @@
     <script src="/page-script/simple.money.format.js"></script>
     <script src="/page-script/simple.money.format.init.js"></script>
     {{-- !Simple Money Format --}}
-    <script src="/page-script/datatables/datatables-motor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
     <script src="/page-script/motor.js"></script>

@@ -1,8 +1,12 @@
 $(document).ready(function () {
     let table = jQuery("#datatableBoxed_pembelian").DataTable({
         buttons: [],
+        processing: true,
         responsive: true,
+        searching: true,
+        bLengthChange: true,
         info: false,
+        ordering: true,
         serverSide: true,
         ajax: "/datatablesPembelian",
         order: [], // Clearing default order
@@ -58,7 +62,7 @@ $(document).ready(function () {
                 targets: 0, // Kolom nomor, dimulai dari 0
             },
         ],
-        order: [[1, "asc"]],
+        order: [[0, "asc"]],
         language: {
             paginate: {
                 previous: '<i class="cs-chevron-left"></i>',
