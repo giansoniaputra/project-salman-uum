@@ -189,6 +189,8 @@
 
             <script src="/js/forms/wizards.js"></script>
 
+            <script src="/js/cs/datatable.extend.js"></script>
+
             <script src="/js/forms/controls.select2.js"></script>
 
             <script src="/js/forms/controls.datepicker.js"></script>

@@ -15,7 +15,20 @@
 
                 <!-- Top Buttons Start -->
                 <div class="col-12 col-md-5 d-flex align-items-start justify-content-end">
-
+                    {{-- <!-- Length Start -->
+                    <div class="dropdown-as-select d-inline-block datatable-length" data-datatable="#datatableBoxed" data-childSelector="span">
+                        <button class="btn p-0 shadow" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,3">
+                            <span class="btn btn-foreground-alternate dropdown-toggle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-delay="0" title="Item Count">
+                                15 Items
+                            </span>
+                        </button>
+                        <div class="dropdown-menu shadow dropdown-menu-end">
+                            <a class="dropdown-item" href="#">10 Items</a>
+                            <a class="dropdown-item active" href="#">15 Items</a>
+                            <a class="dropdown-item" href="#">20 Items</a>
+                        </div>
+                    </div>
+                    <!-- Length End --> --}}
                     <!-- Check Button Start -->
                     {{-- <div class="btn-group ms-1 check-all-container">
                         <div class="btn btn-outline-primary btn-custom-control p-0 ps-3 pe-2" id="datatableCheckAllButton">
@@ -51,13 +64,13 @@
                 <!-- Search Start -->
                 <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-2 mb-1">
                     <div class="d-inline-block float-md-start me-1 mb-1 search-input-container w-100 shadow bg-foreground">
-                        <input class="form-control datatable-search" placeholder="Search" data-datatable="#datatableBoxed_pembelian" />
+                        {{-- <input class="form-control datatable-search" placeholder="Search" data-datatable="#datatableBoxed_pembelian" />
                         <span class="search-magnifier-icon">
                             <i data-acorn-icon="search"></i>
                         </span>
                         <span class="search-delete-icon d-none">
                             <i data-acorn-icon="close"></i>
-                        </span>
+                        </span> --}}
                     </div>
                 </div>
                 <!-- Search End -->
@@ -92,7 +105,7 @@
                         <!-- Add New Button Start -->
                         <a href="/pembelian/create" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto">
                             <i data-acorn-icon="plus"></i>
-                            <span>Tambah Data</span>
+                            <span>Tambah Data Pembelian</span>
                         </a>
                         <!-- Add New Button End -->
 
@@ -117,20 +130,7 @@
                         </div>
                         <!-- Export Dropdown End --> --}}
 
-                        {{-- <!-- Length Start -->
-                        <div class="dropdown-as-select d-inline-block datatable-length" data-datatable="#datatableBoxed" data-childSelector="span">
-                            <button class="btn p-0 shadow" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,3">
-                                <span class="btn btn-foreground-alternate dropdown-toggle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-delay="0" title="Item Count">
-                                    15 Items
-                                </span>
-                            </button>
-                            <div class="dropdown-menu shadow dropdown-menu-end">
-                                <a class="dropdown-item" href="#">10 Items</a>
-                                <a class="dropdown-item active" href="#">15 Items</a>
-                                <a class="dropdown-item" href="#">20 Items</a>
-                            </div>
-                        </div>
-                        <!-- Length End --> --}}
+
                     </div>
                 </div>
             </div>

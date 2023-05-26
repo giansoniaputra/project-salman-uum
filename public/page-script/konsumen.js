@@ -1,8 +1,5 @@
 $(document).ready(function () {
-    var table = $("#dataTables").DataTable({
-        createdRow: function (row, data, index) {
-            $(row).addClass("selected");
-        },
+    let table = $("#dataTables").DataTable({
         processing: true,
         responsive: true,
         searching: true,
@@ -11,14 +8,19 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/datatablesIndividu",
-        // "columnDefs": [{
-        //     "targets": [5], // index kolom atau sel yang ingin diatur
-        //     "className": 'status-motor' // kelas CSS untuk memposisikan isi ke tengah
-        // }],
+        sDom: '<"row"<"col-sm-12"<"table-container"<"card-body half-padding"f<t>><"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
+        // Hiding all other dom elements except table and pagination
+        pageLength: 15,
         columns: [
             {
+                data: null,
+                orderable: false,
                 render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
+                    var pageInfo = $("#dataTables")
+                        .DataTable()
+                        .page.info();
+                    var index = meta.row + pageInfo.start + 1;
+                    return index;
                 },
             },
             {
@@ -37,13 +39,27 @@ $(document).ready(function () {
                 data: "action",
             },
         ],
-        order: [[0, "desc"]],
+        columnDefs: [
+            {
+                targets: [5], // index kolom atau sel yang ingin diatur
+                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
+            },
+            {
+                searchable: false,
+                orderable: false,
+                targets: 0, // Kolom nomor, dimulai dari 0
+            },
+        ],
+        order: [[0, "asc"]],
+        language: {
+            paginate: {
+                previous: '<i class="cs-chevron-left"></i>',
+                next: '<i class="cs-chevron-right"></i>',
+            },
+        },
     });
 
     var table2 = $("#dataTables2").DataTable({
-        createdRow: function (row, data, index) {
-            $(row).addClass("selected");
-        },
         processing: true,
         responsive: true,
         searching: true,
@@ -51,6 +67,7 @@ $(document).ready(function () {
         info: false,
         ordering: true,
         serverSide: true,
+        sDom: '<"row"<"col-sm-12"<"table-container"<"card-body half-padding"f><"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination      
         ajax: "/datatablesDealer",
         // "columnDefs": [{
         //     "targets": [5], // index kolom atau sel yang ingin diatur
@@ -58,8 +75,14 @@ $(document).ready(function () {
         // }],
         columns: [
             {
+                data: null,
+                orderable: false,
                 render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
+                    var pageInfo = $("#dataTables2")
+                        .DataTable()
+                        .page.info();
+                    var index = meta.row + pageInfo.start + 1;
+                    return index;
                 },
             },
             {
@@ -72,7 +95,24 @@ $(document).ready(function () {
                 data: "action",
             },
         ],
-        order: [[0, "desc"]],
+        columnDefs: [
+            {
+                targets: [4], // index kolom atau sel yang ingin diatur
+                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
+            },
+            {
+                searchable: false,
+                orderable: false,
+                targets: 0, // Kolom nomor, dimulai dari 0
+            },
+        ],
+        order: [[0, "asc"]],
+        language: {
+            paginate: {
+                previous: '<i class="cs-chevron-left"></i>',
+                next: '<i class="cs-chevron-right"></i>',
+            },
+        },
     });
 
     let table3 = $("#dataTablesMotor").DataTable({
