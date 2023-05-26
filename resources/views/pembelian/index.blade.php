@@ -103,10 +103,16 @@
                     </div>
                     <div class="d-inline-block">
                         <!-- Add New Button Start -->
+                        @if ($modal->modal==0)
+                        <button type="button" class="btn btn-rounded btn-primary mb-3" id="button-no-modal"><i data-acorn-icon="plus"></i>
+                            <span>Tambah Data Pembelian</span>
+                        </button>
+                        @else
                         <a href="/pembelian/create" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto">
                             <i data-acorn-icon="plus"></i>
                             <span>Tambah Data Pembelian</span>
                         </a>
+                        @endif
                         <!-- Add New Button End -->
 
                         {{-- <!-- Print Button Start -->

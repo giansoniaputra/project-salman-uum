@@ -47,7 +47,7 @@
             </div>
             <div class="d-inline-block">
                 <!-- Add New Button Start -->
-                <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable-penjualanCash">
+                <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable-penjualanCash" data-bs-toggle="modal" data-bs-target="#modal-transaksi" id="btn-add-data">
                     <i data-acorn-icon="plus"></i>
                     <span>Tambah Data Penjualan Cash</span>
                 </button>
@@ -86,8 +86,8 @@
 
 
 <!-- Add Edit Modal Start -->
-<div class="modal modal-center fade" id="addEditModal_penjualan_cash" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal modal-center fade" id="modal-transaksi" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitle">Tambah Data Penjualan</h5>
@@ -127,26 +127,39 @@
                         <label for="harga_beli">Harga Beli</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="date-picker form-control" placeholder="Masukan Tanggal Penjualan" id="tanggal_jual" />
+                        <input type="text" class="form-control" name="nik" id="nik">
+                        <label for="nik">NIK</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="nama_pembeli" id="nama_pembeli">
+                        <label for="nama_pembeli">Nama Pembeli</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea name="alamat" id="alamat" class="form-control"></textarea>
+                        <label for="alamat">Alamat</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="photo-ktp">Upload Photo KTP</label>
+                        <input type="file" class="form-control" id="photo-ktp" name="photo-ktp" onchange="previewImageKTP()">
+                    </div>
+                    <div class="col-lg-12 mb-3 text-center" id="img-ktp">
+                        <img src="/storage/ktp/default.png" alt="" class="img-fluid" width="200px">
+                        <br>
+                        <input type="text" name="photo_ktp" id="photo_ktp">
+                        <input type="text" name="old_ktp" id="old_ktp">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="date-picker form-control" placeholder="Masukan Tanggal Penjualan" name="tanggal_jual" id="tanggal_jual" />
                         <label class="text-label" for="tanggal_jual">Tanggal Penjualan<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control money" placeholder="Masukan Harga Jual" name="harga_jual" id="harga_jual">
                         <label class="text-label" for="harga_jual">Harga Jual<span class="text-danger"> *</label></span>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control money" placeholder="Masukan Jumlah Bayar" name="jumlah_bayar" id="jumlah_bayar">
-                        <label class="text-label" for="jumlah_bayar">Jumlah Bayar<span class="text-danger"> *</label></span>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control money" name="kembali" id="kembali" readonly style="background-color: rgba(215, 218, 227, 0.3)">
-                        <label class="text-label" for="kembali">Kembalian</label></span>
-                    </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary" id="addEditConfirmButton" title="Tambah">Tambah</button>
+            <div class="modal-footer" id="btn-action">
+
             </div>
         </div>
     </div>
@@ -158,7 +171,6 @@
 <script src="/page-script/simple.money.format.js"></script>
 <script src="/page-script/simple.money.format.init.js"></script>
 {{-- !Simple Money Format --}}
-<script src="/page-script/datatables/datatables-penjualan-cash.js"></script>
 <script src="/page-script/penjualan.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>

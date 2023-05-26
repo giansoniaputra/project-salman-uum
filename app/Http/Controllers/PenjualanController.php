@@ -59,45 +59,23 @@ class PenjualanController extends Controller
 
     public function tambah_data(Request $request)
     {
-        if ($request->jenis_pembayaran == '') {
-            $rules = [
-                'no_polisi' => 'required',
-                'jenis_pembayaran' => 'required',
-                'tanggal_jual' => 'required',
-                'nama_pembeli' => 'required',
-                'nik' => 'required',
-                'alamat' => 'required',
-            ];
-            $pesan = [
-                'no_polisi.required' => 'Pilih Nomor Polisi',
-                'jenis_pembayaran.required' => 'Pilih Jenis Pembayaran',
-                'tanggal_jual.required' => 'Tidak boleh kosong',
-                'nama_pembeli.required' => 'Tidak boleh kosong',
-                'nik.required' => 'Tidak boleh kosong',
-                'alamat.required' => 'Tidak boleh kosong',
-            ];
-        } else if ($request->jenis_pembayaran == 'CASH') {
-            $rules = [
-                'no_polisi' => 'required',
-                'jenis_pembayaran' => 'required',
-                'harga_jual' => 'required',
-                'jumlah_bayar' => 'required',
-                'tanggal_jual' => 'required',
-                'nama_pembeli' => 'required',
-                'nik' => 'required',
-                'alamat' => 'required',
-            ];
-            $pesan = [
-                'no_polisi.required' => 'Pilih Nomor Polisi',
-                'jenis_pembayaran.required' => 'Pilih Jenis Pembayaran',
-                'jumlah_bayar.required' => 'Tidak boleh kosong',
-                'harga_jual.required' => 'Tidak boleh kosong',
-                'tanggal_jual.required' => 'Tidak boleh kosong',
-                'nama_pembeli.required' => 'Tidak boleh kosong',
-                'nik.required' => 'Tidak boleh kosong',
-                'alamat.required' => 'Tidak boleh kosong',
-            ];
-        }
+
+        $rules = [
+            'no_polisi' => 'required',
+            'harga_jual' => 'required',
+            'tanggal_jual' => 'required',
+            'nama_pembeli' => 'required',
+            'nik' => 'required',
+            'alamat' => 'required',
+        ];
+        $pesan = [
+            'no_polisi.required' => 'Pilih Nomor Polisi',
+            'harga_jual.required' => 'Tidak boleh kosong',
+            'tanggal_jual.required' => 'Tidak boleh kosong',
+            'nama_pembeli.required' => 'Tidak boleh kosong',
+            'nik.required' => 'Tidak boleh kosong',
+            'alamat.required' => 'Tidak boleh kosong',
+        ];
         //Mengubah base64 menjadi file image
 
         if ($request->photo_ktp) {
@@ -135,73 +113,68 @@ class PenjualanController extends Controller
         } else if ($request->photo_ktp && $jenis_foto != 'image') {
             return response()->json(['error_ktp_type' => 'File harus berupa gambar',]);
         } else {
-            if ($request->jenis_pembayaran == 'CASH') {
-                if ($request->kembali < "0") {
-                    return response()->json(['error' => 'Jumlah bayar tidak boleh kurang dari harga beli']);
-                }
-                //Cek apakah nik yang dikirim terdaftar di table buyers
-                $buyer = Buyer::where('nik', $request->nik)->first();
-                //Jika nik terdaftar di table
-                if (!$buyer) {
-                    //Jika nik tidak ada di table
-                    $data_buyer = [
-                        'unique' => Str::orderedUuid(),
-                        'nik' => $request->nik,
-                        'nama' => ucwords(strtolower($request->nama_pembeli)),
-                        'alamat' => $request->alamat,
-                    ];
-                    //Upload jika ada gambar
-                    if ($request->photo_ktp) {
-                        $base_Image = $request->photo_ktp;  // your base64 encoded
-
-                        $jenis_file = explode(":", $request->photo_ktp);
-                        $jenis_file2 = explode("/", $jenis_file[1]);
-                        $jenis_file3 = explode(";", $jenis_file2[1]);
-                        $jenis_foto = $jenis_file3[0];
-                        if ($jenis_foto == 'jpeg') {
-                            $base_Image = str_replace('data:image/jpeg;base64,', '', $base_Image);
-                        } else if ($jenis_foto == 'jpg') {
-                            $base_Image = str_replace('data:image/jpg;base64,', '', $base_Image);
-                        } else if ($jenis_foto == 'png') {
-                            $base_Image = str_replace('data:image/png;base64,', '', $base_Image);
-                        }
-                        $base_Image = str_replace(' ', '+', $base_Image);
-                        $name_Image = Str::random(40) . '.' . 'png';
-                        File::put(storage_path() . '/app/public/ktp_pembeli/' . $name_Image, base64_decode($base_Image));
-                        $data_buyer['photo_ktp'] = $name_Image;
-                    }
-                    Buyer::create($data_buyer);
-                    //Ambil id buyer yang baru saja dimasukan ke table
-                }
-                //Membuat random nota
-                $trx = 'TRXSALE-00';
-                $last_trx = Sele::latest()->first();;
-                if ($last_trx == NULL) {
-                    $random_num = 1;
-                } else {
-                    $last_nota = explode('-', $last_trx->nota);
-                    $random_num = $last_nota[1] + 1;
-                }
-                $nota = $trx . $random_num;
-                $data_sele = [
+            //Cek apakah nik yang dikirim terdaftar di table buyers
+            $buyer = Buyer::where('nik', $request->nik)->first();
+            //Jika nik terdaftar di table
+            if (!$buyer) {
+                //Jika nik tidak ada di table
+                $data_buyer = [
                     'unique' => Str::orderedUuid(),
-                    'nota' => $nota,
-                    'bike_id' => $request->no_polisi,
-                    'tanggal_jual' => $request->tanggal_jual,
-                    'harga_beli' => preg_replace('/[,]/', '', $request->harga_beli),
-                    'harga_jual' => preg_replace('/[,]/', '', $request->harga_jual),
-                    'jumlah_bayar' => preg_replace('/[,]/', '', $request->jumlah_bayar),
+                    'nik' => $request->nik,
+                    'nama' => ucwords(strtolower($request->nama_pembeli)),
+                    'alamat' => $request->alamat,
                 ];
-                if ($buyer) {
-                    $data_sele['buyer_id'] = $buyer->id;
-                } else if (!$buyer) {
-                    $last_input = Buyer::latest()->first();
-                    $data_sele['buyer_id'] = $last_input->id;
+                //Upload jika ada gambar
+                if ($request->photo_ktp) {
+                    $base_Image = $request->photo_ktp;  // your base64 encoded
+
+                    $jenis_file = explode(":", $request->photo_ktp);
+                    $jenis_file2 = explode("/", $jenis_file[1]);
+                    $jenis_file3 = explode(";", $jenis_file2[1]);
+                    $jenis_foto = $jenis_file3[0];
+                    if ($jenis_foto == 'jpeg') {
+                        $base_Image = str_replace('data:image/jpeg;base64,', '', $base_Image);
+                    } else if ($jenis_foto == 'jpg') {
+                        $base_Image = str_replace('data:image/jpg;base64,', '', $base_Image);
+                    } else if ($jenis_foto == 'png') {
+                        $base_Image = str_replace('data:image/png;base64,', '', $base_Image);
+                    }
+                    $base_Image = str_replace(' ', '+', $base_Image);
+                    $name_Image = Str::random(40) . '.' . 'png';
+                    File::put(storage_path() . '/app/public/ktp_pembeli/' . $name_Image, base64_decode($base_Image));
+                    $data_buyer['photo_ktp'] = $name_Image;
                 }
-                Sele::create($data_sele);
-                Bike::where('id', $request->no_polisi)->update(['status' => 'TERJUAL']);
-                return response()->json(['success' => 'Data Penjualan Berhasil Ditambahkan']);
+                Buyer::create($data_buyer);
+                //Ambil id buyer yang baru saja dimasukan ke table
             }
+            //Membuat random nota
+            $trx = 'TRXSALE-00';
+            $last_trx = Sele::latest()->first();;
+            if ($last_trx == NULL) {
+                $random_num = 1;
+            } else {
+                $last_nota = explode('-', $last_trx->nota);
+                $random_num = $last_nota[1] + 1;
+            }
+            $nota = $trx . $random_num;
+            $data_sele = [
+                'unique' => Str::orderedUuid(),
+                'nota' => $nota,
+                'bike_id' => $request->no_polisi,
+                'tanggal_jual' => $request->tanggal_jual,
+                'harga_beli' => preg_replace('/[,]/', '', $request->harga_beli),
+                'harga_jual' => preg_replace('/[,]/', '', $request->harga_jual),
+                // 'jumlah_bayar' => preg_replace('/[,]/', '', $request->jumlah_bayar),
+            ];
+            if ($buyer) {
+                $data_sele['buyer_id'] = $buyer->id;
+            } else if (!$buyer) {
+                $last_input = Buyer::latest()->first();
+                $data_sele['buyer_id'] = $last_input->id;
+            }
+            Sele::create($data_sele);
+            Bike::where('id', $request->no_polisi)->update(['status' => 'TERJUAL']);
+            return response()->json(['success' => 'Data Penjualan Berhasil Ditambahkan']);
         }
     }
 
