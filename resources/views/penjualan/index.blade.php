@@ -279,7 +279,7 @@
         </div>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Data Transaksi Penjualan</h4>
+                <h4 class="card-title">Data Transaksi Penjualan Cash</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -310,35 +310,42 @@
                         </tfoot>
                     </table>
                 </div>
-                <div class="table-responsive">
-                    <table id="dataTablesPenjualanKredit" class="display min-w850 text-center">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Pembeli</th>
-                                <th>No Polisi</th>
-                                <th>Merk</th>
-                                <th>Warna</th>
-                                <th>Harga Jual</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Pembeli</th>
-                                <th>No Polisi</th>
-                                <th>Merk</th>
-                                <th>Warna</th>
-                                <th>Harga Jual</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Data Transaksi Penjualan Kredit</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="dataTablesPenjualanKredit" class="display min-w850 text-center">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Pembeli</th>
+                        <th>No Polisi</th>
+                        <th>Merk</th>
+                        <th>Warna</th>
+                        <th>Harga Jual</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Pembeli</th>
+                        <th>No Polisi</th>
+                        <th>Merk</th>
+                        <th>Warna</th>
+                        <th>Harga Jual</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
 </div>
