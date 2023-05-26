@@ -68,7 +68,7 @@
 
                 <a href="/home">
                     <!-- Logo can be added directly -->
-                    <img src="/img/logo/smac transparent text only.png" alt="logo" style="width: 180px;" />
+                    <img src="/img/logo/smac white transparent.png" alt="logo" style="width: 180px;" />
 
                     {{-- <!-- Or added via css to provide different ones for different color themes -->
                     <div class="img"></div> --}}

@@ -221,6 +221,10 @@
                                             <label class="text-label" for="alamat">Alamat<span class="text-danger"> *</span></label>
                                         </div>
                                         <div class="form-floating mb-3">
+                                            <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control" placeholder="Masukan Nama Pembeli">
+                                            <label class="text-label" for="nama_pembeli">No HP<span class="text-danger"> *</span></label>
+                                        </div>
+                                        <div class="form-floating mb-3">
                                             <div class="input-group mb-3">
                                                 <input type="file" class="form-control" name="photo-ktp" id="photo-ktp" onchange="previewImageKTP()">
                                                 <label class="input-group-text" for="photo-ktp">Upload Foto KTP</label>
@@ -255,8 +259,16 @@
                                             <label class="text-label" for="jenis_kelamin">Jenis Kelamin<span class="text-danger"> *</label></span>
                                         </div>
                                         <div class="form-floating mb-3">
+                                            <input type="text" class="form-control money" name="otr_leasing" id="otr_leasing" readonly style="">
+                                            <label class="text-label" for="otr_leasing">OTR Leasing</label></span>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control money" name="dp_po" id="dp_po" readonly style="">
+                                            <label class="text-label" for="dp_po">DP PO Leasing</label></span>
+                                        </div>
+                                        <div class="form-floating mb-3">
                                             <input type="text" class="form-control money" name="dp_bayar" id="dp_bayar" readonly style="">
-                                            <label class="text-label" for="dp_bayar">DP Bayar</label></span>
+                                            <label class="text-label" for="dp_bayar">DP Bayar Konsumen</label></span>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control money" name="pencairan" id="pencairan" readonly style="">
@@ -272,7 +284,7 @@
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control money" name="komisi" id="komisi" readonly style="">
-                                            <label class="text-label" for="komisi">Komisi</label></span>
+                                            <label class="text-label" for="komisi">Komisi TAC</label></span>
                                         </div>
                                     </form>
                                 </div>

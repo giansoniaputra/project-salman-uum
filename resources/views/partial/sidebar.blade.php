@@ -94,6 +94,11 @@
                         <span class="label">Pembelian</span>
                     </a>
                 </li>
+                <li>
+                    <a href="#">
+                        <span class="label">Tagihan Leasing</span>
+                    </a>
+                </li>
             </ul>
         </li>
         <li>
