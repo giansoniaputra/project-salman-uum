@@ -155,7 +155,7 @@
                                         <th class="text-muted text-small text-uppercase">Merk</th>
                                         <th class="text-muted text-small text-uppercase">Warna</th>
                                         <th class="text-muted text-small text-uppercase">Harga Jual</th>
-                                        <th class="empty all">&nbsp;</th>
+                                        <th class="text-muted text-small text-uppercase">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

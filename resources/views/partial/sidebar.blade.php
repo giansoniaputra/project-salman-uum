@@ -94,11 +94,6 @@
                         <span class="label">Pembelian</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <span class="label">Tagihan Leasing</span>
-                    </a>
-                </li>
             </ul>
         </li>
         <li>
@@ -126,9 +121,15 @@
             </a>
         </li>
         <li>
-            <a href="/laporan" data-href="Dashboards.html">
+            <a href="/laporan">
                 <i data-acorn-icon="print" class="icon" data-acorn-size="18"></i>
                 <span class="label">Laporan</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i data-acorn-icon="print" class="icon" data-acorn-size="18"></i>
+                <span class="label">Register Order Penjualan Kredit</span>
             </a>
         </li>
     </ul>

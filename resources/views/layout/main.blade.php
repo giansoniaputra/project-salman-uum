@@ -34,6 +34,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/font/CS-Interface/style.css" />
     <!-- Font Tags End -->
     <!-- Vendor Styles Start -->
@@ -185,8 +188,6 @@
             <script src="/js/components/navs.js"></script>
 
             <script src="/js/forms/wizards.js"></script>
-
-            <script src="/js/cs/datatable.extend.js"></script>
 
             <script src="/js/forms/controls.select2.js"></script>
 

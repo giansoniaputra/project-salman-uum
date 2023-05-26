@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    let table = jQuery("#datatableBoxed_pembelian").DataTable({
-        buttons: [],
+    let table = $("#datatableBoxed_pembelian").DataTable({
         processing: true,
         responsive: true,
         searching: true,
@@ -9,7 +8,6 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/datatablesPembelian",
-        order: [], // Clearing default order
         sDom: '<"row"<"col-sm-12"<"table-container"<"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
         pageLength: 15,
         columns: [
@@ -17,7 +15,7 @@ $(document).ready(function () {
                 data: null,
                 orderable: false,
                 render: function (data, type, row, meta) {
-                    var pageInfo = jQuery("#datatableBoxed_pembelian")
+                    var pageInfo = $("#datatableBoxed_pembelian")
                         .DataTable()
                         .page.info();
                     var index = meta.row + pageInfo.start + 1;
@@ -30,6 +28,7 @@ $(document).ready(function () {
             {
                 data: "merek",
                 orderable: false,
+                searchable: true,
             },
             {
                 data: "no_polisi",

@@ -655,17 +655,19 @@ class PembelianController extends Controller
             return DataTables::of($data)->addColumn('action', function ($row) {
                 if ($row->status == 'READY STOCK') {
                     $actionBtn =
-                        '<button class="btn btn-info btn-sm info-button" data-id="' . $row->id . '"><i class="flaticon-381-view-2"></i></button>
-                    <a href="/edit-transaksi/' . $row->unique . '" class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="flaticon-381-edit-1"></i></a>
+                        '<button class="btn btn-info btn-sm info-button" data-id="' . $row->id . '"><i class="bi-info-circle"></i>
+                        </button>
+                    <a href="/edit-transaksi/' . $row->unique . '" class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="bi-pencil"></i></a>
                     
                     <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
-                        <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-id="' . $row->id . '"><i class="flaticon-381-trash-1"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-id="' . $row->id . '"><i class="bi-trash"></i></button>
                     </form>';
                 } else {
                     $actionBtn =
-                        '<button class="btn btn-info btn-sm info-button" data-id="' . $row->id . '"><i class="flaticon-381-view-2"></i></button>
-                        <a href="javascript:;" class="btn btn-dark btn-sm edit-button" data-id="' . $row->id . '"><i class="flaticon-381-edit-1"></i></a>
-                        <button type="button" class="btn btn-dark btn-sm"><i class="flaticon-381-trash-1"></i></button>';
+                        '<button class="btn btn-info btn-sm info-button" data-id="' . $row->id . '"><i class="bi-info-circle"></i>
+                        </button>
+                        <a href="javascript:;" class="btn btn-dark btn-sm edit-button" data-id="' . $row->id . '"><i class="bi-pencil"></i></a>
+                        <button type="button" class="btn btn-dark btn-sm"><i class="bi-trash"></i></button>';
                 }
 
                 return $actionBtn;
