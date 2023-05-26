@@ -1,22 +1,24 @@
 $(document).ready(function () {
-    var table = $("#dataTables").DataTable({
-        createdRow: function (row, data, index) {
-            $(row).addClass("selected");
-        },
-        processing: true,
+    let table = jQuery("#datatableBoxed_pembelian").DataTable({
+        buttons: [],
         responsive: true,
-        searching: true,
-        bLengthChange: true,
         info: false,
-        ordering: true,
         serverSide: true,
         ajax: "/datatablesPembelian",
+        order: [], // Clearing default order
+        sDom: '<"row"<"col-sm-12"<"table-container"<"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
+        pageLength: 15,
         columns: [
             {
-                render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                },
+                data: null,
                 orderable: false,
+                render: function (data, type, row, meta) {
+                    var pageInfo = jQuery("#datatableBoxed_pembelian")
+                        .DataTable()
+                        .page.info();
+                    var index = meta.row + pageInfo.start + 1;
+                    return index;
+                },
             },
             {
                 data: "nota",
@@ -45,8 +47,26 @@ $(document).ready(function () {
                 searchable: true,
             },
         ],
-        order: [[0, "desc"]],
+        columnDefs: [
+            {
+                targets: [7], // index kolom atau sel yang ingin diatur
+                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
+            },
+            {
+                searchable: false,
+                orderable: false,
+                targets: 0, // Kolom nomor, dimulai dari 0
+            },
+        ],
+        order: [[1, "asc"]],
+        language: {
+            paginate: {
+                previous: '<i class="cs-chevron-left"></i>',
+                next: '<i class="cs-chevron-right"></i>',
+            },
+        },
     });
+
     // RESET
     // $("#nik").on('click', function () {
     //     $("#nik").removeClass("is-invalid")

@@ -645,8 +645,9 @@ class PembelianController extends Controller
             $query = DB::table('bikes')
                 ->join('buys', 'bikes.id', '=', 'buys.bike_id');
             $data = $query->get();
-
+            $no_urut = 1;
             foreach ($data as $row) {
+                $no_urut + 1;
                 $row->tgl_beli = tanggal_hari($row->tanggal_beli);
                 $row->harga = rupiah($row->harga_beli);
             }

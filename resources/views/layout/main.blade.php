@@ -193,8 +193,6 @@
             <script src="/js/forms/controls.datepicker.js"></script>
 
             <script src="/js/forms/layouts.js"></script>
-
-            <script src="/js/plugins/datatable.editableboxed.js"></script>
             <script src="/js/common.js"></script>
             <script src="/js/scripts.js"></script>
             <!-- Page Specific Scripts End -->

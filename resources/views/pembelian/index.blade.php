@@ -147,6 +147,7 @@
                             <th class="text-muted text-small text-uppercase">Warna</th>
                             <th class="text-muted text-small text-uppercase">Tanggal Beli</th>
                             <th class="text-muted text-small text-uppercase">Harga Beli</th>
+                            <th class="text-muted text-small text-uppercase">Action</th>
                             {{-- <th class="text-muted text-small text-uppercase">Tag</th> --}}
                             <th class="empty all">&nbsp;</th>
                         </tr>
@@ -181,7 +182,6 @@
         <!-- Add Edit Modal End --> --}}
     </div>
 </div>
-<script src="/page-script/datatables/datatables-pembelian.js"></script>
 <script src="/page-script/pembelian.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
