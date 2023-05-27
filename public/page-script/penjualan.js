@@ -253,6 +253,7 @@ $(document).ready(function () {
                     $(".current-id").html("");
                     $("#photo_ktp").html("");
                     $("#photo-ktp").val("");
+                    $("#modal-transaksi").modal("hide");
                     $("#photo-ktp")
                         .next(".custom-file-label")
                         .html("Pilih gambar");
@@ -348,7 +349,6 @@ $(document).ready(function () {
                     $("#modal-transaksi #alamat").html("");
                     $("#photo_ktp").val("");
                     $("#img-ktp img").attr("src", "/storage/ktp/default.png");
-                    $("#modal-transaksi").modal("hide");
                     $("#save-data").removeClass("save-data-cash");
                     $("#save-data").removeClass("save-data-kredit");
                     $("#save-data").addClass("save-data");
