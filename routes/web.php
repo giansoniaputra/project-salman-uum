@@ -82,14 +82,9 @@ Route::post('/updatePenjualan', [PenjualanController::class, 'update_data'])->mi
 Route::get('/cekNikPembeli', [PenjualanController::class, 'cek_nik'])->middleware('auth');
 //Retur Motor
 Route::get('/returMotor/{sele:unique}', [PenjualanController::class, 'retur_motor'])->middleware('auth');
-//Refresh No Polisi
-Route::get('/refreshNoPolisi', [PenjualanController::class, 'refresh_no_polisi'])->middleware('auth');
 
 // PENJUALAN KREDIT
 Route::resource('/kredit', KreditController::class)->middleware('auth');
-//Ambil data kkredit
-Route::get('/getDataKredit', [KreditController::class, 'get_data_kredit'])->middleware('auth');
-
 
 // SETTING
 Route::resource('/setting', SettingController::class)->middleware('auth');
@@ -116,5 +111,5 @@ Route::get('/dataTablesMotor', [ConsumerController::class, 'dataTablesMotor'])->
 Route::get('/dataTablesReady', [BikeController::class, 'dataTablesReady'])->middleware('auth');
 Route::get('/dataTablesTerjual', [BikeController::class, 'dataTablesTerjual'])->middleware('auth');
 Route::get('/dataTablesPenjualan', [PenjualanController::class, 'dataTables'])->middleware('auth');
-Route::get('//dataTablesPenjualanKredit', [KreditController::class, 'dataTables'])->middleware('auth');
+Route::get('/dataTablesPenjualanKredit', [KreditController::class, 'dataTables'])->middleware('auth');
 Route::get('/dataTablesMaintenance', [MaintenanceController::class, 'dataTables'])->middleware('auth');

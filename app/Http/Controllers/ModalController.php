@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Bike;
 use App\Models\Sele;
 use App\Models\Modal;
-use App\Models\Kredit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -20,8 +19,6 @@ class ModalController extends Controller
         $modal = Modal::first();
         $harga_beli = Sele::sum('harga_beli');
         $harga_jual = Sele::sum('harga_jual');
-        $komisi = Kredit::sum('komisi');
-        $saldo_bank = $modal->modal + ($harga_jual - $harga_beli) + $komisi;
         $data = [
             'title' => 'Informasi Modal | SMAC',
             'judul' => 'Informasi Modal',
@@ -31,10 +28,7 @@ class ModalController extends Controller
             'bike_sele' => Modal::jumlah_asset(),
             'sisa_modal' => $modal->modal - Modal::jumlah_asset(),
             'laba' => $harga_jual - $harga_beli,
-            'jumlah_unit' => Bike::where('status', 'READY STOCK')->count('id'),
-            'semua_unit' => Bike::count('id'),
-            'sisa_bank' => $saldo_bank,
-            'komisi' => $komisi,
+            'jumlah_unit' => Bike::where('status', 'READY STOCK')->count('id')
         ];
         return view('modal.index', $data);
     }
