@@ -131,6 +131,7 @@
                                         </div>
                                     </div>
                             </div>
+                            @endif
                         </div>
                         <div class="tab-pane fade" id="data_motor" role="tabpanel">
                             {{-- <h5 class="card-title">Second Title</h5>
@@ -322,7 +323,6 @@
             <!-- Basic End -->
         </div>
     </div>
-</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
 {{-- Simple Money Format --}}
