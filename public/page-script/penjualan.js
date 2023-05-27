@@ -352,6 +352,7 @@ $(document).ready(function () {
                     $("#save-data").removeClass("save-data-cash");
                     $("#save-data").removeClass("save-data-kredit");
                     $("#save-data").addClass("save-data");
+                    $("#modal-transaksi").modal("hide");
                     Swal.fire("Good job!", response.success, "success");
                     table.ajax.reload();
                 }
