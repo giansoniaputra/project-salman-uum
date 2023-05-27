@@ -8,7 +8,7 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/datatablesIndividu",
-        sDom: '<"row"<"col-sm-12"<"table-container"<"card-body half-padding"f<t>><"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
+        dom: '<"row"<"col-sm-12"<"table-container"<"card-body half-padding"f><"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
         // Hiding all other dom elements except table and pagination
         pageLength: 15,
         columns: [
@@ -16,9 +16,7 @@ $(document).ready(function () {
                 data: null,
                 orderable: false,
                 render: function (data, type, row, meta) {
-                    var pageInfo = $("#dataTables")
-                        .DataTable()
-                        .page.info();
+                    var pageInfo = $("#dataTables").DataTable().page.info();
                     var index = meta.row + pageInfo.start + 1;
                     return index;
                 },
@@ -67,7 +65,7 @@ $(document).ready(function () {
         info: false,
         ordering: true,
         serverSide: true,
-        sDom: '<"row"<"col-sm-12"<"table-container"<"card-body half-padding"f><"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination      
+        sDom: '<"row"<"col-sm-12"<"table-container"<"card-body half-padding"f><"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
         ajax: "/datatablesDealer",
         // "columnDefs": [{
         //     "targets": [5], // index kolom atau sel yang ingin diatur
@@ -78,9 +76,7 @@ $(document).ready(function () {
                 data: null,
                 orderable: false,
                 render: function (data, type, row, meta) {
-                    var pageInfo = $("#dataTables2")
-                        .DataTable()
-                        .page.info();
+                    var pageInfo = $("#dataTables2").DataTable().page.info();
                     var index = meta.row + pageInfo.start + 1;
                     return index;
                 },

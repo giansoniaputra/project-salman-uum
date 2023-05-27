@@ -3,13 +3,13 @@ $(document).ready(function () {
         processing: true,
         responsive: true,
         searching: true,
-        bLengthChange: true,
         info: false,
         ordering: true,
         serverSide: true,
         ajax: "/dataTablesPenjualan",
-        sDom: '<"row"<"col-sm-12"<"table-container"<"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
-        pageLength: 15,
+        dom: '<"row"<"col-sm-12"<"table-container"<"card-body half-padding"f><"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
+        lengthMenu: [10, 25, 50, 100], // Menampilkan opsi jumlah record yang ingin ditampilkan
+        pageLength: 15, // Jumlah record yang ditampilkan secara default,
         columns: [
             {
                 data: null,
@@ -46,6 +46,10 @@ $(document).ready(function () {
         columnDefs: [
             {
                 targets: [6], // index kolom atau sel yang ingin diatur
+                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
+            },
+            {
+                targets: [0], // index kolom atau sel yang ingin diatur
                 className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
             },
             {

@@ -48,7 +48,7 @@
             </div>
             <div class="d-inline-block">
                 <!-- Add New Button Start -->
-                <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable-penjualanKredit">
+                <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable-penjualanKredit" data-bs-toggle="modal" data-bs-target="#modal-transaksi" id="btn-add-data">
                     <i data-acorn-icon="plus"></i>
                     <span>Tambah Data Penjualan Kredit</span>
                 </button>
@@ -86,8 +86,8 @@
 <!-- Content End -->
 
 <!-- Add Edit Modal Start -->
-<div class="modal modal-center fade" id="addEditModal_penjualan_kredit" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal modal-center fade" id="modal-transaksi" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitle">Add New</h5>
@@ -213,7 +213,7 @@
 <script src="/page-script/simple.money.format.js"></script>
 <script src="/page-script/simple.money.format.init.js"></script>
 {{-- !Simple Money Format --}}
-<script src="/page-script/datatables/datatables-penjualan-kredit.js"></script>
+<script src="/page-script/kredit.js"></script>
 <script src="/page-script/penjualan.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>

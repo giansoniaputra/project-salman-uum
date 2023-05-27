@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
 class KreditController extends Controller
@@ -211,5 +212,27 @@ class KreditController extends Controller
     public function destroy(Kredit $kredit)
     {
         //
+    }
+    public function dataTables()
+    {
+        $query = DB::table('kredits as a')
+            ->join('bikes as b', 'b.id', '=', 'a.bike_id')
+            ->join('buyers as c', 'c.id', '=', 'a.buyer_id')
+            ->select('a.*', 'b.no_polisi', 'b.merek', 'b.warna', 'b.status', 'c.nama')
+            ->get();
+        foreach ($query as $row) {
+            $row->tanggal_jual = tanggal_hari($row->tanggal_jual);
+            $row->harga_jual = rupiah($row->harga_jual);
+        }
+        return DataTables::of($query)->addColumn('action', function ($row) {
+            $actionBtn =
+                '<button class="btn btn-info btn-sm info-button-kredit" data-unique="' . $row->unique . '"><i class="flaticon-381-view-2"></i></button>
+                <button class="btn btn-success btn-sm edit-button-kredit" data-unique="' . $row->unique . '"><i class="flaticon-381-edit-1"></i></button>
+                <button type="button" class="btn btn-warning btn-sm retur-button-kredit"  data-unique="' . $row->unique . '"><i class="flaticon-381-back-2 text-white"></i></button>
+                <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
+                    <button type="button" class="btn btn-danger btn-sm delete-button-kredit" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="flaticon-381-trash-1"></i></button>
+                </form>';
+            return $actionBtn;
+        })->make(true);
     }
 }

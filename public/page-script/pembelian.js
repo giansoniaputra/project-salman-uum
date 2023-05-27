@@ -8,7 +8,7 @@ $(document).ready(function () {
         ordering: true,
         serverSide: true,
         ajax: "/datatablesPembelian",
-        sDom: '<"row"<"col-sm-12"<"table-container"<"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
+        dom: '<"row"<"col-sm-12"<"table-container"<"card-body half-padding"f><"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
         pageLength: 15,
         columns: [
             {
