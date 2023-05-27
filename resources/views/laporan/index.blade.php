@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-12">
                         <label class="text-label" for="laporan_pertahun">Laporan Pertahun</label>
-                        <div class="input-group">
+                        <div class="input-group mt-2">
                             <label class="input-group-text" for="inputGroupSelect01"><i class="bi-calendar-check-fill icon-16 text-primary"></i></label>
                             <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
                                 <option selected>Pilih Tahun</option>
@@ -20,16 +20,20 @@
                             </select>
                             <button class="btn btn-primary" type="button">
                                 <i data-acorn-icon="download" data-acorn-size="18"></i>
-                                <span class="label">PDF</span>
+                                PDF
                             </button>
-                            <button class="btn btn-secondary" type="button">Print</button>
+                            <button class="btn btn-secondary" type="button">
+                                <i data-acorn-icon="print" data-acorn-size="18"></i>
+                                Print
+                            </button>
                         </div>
                     </div>
                     <div class="col-12 mt-5">
-                        <label class="text-label" for="laporan_pertahun">Laporan Perbulan</label>
-                        <div class="input-group">
+                        <label class="text-label" for="laporan_perbulan">Laporan Perbulan</label>
+                        <div class="input-group mt-2">
                             <label class="input-group-text" for="inputGroupSelect01"><i class="bi-calendar2-month-fill icon-16 text-primary"></i></label>
                             <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                <option selected>Pilih Bulan</option>
                                 <option value="">Januari</option>
                                 <option value="">Februari</option>
                                 <option value="">Maret</option>
@@ -42,24 +46,31 @@
                                 <option value="">Oktober</option>
                                 <option value="">Desember</option>
                             </select>
-                            <button class="btn btn-primary" type="button">Button</button>
-                            <button class="btn btn-secondary" type="button">Button</button>
-                            <button class="btn btn-tertiary" type="button">Button</button>
+                            <button class="btn btn-primary" type="button">
+                                <i data-acorn-icon="download" data-acorn-size="18"></i>
+                                PDF
+                            </button>
+                            <button class="btn btn-secondary" type="button">
+                                <i data-acorn-icon="print" data-acorn-size="18"></i>
+                                Print
+                            </button>
                         </div>
                     </div>
                     <div class="col-12 mt-5">
-                        <label class="text-label" for="laporan_pertahun">Laporan Pertanggal</label>
-                        <div class="input-group">
-                            <label class="input-group-text" for="inputGroupSelect01"><i class="bi-calendar-date-fill icon-16 text-primary"></i></label>
-                            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                <option selected>Choose...</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            <button class="btn btn-primary" type="button">Button</button>
-                            <button class="btn btn-secondary" type="button">Button</button>
-                            <button class="btn btn-tertiary" type="button">Button</button>
+                        <label class="text-label" for="laporan_pertanggal">Laporan Pertanggal</label>
+                        <div class="input-daterange input-group mt-2" id="datePickerRange">
+                            <input type="text" class="form-control" name="start" placeholder="Tanggal Awal" />
+                            <span class="mx-2"></span>
+                            <input type="text" class="form-control" name="end" placeholder="Tanggal Akhir" />
+                            <span class="mx-2"></span>
+                            <button class="btn btn-primary" type="button">
+                                <i data-acorn-icon="download" data-acorn-size="18"></i>
+                                PDF
+                            </button>
+                            <button class="btn btn-secondary" type="button">
+                                <i data-acorn-icon="print" data-acorn-size="18"></i>
+                                Print
+                            </button>
                         </div>
                     </div>
                 </div>
