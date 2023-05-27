@@ -139,8 +139,8 @@
                         <label for="alamat">Alamat</label>
                     </div>
                     <div class="input-group mb-3">
-                        <label class="input-group-text" for="photo-ktp">Upload Photo KTP</label>
                         <input type="file" class="form-control" id="photo-ktp" name="photo-ktp" onchange="previewImageKTP()">
+                        <label class="input-group-text" for="photo-ktp">Upload Photo KTP</label>
                     </div>
                     <div class="col-lg-12 mb-3 text-center" id="img-ktp">
                         <img src="/storage/ktp/default.png" alt="" class="img-fluid" width="200px">

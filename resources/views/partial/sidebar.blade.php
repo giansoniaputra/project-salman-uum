@@ -128,8 +128,8 @@
         </li>
         <li>
             <a href="#">
-                <i data-acorn-icon="print" class="icon" data-acorn-size="18"></i>
-                <span class="label">Register Order Penjualan Kredit</span>
+                <i data-acorn-icon="edit-square" class="icon" data-acorn-size="18"></i>
+                <span class="label">Reg Order Kredit</span>
             </a>
         </li>
     </ul>
