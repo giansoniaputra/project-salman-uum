@@ -97,7 +97,7 @@
                 <form action="javascript:;" enctype="multipart/form-data" id="form-penjualan">
                     <div class="current-id"></div>
                     @csrf
-                    <div class="form-floating mb-3 w-100">
+                    <div class="form-floating mb-3 w-100" id="no-polisi">
                         <select id="no_polisi" name="no_polisi" class="form-control no-polisi" placeholder="Masukan No Polisi">
                             <option label="&nbsp;"></option>
                             @foreach ($no_polisi as $row)
@@ -145,8 +145,8 @@
                     <div class="col-lg-12 mb-3 text-center" id="img-ktp">
                         <img src="/storage/ktp/default.png" alt="" class="img-fluid" width="200px">
                         <br>
-                        <input type="text" name="photo_ktp" id="photo_ktp">
-                        <input type="text" name="old_ktp" id="old_ktp">
+                        <input type="hidden" name="photo_ktp" id="photo_ktp">
+                        <input type="hidden" name="old_ktp" id="old_ktp">
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="date-picker form-control" placeholder="Masukan Tanggal Penjualan" name="tanggal_jual" id="tanggal_jual" />

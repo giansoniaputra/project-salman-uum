@@ -219,15 +219,12 @@ class PenjualanController extends Controller
             'nama_pembeli' => 'required',
             'alamat' => 'required',
             'harga_jual' => 'required',
-            'harga_jual' => 'required',
-            'jumlah_bayar' => 'required',
             'tanggal_jual' => 'required',
         ];
         $pesan = [
             'nik.required' => 'Tidak boleh kosong',
             'nama_pembeli.required' => 'Tidak boleh kosong',
             'alamat.required' => 'Tidak boleh kosong',
-            'jumlah_bayar.required' => 'Tidak boleh kosong',
             'harga_jual.required' => 'Tidak boleh kosong',
             'tanggal_jual.required' => 'Tidak boleh kosong',
         ];
@@ -257,9 +254,6 @@ class PenjualanController extends Controller
         } else if ($request->photo_ktp && $jenis_foto != 'image') {
             return response()->json(['error_ktp_type' => 'File harus berupa gambar',]);
         } else {
-            if ($request->kembali < "0") {
-                return response()->json(['error' => 'Jumlah bayar tidak boleh kurang dari harga beli']);
-            }
             //Cek apakah user mengganti nik dengan user lain yang terdaftar
             $cek_sele = Sele::where('id', $request->current_id)->first();
             $cek_buyer = Buyer::where('id', $cek_sele->buyer_id)->first();
@@ -268,7 +262,6 @@ class PenjualanController extends Controller
             $data_penjualan = [
                 'harga_jual' => preg_replace('/[,]/', '', $request->harga_jual),
                 'tanggal_jual' => $request->tanggal_jual,
-                'jumlah_bayar' => preg_replace('/[,]/', '', $request->jumlah_bayar),
             ];
             if ($cek_buyer_nik) {
                 $data_penjualan['buyer_id'] = $cek_buyer_nik->id;
@@ -380,54 +373,54 @@ class PenjualanController extends Controller
         })->make(true);
     }
 
-    public function rules_penjualan(Request $request)
-    {
-        if ($request->jenis_pembayaran == '') {
-            $rules = [
-                'no_polisi' => 'required',
-                'jenis_pembayaran' => 'required',
-                'tanggal_jual' => 'required',
-                'nama_pembeli' => 'required',
-                'nik' => 'required',
-                'alamat' => 'required',
-            ];
-            $pesan = [
-                'no_polisi.required' => 'Pilih Nomor Polisi',
-                'jenis_pembayaran.required' => 'Pilih Jenis Pembayaran',
-                'tanggal_jual.required' => 'Tidak boleh kosong',
-                'nama_pembeli.required' => 'Tidak boleh kosong',
-                'nik.required' => 'Tidak boleh kosong',
-                'alamat.required' => 'Tidak boleh kosong',
-            ];
+    // public function rules_penjualan(Request $request)
+    // {
+    //     if ($request->jenis_pembayaran == '') {
+    //         $rules = [
+    //             'no_polisi' => 'required',
+    //             'jenis_pembayaran' => 'required',
+    //             'tanggal_jual' => 'required',
+    //             'nama_pembeli' => 'required',
+    //             'nik' => 'required',
+    //             'alamat' => 'required',
+    //         ];
+    //         $pesan = [
+    //             'no_polisi.required' => 'Pilih Nomor Polisi',
+    //             'jenis_pembayaran.required' => 'Pilih Jenis Pembayaran',
+    //             'tanggal_jual.required' => 'Tidak boleh kosong',
+    //             'nama_pembeli.required' => 'Tidak boleh kosong',
+    //             'nik.required' => 'Tidak boleh kosong',
+    //             'alamat.required' => 'Tidak boleh kosong',
+    //         ];
 
-            if ($request->photo_ktp) {
-                $jenis_file = explode(":", $request->photo_ktp);
-                $jenis_file2 = explode("/", $jenis_file[1]);
-                $jenis_foto = $jenis_file2[0];
-            }
-            // Validasi Photo KTP
-            $validator_photo_ktp = Validator::make([
-                'photo_ktp' => base64_encode($request->photo_ktp),
-            ], [
-                'photo_ktp' => 'max:' . (2 * 1024 * 1024) // Batasan ukuran 2 megabyte
-            ], [
-                'photo_ktp.max' => 'Ukuran tidak boleh lebih dari 2MB.',
-            ]);
-            //Validasi base64 apakah sebuah gambar
-            //Validasi Inputan yang Lain
-            $validator = Validator::make($request->all(), $rules, $pesan);
-            if ($validator->fails()) {
-                $send_error = [
-                    'errors' => $validator->errors(),
-                ];
-                if ($validator_photo_ktp->fails()) {
-                    $send_error['error_ktp'] = $validator_photo_ktp->errors();
-                }
-                if ($request->photo_ktp && $jenis_foto != 'image') {
-                    $send_error['error_ktp_type'] = 'File harus berupa gambar';
-                }
-                return response()->json($send_error);
-            }
-        }
-    }
+    //         if ($request->photo_ktp) {
+    //             $jenis_file = explode(":", $request->photo_ktp);
+    //             $jenis_file2 = explode("/", $jenis_file[1]);
+    //             $jenis_foto = $jenis_file2[0];
+    //         }
+    //         // Validasi Photo KTP
+    //         $validator_photo_ktp = Validator::make([
+    //             'photo_ktp' => base64_encode($request->photo_ktp),
+    //         ], [
+    //             'photo_ktp' => 'max:' . (2 * 1024 * 1024) // Batasan ukuran 2 megabyte
+    //         ], [
+    //             'photo_ktp.max' => 'Ukuran tidak boleh lebih dari 2MB.',
+    //         ]);
+    //         //Validasi base64 apakah sebuah gambar
+    //         //Validasi Inputan yang Lain
+    //         $validator = Validator::make($request->all(), $rules, $pesan);
+    //         if ($validator->fails()) {
+    //             $send_error = [
+    //                 'errors' => $validator->errors(),
+    //             ];
+    //             if ($validator_photo_ktp->fails()) {
+    //                 $send_error['error_ktp'] = $validator_photo_ktp->errors();
+    //             }
+    //             if ($request->photo_ktp && $jenis_foto != 'image') {
+    //                 $send_error['error_ktp_type'] = 'File harus berupa gambar';
+    //             }
+    //             return response()->json($send_error);
+    //         }
+    //     }
+    // }
 }

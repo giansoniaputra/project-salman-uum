@@ -190,14 +190,13 @@ $(document).ready(function () {
         $("#btn-action").html(element);
         $(".current-id").html("");
     });
-    //Action Simpan Penjualan Cash
+    //Action Simpan Penjualan
     $("#modal-transaksi").on("click", ".save-data", function () {
         let formdata = $("#modal-transaksi form").serializeArray();
         let data = {};
         $(formdata).each(function (index, obj) {
             data[obj.name] = obj.value;
         });
-        //JIka Pembayaran adalah Cash
         $.ajax({
             data: $("#modal-transaksi form").serialize(),
             url: "/tambahPenjualan",
@@ -360,72 +359,68 @@ $(document).ready(function () {
         });
     });
     //Ambil data penjualan yanag ingin di edit
-    $("#dataTablesPenjualan").on("click", ".edit-button", function () {
-        let id = $(this).attr("data-id");
-        $(".current-id").html(
-            '<input type="text" name="current_id" value="' + id + '">'
-        );
-        $.ajax({
-            data: {
-                id: id,
-            },
-            url: "/ambilDataPenjualan",
-            type: "GET",
-            dataType: "json",
-            success: function (response) {
-                console.log(response);
-                let elementNoPolisi =
-                    '<div class="form-row"><label class="text-label" for="curent_no_polisi">No Polisi</label><input type="text" id="curent_no_polisi" value="' +
-                    response.data.no_polisi +
-                    '" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" disabled> </div>';
-                $("#current-no-polisi").html(elementNoPolisi);
-                $("#no-polisi").addClass("d-none");
-                $("#modal-transaksi").modal("show");
-                $(".no-polisi").val(response.data.bike_id);
-                $("#nama_pembeli").val(response.data.pembeli);
-                $("#merk").val(response.data.merek);
-                $("#warna").val(response.data.warna);
-                $("#tahun_pembuatan").val(response.data.tahun_pembuatan);
-                $("#harga_beli").val(response.data.harga_beli);
-                $("#tanggal_jual").val(response.data.tanggal_jual);
-                $("#jenis_pembayaran").val("CASH");
-                $("#jenis_pembayaran").attr("disabled", "disabled");
-                $("#jenis_pembayaran").css({
-                    "background-color": "rgba(215, 218, 227, 0.3",
-                });
-                $("#nik").val(response.data.nik);
-                $("#nama_pembeli").val(response.data.nama);
-                $("#alamat").html(response.data.alamat);
-                $("#old_ktp").val("ktp_pembeli/" + response.data.photo_ktp);
-                if (response.data.photo_ktp == null) {
-                    $("#img-ktp img").attr("src", "/storage/ktp/default.png");
-                } else {
-                    $("#img-ktp img").attr(
-                        "src",
-                        "/storage/ktp_pembeli/" + response.data.photo_ktp
-                    );
-                }
-                $("#buys-content-cash").removeClass("d-none");
-                $("#harga_jual").val(response.data.harga_jual);
-                $("#jumlah_bayar").val(response.data.jumlah_bayar);
-                $("#kembali").val(
-                    response.data.jumlah_bayar - response.data.harga_jual
-                );
-                $("input.money").simpleMoneyFormat({
-                    currencySymbol: "Rp",
-                    decimalPlaces: 0,
-                    thousandsSeparator: ".",
-                });
+    $("#datatableBoxed_penjualan_cash").on(
+        "click",
+        ".edit-button",
+        function () {
+            let id = $(this).attr("data-id");
+            $(".current-id").html(
+                '<input type="hidden" name="current_id" value="' + id + '">'
+            );
+            $.ajax({
+                data: {
+                    id: id,
+                },
+                url: "/ambilDataPenjualan",
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    let elementNoPolisi =
+                        '<input type="hidden" name="curent_no_polisi" id="curent_no_polisi" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" value="' +
+                        response.data.no_polisi +
+                        '" disabled><label class="text-label" for="curent_no_polisi">Merk</label>';
+                    $("#current-no-polisi").html(elementNoPolisi);
+                    $("#no-polisi").addClass("d-none");
+                    $("#modal-transaksi").modal("show");
+                    $(".no-polisi").val(response.data.bike_id);
+                    $("#nama_pembeli").val(response.data.pembeli);
+                    $("#merk").val(response.data.merek);
+                    $("#warna").val(response.data.warna);
+                    $("#tahun_pembuatan").val(response.data.tahun_pembuatan);
+                    $("#harga_beli").val(response.data.harga_beli);
+                    $("#tanggal_jual").val(response.data.tanggal_jual);
+                    $("#nik").val(response.data.nik);
+                    $("#nama_pembeli").val(response.data.nama);
+                    $("#alamat").val(response.data.alamat);
+                    $("#old_ktp").val("ktp_pembeli/" + response.data.photo_ktp);
+                    if (response.data.photo_ktp == null) {
+                        $("#img-ktp img").attr(
+                            "src",
+                            "/storage/ktp/default.png"
+                        );
+                    } else {
+                        $("#img-ktp img").attr(
+                            "src",
+                            "/storage/ktp_pembeli/" + response.data.photo_ktp
+                        );
+                    }
+                    $("#harga_jual").val(response.data.harga_jual);
+                    $("input.money").simpleMoneyFormat({
+                        currencySymbol: "Rp",
+                        decimalPlaces: 0,
+                        thousandsSeparator: ".",
+                    });
 
-                //Menganti Button Action
-                let element =
-                    '<button type="button" class="btn btn-rounded btn-primary" id="update-data"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i></span>Update</button>';
-                $("#btn-action").html(element);
-            },
-        });
-    });
+                    //Menganti Button Action
+                    let element =
+                        '<button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Batal</button><button type="button" class="btn btn-primary update-data" id="addEditConfirmButton" title="Ubah">Ubah</button>';
+                    $("#btn-action").html(element);
+                },
+            });
+        }
+    );
     //Action Update
-    $("#modal-transaksi").on("click", "#update-data", function () {
+    $("#modal-transaksi").on("click", ".update-data", function () {
         let formdata = $("#modal-transaksi form").serializeArray();
         let data = {};
         $(formdata).each(function (index, obj) {
@@ -440,16 +435,6 @@ $(document).ready(function () {
                 console.log(response);
                 if (response.errors) {
                     displayErrors(response.errors);
-                } else if (response.error) {
-                    // console.log(response.error);
-                    let inputElement = $('input[name="jumlah_bayar"]');
-                    inputElement.addClass("is-invalid");
-                    let feedbackElement = $(
-                        '<div class="invalid-feedback ml-2 jumlah_bayar">' +
-                            response.error +
-                            "</div>"
-                    );
-                    inputElement.after(feedbackElement);
                 } else if (response.success) {
                     $("#modal-transaksi").modal("hide");
                     Swal.fire("Good job!", response.success, "success");
