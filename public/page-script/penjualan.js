@@ -86,6 +86,47 @@ $(document).ready(function () {
         ],
         order: [[0, "desc"]],
     });
+    var tableKredit = $("#dataTablesPenjualanKredit").DataTable({
+        createdRow: function (row, data, index) {
+            $(row).addClass("selected");
+        },
+        processing: true,
+        responsive: true,
+        searching: true,
+        bLengthChange: true,
+        info: false,
+        ordering: true,
+        serverSide: true,
+        ajax: "/dataTablesPenjualanKredit",
+        columns: [
+            {
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                },
+            },
+            {
+                data: "nama",
+            },
+            {
+                data: "no_polisi",
+            },
+            {
+                data: "merek",
+            },
+            {
+                data: "warna",
+            },
+            {
+                data: "harga_jual",
+            },
+            {
+                data: "action",
+                orderable: true,
+                searchable: true,
+            },
+        ],
+        order: [[0, "desc"]],
+    });
     //LOAD CONTENT CASH
     $("#jenis_pembayaran").on("change", function () {
         $("#jenis_pembayaran").removeClass("is-invalid");
