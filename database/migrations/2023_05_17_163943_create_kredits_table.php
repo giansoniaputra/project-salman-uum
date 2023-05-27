@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('bike_id');
             $table->date('tanggal_jual');
             $table->integer('harga_beli');
+            $table->integer('harga_jual');
             $table->integer('dp');
             $table->integer('pencairan');
             $table->integer('angsuran');

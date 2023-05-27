@@ -364,7 +364,8 @@ class PenjualanController extends Controller
         }
         return DataTables::of($query)->addColumn('action', function ($row) {
             $actionBtn =
-                '<button class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="flaticon-381-edit-1"></i></button>
+                '<button class="btn btn-info btn-sm info-button-cash" data-id="' . $row->id . '"><i class="flaticon-381-view-2"></i></button>
+                <button class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="flaticon-381-edit-1"></i></button>
                 <button type="button" class="btn btn-warning btn-sm retur-button"  data-id="' . $row->unique . '"><i class="flaticon-381-back-2 text-white"></i></button>
                 <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
                     <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-id="' . $row->id . '"><i class="flaticon-381-trash-1"></i></button>
@@ -373,54 +374,13 @@ class PenjualanController extends Controller
         })->make(true);
     }
 
-    // public function rules_penjualan(Request $request)
-    // {
-    //     if ($request->jenis_pembayaran == '') {
-    //         $rules = [
-    //             'no_polisi' => 'required',
-    //             'jenis_pembayaran' => 'required',
-    //             'tanggal_jual' => 'required',
-    //             'nama_pembeli' => 'required',
-    //             'nik' => 'required',
-    //             'alamat' => 'required',
-    //         ];
-    //         $pesan = [
-    //             'no_polisi.required' => 'Pilih Nomor Polisi',
-    //             'jenis_pembayaran.required' => 'Pilih Jenis Pembayaran',
-    //             'tanggal_jual.required' => 'Tidak boleh kosong',
-    //             'nama_pembeli.required' => 'Tidak boleh kosong',
-    //             'nik.required' => 'Tidak boleh kosong',
-    //             'alamat.required' => 'Tidak boleh kosong',
-    //         ];
-
-    //         if ($request->photo_ktp) {
-    //             $jenis_file = explode(":", $request->photo_ktp);
-    //             $jenis_file2 = explode("/", $jenis_file[1]);
-    //             $jenis_foto = $jenis_file2[0];
-    //         }
-    //         // Validasi Photo KTP
-    //         $validator_photo_ktp = Validator::make([
-    //             'photo_ktp' => base64_encode($request->photo_ktp),
-    //         ], [
-    //             'photo_ktp' => 'max:' . (2 * 1024 * 1024) // Batasan ukuran 2 megabyte
-    //         ], [
-    //             'photo_ktp.max' => 'Ukuran tidak boleh lebih dari 2MB.',
-    //         ]);
-    //         //Validasi base64 apakah sebuah gambar
-    //         //Validasi Inputan yang Lain
-    //         $validator = Validator::make($request->all(), $rules, $pesan);
-    //         if ($validator->fails()) {
-    //             $send_error = [
-    //                 'errors' => $validator->errors(),
-    //             ];
-    //             if ($validator_photo_ktp->fails()) {
-    //                 $send_error['error_ktp'] = $validator_photo_ktp->errors();
-    //             }
-    //             if ($request->photo_ktp && $jenis_foto != 'image') {
-    //                 $send_error['error_ktp_type'] = 'File harus berupa gambar';
-    //             }
-    //             return response()->json($send_error);
-    //         }
-    //     }
-    // }
+    public function refresh_no_polisi(Request $request)
+    {
+        $no_polisi = DB::table('bikes')->select('no_polisi', 'id')->where('status', 'READY STOCK')->get();
+        echo '<option value="">Pilih No Polisi</option>
+                    ';
+        foreach ($no_polisi as $row) {
+            echo '<option value="' . $row->id . '">' . $row->no_polisi . '</option>';
+        }
+    }
 }
