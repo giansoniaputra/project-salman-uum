@@ -135,9 +135,197 @@
                         </div>
                     </div>
                 </div>
+                <<<<<<< HEAD=======<div class="row">
+                    <div class="col-xl-2 col-sm-6">
+                        <div class="card bg-primary">
+                            <div class="card-body">
+                                <div class="media align-items-center">
+                                    <div class="media-body mr-3">
+                                        <h2 class="fs-20 font-w600 text-white" id="refresh-modal">
+                                            {{ rupiah($data->modal + $laba) }}</h2>
+                                        <span class="text-white">Modal + Laba</span>
+                                    </div>
+                                    <h1 class="la la-money-bill-wave text-white"></h1>
+                                </div>
+                            </div>
+                            <div class="progress  rounded-0" style="height:4px;">
+                                <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 50%; height:4px;" role="progressbar">
+                                    <span class="sr-only">50% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <<<<<<< HEAD <div class="col-xl-2 col-sm-6">
+                        =======
+                        <div class="col-xl-2  col-sm-6">
+                            >>>>>>> d25a82e16c3ef76b836d257968f7181a56d7415e
+                            <div class="card bg-primary">
+                                <div class="card-body">
+                                    <div class="media align-items-center">
+                                        <div class="media-body mr-3">
+                                            <h2 class="fs-20 font-w600 text-white" id="refresh-modal">
+                                                {{ $semua_unit }}</h2>
+                                            <span class="text-white">Jumlah Stock Unit</span>
+                                        </div>
+                                        <h1 class="la la-money-bill-wave text-white"></h1>
+                                    </div>
+                                </div>
+                                <div class="progress  rounded-0" style="height:4px;">
+                                    <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 50%; height:4px;" role="progressbar">
+                                        <span class="sr-only">50% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <<<<<<< HEAD <div class="col-xl-2 col-sm-6">
+                            =======
+                            <div class="col-xl-2  col-sm-6">
+                                >>>>>>> d25a82e16c3ef76b836d257968f7181a56d7415e
+                                <div class="card bg-primary">
+                                    <div class="card-body">
+                                        <div class="media align-items-center">
+                                            <div class="media-body mr-3">
+                                                <h2 class="fs-20 font-w600 text-white" id="refresh-modal">
+                                                    {{ rupiah($sisa_bank) }}</h2>
+                                                <span class="text-white">Saldo Bank</span>
+                                            </div>
+                                            <h1 class="la la-money-bill-wave text-white"></h1>
+                                        </div>
+                                    </div>
+                                    <div class="progress  rounded-0" style="height:4px;">
+                                        <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 50%; height:4px;" role="progressbar">
+                                            <span class="sr-only">50% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <<<<<<< HEAD <div class="col-xl-2 col-sm-6">
+                                =======
+                                <div class="col-xl-2  col-sm-6">
+                                    >>>>>>> d25a82e16c3ef76b836d257968f7181a56d7415e
+                                    <div class="card bg-primary">
+                                        <div class="card-body">
+                                            <div class="media align-items-center">
+                                                <div class="media-body mr-3">
+                                                    <h2 class="fs-20 font-w600 text-white" id="refresh-modal">
+                                                        {{ rupiah($komisi) }}</h2>
+                                                    <span class="text-white">Komisi</span>
+                                                </div>
+                                                <h1 class="la la-money-bill-wave text-white"></h1>
+                                            </div>
+                                        </div>
+                                        <div class="progress  rounded-0" style="height:4px;">
+                                            <<<<<<< HEAD <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 50%; height:4px;" role="progressbar">
+                                                <span class="sr-only">50% Complete</span>
+                                                =======
+                                                <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 30%; height:4px;" role="progressbar">
+                                                    <span class="sr-only">30% Complete</span>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2  col-sm-6">
+                                    <div class="card bg-primary">
+                                        <div class="card-body">
+                                            <div class="media align-items-center">
+                                                <div class="media-body mr-3">
+                                                    <h2 class="fs-20 text-white font-w600" id="refresh-laba">{{ rupiah($laba) }}
+                                                    </h2>
+                                                    <span class="text-white">Laba</span>
+                                                </div>
+                                                <h1 class="text-white">$</h1>
+                                            </div>
+                                        </div>
+                                        <div class="progress  rounded-0" style="height:4px;">
+                                            <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 94%; height:4px;" role="progressbar">
+                                                <span class="sr-only">94% Complete</span>
+                                                >>>>>>> d25a82e16c3ef76b836d257968f7181a56d7415e
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
             </div>
+            <<<<<<< HEAD=======<div class="row">
+                <div class="col-xl-2 col-sm-6">
+                    <div class="card bg-primary">
+                        <div class="card-body">
+                            <div class="media align-items-center">
+                                <div class="media-body mr-3">
+                                    <h2 class="fs-20 font-w600 text-white" id="refresh-modal">
+                                        {{ rupiah($data->modal + $laba) }}</h2>
+                                    <span class="text-white">Modal + Laba</span>
+                                </div>
+                                <h1 class="la la-money-bill-wave text-white"></h1>
+                            </div>
+                        </div>
+                        <div class="progress  rounded-0" style="height:4px;">
+                            <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 50%; height:4px;" role="progressbar">
+                                <span class="sr-only">50% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-sm-6">
+                    <div class="card bg-primary">
+                        <div class="card-body">
+                            <div class="media align-items-center">
+                                <div class="media-body mr-3">
+                                    <h2 class="fs-20 font-w600 text-white" id="refresh-modal">
+                                        {{ $semua_unit }}</h2>
+                                    <span class="text-white">Jumlah Stock Unit</span>
+                                </div>
+                                <h1 class="la la-money-bill-wave text-white"></h1>
+                            </div>
+                        </div>
+                        <div class="progress  rounded-0" style="height:4px;">
+                            <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 50%; height:4px;" role="progressbar">
+                                <span class="sr-only">50% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-sm-6">
+                    <div class="card bg-primary">
+                        <div class="card-body">
+                            <div class="media align-items-center">
+                                <div class="media-body mr-3">
+                                    <h2 class="fs-20 font-w600 text-white" id="refresh-modal">
+                                        {{ rupiah($sisa_bank) }}</h2>
+                                    <span class="text-white">Saldo Bank</span>
+                                </div>
+                                <h1 class="la la-money-bill-wave text-white"></h1>
+                            </div>
+                        </div>
+                        <div class="progress  rounded-0" style="height:4px;">
+                            <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 50%; height:4px;" role="progressbar">
+                                <span class="sr-only">50% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-sm-6">
+                    <div class="card bg-primary">
+                        <div class="card-body">
+                            <div class="media align-items-center">
+                                <div class="media-body mr-3">
+                                    <h2 class="fs-20 font-w600 text-white" id="refresh-modal">
+                                        {{ rupiah($komisi) }}</h2>
+                                    <span class="text-white">Komisi</span>
+                                </div>
+                                <h1 class="la la-money-bill-wave text-white"></h1>
+                            </div>
+                        </div>
+                        <div class="progress  rounded-0" style="height:4px;">
+                            <div class="progress-bar rounded-0 bg-secondary progress-animated" style="width: 50%; height:4px;" role="progressbar">
+                                <span class="sr-only">50% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 {{-- Simple Money Format --}}
 <script src="/page-script/simple.money.format.js"></script>
