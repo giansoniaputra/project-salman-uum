@@ -427,7 +427,6 @@
     </div>
 </div>
 <!-- Add Edit Modal End -->
-</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
 {{-- Simple Money Format --}}
 <script src="/page-script/simple.money.format.js"></script>
