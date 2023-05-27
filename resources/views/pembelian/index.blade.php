@@ -104,15 +104,18 @@
                     <div class="d-inline-block">
                         <!-- Add New Button Start -->
                         @if ($modal->modal==0)
-                        <button type="button" class="btn btn-rounded btn-primary mb-3" id="button-no-modal"><i data-acorn-icon="plus"></i>
-                            <span>Tambah Data Pembelian</span>
+                        <button type="button" class="btn btn-rounded btn-primary mb-3" id="button-no-modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data Pembelian">
+                            <i data-acorn-icon="plus"></i>
+
                         </button>
                         @else
-                        <a href="/pembelian/create" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto">
+                        <a href="/pembelian/create" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data Pembelian">
                             <i data-acorn-icon="plus"></i>
-                            <span>Tambah Data Pembelian</span>
                         </a>
                         @endif
+                        <button class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Download PDF" type="button">
+                            <i data-acorn-icon="download"></i>
+                        </button>
                         <!-- Add New Button End -->
 
                         {{-- <!-- Print Button Start -->
