@@ -340,7 +340,7 @@
 {{-- Modal Info Motor --}}
 <!-- Modal  Launch Xlarge-->
 <div class="modal fade" id="modal-detail-motor" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Detail Motor</h5>
@@ -426,7 +426,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Reparasi Motoe</h5>
+                <h5 class="modal-title">Reparasi Motor</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="javascript:;">
@@ -443,7 +443,7 @@
                                         <div class="col-md-12">
                                             <label class="text-label" for="no_polisi">No Polisi</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control input-default" id="no_polisi" readonly style="background-color: rgba(215, 218, 227, 0.3)">
+                                                <input type="text" class="form-control" id="no_polisi_maintenance" readonly style="background-color: rgba(215, 218, 227, 0.3)">
                                             </div>
                                         </div>
                                     </div>

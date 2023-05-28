@@ -138,6 +138,10 @@
                         <textarea name="alamat" id="alamat" class="form-control"></textarea>
                         <label for="alamat">Alamat</label>
                     </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="no_telepon" id="no_telepon">
+                        <label for="no_telepon">No Telepon</label>
+                    </div>
                     <div class="input-group mb-3">
                         <input type="file" class="form-control" id="photo-ktp" name="photo-ktp" onchange="previewImageKTP()">
                         <label class="input-group-text" for="photo-ktp">Upload Photo KTP</label>

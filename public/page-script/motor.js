@@ -255,7 +255,7 @@ $(document).ready(function () {
             type: "GET",
             dataType: "json",
             success: function (response) {
-                $("#no_polisi").val(response.success.no_polisi);
+                $("#no_polisi_maintenance").val(response.success.no_polisi);
                 $("#merek").val(response.success.merek);
                 $("#harga_beli").val(
                     new Intl.NumberFormat("id-ID", {
