@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let table = jQuery("#dataTables").DataTable({
+    let table = $("#dataTables").DataTable({
         buttons: [],
         processing: true,
         responsive: true,
@@ -17,7 +17,7 @@ $(document).ready(function () {
                 data: null,
                 orderable: false,
                 render: function (data, type, row, meta) {
-                    var pageInfo = jQuery("#dataTables")
+                    var pageInfo = $("#dataTables")
                         .DataTable()
                         .page.info();
                     var index = meta.row + pageInfo.start + 1;
@@ -70,14 +70,12 @@ $(document).ready(function () {
         },
     });
 
-    let table2 = jQuery("#dataTables2").DataTable({
-        buttons: [],
+    let table2 = $("#dataTables2").DataTable({
         processing: true,
         responsive: true,
         searching: true,
         bLengthChange: true,
         info: false,
-        ordering: true,
         serverSide: true,
         ajax: "/dataTablesTerjual",
         order: [], // Clearing default order
@@ -88,7 +86,7 @@ $(document).ready(function () {
                 data: null,
                 orderable: false,
                 render: function (data, type, row, meta) {
-                    var pageInfo = jQuery("#dataTables2")
+                    var pageInfo = $("#dataTables2")
                         .DataTable()
                         .page.info();
                     var index = meta.row + pageInfo.start + 1;

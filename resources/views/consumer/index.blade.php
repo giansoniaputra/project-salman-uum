@@ -334,7 +334,7 @@
 
                             <!-- Table Start -->
                             <div>
-                                <table id="dataTables2" class="data-table nowrap hover" style="font-family: 'Nunito Sans', sans-serif; font-size: 0.9em ">
+                                <table id="dataTables2" class="data-table nowrap hover" style="font-family: 'Nunito Sans', sans-serif; font-size: 0.9em;">
                                     <thead>
                                         <tr>
                                             <th class="text-muted text-small text-uppercase">No</th>
@@ -378,14 +378,13 @@
     </div>
 </div>
 <!-- Modal Riwayat -->
-<div class="modal fade" id="modal-motor" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
+<!-- Modal  Launch Xlarge-->
+<div class="modal fade" id="modal-motor" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title text-black" id="staticBackdropLabel">Data Penjualan Motor Pelanggan</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title">Data Penjualan Motor Pelanggan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="col-12">
@@ -404,42 +403,30 @@
                             <tbody>
 
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Merk</th>
-                                    <th>No Polisi</th>
-                                    <th>Warna</th>
-                                    <th>Tanggal Beli</th>
-                                    <th>Harga Beli</th>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-rounded btn-danger" data-dismiss="modal"><span class="btn-icon-left text-danger"><i class="fa fa-close color-danger"></i>
-                    </span>Tutup</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
 </div>
-<!-- Modal Riwayat -->
-<div class="modal fade" id="modal-ktp" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
+<!-- Modal Photo KTP -->
+<!-- Modal  Launch Large-->
+<div class="modal fade" id="modal-ktp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title text-black" id="staticBackdropLabel">Photo KTP Pelanggan</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title">Photo KTP Pelanggan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <img src="" alt="" class="img-fluid" style="width: 800px">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-rounded btn-danger" data-dismiss="modal"><span class="btn-icon-left text-danger"><i class="fa fa-close color-danger"></i>
-                    </span>Tutup</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>

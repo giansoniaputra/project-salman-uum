@@ -92,7 +92,7 @@ class ConsumerController extends Controller
         if ($request->ajax()) {
             $query = Consumer::where('penjual', 'DEALER')->get();
             return DataTables::of($query)->addColumn('action', function ($row) {
-                $actionButton = '<button class="btn btn-rounded btn-sm btn-primary info-button-dealer" data-id="' . $row->id . '"><i class="flaticon-381-bookmark-1"></i>
+                $actionButton = '<button class="btn btn-rounded btn-sm btn-primary info-button-dealer" data-id="' . $row->id . '">
             Riwayat Penjualan</button>';
                 return $actionButton;
             })->make(true);

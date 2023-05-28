@@ -95,7 +95,13 @@ class BikeController extends Controller
     public function dataTablesTerjual(Request $request)
     {
         if ($request->ajax()) {
-            $query = Bike::where('status', 'TERJUAL')->get();
+            $query = DB::table('bikes as a')
+                ->join('buys as b', 'a.id', '=', 'b.bike_id')
+                ->select('a.*', 'b.harga_beli')
+                ->where('a.status', 'TERJUAL')->get();
+            foreach ($query as $row) {
+                $row->harga_beli = rupiah($row->harga_beli);
+            }
             return DataTables::of($query)->addColumn('action', function ($row) {
                 $actionBtn =
                     '<button class="btn btn-rounded btn-sm btn-primary info-motor-button" data-id="' . $row->id . '"><i class="bi-info-circle"></i>
