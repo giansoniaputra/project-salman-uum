@@ -104,7 +104,7 @@
                     <div class="d-inline-block">
                         <!-- Add New Button Start -->
                         @if ($modal->modal==0)
-                        <button type="button" class="btn btn-rounded btn-primary mb-3" id="button-no-modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data Pembelian">
+                        <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto" id="button-no-modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data Pembelian">
                             <i data-acorn-icon="plus"></i>
 
                         </button>

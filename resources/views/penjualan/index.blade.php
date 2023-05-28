@@ -90,7 +90,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTitle">Tambah Data Penjualan</h5>
+                <h5 class="modal-title" id="modalTitle">Tambah Data Penjualan Cash</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -127,20 +127,20 @@
                         <label for="harga_beli">Harga Beli</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="nik" id="nik">
-                        <label for="nik">NIK</label>
+                        <input type="text" class="form-control" name="nik" id="nik" placeholder="Masukan NIK">
+                        <label class="text-label" for="nik">NIK<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="nama_pembeli" id="nama_pembeli">
-                        <label for="nama_pembeli">Nama Pembeli</label>
+                        <input type="text" class="form-control" name="nama_pembeli" id="nama_pembeli" placeholder="Masukan Nama">
+                        <label class="text-label" for="nama">Nama<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <textarea name="alamat" id="alamat" class="form-control"></textarea>
-                        <label for="alamat">Alamat</label>
+                        <textarea name="alamat" id="alamat" class="form-control" placeholder="Masukan Alamat"></textarea>
+                        <label class="text-label" for="alamat">Alamat<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="no_telepon" id="no_telepon">
-                        <label for="no_telepon">No Telepon</label>
+                        <input type="text" class="form-control" name="no_telepon" id="no_telepon" placeholder="Masukan No Telepon">
+                        <label class="text-label" for="no_telepon">No Telepon<span class="text-danger"> *</label></span>
                     </div>
                     <div class="input-group mb-3">
                         <input type="file" class="form-control" id="photo-ktp" name="photo-ktp" onchange="previewImageKTP()">

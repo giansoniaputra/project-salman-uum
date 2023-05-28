@@ -340,6 +340,7 @@
                                             <th class="text-muted text-small text-uppercase">No</th>
                                             <th class="text-muted text-small text-uppercase">Nama</th>
                                             <th class="text-muted text-small text-uppercase">Dealer</th>
+                                            <th class="text-muted text-small text-uppercase">No Telepon</th>
                                             <th class="text-muted text-small text-uppercase">Action</th>
                                         </tr>
                                     </thead>
