@@ -96,11 +96,11 @@ class BikeController extends Controller
     {
         if ($request->ajax()) {
             $query = DB::table('bikes as a')
-                ->join('buys as b', 'a.id', '=', 'b.bike_id')
-                ->select('a.*', 'b.harga_beli')
+                ->join('seles as b', 'a.id', '=', 'b.bike_id')
+                ->select('a.*', 'b.harga_jual')
                 ->where('a.status', 'TERJUAL')->get();
             foreach ($query as $row) {
-                $row->harga_beli = rupiah($row->harga_beli);
+                $row->harga_jual = rupiah($row->harga_jual);
             }
             return DataTables::of($query)->addColumn('action', function ($row) {
                 $actionBtn =

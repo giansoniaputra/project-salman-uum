@@ -17,9 +17,7 @@ $(document).ready(function () {
                 data: null,
                 orderable: false,
                 render: function (data, type, row, meta) {
-                    var pageInfo = $("#dataTables")
-                        .DataTable()
-                        .page.info();
+                    var pageInfo = $("#dataTables").DataTable().page.info();
                     var index = meta.row + pageInfo.start + 1;
                     return index;
                 },
@@ -86,9 +84,7 @@ $(document).ready(function () {
                 data: null,
                 orderable: false,
                 render: function (data, type, row, meta) {
-                    var pageInfo = $("#dataTables2")
-                        .DataTable()
-                        .page.info();
+                    var pageInfo = $("#dataTables2").DataTable().page.info();
                     var index = meta.row + pageInfo.start + 1;
                     return index;
                 },
@@ -106,7 +102,7 @@ $(document).ready(function () {
                 data: "tahun_pembuatan",
             },
             {
-                data: "harga_beli",
+                data: "harga_jual",
             },
             {
                 data: "status",

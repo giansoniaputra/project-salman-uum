@@ -168,7 +168,7 @@
                                             <th class="text-muted text-small text-uppercase">No Polisi</th>
                                             <th class="text-muted text-small text-uppercase">Merk</th>
                                             <th class="text-muted text-small text-uppercase">Warna</th>
-                                            <th class="text-muted text-small text-uppercase">Harga Jual</th>
+                                            <th class="text-muted text-small text-uppercase">Harga Beli</th>
                                             <th class="text-muted text-small text-uppercase">Status</th>
                                             <th class="text-muted text-small text-uppercase">Action</th>
                                         </tr>
@@ -318,6 +318,7 @@
                                             <th class="text-muted text-small text-uppercase">Merk</th>
                                             <th class="text-muted text-small text-uppercase">Warna</th>
                                             <th class="text-muted text-small text-uppercase">Tahun Pembuatan</th>
+                                            <th class="text-muted text-small text-uppercase">Harga Jual</th>
                                             <th class="text-muted text-small text-uppercase">Status</th>
                                             <th class="text-muted text-small text-uppercase">Action</th>
                                         </tr>
