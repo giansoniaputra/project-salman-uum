@@ -165,8 +165,8 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.success) {
                     $("#nama_pembeli").val(response.success.nama);
-                    $("#alamat").val(response.success.alamat);
-                    $("#no_telepon").val(response.success.no_telepon);
+                    $("#alamat").html(response.success.alamat);
+                    $("#no_telepon").html(response.success.no_telepon);
                     $("#nama_pembeli").css({
                         "background-color": "rgba(215, 218, 227, 0.3)",
                     });
@@ -325,7 +325,6 @@ $(document).ready(function () {
                     $("#nik").val(response.data.nik);
                     $("#nama_pembeli").val(response.data.nama);
                     $("#alamat").val(response.data.alamat);
-                    $("#no_telepon").val(response.data.no_telepon);
                     $("#old_ktp").val("ktp_pembeli/" + response.data.photo_ktp);
                     if (response.data.photo_ktp == null) {
                         $("#img-ktp img").attr(
@@ -355,7 +354,6 @@ $(document).ready(function () {
     );
     //Action Update
     $("#modal-transaksi").on("click", ".update-data", function () {
-        $("#modal-transaksi .update-data").attr("disabled", "true");
         let formdata = $("#modal-transaksi form").serializeArray();
         let data = {};
         $(formdata).each(function (index, obj) {
@@ -378,7 +376,7 @@ $(document).ready(function () {
                             $(".no-polisi").html(response);
                         },
                     });
-                    $("#modal-transaksi .update-data").removeAttr("disabled");
+                    $("#modal-transaksi .save-data").removeAttr("disabled");
                     $("#merk").val("");
                     $("#warna").val("");
                     $("#tahun_pembuatan").val("");
@@ -391,7 +389,6 @@ $(document).ready(function () {
                     $("#old_ktp").val("");
                     $("#photo_ktp").val("");
                     $("#nama_pembeli").val("");
-                    $("#no_telepon").val("");
                     $("#tanggal_jual").val("");
                     $("#modal-transaksi #alamat").val("");
                     $("#harga_jual").removeClass("is-invalid");
