@@ -67,6 +67,7 @@ class PenjualanController extends Controller
             'nama_pembeli' => 'required',
             'nik' => 'required',
             'alamat' => 'required',
+            'no_telepon' => 'required',
         ];
         $pesan = [
             'no_polisi.required' => 'Pilih Nomor Polisi',
@@ -75,6 +76,7 @@ class PenjualanController extends Controller
             'nama_pembeli.required' => 'Tidak boleh kosong',
             'nik.required' => 'Tidak boleh kosong',
             'alamat.required' => 'Tidak boleh kosong',
+            'no_telepon.required' => 'Tidak boleh kosong',
         ];
         //Mengubah base64 menjadi file image
 
@@ -218,6 +220,7 @@ class PenjualanController extends Controller
             'nik' => 'required',
             'nama_pembeli' => 'required',
             'alamat' => 'required',
+            'no_telepon' => 'required',
             'harga_jual' => 'required',
             'tanggal_jual' => 'required',
         ];
@@ -225,6 +228,7 @@ class PenjualanController extends Controller
             'nik.required' => 'Tidak boleh kosong',
             'nama_pembeli.required' => 'Tidak boleh kosong',
             'alamat.required' => 'Tidak boleh kosong',
+            'no_telepon.required' => 'Tidak boleh kosong',
             'harga_jual.required' => 'Tidak boleh kosong',
             'tanggal_jual.required' => 'Tidak boleh kosong',
         ];
@@ -270,6 +274,7 @@ class PenjualanController extends Controller
                 'nik' => $request->nik,
                 'nama' => $request->nama_pembeli,
                 'alamat' => $request->alamat,
+                'no_telepon' => $request->alamat,
             ];
             //Jika ada  upload foto
             if ($request->photo_ktp) {
@@ -363,10 +368,10 @@ class PenjualanController extends Controller
         }
         return DataTables::of($query)->addColumn('action', function ($row) {
             $actionBtn =
-                '<button class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="flaticon-381-edit-1"></i></button>
-                <button type="button" class="btn btn-warning btn-sm retur-button"  data-id="' . $row->unique . '"><i class="flaticon-381-back-2 text-white"></i></button>
+                '<button class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="text-white bi-pencil"></i></button>
+                <button type="button" class="btn btn-warning btn-sm retur-button"  data-id="' . $row->unique . '"><i class="text-white bi-arrow-repeat"></i></button>
                 <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
-                    <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-id="' . $row->id . '"><i class="flaticon-381-trash-1"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-id="' . $row->id . '"><i class="text-white bi-trash"></i>
                 </form>';
             return $actionBtn;
         })->make(true);

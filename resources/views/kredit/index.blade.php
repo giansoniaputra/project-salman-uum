@@ -95,7 +95,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTitle">Add New</h5>
+                <h5 class="modal-title" id="modalTitle">Tambah Data Penjualan Kredit</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -153,6 +153,12 @@
                             <label class="input-group-text" for="photo-ktp">Upload Foto KTP</label>
                         </div>
                     </div>
+                    <div class="col-lg-12 mb-3 text-center" id="img-ktp">
+                        <img src="/storage/ktp/default.png" alt="" class="img-fluid" width="200px">
+                        <br>
+                        <input type="hidden" name="photo_ktp" id="photo_ktp">
+                        <input type="hidden" name="old_ktp" id="old_ktp">
+                    </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="date-picker form-control" placeholder="Masukan Tanggal Penjualan" id="tanggal_jual" />
                         <label class="text-label" for="tanggal_jual">Tanggal Penjualan<span class="text-danger"> *</label></span>
@@ -174,32 +180,32 @@
                         <label class="text-label" for="jenis_kelamin">Jenis Kelamin<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control money" name="otr_leasing" id="otr_leasing" readonly style="">
-                        <label class="text-label" for="otr_leasing">OTR Leasing</label></span>
+                        <input type="text" class="form-control money" name="otr_leasing" id="otr_leasing" placeholder="Masukan OTR Leasing" style="">
+                        <label class="text-label" for="otr_leasing">OTR Leasing<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control money" name="dp_po" id="dp_po" readonly style="">
-                        <label class="text-label" for="dp_po">DP PO Leasing</label></span>
+                        <input type="text" class="form-control money" name="dp_po" id="dp_po" placeholder="Masukan DP PO" style="">
+                        <label class="text-label" for="dp_po">DP PO Leasing<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control money" name="dp_bayar" id="dp_bayar" readonly style="">
-                        <label class="text-label" for="dp_bayar">DP Bayar Konsumen</label></span>
+                        <input type="text" class="form-control money" name="dp_bayar" id="dp_bayar" placeholder="Masukan DP Bayar" style="">
+                        <label class="text-label" for="dp_bayar">DP Bayar Konsumen<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control money" name="pencairan" id="pencairan" readonly style="">
-                        <label class="text-label" for="pencairan">Pencairan</label></span>
+                        <input type="text" class="form-control money" name="pencairan" id="pencairan" placeholder="Masukan Pencairan" style="">
+                        <label class="text-label" for="pencairan">Pencairan<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control money" name="angsuran" id="angsuran" readonly style="">
-                        <label class="text-label" for="angsuran">Angsuran</label></span>
+                        <input type="text" class="form-control money" name="angsuran" id="angsuran" placeholder="Masukan Angsuran" style="">
+                        <label class="text-label" for="angsuran">Angsuran<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control money" name="tenor" id="tenor" readonly style="">
-                        <label class="text-label" for="tenor">Tenor</label></span>
+                        <input type="text" class="form-control money" name="tenor" id="tenor" placeholder="Masukan Tenor" style="">
+                        <label class="text-label" for="tenor">Tenor<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control money" name="komisi" id="komisi" readonly style="">
-                        <label class="text-label" for="komisi">Komisi TAC</label></span>
+                        <input type="text" class="form-control money" name="komisi" id="komisi" placeholder="Masukan Komisi TAC" style="">
+                        <label class="text-label" for="komisi">Komisi TAC<span class="text-danger"> *</label></span>
                     </div>
                 </form>
             </div>

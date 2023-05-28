@@ -88,12 +88,15 @@ $(document).ready(function () {
                 data: "dealer",
             },
             {
+                data: "no_telepon",
+            },
+            {
                 data: "action",
             },
         ],
         columnDefs: [
             {
-                targets: [3], // index kolom atau sel yang ingin diatur
+                targets: [4], // index kolom atau sel yang ingin diatur
                 className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
             },
             {
@@ -126,17 +129,6 @@ $(document).ready(function () {
                 d.id = $("#data-motor").val();
             },
         },
-        columnDefs: [
-            {
-                targets: [2], // index kolom atau sel yang ingin diatur
-                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
-            },
-            {
-                searchable: false,
-                orderable: false,
-                targets: 0, // Kolom nomor, dimulai dari 0
-            },
-        ],
         columns: [
             {
                 data: null,
@@ -161,6 +153,17 @@ $(document).ready(function () {
             },
             {
                 data: "harga_beli",
+            },
+        ],
+        columnDefs: [
+            {
+                targets: [5], // index kolom atau sel yang ingin diatur
+                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
+            },
+            {
+                searchable: false,
+                orderable: false,
+                targets: 0, // Kolom nomor, dimulai dari 0
             },
         ],
         order: [[0, "asc"]],
