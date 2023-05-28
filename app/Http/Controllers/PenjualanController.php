@@ -125,6 +125,7 @@ class PenjualanController extends Controller
                     'nik' => $request->nik,
                     'nama' => ucwords(strtolower($request->nama_pembeli)),
                     'alamat' => $request->alamat,
+                    'no_telepon' => $request->no_telepon,
                 ];
                 //Upload jika ada gambar
                 if ($request->photo_ktp) {
@@ -274,7 +275,7 @@ class PenjualanController extends Controller
                 'nik' => $request->nik,
                 'nama' => $request->nama_pembeli,
                 'alamat' => $request->alamat,
-                'no_telepon' => $request->alamat,
+                'no_telepon' => $request->no_telepon,
             ];
             //Jika ada  upload foto
             if ($request->photo_ktp) {

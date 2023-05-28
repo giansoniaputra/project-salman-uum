@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->string('alamat');
+            $table->string('no_telepon');
             $table->string('photo_ktp')->nullable();
             $table->timestamps();
         });
