@@ -441,7 +441,7 @@
                                     <div class="method"></div>
                                     <div class="form-row mb-3">
                                         <div class="col-md-12">
-                                            <label class="text-label" for="no_polisi">No Polisi</label>
+                                            <label class="text-label mb-1" for="no_polisi">No Polisi</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="no_polisi_maintenance" readonly style="background-color: rgba(215, 218, 227, 0.3)">
                                             </div>
@@ -449,49 +449,38 @@
                                     </div>
                                     <div class="form-row mb-3">
                                         <div class="col-md-12">
-                                            <label class="text-label" for="merek">Merk</label>
+                                            <label class="text-label mb-1" for="merek">Merk</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control input-default" id="merek" readonly style="background-color: rgba(215, 218, 227, 0.3)">
+                                                <input type="text" class="form-control" id="merek" readonly style="background-color: rgba(215, 218, 227, 0.3)">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row mb-3">
-                                        <label class="text-label" for="harga_beli">Harga Beli</label>
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            <input type="text" class="form-control input-default money" name="harga_beli" id="harga_beli" readonly style="background-color: rgba(215, 218, 227, 0.3)">
-
+                                        <label class="text-label mb-1" for="harga_beli">Harga Beli</label>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text bg-primary text-white" id="basic-addon1">Rp.</span>
+                                            <input type="text" class="form-control money" name="harga_beli" id="harga_beli" readonly style="background-color: rgba(215, 218, 227, 0.3)">
                                         </div>
                                     </div>
                                     <div class="form-row mb-3">
-                                        <label class="text-label" for="jenis_perbaikan">Jenis Maintenance</label>
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text"><i class="la la-screwdriver"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control input-default" placeholder="Masukan Jenis Maintenance" id="jenis_perbaikan" name="jenis_perbaikan">
+                                        <label class="text-label mb-1" for="jenis_perbaikan">Jenis Perbaikan</label>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text bg-primary text-white" id="basic-addon1"><i class="bi-screwdriver"></i></span>
+                                            <input type="text" class="form-control" placeholder="Masukan Jenis Perbaikan" id="jenis_perbaikan" name="jenis_perbaikan">
                                         </div>
                                     </div>
                                     <div class="form-row mb-3">
-                                        <label class="text-label" for="tanggal_perbaikan">Tanggal
-                                            Maintenance</label>
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text"><i class="flaticon-381-calendar-1"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control input-default" placeholder="Masukan Tanggal Penjualan" name="tanggal_perbaikan" id="tanggal_perbaikan">
+                                        <label class="text-label mb-1" for="tanggal_perbaikan">Tanggal Perbaikan</label>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text bg-primary text-white" id="basic-addon1"><i class="bi-calendar2-check"></i></span>
+                                            <input type="text" class="form-control date-picker" placeholder="Masukan Tanggal Perbaikan" name="tanggal_perbaikan" id="tanggal_perbaikan">
                                         </div>
                                     </div>
                                     <div class="form-row mb-3">
-                                        <label class="text-label" for="biaya">Biaya</label>
-                                        <div class="input-group">
-                                            <div class="input-group-append input-primary">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            <input type="text" class="form-control input-default money" placeholder="Masukan Biaya" name="biaya" id="biaya">
-
+                                        <label class="text-label mb-1" for="biaya">Biaya</label>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text bg-primary text-white" id="basic-addon1">Rp.</span>
+                                            <input type="text" class="form-control money" name="biaya" id="biaya">
                                         </div>
                                     </div>
                                 </div>
@@ -515,15 +504,6 @@
                                             </thead>
                                             <tbody>
                                             </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Tanggal Maintenance</th>
-                                                    <th>Jenis Maintenance</th>
-                                                    <th>Biaya</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -532,7 +512,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+
                 </div>
             </form>
         </div>

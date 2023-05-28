@@ -137,5 +137,12 @@ class DatePickerControls {
     });
   }
 
+  _initFloatingLabel() {
+    jQuery('#tanggal_perbaikan').datepicker({
+      language: 'id',
+      format: 'yyyy/mm/dd',
+      autoclose: true,
+    });
+  }
   
 }
