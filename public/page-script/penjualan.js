@@ -310,9 +310,9 @@ $(document).ready(function () {
                 dataType: "json",
                 success: function (response) {
                     let elementNoPolisi =
-                        '<input type="hidden" name="curent_no_polisi" id="curent_no_polisi" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" value="' +
+                        '<input type="text" name="curent_no_polisi" id="curent_no_polisi" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" value="' +
                         response.data.no_polisi +
-                        '" disabled><label class="text-label" for="curent_no_polisi">Merk</label>';
+                        '" disabled><label class="text-label" for="curent_no_polisi">No Polisi</label>';
                     $("#current-no-polisi").html(elementNoPolisi);
                     $("#no-polisi").addClass("d-none");
                     $("#modal-transaksi").modal("show");

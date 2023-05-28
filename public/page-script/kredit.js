@@ -322,6 +322,133 @@ $(document).ready(function () {
         });
     });
 
+    //Ambil data penjualan yang akan di edit
+    $("#datatableBoxed_penjualan_kredit").on(
+        "click",
+        ".edit-button-kredit",
+        function () {
+            let unique = $(this).attr("data-unique");
+            $.ajax({
+                data: { unique: unique },
+                url: "/getDataKredit",
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    // console.log(response.data);
+                    let elementNoPolisi =
+                        '<input type="text" name="curent_no_polisi" id="curent_no_polisi" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" value="' +
+                        response.data.no_polisi +
+                        '" disabled><label class="text-label" for="curent_no_polisi">No Polisi</label>';
+                    $("#current-no-polisi").html(elementNoPolisi);
+                    $("#no-polisi-select").addClass("d-none");
+                    $("#modal-transaksi").modal("show");
+                    $(".no-polisi").val(response.data.bike_id);
+                    $("#nama_pembeli").val(response.data.pembeli);
+                    $("#merk").val(response.data.merek);
+                    $("#warna").val(response.data.warna);
+                    $("#tahun_pembuatan").val(response.data.tahun_pembuatan);
+                    $("#harga_beli").val(response.data.harga_beli);
+                    $("#tanggal_jual").val(response.data.tanggal_jual);
+                    $("#nik").val(response.data.nik);
+                    $("#nama_pembeli").val(response.data.nama);
+                    $("#alamat").val(response.data.alamat);
+                    $("#no_telepon").val(response.data.no_telepon);
+                    $("#old_ktp").val("ktp_pembeli/" + response.data.photo_ktp);
+                    if (response.data.photo_ktp == null) {
+                        $("#img-ktp img").attr(
+                            "src",
+                            "/storage/ktp/default.png"
+                        );
+                    } else {
+                        $("#img-ktp img").attr(
+                            "src",
+                            "/storage/ktp_pembeli/" + response.data.photo_ktp
+                        );
+                    }
+                    $("input.money").simpleMoneyFormat({
+                        currencySymbol: "Rp",
+                        decimalPlaces: 0,
+                        thousandsSeparator: ".",
+                    });
+
+                    $("#tempat_lahir").val(response.data.tempat_lahir);
+                    $("#tanggal_lahir").val(response.data.tanggal_lahir);
+                    $("#jenis_kelamin").val(response.data.jenis_kelamin);
+                    $("#otr_leasing").val(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.otr_leasing)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
+                    );
+                    $("#dp_po").val(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.dp_po)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
+                    );
+                    $("#dp_bayar").val(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.dp)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
+                    );
+                    $("#pencairan").val(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.pencairan)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
+                    );
+                    $("#angsuran").val(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.angsuran)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
+                    );
+                    $("#tenor").val(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.tenor)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
+                    );
+                    $("#komisi").val(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.komisi)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
+                    );
+                },
+            });
+        }
+    );
+
     //Action Retur
     $("#datatableBoxed_penjualan_kredit").on(
         "click",

@@ -154,6 +154,21 @@ class KreditController extends Controller
                     $data_buyer['photo_ktp'] = $name_Image;
                 }
                 Buyer::create($data_buyer);
+            } else {
+                if (!$buyer->tanggal_lahir && !$buyer->tempat_lahir) {
+                    Buyer::where('unique', $buyer->unique)->update([
+                        'tempat_lahir' => $request->tempat_lahir,
+                        'tanggal_lahir' => $request->tanggal_lahir,
+                    ]);
+                } else if (!$buyer->tanggal_lahir) {
+                    Buyer::where('unique', $buyer->unique)->update([
+                        'tanggal_lahir' => $request->tanggal_lahir,
+                    ]);
+                } else if (!$buyer->tempat_lahir) {
+                    Buyer::where('unique', $buyer->unique)->update([
+                        'tempat' => $request->tempat,
+                    ]);
+                }
             }
             //Membuat random nota
             $trx = 'TRX-KRDT-00';
@@ -197,6 +212,13 @@ class KreditController extends Controller
     public function show(Kredit $kredit)
     {
         //
+    }
+
+    public function get_data(Request $request)
+    {
+        $data = Kredit::get_data($request->unique);
+        $data->unique = $request->unique;
+        return response()->json(['data' => $data]);
     }
 
     /**

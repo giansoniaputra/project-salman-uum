@@ -76,6 +76,8 @@ Route::post('/rulesPenjualan', [PenjualanController::class, 'rules_penjualan'])-
 Route::post('/tambahPenjualan', [PenjualanController::class, 'tambah_data'])->middleware('auth');
 //Edit Penjualan
 Route::get('/ambilDataPenjualan', [PenjualanController::class, 'get_data'])->middleware('auth');
+//Edit Penjualan Kredit
+Route::get('/getDataKredit', [KreditController::class, 'get_data'])->middleware('auth');
 //Update Penjualan
 Route::post('/updatePenjualan', [PenjualanController::class, 'update_data'])->middleware('auth');
 //Cek Nik Penjual

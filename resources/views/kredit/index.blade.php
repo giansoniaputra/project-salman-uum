@@ -102,7 +102,7 @@
                 <form action="javascript:;" enctype="multipart/form-data" id="form-penjualan">
                     <div class="current-id"></div>
                     @csrf
-                    <div class="form-floating mb-3 w-100">
+                    <div class="form-floating mb-3 w-100" id="no-polisi-select">
                         <select id="no_polisi" name="no_polisi" class="form-control no-polisi" placeholder="Masukan No Polisi">
                             <option label="&nbsp;"></option>
                             @foreach ($no_polisi as $row)
