@@ -51,6 +51,7 @@
                 <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable-penjualanKredit" data-bs-toggle="modal" data-bs-target="#modal-transaksi" id="btn-add-data">
                     <i data-acorn-icon="plus" data-bs-toggle="tooltip" data-bs-placement="left" title="Tambah Data Penjualan Kredit"></i>
                 </button>
+                <button type="button" class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="modal" data-bs-target="#summary_kredit"><i data-acorn-icon="notebook-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Summary Penjualan Kredit"></i></button>
                 <button class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Print Tagihan" type="button">
                     <i data-acorn-icon="print"></i>
                 </button>
@@ -215,7 +216,210 @@
     </div>
 </div>
 <!-- Add Edit Modal End -->
+<div class="modal fade" id="summary_kredit" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Summary Penjualan Kredit</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
 </div>
+{{-- Modal Detail Penjualan Kredit --}}
+<div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detail Penjualan Kredit</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion accordion-flush" id="data-individu">
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="flush-headingZero">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseZero" aria-expanded="false" aria-controls="flush-collapseZero">
+                                Data Penjual
+                            </button>
+                        </div>
+                        <div id="flush-collapseZero" class="accordion-collapse collapse" aria-labelledby="flush-headingZero" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="table-responsive">
+                                    <table class="table header-border table-responsive-sm table-striped" id="table_konsumen">
+                                        <tbody>
+                                            <tr>
+                                                <td>NIK</td>
+                                                <td>:</td>
+                                                <td><span id="nik"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nama</td>
+                                                <td>:</td>
+                                                <td><span id="nama"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nomor Telepon</td>
+                                                <td>:</td>
+                                                <td><span id="no-telepon"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Alamat</td>
+                                                <td>:</td>
+                                                <td><span id="alamat"></span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                Data Motor
+                            </button>
+                        </div>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="table-responsive">
+                                    <table class="table header-border table-responsive-sm table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>No Polisi</td>
+                                                <td>:</td>
+                                                <td><span id="no-polisi"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Merk</td>
+                                                <td>:</td>
+                                                <td><span id="merk"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tipe</td>
+                                                <td>:</td>
+                                                <td><span id="tipe"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Warna</td>
+                                                <td>:</td>
+                                                <td><span id="warna"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tahun Pembuatan</td>
+                                                <td>:</td>
+                                                <td><span id="tahun-pembuatan"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>No Rangka</td>
+                                                <td>:</td>
+                                                <td><span id="no-rangka"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nomor BPKB</td>
+                                                <td>:</td>
+                                                <td><span id="bpkb"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nama BPKB</td>
+                                                <td>:</td>
+                                                <td><span id="nama-bpkb"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Berlaku Sampai</td>
+                                                <td>:</td>
+                                                <td><span id="berlaku-sampai"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Perpanjang STNK</td>
+                                                <td>:</td>
+                                                <td><span id="perpanjang-stnk"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Foto BPKB</td>
+                                                <td>:</td>
+                                                <td><span id="foto-bpkb"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Foto STNK</td>
+                                                <td>:</td>
+                                                <td><span id="foto-stnk"></span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="flush-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                Data Pembelian
+                            </button>
+                        </div>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="table-responsive">
+                                    <table class="table header-border table-responsive-sm table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>Tanggal Beli</td>
+                                                <td>:</td>
+                                                <td><span id="tanggal-beli"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>OTR Leasing</td>
+                                                <td>:</td>
+                                                <td><span id="otr-leasing"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>DP PO Leasing</td>
+                                                <td>:</td>
+                                                <td><span id="dp-po-leasing"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>DP Bayar Konsumen</td>
+                                                <td>:</td>
+                                                <td><span id="dp-bayar-konsumen"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pencairan</td>
+                                                <td>:</td>
+                                                <td><span id="pencairan"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Angsuran</td>
+                                                <td>:</td>
+                                                <td><span id="angsuran"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tenor</td>
+                                                <td>:</td>
+                                                <td><span id="tenor"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Komisi TAC</td>
+                                                <td>:</td>
+                                                <td><span id="komisi-tac"></span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
 {{-- Simple Money Format --}}

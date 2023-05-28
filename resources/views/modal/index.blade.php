@@ -41,7 +41,7 @@
                 <div class="col">
                     <div class="row gx-2 d-flex align-content-center">
                         <div class="col-12 col-xl d-flex">
-                            <div class="d-flex align-items-center lh-1-25">Modal Awal</div>
+                            <div class="d-flex align-items-center lh-1-25">Modal Awal Cash</div>
                         </div>
                         <div class="col-12 col-xl-auto">
                             <div class="cta-2 text-primary" id="refresh-modal">{{ rupiah($data->modal) }}</div>
@@ -57,7 +57,7 @@
             <div class="h-100 row g-0 card-body align-items-center py-3">
                 <div class="col-auto pe-3">
                     <div class="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
-                        <i class="bi-archive-fill icon-20 text-white"></i>
+                        <i data-acorn-icon="wallet" class="text-white" data-acorn-size="25"></i>
                     </div>
                 </div>
                 <div class="col">
@@ -88,7 +88,7 @@
                             <div class="d-flex align-items-center lh-1-25">Jumlah Unit</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="cta-2 text-primary">{{ $jumlah_unit }}</div>
+                            <div class="cta-2 text-primary" id="refresh-asset">{{ $jumlah_unit }}</div>
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
             <div class="h-100 row g-0 card-body align-items-center py-3">
                 <div class="col-auto pe-3">
                     <div class="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
-                        <i data-acorn-icon="gold" class="text-white"></i>
+                        <i data-acorn-icon="gold" class="text-white" data-acorn-size="22"></i>
                     </div>
                 </div>
                 <div class="col">
@@ -135,19 +135,106 @@
                         </div>
                     </div>
                 </div>
-                {{-- Simple Money Format --}}
-                <script src="/page-script/simple.money.format.js"></script>
-                <script src="/page-script/simple.money.format.init.js"></script>
-                {{-- !Simple Money Format --}}
-                <script src="/page-script/modal.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                <script>
-                    const flashData = $('#pesan').data('flash');
-                    if (flashData) {
-                        Swal.fire(
-                            'Good job!', flashData, 'success'
-                        )
-                    }
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-6">
+        <div class="card sh-11 hover-scale-up cursor-pointer">
+            <div class="h-100 row g-0 card-body align-items-center py-3">
+                <div class="col-auto pe-3">
+                    <div class="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
+                        <i data-acorn-icon="money-bag" class="text-white" data-acorn-size="25"></i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row gx-2 d-flex align-content-center">
+                        <div class="col-12 col-xl d-flex">
+                            <div class="d-flex align-items-center lh-1-25">Modal + Laba</div>
+                        </div>
+                        <div class="col-12 col-xl-auto">
+                            <div class="cta-2 text-primary" id="refresh-modal">{{ rupiah($data->modal + $laba) }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" col-12 col-sm-6 col-lg-6">
+        <div class="card sh-11 hover-scale-up cursor-pointer">
+            <div class="h-100 row g-0 card-body align-items-center py-3">
+                <div class="col-auto pe-3">
+                    <div class="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
+                        <i data-acorn-icon="form-check" class="text-white" data-acorn-size="25"></i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row gx-2 d-flex align-content-center">
+                        <div class="col-12 col-xl d-flex">
+                            <div class="d-flex align-items-center lh-1-25">Jumlah Stock Unit + Unit Terjual</div>
+                        </div>
+                        <div class="col-12 col-xl-auto">
+                            <div class="cta-2 text-primary" id="refresh-modal"> {{ $semua_unit }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-6">
+        <div class="card sh-11 hover-scale-up cursor-pointer">
+            <div class="h-100 row g-0 card-body align-items-center py-3">
+                <div class="col-auto pe-3">
+                    <div class="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
+                        <i data-acorn-icon="credit-card" class="text-white" data-acorn-size="25"></i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row gx-2 d-flex align-content-center">
+                        <div class="col-12 col-xl d-flex">
+                            <div class="d-flex align-items-center lh-1-25">Saldo Bank</div>
+                        </div>
+                        <div class="col-12 col-xl-auto">
+                            <div class="cta-2 text-primary" id="refresh-modal">{{ rupiah($sisa_bank) }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-6">
+        <div class="card sh-11 hover-scale-up cursor-pointer">
+            <div class="h-100 row g-0 card-body align-items-center py-3">
+                <div class="col-auto pe-3">
+                    <div class="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
+                        <i data-acorn-icon="gift" class="text-white" data-acorn-size="25"></i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row gx-2 d-flex align-content-center">
+                        <div class="col-12 col-xl d-flex">
+                            <div class="d-flex align-items-center lh-1-25">Pendapatan Komisi - TAC</div>
+                        </div>
+                        <div class="col-12 col-xl-auto">
+                            <div class="cta-2 text-primary" id="refresh-modal">{{ rupiah($komisi) }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Simple Money Format --}}
+    <script src="/page-script/simple.money.format.js"></script>
+    <script src="/page-script/simple.money.format.init.js"></script>
+    {{-- !Simple Money Format --}}
+    <script src="/page-script/modal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const flashData = $('#pesan').data('flash');
+        if (flashData) {
+            Swal.fire(
+                'Good job!', flashData, 'success'
+            )
+        }
 
-                </script>
-                @endsection
+    </script>
+    @endsection
