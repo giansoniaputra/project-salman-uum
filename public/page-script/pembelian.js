@@ -61,7 +61,7 @@ $(document).ready(function () {
                 targets: 0, // Kolom nomor, dimulai dari 0
             },
         ],
-        order: [[0, "asc"]],
+        order: [[1, "desc"]],
         language: {
             paginate: {
                 previous: '<i class="cs-chevron-left"></i>',

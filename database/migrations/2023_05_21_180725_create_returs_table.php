@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('tanggal_retur');
             $table->integer('harga_beli');
             $table->integer('harga_jual');
-            $table->integer('jumlah_bayar');
+            $table->integer('jumlah_bayar')->nullable();
             $table->timestamps();
         });
     }
