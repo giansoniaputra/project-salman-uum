@@ -8,7 +8,7 @@
                 <a class="nav-link active" data-bs-toggle="tab" href="#individu" role="tab" aria-selected="true">Data Individu</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" data-bs-toggle="tab" href="#non_individu" role="tab" aria-selected="false">Data Non Individu</a>
+                <a class="nav-link tab-comsumer" data-bs-toggle="tab" href="#non_individu" role="tab" aria-selected="false">Data Non Individu</a>
             </li>
             <!-- An empty list to put overflowed links -->
             {{-- <li class="nav-item dropdown ms-auto pe-0 d-none responsive-tab-dropdown">
@@ -377,6 +377,72 @@
         </div>
     </div>
 </div>
+<!-- Modal Riwayat -->
+<div class="modal fade" id="modal-motor" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-black" id="staticBackdropLabel">Data Penjualan Motor Pelanggan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12">
+                    <div class="table-responsive col-12">
+                        <table id="dataTablesMotor" class="display min-w850 text-center">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Merk</th>
+                                    <th>No Polisi</th>
+                                    <th>Warna</th>
+                                    <th>Tanggal Beli</th>
+                                    <th>Harga Beli</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Merk</th>
+                                    <th>No Polisi</th>
+                                    <th>Warna</th>
+                                    <th>Tanggal Beli</th>
+                                    <th>Harga Beli</th>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-rounded btn-danger" data-dismiss="modal"><span class="btn-icon-left text-danger"><i class="fa fa-close color-danger"></i>
+                    </span>Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Riwayat -->
+<div class="modal fade" id="modal-ktp" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-black" id="staticBackdropLabel">Photo KTP Pelanggan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="" alt="" class="img-fluid" style="width: 800px">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-rounded btn-danger" data-dismiss="modal"><span class="btn-icon-left text-danger"><i class="fa fa-close color-danger"></i>
+                    </span>Tutup</button>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="/page-script/konsumen.js"></script>
 @endsection

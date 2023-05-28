@@ -79,8 +79,8 @@ class ConsumerController extends Controller
             $query = Consumer::where('penjual', 'INDIVIDU')->get();
             return DataTables::of($query)->addColumn('action', function ($row) {
                 $actionButton = '
-                <button class="btn btn-rounded btn-sm btn-success info-button-ktp" data-ktp="' . $row->photo_ktp . '"><i class="flaticon-381-bookmark-1"></i>Photo KTP</button>
-                <button class="btn btn-rounded btn-sm btn-primary info-button-individu" data-id="' . $row->id . '"><i class="flaticon-381-bookmark-1"></i>Riwayat Penjualan</button>
+                <button class="btn btn-rounded btn-sm btn-info info-button-ktp" data-ktp="' . $row->photo_ktp . '">Foto KTP</button>
+                <button class="btn btn-rounded btn-sm btn-primary info-button-individu" data-id="' . $row->id . '">Riwayat Penjualan</button>
                 ';
                 return $actionButton;
             })->make(true);
