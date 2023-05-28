@@ -93,6 +93,12 @@ $(document).ready(function () {
     });
     //Reset ketika modal di tutup
     $(".btn-close").on("click", function () {
+        $("input").each(function (index, obj) {
+            $("input").removeClass("is-invalid");
+        });
+        $("textarea").each(function (index, obj) {
+            $("textarea").removeClass("is-invalid");
+        });
         $("#merk").val("");
         $("#warna").val("");
         $("#tahun_pembuatan").val("");
@@ -116,6 +122,12 @@ $(document).ready(function () {
     });
     //Reset ketika tombol tutup di click
     $(".modal-footer").on("click", ".btn-outline-primary", function () {
+        $("input").each(function (index, obj) {
+            $("input").removeClass("is-invalid");
+        });
+        $("textarea").each(function (index, obj) {
+            $("textarea").removeClass("is-invalid");
+        });
         $("#merk").val("");
         $("#warna").val("");
         $("#tahun_pembuatan").val("");
