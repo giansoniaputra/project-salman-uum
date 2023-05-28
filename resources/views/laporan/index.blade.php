@@ -12,13 +12,14 @@
                         <label class="text-label" for="laporan_pertahun">Laporan Pertahun</label>
                         <div class="input-group mt-2">
                             <label class="input-group-text" for="inputGroupSelect01"><i class="bi-calendar-check-fill icon-16 text-primary"></i></label>
-                            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                            <select class="form-select rounded-md-bottom-end rounded-md-top-end" id="inputGroupSelect04" aria-label="Example select with button addon">
                                 <option selected>Pilih Tahun</option>
                                 <option value="2023">2023</option>
                                 <option value="2022">2022</option>
                                 <option value="2021">2021</option>
                             </select>
-                            <button class="btn btn-primary" type="button">
+                            <span class="mx-2"></span>
+                            <button class="btn btn-primary rounded-md-bottom-start rounded-md-top-start" type="button">
                                 <i data-acorn-icon="download" data-acorn-size="18"></i>
                                 PDF
                             </button>
@@ -32,7 +33,7 @@
                         <label class="text-label" for="laporan_perbulan">Laporan Perbulan</label>
                         <div class="input-group mt-2">
                             <label class="input-group-text" for="inputGroupSelect01"><i class="bi-calendar2-month-fill icon-16 text-primary"></i></label>
-                            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                            <select class="form-select rounded-md-bottom-end rounded-md-top-end" id="inputGroupSelect04" aria-label="Example select with button addon">
                                 <option selected>Pilih Bulan</option>
                                 <option value="">Januari</option>
                                 <option value="">Februari</option>
@@ -46,7 +47,8 @@
                                 <option value="">Oktober</option>
                                 <option value="">Desember</option>
                             </select>
-                            <button class="btn btn-primary" type="button">
+                            <span class="mx-2"></span>
+                            <button class="btn btn-primary rounded-md-bottom-start rounded-md-top-start" type="button">
                                 <i data-acorn-icon="download" data-acorn-size="18"></i>
                                 PDF
                             </button>
@@ -63,7 +65,7 @@
                             <span class="mx-2"></span>
                             <input type="text" class="form-control" name="end" placeholder="Tanggal Akhir" />
                             <span class="mx-2"></span>
-                            <button class="btn btn-primary" type="button">
+                            <button class="btn btn-primary rounded-md-bottom-start rounded-md-top-start" type="button">
                                 <i data-acorn-icon="download" data-acorn-size="18"></i>
                                 PDF
                             </button>
