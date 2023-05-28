@@ -144,8 +144,8 @@
                         <label class="text-label" for="alamat">Alamat<span class="text-danger"> *</span></label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control" placeholder="Masukan Nama Pembeli">
-                        <label class="text-label" for="nama_pembeli">No HP<span class="text-danger"> *</span></label>
+                        <input type="text" name="no_telepon" id="no_telepon" class="form-control" placeholder="Masukan Nama Pembeli">
+                        <label class="text-label" for="no_telepon">No HP<span class="text-danger"> *</span></label>
                     </div>
                     <div class="form-floating mb-3">
                         <div class="input-group mb-3">
@@ -160,7 +160,7 @@
                         <input type="hidden" name="old_ktp" id="old_ktp">
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="date-picker form-control" placeholder="Masukan Tanggal Penjualan" id="tanggal_jual" />
+                        <input type="text" class="date-picker form-control" placeholder="Masukan Tanggal Penjualan" name="tanggal_jual" id="tanggal_jual" />
                         <label class="text-label" for="tanggal_jual">Tanggal Penjualan<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
@@ -209,9 +209,7 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="addEditConfirmButton">Add</button>
+            <div class="modal-footer" id="btn-action">
             </div>
         </div>
     </div>
@@ -225,7 +223,6 @@
 <script src="/page-script/simple.money.format.init.js"></script>
 {{-- !Simple Money Format --}}
 <script src="/page-script/kredit.js"></script>
-<script src="/page-script/penjualan.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     const flashData = $('#pesan').data('flash');

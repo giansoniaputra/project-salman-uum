@@ -82,6 +82,8 @@ Route::post('/updatePenjualan', [PenjualanController::class, 'update_data'])->mi
 Route::get('/cekNikPembeli', [PenjualanController::class, 'cek_nik'])->middleware('auth');
 //Retur Motor
 Route::get('/returMotor/{sele:unique}', [PenjualanController::class, 'retur_motor'])->middleware('auth');
+//Retur Motor Kredit
+Route::get('/returMotorKredit/{kredit:unique}', [KreditController::class, 'retur_motor'])->middleware('auth');
 //Refresh no polisi
 Route::get('/refresh_no_polisi', [PenjualanController::class, 'refresh_no_polisi'])->middleware('auth');
 

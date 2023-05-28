@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('tanggal_jual');
             $table->date('tanggal_retur');
             $table->integer('harga_beli');
-            $table->integer('harga_jual');
+            $table->integer('harga_jual')->nullable();
             $table->integer('jumlah_bayar')->nullable();
             $table->timestamps();
         });

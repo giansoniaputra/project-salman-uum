@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Bike;
 use App\Models\Buyer;
+use App\Models\Retur;
 use App\Models\Kredit;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Yajra\DataTables\Facades\DataTables;
@@ -44,7 +46,6 @@ class KreditController extends Controller
     {
         $rules = [
             'no_polisi' => 'required',
-            'jenis_pembayaran' => 'required',
             'tanggal_jual' => 'required',
             'nama_pembeli' => 'required',
             'nik' => 'required',
@@ -57,23 +58,28 @@ class KreditController extends Controller
             'angsuran' => 'required',
             'tenor' => 'required',
             'komisi' => 'required',
+            'otr_leasing' => 'required',
+            'dp_po' => 'required',
+            'no_telepon' => 'required',
 
         ];
         $pesan = [
             'no_polisi.required' => 'Pilih Nomor Polisi',
-            'jenis_pembayaran.required' => 'Pilih Jenis Pembayaran',
-            'tanggal_jual.required' => 'Tidak boleh kosong',
-            'nama_pembeli.required' => 'Tidak boleh kosong',
-            'nik.required' => 'Tidak boleh kosong',
-            'alamat.required' => 'Tidak boleh kosong',
-            'tempat_lahir.required' => 'Tidak boleh kosong',
-            'tanggal_lahir.required' => 'Tidak boleh kosong',
-            'jenis_kelamin.required' => 'Tidak boleh kosong',
-            'dp_bayar.required' => 'Tidak boleh kosong',
-            'pencairan.required' => 'Tidak boleh kosong',
-            'angsuran.required' => 'Tidak boleh kosong',
-            'tenor.required' => 'Tidak boleh kosong',
-            'komisi.required' => 'Tidak boleh kosong',
+            'tanggal_jual.required' => 'Tangal jual tidak boleh kosong',
+            'nama_pembeli.required' => 'Nama tidak boleh kosong',
+            'nik.required' => 'NIK tidak boleh kosong',
+            'alamat.required' => 'Alamat tidak boleh kosong',
+            'tempat_lahir.required' => 'Tempat lahir tidak boleh kosong',
+            'tanggal_lahir.required' => 'Tanggal lahir tidak boleh kosong',
+            'jenis_kelamin.required' => 'Jenis kelamin tidak boleh kosong',
+            'dp_bayar.required' => 'DP tidak boleh kosong',
+            'pencairan.required' => 'Nilai Pencairan jual tidak boleh kosong',
+            'angsuran.required' => 'Angsuran tidak boleh kosong',
+            'tenor.required' => 'Tenor tidak boleh kosong',
+            'komisi.required' => 'Komisi tidak boleh kosong',
+            'otr_leasing.required' => 'OTR tidak boleh kosong',
+            'dp_po.required' => 'DP PO tidak boleh kosong',
+            'no_telepon.required' => 'DP PO tidak boleh kosong',
         ];
         //Mengubah base64 menjadi file image
 
@@ -122,6 +128,7 @@ class KreditController extends Controller
                     'nik' => $request->nik,
                     'nama' => ucwords(strtolower($request->nama_pembeli)),
                     'alamat' => $request->alamat,
+                    'no_telepon' => $request->no_telepon,
                     'tempat_lahir' => $request->tempat_lahir,
                     'tanggal_lahir' => $request->tanggal_lahir,
                     'jenis_kelamin' => $request->jenis_kelamin,
@@ -165,6 +172,8 @@ class KreditController extends Controller
                 'tanggal_jual' => $request->tanggal_jual,
                 'harga_beli' => preg_replace('/[,]/', '', $request->harga_beli),
                 'dp' => preg_replace('/[,]/', '', $request->dp_bayar),
+                'otr_leasing' => preg_replace('/[,]/', '', $request->otr_leasing),
+                'dp_po' => preg_replace('/[,]/', '', $request->dp_po),
                 'pencairan' => preg_replace('/[,]/', '', $request->pencairan),
                 'angsuran' => preg_replace('/[,]/', '', $request->angsuran),
                 'tenor' => $request->tenor,
@@ -222,17 +231,46 @@ class KreditController extends Controller
             ->get();
         foreach ($query as $row) {
             $row->tanggal_jual = tanggal_hari($row->tanggal_jual);
-            $row->harga_jual = rupiah($row->harga_jual);
+            $row->harga_beli = rupiah($row->harga_beli);
         }
         return DataTables::of($query)->addColumn('action', function ($row) {
             $actionBtn =
                 '<button class="btn btn-info btn-sm info-button-kredit" data-unique="' . $row->unique . '"><i class="flaticon-381-view-2"></i></button>
                 <button class="btn btn-success btn-sm edit-button-kredit" data-unique="' . $row->unique . '"><i class="flaticon-381-edit-1"></i></button>
-                <button type="button" class="btn btn-warning btn-sm retur-button-kredit"  data-unique="' . $row->unique . '"><i class="flaticon-381-back-2 text-white"></i></button>
+                <button type="button" class="btn btn-warning btn-sm retur-button"  data-unique="' . $row->unique . '"><i class="flaticon-381-back-2 text-white"></i></button>
                 <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
                     <button type="button" class="btn btn-danger btn-sm delete-button-kredit" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="flaticon-381-trash-1"></i></button>
                 </form>';
             return $actionBtn;
         })->make(true);
+    }
+
+    public function retur_motor(Request $request, Kredit $kredit)
+    {
+        $kredit = Kredit::where('unique', $kredit->unique)->first();
+        //Membuat random no retur
+        $trx = 'RETUR-SELE-00';
+        $last_trx = Retur::latest()->first();;
+        if ($last_trx == NULL) {
+            $random_num = 1;
+        } else {
+            $last_no_retur = explode('-', $last_trx->no_retur);
+            $random_num = $last_no_retur[2] + 1;
+        }
+        $data = [
+            'unique' => Str::orderedUuid(),
+            'no_retur' => $trx . $random_num,
+            'nota' => $kredit->nota,
+            'buyer_id' => $kredit->buyer_id,
+            'bike_id' => $kredit->bike_id,
+            'tanggal_jual' => $kredit->tanggal_jual,
+            'tanggal_retur' => Carbon::now(),
+            'harga_beli' => $kredit->harga_beli,
+        ];
+        Retur::create($data);
+        Bike::where('id', $kredit->bike_id)->update(['status' => 'READY STOCK']);
+        Kredit::where('unique', $kredit->unique)->delete();
+
+        return redirect('/kredit')->with('success', 'Data Penjualan teleh Diretur');
     }
 }

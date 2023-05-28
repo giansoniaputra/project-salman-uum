@@ -20,6 +20,8 @@ return new class extends Migration
             $table->date('tanggal_jual');
             $table->integer('harga_beli');
             $table->integer('dp');
+            $table->integer('otr_leasing');
+            $table->integer('dp_po');
             $table->integer('pencairan');
             $table->integer('angsuran');
             $table->integer('tenor');
