@@ -50,6 +50,7 @@
                 <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable-penjualanCash" data-bs-toggle="modal" data-bs-target="#modal-transaksi" id="btn-add-data">
                     <i data-acorn-icon="plus" data-bs-toggle="tooltip" data-bs-placement="left" title="Tambah Data Penjualan Cash"></i>
                 </button>
+                <button type="button" class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="modal" data-bs-target="#summary_cash"><i data-acorn-icon="notebook-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Summary Penjualan Cash"></i></button>
                 <button class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Download PDF" type="button">
                     <i data-acorn-icon="download"></i>
                 </button>
@@ -169,6 +170,23 @@
     </div>
 </div>
 <!-- Add Edit Modal End -->
+<div class="modal fade" id="summary_cash" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Summary Penjualan Cash</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
 {{-- Simple Money Format --}}
 <script src="/page-script/simple.money.format.js"></script>

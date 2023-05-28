@@ -77,7 +77,7 @@ $(document).ready(function () {
         serverSide: true,
         ajax: "/dataTablesTerjual",
         order: [], // Clearing default order
-        sDom: '<"row"<"col-sm-12"<"table-container"<"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
+        dom: '<"row"<"col-sm-12"<"table-container"<"card-body half-padding"f><"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
         pageLength: 15,
         columns: [
             {
@@ -296,6 +296,7 @@ $(document).ready(function () {
         "click",
         ".btn-tutup-maintenance",
         function () {
+            $("#modal-perbaikan-motor").modal('hide');
             $("#jenis_perbaikan").val("");
             $("#tanggal_perbaikan").val("");
             $("#biaya").val("");
@@ -312,6 +313,8 @@ $(document).ready(function () {
         info: false,
         ordering: true,
         serverSide: true,
+        dom: '<"row"<"col-sm-12"<"table-container"<"card-body half-padding"f><"card"<"card-body half-padding"t>>>>><"row"<"col-12 mt-3"p>>', // Hiding all other dom elements except table and pagination
+        pageLength: 15,
         ajax: {
             url: "/dataTablesMaintenance",
             type: "GET",
@@ -319,16 +322,14 @@ $(document).ready(function () {
                 d.id = $("#bike_id").val();
             },
         },
-        columnDefs: [
-            {
-                targets: [2], // index kolom atau sel yang ingin diatur
-                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
-            },
-        ],
         columns: [
             {
+                data: null,
+                orderable: false,
                 render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
+                    var pageInfo = $("#dataTablesMaintenance").DataTable().page.info();
+                    var index = meta.row + pageInfo.start + 1;
+                    return index;
                 },
             },
             {
@@ -346,6 +347,24 @@ $(document).ready(function () {
                 searchable: false,
             },
         ],
+        columnDefs: [
+            {
+                targets: [4], // index kolom atau sel yang ingin diatur
+                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
+            },
+            {
+                searchable: false,
+                orderable: false,
+                targets: 0, // Kolom nomor, dimulai dari 0
+            },
+        ],
+        order: [[0, "asc"]],
+        language: {
+            paginate: {
+                previous: '<i class="cs-chevron-left"></i>',
+                next: '<i class="cs-chevron-right"></i>',
+            },
+        },
     });
 
     $("#modal-perbaikan-motor").on("click", "#add-data", function () {

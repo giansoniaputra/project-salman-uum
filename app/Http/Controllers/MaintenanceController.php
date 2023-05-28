@@ -150,9 +150,9 @@ class MaintenanceController extends Controller
             }
             return DataTables::of($query)->addColumn('action', function ($row) {
                 $actionBtn =
-                    '<button type="button" class="btn btn-success btn-sm edit-maintenance-button" data-unique="' . $row->unique . '"><i class="flaticon-381-edit-1"></i></button>
+                    '<button type="button" class="btn btn-success btn-sm edit-maintenance-button" data-unique="' . $row->unique . '"><i class="bi-pencil"></i></button>
                     <form action="javascript:;" class="d-inline form-delete">
-                        <button type="button" class="btn btn-danger btn-sm delete-maintenance-button" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="flaticon-381-trash-1"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm delete-maintenance-button" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="bi-trash"></i></button>
                     </form>';
                 return $actionBtn;
             })->make(true);
