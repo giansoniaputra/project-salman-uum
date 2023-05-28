@@ -336,7 +336,6 @@ class PenjualanController extends Controller
             'tanggal_retur' => Carbon::now(),
             'harga_beli' => $sele->harga_beli,
             'harga_jual' => $sele->harga_jual,
-            'jumlah_bayar' => $sele->jumlah_bayar,
         ];
         Retur::create($data);
         Bike::where('id', $sele->bike_id)->update(['status' => 'READY STOCK']);
@@ -423,4 +422,14 @@ class PenjualanController extends Controller
     //         }
     //     }
     // }
+    public function refresh_no_polisi()
+    {
+        $query = Bike::where('status', 'READY STOCK')->get();
+        echo '
+        <option label="&nbsp;"></option>    
+        ';
+        foreach ($query as $row) {
+            echo '<option value="' . $row->id . '">' . $row->no_polisi . '</option>';
+        }
+    }
 }
