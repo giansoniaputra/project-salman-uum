@@ -96,6 +96,17 @@ $(document).ready(function () {
         $("#photo-ktp").val("");
         $("#photo-ktp").next(".custom-file-label").html("Pilih gambar");
         $("#img-ktp img").attr("src", "/storage/ktp/default.png");
+
+        $("#tempat_lahir").val("");
+        $("#tanggal_lahir").val("");
+        $("#jenis_kelamin").val("");
+        $("#otr_leasing").val("");
+        $("#dp_po").val("");
+        $("#dp_bayar").val("");
+        $("#pencairan").val("");
+        $("#angsuran").val("");
+        $("#tenor").val("");
+        $("#komisi").val("");
     });
     //Reset ketika tombol tutup di click
     $(".modal-footer").on("click", ".btn-outline-primary", function () {
@@ -127,6 +138,17 @@ $(document).ready(function () {
         $("#photo-ktp").val("");
         $("#photo-ktp").next(".custom-file-label").html("Pilih gambar");
         $("#img-ktp img").attr("src", "/storage/ktp/default.png");
+
+        $("#tempat_lahir").val("");
+        $("#tanggal_lahir").val("");
+        $("#jenis_kelamin").val("");
+        $("#otr_leasing").val("");
+        $("#dp_po").val("");
+        $("#dp_bayar").val("");
+        $("#pencairan").val("");
+        $("#angsuran").val("");
+        $("#tenor").val("");
+        $("#komisi").val("");
     });
 
     $("#btn-add-data").on("click", function () {
@@ -311,9 +333,16 @@ $(document).ready(function () {
                     $("#modal-transaksi #alamat").html("");
                     $("#photo_ktp").val("");
                     $("#img-ktp img").attr("src", "/storage/ktp/default.png");
-                    $("#save-data").removeClass("save-data-cash");
-                    $("#save-data").removeClass("save-data-kredit");
-                    $("#save-data").addClass("save-data");
+                    $("#tempat_lahir").val("");
+                    $("#tanggal_lahir").val("");
+                    $("#jenis_kelamin").val("");
+                    $("#otr_leasing").val("");
+                    $("#dp_po").val("");
+                    $("#dp_bayar").val("");
+                    $("#pencairan").val("");
+                    $("#angsuran").val("");
+                    $("#tenor").val("");
+                    $("#komisi").val("");
                     $("#modal-transaksi").modal("hide");
                     Swal.fire("Good job!", response.success, "success");
                     table.ajax.reload();
