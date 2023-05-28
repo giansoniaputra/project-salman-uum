@@ -58,7 +58,7 @@ $(document).ready(function () {
                 targets: 0, // Kolom nomor, dimulai dari 0
             },
         ],
-        order: [[0, "asc"]],
+        order: [[0, "desc"]],
         language: {
             paginate: {
                 previous: '<i class="cs-chevron-left"></i>',
@@ -192,6 +192,7 @@ $(document).ready(function () {
     });
     //Action Simpan Penjualan
     $("#modal-transaksi").on("click", ".save-data", function () {
+        $("#modal-transaksi .save-data").attr("disabled", "true");
         let formdata = $("#modal-transaksi form").serializeArray();
         let data = {};
         $(formdata).each(function (index, obj) {
@@ -234,7 +235,9 @@ $(document).ready(function () {
                         );
                         inputElement.after(feedbackElement);
                     }
+                    $("#modal-transaksi .save-data").removeAttr("disabled");
                 } else if (response.success) {
+                    $("#modal-transaksi .save-data").removeAttr("disabled");
                     $("#merk").val("");
                     $("#warna").val("");
                     $("#tahun_pembuatan").val("");
@@ -267,6 +270,7 @@ $(document).ready(function () {
     });
     //Action Simpan Penjualan Kredit
     $("#modal-transaksi").on("click", ".save-data-kredit", function () {
+        $("#modal-transaksi .save-data-kredit").attr("disabled", "true");
         let formdata = $("#modal-transaksi form").serializeArray();
         let data = {};
         $(formdata).each(function (index, obj) {
@@ -322,7 +326,13 @@ $(document).ready(function () {
                         );
                         inputElement.after(feedbackElement);
                     }
+                    $("#modal-transaksi .save-data-kredit").removeAttr(
+                        "disabled"
+                    );
                 } else if (response.success) {
+                    $("#modal-transaksi .save-data-kredit").removeAttr(
+                        "disabled"
+                    );
                     $("#merk").val("");
                     $("#warna").val("");
                     $("#tahun_pembuatan").val("");
