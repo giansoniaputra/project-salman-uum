@@ -102,6 +102,7 @@
             <div class="modal-body">
                 <form action="javascript:;" enctype="multipart/form-data" id="form-penjualan">
                     <div class="current-id"></div>
+                    <div class="current-method"></div>
                     @csrf
                     <div class="form-floating mb-3 w-100" id="no-polisi-select">
                         <select id="no_polisi" name="no_polisi" class="form-control no-polisi" placeholder="Masukan No Polisi">
@@ -174,9 +175,9 @@
                     </div>
                     <div class="form-floating mb-3 w-100">
                         <select id="jenis_kelamin" name="jenis_kelamin">
-                            <option label="&nbsp;"></option>
-                            <option value="COWO">Laki - Laki</option>
-                            <option value="CEWE">Perempuan</option>
+                            <option label=""></option>
+                            <option value="Laki-Laki">Laki - Laki</option>
+                            <option value="Perempuan">Perempuan</option>
                         </select>
                         <label class="text-label" for="jenis_kelamin">Jenis Kelamin<span class="text-danger"> *</label></span>
                     </div>

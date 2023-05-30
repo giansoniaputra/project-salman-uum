@@ -74,6 +74,7 @@ $(document).ready(function () {
         $("textarea").each(function (index, obj) {
             $("textarea").removeClass("is-invalid");
         });
+        $(".current-method").html("");
         $("#merk").val("");
         $("#warna").val("");
         $("#tahun_pembuatan").val("");
@@ -149,6 +150,7 @@ $(document).ready(function () {
         $("#angsuran").val("");
         $("#tenor").val("");
         $("#komisi").val("");
+        $(".current-method").html("");
     });
 
     $("#btn-add-data").on("click", function () {
@@ -156,6 +158,7 @@ $(document).ready(function () {
             ' <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Batal</button><button type="button" class="btn btn-primary save-data" id="addEditConfirmButton" title="Tambah">Tambah</button>';
         $("#btn-action").html(element);
         $(".current-id").html("");
+        $(".current-method").html("");
     });
 
     //Ketika no pilisi diilih
@@ -203,6 +206,25 @@ $(document).ready(function () {
                     $("#nama_pembeli").val(response.success.nama);
                     $("#alamat").val(response.success.alamat);
                     $("#no_telepon").val(response.success.no_telepon);
+                    if (
+                        response.success.tempat_lahir &&
+                        response.success.tanggal_lahir
+                    ) {
+                        $("#tempat_lahir").val(response.success.tempat_lahir);
+                        $("#jenis_kelamin")
+                            .val(response.success.jenis_kelamin)
+                            .trigger("change");
+                        $("#tanggal_lahir").val(response.success.tanggal_lahir);
+                        $("#tempat_lahir").css({
+                            "background-color": "rgba(215, 218, 227, 0.3)",
+                        });
+                        $("#tanggal_lahir").css({
+                            "background-color": "rgba(215, 218, 227, 0.3)",
+                        });
+                        $("#jenis_kelamin").css({
+                            "background-color": "rgba(215, 218, 227, 0.3)",
+                        });
+                    }
                     $("#nama_pembeli").css({
                         "background-color": "rgba(215, 218, 227, 0.3)",
                     });
@@ -215,6 +237,8 @@ $(document).ready(function () {
                     $("#nama_pembeli").removeClass("is-invalid");
                     $("#alamat").removeClass("is-invalid");
                     $("#no_telepon").removeClass("is-invalid");
+                    $("#tanggal_lahir").removeClass("is-invalid");
+                    $("#tempat_lahir").removeClass("is-invalid");
                     if (response.success.photo_ktp == null) {
                         $("#img-ktp img").attr(
                             "src",
@@ -232,6 +256,8 @@ $(document).ready(function () {
                     $("#modal-transaksi #alamat").html("");
                     $("#nama_pembeli").removeAttr("style");
                     $("#alamat").removeAttr("style");
+                    $("#tempat_lahir").removeAttr("style");
+                    $("#tanggal_lahir").removeAttr("style");
                     $("#no_telepon").removeAttr("style");
                     $("#img-ktp img").attr("src", "/storage/ktp/default.png");
                     NProgress.done();
@@ -344,6 +370,12 @@ $(document).ready(function () {
                     $("#tenor").val("");
                     $("#komisi").val("");
                     $("#modal-transaksi").modal("hide");
+
+                    $("#nama_pembeli").removeAttr("style");
+                    $("#alamat").removeAttr("style");
+                    $("#tempat_lahir").removeAttr("style");
+                    $("#tanggal_lahir").removeAttr("style");
+                    $("#no_telepon").removeAttr("style");
                     Swal.fire("Good job!", response.success, "success");
                     table.ajax.reload();
                 }
@@ -357,12 +389,23 @@ $(document).ready(function () {
         ".edit-button-kredit",
         function () {
             let unique = $(this).attr("data-unique");
+            $(".current-id").html(
+                '<input type="hidden" name="current_unique" id="current-unique" value="' +
+                    unique +
+                    '">'
+            );
+            $(".current-method").html(
+                '<input type="hidden" name="_method" id="current-method" value="PUT">'
+            );
             $.ajax({
                 data: { unique: unique },
                 url: "/getDataKredit",
                 type: "GET",
                 dataType: "json",
                 success: function (response) {
+                    let element =
+                        ' <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Batal</button><button type="button" class="btn btn-primary update-data" id="addEditConfirmButton" title="Tambah">Update</button>';
+                    $("#btn-action").html(element);
                     // console.log(response.data);
                     let elementNoPolisi =
                         '<input type="text" name="curent_no_polisi" id="curent_no_polisi" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" value="' +
@@ -402,7 +445,9 @@ $(document).ready(function () {
 
                     $("#tempat_lahir").val(response.data.tempat_lahir);
                     $("#tanggal_lahir").val(response.data.tanggal_lahir);
-                    $("#jenis_kelamin").val(response.data.jenis_kelamin);
+                    $("#jenis_kelamin")
+                        .val(response.data.jenis_kelamin)
+                        .trigger("change");
                     $("#otr_leasing").val(
                         new Intl.NumberFormat("id-ID", {
                             style: "currency",
@@ -477,6 +522,82 @@ $(document).ready(function () {
             });
         }
     );
+
+    //Action Update Data
+    $("#modal-transaksi").on("click", ".update-data", function () {
+        $("#modal-transaksi .update-data").attr("disabled", "true");
+        let formdata = $("#modal-transaksi form").serializeArray();
+        let data = {};
+        $(formdata).each(function (index, obj) {
+            data[obj.name] = obj.value;
+        });
+        $.ajax({
+            data: $("#modal-transaksi form").serialize(),
+            url: "/kredit/" + $("#current-unique").val(),
+            type: "POST",
+            dataType: "json",
+            success: function (response) {
+                // console.log(response);
+                if (response.errors) {
+                    displayErrors(response.errors);
+                } else if (response.success) {
+                    $.ajax({
+                        url: "/refresh_no_polisi",
+                        type: "GET",
+                        success: function (response) {
+                            $(".no-polisi").html(response);
+                        },
+                    });
+                    $("#modal-transaksi .update-data").removeAttr("disabled");
+                    $("#merk").val("");
+                    $("#warna").val("");
+                    $("#tahun_pembuatan").val("");
+                    $("#harga_beli").val("");
+                    $(".no-polisi").val(null).trigger("change");
+                    $("#current-no-polisi").html("");
+                    $("#no-polisi").removeClass("d-none");
+                    $("#jenis_pembayaran").val("");
+                    $("#jenis_pembayaran").removeAttr("disabled style");
+                    $("#buys-content-cash").addClass("d-none");
+                    $("#harga_jual").val("");
+                    $("#jumlah_bayar").val("");
+                    $("#nik").val("");
+                    $("#kembali").val("");
+                    $("#nama_pembeli").val("");
+                    $("#tanggal_jual").val("");
+                    $("#harga_jual").removeClass("is-invalid");
+                    $("#jumlah_bayar").removeClass("is-invalid");
+                    $("#photo-ktp").val("");
+                    $("#photo-ktp")
+                        .next(".custom-file-label")
+                        .html("Pilih gambar");
+                    $(".current-id").html("");
+                    $("#modal-transaksi #alamat").html("");
+                    $("#photo_ktp").val("");
+                    $("#img-ktp img").attr("src", "/storage/ktp/default.png");
+                    $("#tempat_lahir").val("");
+                    $("#tanggal_lahir").val("");
+                    $("#jenis_kelamin").val("");
+                    $("#otr_leasing").val("");
+                    $("#dp_po").val("");
+                    $("#dp_bayar").val("");
+                    $("#pencairan").val("");
+                    $("#angsuran").val("");
+                    $("#tenor").val("");
+                    $("#komisi").val("");
+                    $("#modal-transaksi").modal("hide");
+
+                    $("#nama_pembeli").removeAttr("style");
+                    $("#alamat").removeAttr("style");
+                    $("#tempat_lahir").removeAttr("style");
+                    $("#tanggal_lahir").removeAttr("style");
+                    $("#no_telepon").removeAttr("style");
+                    Swal.fire("Good job!", response.success, "success");
+                    table.ajax.reload();
+                }
+            },
+        });
+    });
 
     //Action Retur
     $("#datatableBoxed_penjualan_kredit").on(

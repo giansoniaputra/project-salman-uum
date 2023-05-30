@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
@@ -155,10 +156,11 @@ class KreditController extends Controller
                 }
                 Buyer::create($data_buyer);
             } else {
-                if (!$buyer->tanggal_lahir && !$buyer->tempat_lahir) {
+                if (!$buyer->tanggal_lahir && !$buyer->tempat_lahir && !$buyer->jenis_kelamin) {
                     Buyer::where('unique', $buyer->unique)->update([
                         'tempat_lahir' => $request->tempat_lahir,
                         'tanggal_lahir' => $request->tanggal_lahir,
+                        'jenis_kelamin' => $request->jenis_kelamin,
                     ]);
                 } else if (!$buyer->tanggal_lahir) {
                     Buyer::where('unique', $buyer->unique)->update([
@@ -167,6 +169,10 @@ class KreditController extends Controller
                 } else if (!$buyer->tempat_lahir) {
                     Buyer::where('unique', $buyer->unique)->update([
                         'tempat' => $request->tempat,
+                    ]);
+                } else if (!$buyer->jenis_kelamin) {
+                    Buyer::where('unique', $buyer->unique)->update([
+                        'jenis_kelamin' => $request->jenis_kelamin,
                     ]);
                 }
             }
@@ -234,7 +240,127 @@ class KreditController extends Controller
      */
     public function update(Request $request, Kredit $kredit)
     {
-        //
+        $rules = [
+            'tanggal_jual' => 'required',
+            'nama_pembeli' => 'required',
+            'nik' => 'required',
+            'alamat' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'jenis_kelamin' => 'required',
+            'dp_bayar' => 'required',
+            'pencairan' => 'required',
+            'angsuran' => 'required',
+            'tenor' => 'required',
+            'komisi' => 'required',
+            'otr_leasing' => 'required',
+            'dp_po' => 'required',
+            'no_telepon' => 'required',
+
+        ];
+        $pesan = [
+            'tanggal_jual.required' => 'Tidak boleh kosong',
+            'nama_pembeli.required' => 'Tidak boleh kosong',
+            'nik.required' => 'Tidak boleh kosong',
+            'alamat.required' => 'Tidak boleh kosong',
+            'tempat_lahir.required' => 'Tidak boleh kosong',
+            'tanggal_lahir.required' => 'Tidak boleh kosong',
+            'jenis_kelamin.required' => 'Tidak boleh kosong',
+            'dp_bayar.required' => 'Tidak boleh kosong',
+            'pencairan.required' => 'Tidak boleh kosong',
+            'angsuran.required' => 'Tidak boleh kosong',
+            'tenor.required' => 'Tidak boleh kosong',
+            'komisi.required' => 'Tidak boleh kosong',
+            'otr_leasing.required' => 'OTR tidak boleh kosong',
+            'dp_po.required' => 'DP PO tidak boleh kosong',
+            'no_telepon.required' => 'DP PO tidak boleh kosong',
+        ];
+        $validator = Validator::make($request->all(), $rules, $pesan);
+        // Validasi Photo KTP
+        $validator_photo_ktp = Validator::make([
+            'photo_ktp' => base64_encode($request->photo_ktp),
+        ], [
+            'photo_ktp' => 'max:' . (2 * 1024 * 1024) // Batasan ukuran 2 megabyte
+        ], [
+            'photo_ktp.max' => 'Ukuran tidak boleh lebih dari 2MB.',
+        ]);
+        //Validasi jenis file upload
+        if ($request->photo_ktp) {
+            $jenis_file = explode(":", $request->photo_ktp);
+            $jenis_file2 = explode("/", $jenis_file[1]);
+            $jenis_foto = $jenis_file2[0];
+        }
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()]);
+        } else if ($validator_photo_ktp->fails()) {
+            $send_error = [
+                'error_ktp' => $validator_photo_ktp->errors(),
+            ];
+            return response()->json($send_error);
+        } else if ($request->photo_ktp && $jenis_foto != 'image') {
+            return response()->json(['error_ktp_type' => 'File harus berupa gambar',]);
+        } else {
+            //Cek apakah user mengganti nik dengan user lain yang terdaftar
+            $cek_sele = Kredit::where('unique', $request->current_unique)->first();
+            $cek_buyer = Buyer::where('id', $cek_sele->buyer_id)->first();
+            $cek_buyer_nik = Buyer::where('nik', "=", $request->nik)->where('nik', "!=", $cek_buyer->nik)->first();
+
+            $data_penjualan = [
+                'tanggal_jual' => $request->tanggal_jual,
+                'harga_beli' => preg_replace('/[,]/', '', $request->harga_beli),
+                'dp' => preg_replace('/[,]/', '', $request->dp_bayar),
+                'otr_leasing' => preg_replace('/[,]/', '', $request->otr_leasing),
+                'dp_po' => preg_replace('/[,]/', '', $request->dp_po),
+                'pencairan' => preg_replace('/[,]/', '', $request->pencairan),
+                'angsuran' => preg_replace('/[,]/', '', $request->angsuran),
+                'tenor' => $request->tenor,
+                'komisi' => preg_replace('/[,]/', '', $request->komisi),
+            ];
+            if ($cek_buyer_nik) {
+                $data_penjualan['buyer_id'] = $cek_buyer_nik->id;
+            }
+            $data_penjual = [
+                'nik' => $request->nik,
+                'nama' => ucwords(strtolower($request->nama_pembeli)),
+                'alamat' => $request->alamat,
+                'no_telepon' => $request->no_telepon,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'jenis_kelamin' => $request->jenis_kelamin,
+            ];
+            //Jika ada  upload foto
+            if ($request->photo_ktp) {
+                $base_Image = $request->photo_ktp;  // your base64 encoded
+
+                $jenis_file = explode(":", $request->photo_ktp);
+                $jenis_file2 = explode("/", $jenis_file[1]);
+                $jenis_file3 = explode(";", $jenis_file2[1]);
+                $jenis_foto = $jenis_file3[0];
+                if ($jenis_foto == 'jpeg') {
+                    $base_Image = str_replace('data:image/jpeg;base64,', '', $base_Image);
+                } else if ($jenis_foto == 'jpg') {
+                    $base_Image = str_replace('data:image/jpg;base64,', '', $base_Image);
+                } else if ($jenis_foto == 'png') {
+                    $base_Image = str_replace('data:image/png;base64,', '', $base_Image);
+                }
+                $base_Image = str_replace(' ', '+', $base_Image);
+                $name_Image = Str::random(40) . '.' . 'png';
+                File::put(storage_path() . '/app/public/ktp_pembeli/' . $name_Image, base64_decode($base_Image));
+                if ($request->old_ktp) {
+                    Storage::delete($request->old_ktp);
+                }
+                $data_penjual['photo_ktp'] = $name_Image;
+            }
+            $buyer_id = Kredit::where('unique',  $request->current_unique)->first();
+            if ($cek_buyer_nik) {
+                Buyer::where('id', $cek_buyer_nik->buyer_id)->update($data_penjual);
+            } else {
+                Buyer::where('id', $buyer_id->buyer_id)->update($data_penjual);
+            }
+            Kredit::where('unique', $request->current_unique)->update($data_penjualan);
+            return response()->json(['success' => 'Data Penjualan Berhasil Diupdate']);
+        }
     }
 
     /**
