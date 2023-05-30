@@ -1,12 +1,96 @@
 @extends('layout.main')
 @section('container')
+<link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+<div id="pesan" data-flash="{{ session('success') }}"></div>
 <div class="row">
-    <div class="col-12">
-        <div class="card mb-5">
-            <div class="card-header">
-                <h4 class="card-title">Register Order Kredit</h4>
+    <div class="col-xl-12">
+        {{-- DATATABLE CASH --}}
+        <!-- Title and Top Buttons Start -->
+        <div class="page-title-container">
+            <div class="row">
+                <!-- Title Start -->
+                <div class="col-12 col-md-7">
+
+                </div>
+                <!-- Title End -->
+
+                <!-- Top Buttons Start -->
+                <div class="col-12 col-md-5 d-flex align-items-start justify-content-end">
+
+
+                    <!-- Check Button Start -->
+                    <div class="btn-group ms-1 check-all-container">
+
+                    </div>
+                    <!-- Check Button End -->
+                </div>
+                <!-- Top Buttons End -->
             </div>
-            <div class="card-body">
+        </div>
+    </div>
+</div>
+<!-- Title and Top Buttons End -->
+
+<!-- Content Start -->
+<div class="data-table-boxed">
+    <!-- Controls Start -->
+    <div class="row mb-2">
+        <!-- Search Start -->
+        <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-2 mb-1">
+
+        </div>
+        <!-- Search End -->
+
+        <div class="col-sm-12 col-md-7 col-lg-9 col-xxl-10 text-end mb-1">
+            <div class="d-inline-block me-0 me-sm-3 float-start float-md-none">
+
+            </div>
+            <div class="d-inline-block">
+                <!-- Add New Button Start -->
+                <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable-regorderkredit" data-bs-toggle="modal" data-bs-target="#modal-regorderkredit" id="btn-add-data">
+                    <i data-acorn-icon="plus" data-bs-toggle="tooltip" data-bs-placement="left" title="Tambah Data Penjualan Cash"></i>
+                </button>
+                <button type="button" class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="modal" data-bs-target="#summary_regorderkredit"><i data-acorn-icon="notebook-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Summary Register Order Kredit"></i></button>
+                <button class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Download PDF" type="button">
+                    <i data-acorn-icon="download"></i>
+                </button>
+                <!-- Export Dropdown Start -->
+                <div class="d-inline-block datatable-export" data-datatable="#datatableBoxed">
+
+                </div>
+                <!-- Export Dropdown End -->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Controls End -->
+
+<!-- Table Start -->
+<table id="datatableBoxed_reg_order_kredit" class="data-table nowrap hover" style="font-family: 'Nunito Sans', sans-serif; font-size: 0.9em ">
+    <thead>
+        <tr>
+            <th class="text-muted text-small text-uppercase">No</th>
+            <th class="text-muted text-small text-uppercase">Nama Nasabah</th>
+            <th class="text-muted text-small text-uppercase">Merk</th>
+            <th class="text-muted text-small text-uppercase">Tipe Motor</th>
+            <th class="text-muted text-small text-uppercase">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+<!-- Add Edit Modal Start -->
+<div class="modal modal-center fade" id="modal-regorderkredit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Register Order Kredit</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
                 <div class="row g-3">
                     <div class="col-md-6">
                         <div class="mb-3 form-floating">
@@ -208,7 +292,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer border-0 pt-0 d-flex justify-content-end align-items-center">
+            <div class="modal-footer" id="btn-action">
                 <div>
                     <button class="btn btn-icon btn-icon-end btn-primary" type="submit">
                         <span>Tambah</span>
@@ -219,4 +303,37 @@
         </div>
     </div>
 </div>
+<!-- Add Edit Modal End -->
+<div class="modal fade" id="summary_regorderkredit" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Summary Penjualan Kredit</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+{{-- Simple Money Format --}}
+<script src="/page-script/simple.money.format.js"></script>
+<script src="/page-script/simple.money.format.init.js"></script>
+{{-- !Simple Money Format --}}
+<script src="/page-script/regorderkredit.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const flashData = $('#pesan').data('flash');
+    if (flashData) {
+        Swal.fire(
+            'Good job!', flashData, 'success'
+        )
+    }
+
+</script>
 @endsection
