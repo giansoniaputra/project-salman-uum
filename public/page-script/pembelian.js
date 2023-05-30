@@ -326,7 +326,7 @@ $(document).ready(function () {
         $(".penjual").removeClass("is-invalid");
         if ($(".penjual").val() == "INDIVIDU") {
             $(".tab-content").css({
-                height: "852.75px",
+                height : "auto",
             });
             $("#consumer-content-dealer").addClass("d-none");
             $("#consumer-content-individu").removeClass("d-none");
@@ -334,7 +334,7 @@ $(document).ready(function () {
             $("#dealer").val("");
         } else if ($(".penjual").val() == "DEALER") {
             $(".tab-content").css({
-                height: "210px",
+                height: "auto",
             });
             $("#consumer-content-individu").addClass("d-none");
             $("#consumer-content-dealer").removeClass("d-none");
@@ -344,7 +344,7 @@ $(document).ready(function () {
             $("#no_telepon").val("");
         } else if ($(".penjual").val() == "") {
             $(".tab-content").css({
-                height: "110px",
+                height: "auto",
             });
             $("#consumer-content-individu").addClass("d-none");
             $("#consumer-content-dealer").addClass("d-none");

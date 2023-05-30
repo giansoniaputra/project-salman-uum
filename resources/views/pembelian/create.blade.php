@@ -4,7 +4,7 @@
 <div id="pesan" data-flash="{{ session('error') }}"></div>
 <div class="row">
     <div class="col-xl-12 col-xxl-12">
-        <div class="card-body">
+        <div class="card-body h-auto">
             <!-- Basic Start -->
             <div class="card mb-5 wizard" id="wizardBasic">
                 <div class="card-header border-0 pb-0">
@@ -34,7 +34,7 @@
                 </div>
                 <div class="card-body h-auto">
                     <div class="tab-content">
-                        <div class="tab-pane fade" id="data_konsumen" role="tabpanel">
+                        <div class="tab-pane fade h-auto" id="data_konsumen" role="tabpanel">
                             {{-- <h5 class="card-title">Pilih Penjual terlebih dahulu</h5>
                                 <p class="card-text text-alternate mb-4">With supporting text below as a natural lead-in to additional content.</p> --}}
                             <form action="/pembelian" method="post" enctype="multipart/form-data">
@@ -141,7 +141,7 @@
                                 </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="data_motor" role="tabpanel">
+                    <div class="tab-pane fade h-auto" id="data_motor" role="tabpanel">
                         {{-- <h5 class="card-title">Second Title</h5>
                                          <p class="card-text text-alternate mb-4">With supporting text below as a natural lead-in to additional content.</p> --}}
                         <div class="row">
@@ -265,7 +265,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="harga" role="tabpanel">
+                    <div class="tab-pane fade h-auto" id="harga" role="tabpanel">
                         {{-- <h5 class="card-title">Third Title</h5>
                                 <p class="card-text text-alternate mb-4">With supporting text below as a natural lead-in to additional content.</p> --}}
                         <div class="row">
