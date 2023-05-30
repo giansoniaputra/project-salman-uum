@@ -126,6 +126,10 @@
                         <label>Warna</label>
                     </div>
                     <div class="form-floating mb-3">
+                        <input type="text" name="type" id="type" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" disabled>
+                        <label>Tipe</label>
+                    </div>
+                    <div class="form-floating mb-3">
                         <input type="text" class="form-control" name="tahun_pembuatan" id="tahun_pembuatan" disabled style="background-color: rgba(215, 218, 227, 0.3)">
                         <label for="tahun_pembuatan">Tahun Pembuatan</label>
                     </div>

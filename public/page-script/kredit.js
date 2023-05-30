@@ -77,6 +77,7 @@ $(document).ready(function () {
         $(".current-method").html("");
         $("#merk").val("");
         $("#warna").val("");
+        $("#type").val("");
         $("#tahun_pembuatan").val("");
         $("#harga_beli").val("");
         $(".no-polisi").val(null).trigger("change");
@@ -119,6 +120,7 @@ $(document).ready(function () {
         });
         $("#merk").val("");
         $("#warna").val("");
+        $("#type").val("");
         $("#tahun_pembuatan").val("");
         $("#harga_beli").val("");
         $(".no-polisi").val(null).trigger("change");
@@ -177,6 +179,7 @@ $(document).ready(function () {
                 $("#warna").val(response.success.warna);
                 $("#tahun_pembuatan").val(response.success.tahun_pembuatan);
                 $("#harga_beli").val(response.success.harga_beli);
+                $("#type").val(response.success.type);
                 $("input.money").simpleMoneyFormat({
                     currencySymbol: "Rp",
                     decimalPlaces: 0,
@@ -335,6 +338,7 @@ $(document).ready(function () {
                     });
                     $("#merk").val("");
                     $("#warna").val("");
+                    $("#type").val("");
                     $("#tahun_pembuatan").val("");
                     $("#harga_beli").val("");
                     $(".no-polisi").val(null).trigger("change");
@@ -418,6 +422,7 @@ $(document).ready(function () {
                     $("#nama_pembeli").val(response.data.pembeli);
                     $("#merk").val(response.data.merek);
                     $("#warna").val(response.data.warna);
+                    $("#type").val(response.data.type);
                     $("#tahun_pembuatan").val(response.data.tahun_pembuatan);
                     $("#harga_beli").val(response.data.harga_beli);
                     $("#tanggal_jual").val(response.data.tanggal_jual);
@@ -551,6 +556,7 @@ $(document).ready(function () {
                     $("#modal-transaksi .update-data").removeAttr("disabled");
                     $("#merk").val("");
                     $("#warna").val("");
+                    $("#type").val("");
                     $("#tahun_pembuatan").val("");
                     $("#harga_beli").val("");
                     $(".no-polisi").val(null).trigger("change");
