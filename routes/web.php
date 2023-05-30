@@ -5,14 +5,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BikeController;
 use App\Http\Controllers\ModalController;
+use App\Http\Controllers\KreditController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ConsumerController;
-use App\Http\Controllers\KreditController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\RegOrderKreditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,6 +95,9 @@ Route::resource('/kredit', KreditController::class)->middleware('auth');
 
 // SETTING
 Route::resource('/setting', SettingController::class)->middleware('auth');
+
+// REG ORDER KREDIT
+Route::resource('/regorderkredit', RegOrderKreditController::class)->middleware('auth');
 
 // MAINTENANCE
 Route::resource('/maintenance', MaintenanceController::class)->middleware('auth');

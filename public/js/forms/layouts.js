@@ -93,6 +93,30 @@ class FormLayouts {
         });
       this._addFullClassToSelect2(jQuery('#jenis_kelamin'));
     }
+    if (jQuery().select2) {
+      jQuery('#kredit_via_leasing')
+        .select2({minimumResultsForSearch: Infinity, placeholder: ''})
+        .on('select2:open', function (e) {
+          jQuery(this).addClass('show');
+        })
+        .on('select2:close', function (e) {
+          _this._addFullClassToSelect2(this);
+          jQuery(this).removeClass('show');
+        });
+      this._addFullClassToSelect2(jQuery('#kredit_via_leasing'));
+    }
+    if (jQuery().select2) {
+      jQuery('#jenis_transaksi')
+        .select2({minimumResultsForSearch: Infinity, placeholder: ''})
+        .on('select2:open', function (e) {
+          jQuery(this).addClass('show');
+        })
+        .on('select2:close', function (e) {
+          _this._addFullClassToSelect2(this);
+          jQuery(this).removeClass('show');
+        });
+      this._addFullClassToSelect2(jQuery('#jenis_transaksi'));
+    }
     if (typeof Tagify !== 'undefined') {
       if (document.querySelector('#tagsFloatingLabel') !== null) {
         new Tagify(document.querySelector('#tagsFloatingLabel'));

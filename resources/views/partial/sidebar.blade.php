@@ -127,7 +127,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="/regorderkredit">
                 <i data-acorn-icon="edit-square" class="icon" data-acorn-size="18"></i>
                 <span class="label">Reg Order Kredit</span>
             </a>

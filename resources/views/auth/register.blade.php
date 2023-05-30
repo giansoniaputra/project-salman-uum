@@ -81,11 +81,11 @@
                 <div class="col-12 col-lg-auto h-100 pb-4 px-4 pt-0 p-lg-0">
                     <div class="sw-lg-70 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 full-page-content-right-border">
                         <div class="sw-lg-50 px-5">
-                            <div class="sh-11">
+                            <div class="sh-11 text-center">
                                 <a href="/home">
                                     {{-- <div class="logo-default"> --}}
                                     <img src="/img/logo/smac white.png" alt="" style="width: 150px;" class="">
-                                    <h6 class="cta-2 mt-2 text-primary"><b>Sistem Informasi Showroom Mandiri Utama Community</b></h6>
+                                    <h6 class="cta-2 mt-2 text-primary text-center"><b>Sistem Informasi Showroom Mandiri Utama Community</b></h6>
                                     {{-- </div> --}}
                                 </a>
                             </div>
@@ -102,7 +102,7 @@
                                 </p>
                             </div> --}}
                             <div>
-                                <h6 class="cta-3 mt-5 text-primary">Silahkan Buat Akun</h6>
+                                <h6 class="cta-3 mt-5 text-primary text-center">Silahkan Buat Akun</h6>
                                 <form action="/register" method="post" class="tooltip-end-bottom mt-5" novalidate>
                                     @csrf
                                     <div class="mb-3 filled form-group tooltip-end-top">
@@ -144,7 +144,7 @@
                                     <div class="mb-3 filled form-group tooltip-end-top">
                                         <i data-acorn-icon="key"></i>
                                         <select class="form-control @error('roles') is-invalid @enderror" name="roles" id="roles" value="{{ old('roles') }}">
-                                            <option value="">Pilih Role</option>
+                                            <option value="Pilih Role">Pilih Role</option>
                                             <option>Super Admin</option>
                                             <option>Admin</option>
                                             <option>Member</option>
