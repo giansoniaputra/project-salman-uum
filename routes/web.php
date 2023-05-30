@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BikeController;
 use App\Http\Controllers\ModalController;
@@ -123,3 +124,7 @@ Route::get('/dataTablesTerjual', [BikeController::class, 'dataTablesTerjual'])->
 Route::get('/dataTablesPenjualan', [PenjualanController::class, 'dataTables'])->middleware('auth');
 Route::get('/dataTablesPenjualanKredit', [KreditController::class, 'dataTables'])->middleware('auth');
 Route::get('/dataTablesMaintenance', [MaintenanceController::class, 'dataTables'])->middleware('auth');
+
+
+//CETAK PDF
+Route::get('/testCetak', [PDFController::class, 'testPDF'])->middleware('auth');
