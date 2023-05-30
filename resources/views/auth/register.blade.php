@@ -144,7 +144,7 @@
                                     <div class="mb-3 filled form-group tooltip-end-top">
                                         <i data-acorn-icon="key"></i>
                                         <select class="form-control @error('roles') is-invalid @enderror" name="roles" id="roles" value="{{ old('roles') }}">
-                                            <option value="">Pilih Role</option>
+                                            <option value="Pilih Role">Pilih Role</option>
                                             <option>Super Admin</option>
                                             <option>Admin</option>
                                             <option>Member</option>
