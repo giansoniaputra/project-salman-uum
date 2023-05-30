@@ -155,7 +155,12 @@
                                         </div>
                                         @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-lg btn-primary mx-auto d-block">Daftar</button>
+                                    <div class="text-center">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a href="/home" type="button" class="btn btn-lg btn-outline-quaternary">Kembali</a>
+                                            <button type="submit" class="btn btn-lg btn-primary">Daftar</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
