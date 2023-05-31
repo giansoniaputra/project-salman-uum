@@ -73,7 +73,7 @@
             </a>
             <ul id="transaksi">
                 <li>
-                    <a href="#penjualan" data-href="Pages.Authentication.html">
+                    <a href="#penjualan">
                         <span class="label">Penjualan</span>
                     </a>
                     <ul id="penjualan">
@@ -121,10 +121,22 @@
             </a>
         </li>
         <li>
-            <a href="/laporan">
+            <a href="#laporan">
                 <i data-acorn-icon="print" class="icon" data-acorn-size="18"></i>
                 <span class="label">Laporan</span>
             </a>
+            <ul id="laporan">
+                <li>
+                    <a href="/laporanPenjualan">
+                        <span class="label">Laporan Penjualan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/laporanPembelian">
+                        <span class="label">Laporan Pembelian</span>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="/regorderkredit">

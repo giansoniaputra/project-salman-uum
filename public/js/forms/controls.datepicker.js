@@ -76,8 +76,11 @@ class DatePickerControls {
   }
 
   _initRange() {
-    jQuery('#datePickerRange').datepicker({
+    jQuery('#laporan_pertanggal').datepicker({
       weekStart: 1,
+      language: 'id',
+      format: 'yyyy/mm/dd',
+      autoclose: true,
     });
   }
 

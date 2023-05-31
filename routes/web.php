@@ -15,6 +15,7 @@ use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\RegOrderKreditController;
+use App\Http\Controllers\LaporanPembelianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +64,9 @@ Route::resource('/modal', ModalController::class)->middleware('auth');
 Route::get('/refreshPage', [ModalController::class, 'refresh_page'])->middleware('auth');
 
 // LAPORAN
-Route::resource('/laporan', LaporanController::class)->middleware('auth');
+Route::resource('/laporanPenjualan', LaporanController::class)->middleware('auth');
+// LAPORAN PEMBELIAN
+Route::get('/laporanPembelian', [LaporanController::class, 'index_pembelian'])->middleware('auth');
 
 // DATA KONSUMEN
 Route::resource('/consumer', ConsumerController::class)->middleware('auth');

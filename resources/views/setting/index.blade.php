@@ -8,41 +8,42 @@
                 <h4 class="card-title data-pelanggan">Detail Setting</h4>
             </div>
             <div class="card-body">
-                <div class="col-xl-12 col-lg-12">
-                    <div class="basic-form mt-3">
-                        <form>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label mt-3">Nama Toko</label>
-                                <div class="col-sm-9 mb-5">
-                                    <input type="text" class="form-control input-default" placeholder="">
-                                </div>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="mb-3 form-floating">
+                            <input type="text" name="nama_toko" id="nama_toko" class="form-control @error('nama_toko')is-invalid @enderror" value="{{ old('nama_toko') }}" placeholder="Masukan Nama Toko">
+                            @error('nama_toko')
+                            <div class="invalid-feedback">
+                                {{ $message }}
                             </div>
-                            <div class="basic-form custom_file_input mb-5">
-                                <form action="#">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Edit Logo Full</span>
-                                        </div>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input @error('photo_pria') is-invalid @enderror" name="photo_pria" id="photo_pria">
-                                            <input type="hidden" name="fotoPria" id="fotoPria" value="{{ old('fotoPria') }}">
-                                            @error('photo_pria')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                            <label class="custom-file-label">Pilih Gambar</label>
-                                        </div>
-                                    </div>
-                                </form>
+                            @enderror
+                            <label class="text-label" for="nama_toko">Nama Toko<span class="text-danger"> *</span></label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3 form-floating">
+                            <textarea class="form-control @error('alamat_toko')is-invalid @enderror" rows="3" name="alamat_toko" id="alamat_toko" placeholder="Masukan Alamat Nasabah">{{ old('alamat_toko') }}</textarea>
+                            @error('alamat_toko')
+                            <div class="invalid-feedback">
+                                {{ $message }}
                             </div>
-                            <div class="form-group row">
-                                <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-rounded btn-primary"><span class="btn-icon-left text-primary"><i class="flaticon-381-edit-1 color-primary"></i>
-                                        </span>Edit Setting</button>
-                                </div>
+                            @enderror
+                            <label for="alamat_toko">Alamat Toko<span class="text-danger"> *</span></label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3 form-floating">
+                            <input type="text" name="kontak" id="kontak" class="form-control @error('kontak')is-invalid @enderror" value="{{ old('kontak') }}" placeholder="Masukan Nama Toko">
+                            @error('kontak')
+                            <div class="invalid-feedback">
+                                {{ $message }}
                             </div>
-                        </form>
+                            @enderror
+                            <label class="text-label" for="kontak">Informasi Kontak<span class="text-danger"> *</span></label>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary me-md-2" type="button">Edit Data Setting</button>
                     </div>
                 </div>
             </div>

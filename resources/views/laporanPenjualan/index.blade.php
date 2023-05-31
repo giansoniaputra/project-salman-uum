@@ -44,11 +44,11 @@
                     <div class="col-12 mt-5">
                         <form action="/penjualanDate" method="post">
                             @csrf
-                            <label class="text-label" for="laporan_pertanggal">Laporan Penjualan Pertanggal</label>
-                            <div class="input-daterange input-group mt-2">
-                                <input type="date" class="date-picker form-control" name="tanggal_awal" placeholder="Tanggal Awal" required>
+                            <label class="text-label mb-2" for="laporan_pertanggal">Laporan Penjualan Pertanggal</label>
+                            <div class="input-daterange input-group" id="laporan_pertanggal">
+                                <input type="text" class="form-control" name="start" placeholder="Tanggal Awal" />
                                 <span class="mx-2"></span>
-                                <input type="date" class="date-picker form-control" name="tanggal_akhir" placeholder="Tanggal Akhir" required>
+                                <input type="text" class="form-control" name="end" placeholder="Tanggal Akhir" />
                                 <span class="mx-2"></span>
                                 <button class="btn btn-primary rounded-md-bottom-start rounded-md-top-start" type="submit">
                                     <i data-acorn-icon="download" data-acorn-size="18"></i>
@@ -105,6 +105,4 @@
         </div>
     </div>
 </div>
-
-<script src="/page-script/pembelian.js"></script>
 @endsection
