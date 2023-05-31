@@ -109,7 +109,7 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('i', 'Laporan Penjualan Cash (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'false');
+        $this->pdf->Output('Laporan Penjualan Cash (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'D');
     }
 
     public function cetak_day(Request $request)
@@ -159,7 +159,7 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('i', 'Laporan Penjualan Cash Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'false');
+        $this->pdf->Output('Laporan Penjualan Cash Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'D');
     }
 
     public function cetak_week(Request $request)
@@ -216,6 +216,6 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('i', 'Laporan Penjualan Cash (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'false');
+        $this->pdf->Output('Laporan Penjualan Cash (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'D');
     }
 }
