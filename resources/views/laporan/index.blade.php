@@ -81,7 +81,7 @@
                     <div class="col-12 mt-5">
                         <label class="text-label" for="laporan_pertanggal">Laporan Penjualan Hari Ini</label>
                         <div class="input-daterange input-group mt-2">
-                            <a href="/penjualanDay" class="btn btn-primary rounded-md-bottom-start rounded-md-top-start">
+                            <a href="/penjualanDay" target="_blank" class="btn btn-primary rounded-md-bottom-start rounded-md-top-start">
                                 <i data-acorn-icon="download" data-acorn-size="18"></i>
                                 PDF
                             </a>
