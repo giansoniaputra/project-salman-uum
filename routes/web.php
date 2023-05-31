@@ -137,3 +137,7 @@ Route::get('/penjualanDay', [PDFController::class, 'cetak_day'])->middleware('au
 Route::get('/penjualanDay', [PDFController::class, 'cetak_day'])->middleware('auth');
 //Penjualan Minggu Ini
 Route::get('/penjualanWeek', [PDFController::class, 'cetak_week'])->middleware('auth');
+//Penjualan BUlan Ini
+Route::get('/penjualanMonth', [PDFController::class, 'cetak_month'])->middleware('auth');
+//Penjualan Bulan Ini(Select)
+Route::post('penjualanSelectMonth', [PDFController::class, 'cetak_select_month'])->middleware('auth');
