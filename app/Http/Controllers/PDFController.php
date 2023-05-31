@@ -61,10 +61,8 @@ class PDFController extends Controller
 
     public function cetak_penjualan_cash_date(Request $request)
     {
-        $t_awal = explode('/', $request->tanggal_awal);
-        $t_akhir = explode('/', $request->tanggal_akhir);
-        $tanggal_awal = implode('-', $t_awal);
-        $tanggal_akhir = implode('-', $t_akhir);
+        $tanggal_awal = $request->tanggal_awal;
+        $tanggal_akhir = $request->tanggal_akhir;
         $query_cash = Sele::data_pertanggal($tanggal_awal, $tanggal_akhir);
 
         $this->pdf->AddPage('P', 'A4');

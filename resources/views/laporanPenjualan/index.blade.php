@@ -45,10 +45,10 @@
                         <form action="/penjualanDate" method="post">
                             @csrf
                             <label class="text-label mb-2" for="laporan_pertanggal">Laporan Penjualan Pertanggal</label>
-                            <div class="input-daterange input-group" id="laporan_pertanggal">
-                                <input type="text" class="form-control" name="start" placeholder="Tanggal Awal" />
+                            <div class="input-daterange input-group">
+                                <input type="date" class="form-control" name="tanggal_awal" placeholder="Tanggal Awal" />
                                 <span class="mx-2"></span>
-                                <input type="text" class="form-control" name="end" placeholder="Tanggal Akhir" />
+                                <input type="date" class="form-control" name="tanggal_akhir" placeholder="Tanggal Akhir" />
                                 <span class="mx-2"></span>
                                 <button class="btn btn-primary rounded-md-bottom-start rounded-md-top-start" type="submit">
                                     <i data-acorn-icon="download" data-acorn-size="18"></i>
