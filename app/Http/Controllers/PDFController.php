@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Buy;
 use App\Models\Sele;
+use App\Models\Kredit;
 use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -89,7 +90,7 @@ class PDFController extends Controller
         $this->pdf->Cell(27, 7, 'Harga Jual', 1, '0', 'C', true);
         $this->pdf->Ln();
 
-        //isi data cash
+        //isi data kredit
         //Membuat kolom isi tabel
         $this->pdf->SetFont('Arial', '', '8');
         $this->pdf->SetFillColor(224, 235, 255);
@@ -106,8 +107,51 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        $this->pdf->Ln();
+        $this->pdf->Ln();
+
+        $query_kredit = Kredit::data_pertanggal($tanggal_awal, $tanggal_akhir);
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN KREDIT', '0', 1, 'C');
+
+        //periode laporan
+
+        $this->pdf->SetFont('Arial', '', '12');
+        $this->pdf->Cell(0, 12, 'Periode Laporan: ' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir), '0', 1, 'L');
+
+        //Membuat kolom judul tabel
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(8, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(32, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(40, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Harga Jual', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $no = 1;
+        foreach ($query_kredit as $row) {
+            $this->pdf->Cell(8, 7, $no++, 1, '0', 'C', true);
+            $this->pdf->Cell(32, 7, $row->nama, 1, '0', 'C', true);
+            $this->pdf->Cell(40, 7, $row->no_polisi, 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, $row->merek, 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, $row->type, 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah($row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Ln();
+        }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan Cash (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'D');
     }
 
     public function cetak_day(Request $request)
@@ -156,8 +200,51 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        $this->pdf->Ln();
+        $this->pdf->Ln();
+
+        $query_kredit = Kredit::data_hari_ini($hari_ini);;
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN KREDIT', '0', 1, 'C');
+
+        //periode laporan
+
+        $this->pdf->SetFont('Arial', '', '12');
+        $this->pdf->Cell(0, 12, 'Periode Laporan: ' . tanggal_hari($hari_ini), '0', 1, 'L');
+
+        //Membuat kolom judul tabel
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(8, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(32, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(40, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Harga Jual', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $no = 1;
+        foreach ($query_kredit as $row) {
+            $this->pdf->Cell(8, 7, $no++, 1, '0', 'C', true);
+            $this->pdf->Cell(32, 7, $row->nama, 1, '0', 'C', true);
+            $this->pdf->Cell(40, 7, $row->no_polisi, 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, $row->merek, 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, $row->type, 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah($row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Ln();
+        }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan Cash Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Penjualan Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'D');
     }
 
     public function cetak_week(Request $request)
@@ -207,8 +294,52 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+
+        $this->pdf->Ln();
+        $this->pdf->Ln();
+
+        $query_kredit = Kredit::data_minggu_ini();
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN KREDIT', '0', 1, 'C');
+
+        //periode laporan
+
+        $this->pdf->SetFont('Arial', '', '12');
+        $this->pdf->Cell(0, 12, 'Periode Laporan: ' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir), '0', 1, 'L');
+
+        //Membuat kolom judul tabel
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(8, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(32, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(40, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Harga Jual', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $no = 1;
+        foreach ($query_kredit as $row) {
+            $this->pdf->Cell(8, 7, $no++, 1, '0', 'C', true);
+            $this->pdf->Cell(32, 7, $row->nama, 1, '0', 'C', true);
+            $this->pdf->Cell(40, 7, $row->no_polisi, 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, $row->merek, 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, $row->type, 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah($row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Ln();
+        }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan Cash (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'D');
     }
 
     public function cetak_month(Request $request)
@@ -258,8 +389,52 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+
+        $this->pdf->Ln();
+        $this->pdf->Ln();
+
+        $query_kredit = Kredit::data_bulan_ini();
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN KREDIT', '0', 1, 'C');
+
+        //periode laporan
+
+        $this->pdf->SetFont('Arial', '', '12');
+        $this->pdf->Cell(0, 12, 'Periode Laporan: ' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir), '0', 1, 'L');
+
+        //Membuat kolom judul tabel
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(8, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(32, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(40, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Harga Jual', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $no = 1;
+        foreach ($query_kredit as $row) {
+            $this->pdf->Cell(8, 7, $no++, 1, '0', 'C', true);
+            $this->pdf->Cell(32, 7, $row->nama, 1, '0', 'C', true);
+            $this->pdf->Cell(40, 7, $row->no_polisi, 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, $row->merek, 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, $row->type, 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah($row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Ln();
+        }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan Cash (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'D');
     }
 
     public function cetak_select_month(Request $request)
@@ -321,8 +496,52 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+
+        $this->pdf->Ln();
+        $this->pdf->Ln();
+
+        $query_kredit = Kredit::data_bulan_ini();
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN KREDIT', '0', 1, 'C');
+
+        //periode laporan
+
+        $this->pdf->SetFont('Arial', '', '12');
+        $this->pdf->Cell(0, 12, 'Periode Laporan: ' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir), '0', 1, 'L');
+
+        //Membuat kolom judul tabel
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(8, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(32, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(40, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Harga Jual', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $no = 1;
+        foreach ($query_kredit as $row) {
+            $this->pdf->Cell(8, 7, $no++, 1, '0', 'C', true);
+            $this->pdf->Cell(32, 7, $row->nama, 1, '0', 'C', true);
+            $this->pdf->Cell(40, 7, $row->no_polisi, 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, $row->merek, 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, $row->type, 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah($row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Ln();
+        }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan Cash (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'D');
     }
     //CETAK PEMBELIAN
 
@@ -335,7 +554,7 @@ class PDFController extends Controller
         $this->pdf->AddPage('P', 'A4');
 
         $this->pdf->SetFont('Arial', 'B', '16');
-        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN CASH', '0', 1, 'C');
+        $this->pdf->Cell(0, 16, 'LAPORAN PEMBELIAN', '0', 1, 'C');
 
         //periode laporan
 
@@ -374,7 +593,7 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan Cash (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Pembelian (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'D');
     }
 
     public function cetak_day_buy(Request $request)
@@ -385,7 +604,7 @@ class PDFController extends Controller
         $this->pdf->AddPage('P', 'A4');
 
         $this->pdf->SetFont('Arial', 'B', '16');
-        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN CASH', '0', 1, 'C');
+        $this->pdf->Cell(0, 16, 'LAPORAN PEMBELIAN', '0', 1, 'C');
 
         //periode laporan
 
@@ -424,7 +643,7 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan Cash Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Pembelian Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'D');
     }
 
     public function cetak_week_buy(Request $request)
@@ -436,7 +655,7 @@ class PDFController extends Controller
         $this->pdf->AddPage('P', 'A4');
 
         $this->pdf->SetFont('Arial', 'B', '16');
-        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN CASH', '0', 1, 'C');
+        $this->pdf->Cell(0, 16, 'LAPORAN PEMBELIAN', '0', 1, 'C');
 
         //periode laporan
 
@@ -475,7 +694,7 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan Cash (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Pembelian (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'D');
     }
 
     public function cetak_month_buy(Request $request)
@@ -487,7 +706,7 @@ class PDFController extends Controller
         $this->pdf->AddPage('P', 'A4');
 
         $this->pdf->SetFont('Arial', 'B', '16');
-        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN CASH', '0', 1, 'C');
+        $this->pdf->Cell(0, 16, 'LAPORAN PEMBELIAN', '0', 1, 'C');
 
         //periode laporan
 
@@ -526,7 +745,7 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan Cash (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Pembelian (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'D');
     }
 
     public function cetak_select_month_buy(Request $request)
@@ -550,7 +769,7 @@ class PDFController extends Controller
         $this->pdf->AddPage('P', 'A4');
 
         $this->pdf->SetFont('Arial', 'B', '16');
-        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN CASH', '0', 1, 'C');
+        $this->pdf->Cell(0, 16, 'LAPORAN PEMBELIAN', '0', 1, 'C');
 
         //periode laporan
 
@@ -589,6 +808,6 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan Cash (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Pembelian (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'D');
     }
 }
