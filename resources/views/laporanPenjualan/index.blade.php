@@ -109,6 +109,4 @@
         </div>
     </div>
 </div>
-
-<script src="/page-script/pembelian.js"></script>
 @endsection

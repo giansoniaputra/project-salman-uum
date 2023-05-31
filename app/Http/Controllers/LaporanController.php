@@ -12,17 +12,25 @@ class LaporanController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Laporan | SMAC',
+            'title' => 'Laporan Penjualan | SMAC',
             'judul' => 'Laporan',
-            'breadcumb1' => 'Laporan',
+            'breadcumb1' => 'Laporan Penjualan',
             'breadcumb2' => 'Cetak Laporan',
         ];
-        return view('laporan.index', $data);
+        return view('laporanPenjualan.index', $data);
+    }
+    public function index_pembelian()
+    {
+        $data = [
+            'title' => 'Laporan Pembelian | SMAC',
+            'judul' => 'Laporan',
+            'breadcumb1' => 'Laporan Pembelian',
+            'breadcumb2' => 'Cetak Laporan',
+        ];
+        return view('laporanPembelian.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         //
