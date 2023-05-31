@@ -136,11 +136,20 @@ Route::get('/testCetak', [PDFController::class, 'testPDF'])->middleware('auth');
 Route::post('/penjualanDate', [PDFController::class, 'cetak_penjualan_cash_date'])->middleware('auth');
 //Penjualan Hari Ini
 Route::get('/penjualanDay', [PDFController::class, 'cetak_day'])->middleware('auth');
-//Penjualan Hari Ini
-Route::get('/penjualanDay', [PDFController::class, 'cetak_day'])->middleware('auth');
 //Penjualan Minggu Ini
 Route::get('/penjualanWeek', [PDFController::class, 'cetak_week'])->middleware('auth');
 //Penjualan BUlan Ini
 Route::get('/penjualanMonth', [PDFController::class, 'cetak_month'])->middleware('auth');
 //Penjualan Bulan Ini(Select)
 Route::post('penjualanSelectMonth', [PDFController::class, 'cetak_select_month'])->middleware('auth');
+
+//Pembelian Cash Berdasar tanggal
+Route::post('/pembelianDate', [PDFController::class, 'cetak_pembelian'])->middleware('auth');
+//Pembelian Hari Ini
+Route::get('/pembelianDay', [PDFController::class, 'cetak_day_buy'])->middleware('auth');
+//Pembelian Minggu Ini
+Route::get('/pembelianWeek', [PDFController::class, 'cetak_week_buy'])->middleware('auth');
+//Pembelian BUlan Ini
+Route::get('/pembelianMonth', [PDFController::class, 'cetak_month_buy'])->middleware('auth');
+//Pembelian Bulan Ini(Select)
+Route::post('pembelianSelectMonth', [PDFController::class, 'cetak_select_month_buy'])->middleware('auth');

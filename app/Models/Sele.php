@@ -67,4 +67,14 @@ class Sele extends Model
             ->orderBy('a.tanggal_jual', 'DESC');
         return $query->get();
     }
+
+    public static function data_bulan_ini_select($minggu_awal, $minggu_akhir)
+    {
+        $query = DB::table('seles as a')
+            ->join('buyers as b', 'a.buyer_id', '=', 'b.id')
+            ->join('bikes as c', 'a.bike_id', '=', 'c.id')
+            ->whereBetween('tanggal_jual', [$minggu_awal, $minggu_akhir])
+            ->orderBy('a.tanggal_jual', 'DESC');
+        return $query->get();
+    }
 }

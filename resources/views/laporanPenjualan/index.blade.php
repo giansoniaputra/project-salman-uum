@@ -46,9 +46,9 @@
                             @csrf
                             <label class="text-label mb-2" for="laporan_pertanggal">Laporan Penjualan Pertanggal</label>
                             <div class="input-daterange input-group">
-                                <input type="date" class="form-control" name="tanggal_awal" placeholder="Tanggal Awal" />
+                                <input type="date" class="form-control" name="tanggal_awal" placeholder="Tanggal Awal" required />
                                 <span class="mx-2"></span>
-                                <input type="date" class="form-control" name="tanggal_akhir" placeholder="Tanggal Akhir" />
+                                <input type="date" class="form-control" name="tanggal_akhir" placeholder="Tanggal Akhir" required />
                                 <span class="mx-2"></span>
                                 <button class="btn btn-primary rounded-md-bottom-start rounded-md-top-start" type="submit">
                                     <i data-acorn-icon="download" data-acorn-size="18"></i>
