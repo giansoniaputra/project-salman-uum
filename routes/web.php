@@ -127,4 +127,13 @@ Route::get('/dataTablesMaintenance', [MaintenanceController::class, 'dataTables'
 
 
 //CETAK PDF
+//test cetak
 Route::get('/testCetak', [PDFController::class, 'testPDF'])->middleware('auth');
+//Penjualan Cash Berdasar tanggal
+Route::post('/penjualanDate', [PDFController::class, 'cetak_penjualan_cash_date'])->middleware('auth');
+//Penjualan Hari Ini
+Route::get('/penjualanDay', [PDFController::class, 'cetak_day'])->middleware('auth');
+//Penjualan Hari Ini
+Route::get('/penjualanDay', [PDFController::class, 'cetak_day'])->middleware('auth');
+//Penjualan Minggu Ini
+Route::get('/penjualanWeek', [PDFController::class, 'cetak_week'])->middleware('auth');
