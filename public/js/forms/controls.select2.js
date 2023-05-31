@@ -29,7 +29,7 @@ class Select2Controls {
 
   // Basic single select2
   _initSelect2Basic() {
-    jQuery('#no_polisi').select2({placeholder: ''});
+    jQuery('#no_polisi').select2({placeholder: 'Pilih No Polisi'});
   }
 
   // Basic multiple select2
