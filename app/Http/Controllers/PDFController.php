@@ -244,7 +244,7 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'D');
+        $this->pdf->Output('i', 'Laporan Penjualan Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'true');
     }
 
     public function cetak_week(Request $request)
