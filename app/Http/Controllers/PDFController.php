@@ -151,7 +151,8 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'I');
+        exit;
     }
 
     public function cetak_day(Request $request)
@@ -243,8 +244,8 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_beli), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
-        // Simpan file PDF ke server
-        $this->pdf->Output('i', 'Laporan Penjualan Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'true');
+        $this->pdf->Output('Laporan Penjualan Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'I');
+        exit;
     }
 
     public function cetak_week(Request $request)
@@ -339,7 +340,8 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'I');
+        exit;
     }
 
     public function cetak_month(Request $request)
@@ -434,7 +436,8 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
+        exit;
     }
 
     public function cetak_select_month(Request $request)
@@ -541,7 +544,8 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
+        exit;
     }
     //CETAK PEMBELIAN
 
@@ -593,7 +597,8 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Pembelian (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Pembelian (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'I');
+        exit;
     }
 
     public function cetak_day_buy(Request $request)
@@ -643,7 +648,8 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Pembelian Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Pembelian Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'I');
+        exit;
     }
 
     public function cetak_week_buy(Request $request)
@@ -694,7 +700,8 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Pembelian (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Pembelian (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'I');
+        exit;
     }
 
     public function cetak_month_buy(Request $request)
@@ -745,7 +752,8 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Pembelian (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Pembelian (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
+        exit;
     }
 
     public function cetak_select_month_buy(Request $request)
@@ -808,6 +816,7 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
-        $this->pdf->Output('Laporan Pembelian (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'D');
+        $this->pdf->Output('Laporan Pembelian (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
+        exit;
     }
 }

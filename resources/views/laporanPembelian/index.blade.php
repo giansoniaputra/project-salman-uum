@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-12 mt-5">
                         <label class="text-label" for="laporan_perbulan">Laporan Pembelian Perbulan</label>
-                        <form action="/pembelianSelectMonth" method="post">
+                        <form action="/pembelianSelectMonth" method="post" target="_blank">
                             @csrf
                             <div class="input-group mt-2">
                                 <label class="input-group-text" for="inputGroupSelect01"><i class="bi-calendar2-month-fill icon-16 text-primary"></i></label>
@@ -42,7 +42,7 @@
                         </form>
                     </div>
                     <div class="col-12 mt-5">
-                        <form action="/pembelianDate" method="post">
+                        <form action="/pembelianDate" method="post" target="_blank">
                             @csrf
                             <label class="text-label mb-2" for="laporan_pertanggal">Laporan Pembelian Pertanggal</label>
                             <div class="input-daterange input-group">
@@ -77,7 +77,7 @@
                     <div class="col-12 mt-5">
                         <label class="text-label" for="laporan_pertanggal">Laporan Pembelian Minggu Ini</label>
                         <div class="input-daterange input-group mt-2">
-                            <a href="/pembelianWeek" class="btn btn-primary rounded-md-bottom-start rounded-md-top-start">
+                            <a href="/pembelianWeek" target="_blank" class="btn btn-primary rounded-md-bottom-start rounded-md-top-start">
                                 <i data-acorn-icon="download" data-acorn-size="18"></i>
                                 PDF
                             </a>
@@ -90,7 +90,7 @@
                     <div class="col-12 mt-5">
                         <label class="text-label" for="laporan_pertanggal">Laporan Pembelian Bulan Ini</label>
                         <div class="input-daterange input-group mt-2">
-                            <a href="/pembelianMonth" class="btn btn-primary rounded-md-bottom-start rounded-md-top-start">
+                            <a href="/pembelianMonth" target="_blank" class="btn btn-primary rounded-md-bottom-start rounded-md-top-start">
                                 <i data-acorn-icon="download" data-acorn-size="18"></i>
                                 PDF
                             </a>
