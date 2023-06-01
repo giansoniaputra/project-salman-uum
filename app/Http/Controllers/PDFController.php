@@ -45,7 +45,7 @@ class PDF extends Fpdf
 
         $this->SetY(-15);
         $this->SetFont('Arial', 'I', 8);
-        $this->Cell(0, 10, 'Halaman ' . $this->PageNo() . '/{nb}', 0, 0, 'C');
+        $this->Cell(0, 10, 'Halaman ' . $this->PageNo(), 0, 0, 'C');
     }
 }
 
@@ -107,8 +107,7 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
-        $this->pdf->Ln();
-        $this->pdf->Ln();
+        $this->pdf->AddPage('P', 'A4');
 
         $query_kredit = Kredit::data_pertanggal($tanggal_awal, $tanggal_akhir);
         $this->pdf->SetFont('Arial', 'B', '16');
@@ -201,8 +200,7 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
-        $this->pdf->Ln();
-        $this->pdf->Ln();
+        $this->pdf->AddPage('P', 'A4');
 
         $query_kredit = Kredit::data_hari_ini($hari_ini);;
         $this->pdf->SetFont('Arial', 'B', '16');
@@ -296,8 +294,7 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
 
-        $this->pdf->Ln();
-        $this->pdf->Ln();
+        $this->pdf->AddPage('P', 'A4');
 
         $query_kredit = Kredit::data_minggu_ini();
         $this->pdf->SetFont('Arial', 'B', '16');
@@ -392,8 +389,7 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
 
-        $this->pdf->Ln();
-        $this->pdf->Ln();
+        $this->pdf->AddPage('P', 'A4');
 
         $query_kredit = Kredit::data_bulan_ini();
         $this->pdf->SetFont('Arial', 'B', '16');
@@ -500,8 +496,7 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
 
-        $this->pdf->Ln();
-        $this->pdf->Ln();
+        $this->pdf->AddPage('P', 'A4');
 
         $query_kredit = Kredit::data_bulan_ini();
         $this->pdf->SetFont('Arial', 'B', '16');
