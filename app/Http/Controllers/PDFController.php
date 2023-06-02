@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Buy;
 use App\Models\Sele;
 use App\Models\Kredit;
+use App\Models\Setting;
 use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -13,6 +14,7 @@ class PDF extends Fpdf
 {
     public function Header()
     {
+        $profile = Setting::first();
         // Menambahkan Logo
         // $this->Image('/img/logo/smac%20white%20transparent.png', 10, 6, 20);
         // Menambahkan judul header
@@ -23,14 +25,14 @@ class PDF extends Fpdf
         $this->SetFont('Arial', 'B', 18);
         $this->SetTextColor(0, 0, 0);
         $this->Cell(30);
-        $this->Cell(140, 9, 'RIFFAT JAYA MOTOR', 0, 1, 'C');
+        $this->Cell(140, 9, $profile->nama_toko, 0, 1, 'C');
 
         $this->SetFont('Arial', '', 10);
         $this->SetTextColor(0);
         $this->Cell(30);
-        $this->Cell(140, 5, 'Al-Misbah, Gg. Pesantren Jl. Cieunteung No.28, Cilembang, Kec. Cihideung', 0, 1, 'C');
+        $this->Cell(140, 5, $profile->alamat_toko, 0, 1, 'C');
         $this->Cell(30);
-        $this->Cell(140, 5, 'Kota Tasikmalaya, Jawa Barat 46122', 0, 1, 'C');
+        $this->Cell(140, 5, 'Telp: ' . $profile->kontak, 0, 1, 'C');
 
         // Menambahkan garis header
         $this->SetLineWidth(1);
