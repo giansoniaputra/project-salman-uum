@@ -15,7 +15,7 @@
                     @csrf
                     <div class="row g-3">
                         <div class="col-md-12">
-                            <div class="mb-3 form-floating">
+                            <div class="form-floating">
                                 <input type="text" name="nama_toko" id="nama_toko" class="form-control @error('nama_toko')is-invalid @enderror" value="{{ old('nama_toko') }}" placeholder="Masukan Nama Toko">
                                 @error('nama_toko')
                                 <div class="invalid-feedback">
@@ -27,6 +27,17 @@
                         </div>
                         <div class="col-md-12">
                             <div class="mb-3 form-floating">
+                                <input type="text" name="nama_pemilik" id="nama_pemilik" class="form-control @error('nama_pemilik')is-invalid @enderror" value="{{ old('nama_pemilik') }}" placeholder="Masukan Nama Pemilik">
+                                @error('nama_pemilik')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                                <label class="text-label" for="nama_pemilik">Nama Pemilik<span class="text-danger"> *</span></label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3 form-floating">
                                 <textarea class="form-control @error('alamat_toko')is-invalid @enderror" rows="3" name="alamat_toko" id="alamat_toko" placeholder="Masukan Alamat Nasabah">{{ old('alamat_toko') }}</textarea>
                                 @error('alamat_toko')
                                 <div class="invalid-feedback">
@@ -34,6 +45,17 @@
                                 </div>
                                 @enderror
                                 <label for="alamat_toko">Alamat Toko<span class="text-danger"> *</span></label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3 form-floating">
+                                <input type="text" name="kota" id="kota" class="form-control @error('kota')is-invalid @enderror" value="{{ old('kota', $setting->kota) }}" placeholder="Masukan Nama Kota">
+                                @error('kota')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                                <label class="text-label" for="kota">Kota<span class="text-danger"> *</span></label>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -58,7 +80,7 @@
                     @method('PUT')
                     <div class="row g-3">
                         <div class="col-md-12">
-                            <div class="mb-3 form-floating">
+                            <div class="form-floating">
                                 <input type="text" name="nama_toko" id="nama_toko" class="form-control @error('nama_toko')is-invalid @enderror" value="{{ old('nama_toko', $setting->nama_toko) }}" placeholder="Masukan Nama Toko">
                                 @error('nama_toko')
                                 <div class="invalid-feedback">
@@ -70,30 +92,51 @@
                         </div>
                         <div class="col-md-12">
                             <div class="mb-3 form-floating">
-                                <textarea class="form-control @error('alamat_toko')is-invalid @enderror" rows="3" name="alamat_toko" id="alamat_toko" placeholder="Masukan Alamat Nasabah">{{ old('alamat_toko', $setting->alamat_toko) }}</textarea>
-                                @error('alamat_toko')
+                                <input type="text" name="nama_pemilik" id="nama_pemilik" class="form-control @error('nama_pemilik')is-invalid @enderror" value="{{ old('nama_pemilik') }}" placeholder="Masukan Nama Pemilik">
+                                @error('nama_pemilik')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
-                                <label for="alamat_toko">Alamat Toko<span class="text-danger"> *</span></label>
+                                <label class="text-label" for="nama_pemilik">Nama Pemilik<span class="text-danger"> *</span></label>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="mb-3 form-floating">
-                                <input type="text" name="kontak" id="kontak" class="form-control @error('kontak')is-invalid @enderror" value="{{ old('kontak', $setting->kontak) }}" placeholder="Masukan Nama Toko">
-                                @error('kontak')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
+                            <div class="col-md-12">
+                                <div class="mb-3 form-floating">
+                                    <textarea class="form-control @error('alamat_toko')is-invalid @enderror" rows="3" name="alamat_toko" id="alamat_toko" placeholder="Masukan Alamat Toko">{{ old('alamat_toko', $setting->alamat_toko) }}</textarea>
+                                    @error('alamat_toko')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                    <label for="alamat_toko">Alamat Toko<span class="text-danger"> *</span></label>
                                 </div>
-                                @enderror
-                                <label class="text-label" for="kontak">Informasi Kontak<span class="text-danger"> *</span></label>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3 form-floating">
+                                    <input type="text" name="kota" id="kota" class="form-control @error('kota')is-invalid @enderror" value="{{ old('kota', $setting->kota) }}" placeholder="Masukan Nama Kota">
+                                    @error('kota')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                    <label class="text-label" for="kota">Kota<span class="text-danger"> *</span></label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3 form-floating">
+                                    <input type="text" name="kontak" id="kontak" class="form-control @error('kontak')is-invalid @enderror" value="{{ old('kontak', $setting->kontak) }}" placeholder="Masukan Informasi Kontak">
+                                    @error('kontak')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                    <label class="text-label" for="kontak">Informasi Kontak<span class="text-danger"> *</span></label>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button class="btn btn-primary me-md-2" type="submit">Edit Data Setting</button>
                             </div>
                         </div>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary me-md-2" type="submit">Edit Data Setting</button>
-                        </div>
-                    </div>
                 </form>
                 @endif
             </div>
