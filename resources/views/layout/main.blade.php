@@ -1,3 +1,4 @@
+<?php use App\Models\Setting; ?>
 <!DOCTYPE html>
 <html lang="en" data-footer="true" data-override='{"attributes": {"placement": "vertical" }}'>
 <head>
@@ -80,7 +81,7 @@
                     {{-- <!-- Or added via css to provide different ones for different color themes -->
                     <div class="img"></div> --}}
                 </a>
-                <h6 class="cta-4 mt-1 text-white">Riffat Jaya Motor - TSM</h6>
+                <h6 class="cta-4 mt-1 text-white">{{ ucwords(strtolower(Setting::first()->nama_toko)) }}</h6>
 
                 <!-- Logo End -->
 
