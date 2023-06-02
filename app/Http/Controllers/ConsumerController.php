@@ -77,10 +77,15 @@ class ConsumerController extends Controller
     {
         if ($request->ajax()) {
             $query = Consumer::where('penjual', 'INDIVIDU')->get();
+            // foreach ($query as $row) {
+            //     $alamat = explode(' ', $row->alamat);
+            //     $alamat2 = $alamat[0] . ' ' . $alamat[1];
+            //     $row->alamat = $alamat2;
+            // }
             return DataTables::of($query)->addColumn('action', function ($row) {
                 $actionButton = '
-                <button class="btn btn-rounded btn-sm btn-info info-button-ktp" data-ktp="' . $row->photo_ktp . '">Foto KTP</button>
-                <button class="btn btn-rounded btn-sm btn-primary info-button-individu" data-id="' . $row->id . '">Riwayat Penjualan</button>
+                <button class="btn btn-rounded btn-sm btn-info info-button-ktp" data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat Foto KTP" data-ktp="' . $row->photo_ktp . '"><i class="bi-person-badge"></i></button>
+                <button class="btn btn-rounded btn-sm btn-primary info-button-individu" data-bs-toggle="tooltip" data-bs-placement="top" title="Riwayat Penjualan" data-id="' . $row->id . '"><i class="bi-journal-text"></i></button>
                 ';
                 return $actionButton;
             })->make(true);
@@ -92,8 +97,7 @@ class ConsumerController extends Controller
         if ($request->ajax()) {
             $query = Consumer::where('penjual', 'DEALER')->get();
             return DataTables::of($query)->addColumn('action', function ($row) {
-                $actionButton = '<button class="btn btn-rounded btn-sm btn-primary info-button-dealer" data-id="' . $row->id . '">
-            Riwayat Penjualan</button>';
+                $actionButton = '<button class="btn btn-rounded btn-sm btn-primary info-button-dealer" data-bs-toggle="tooltip" data-bs-placement="top" title="Riwayat Penjualan" data-id="' . $row->id . '"><i class="bi-journal-text"></i></button>';
                 return $actionButton;
             })->make(true);
         }
