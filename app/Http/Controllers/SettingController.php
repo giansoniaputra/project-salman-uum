@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setting;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SettingController extends Controller
 {
@@ -11,12 +14,17 @@ class SettingController extends Controller
      */
     public function index()
     {
+        $count = Setting::count();
         $data = [
             'title' => 'Setting | SMAC',
             'judul' => 'Setting',
             'breadcumb1' => 'Setting',
             'breadcumb2' => 'Detail Setting',
+            'count' => $count
         ];
+        if ($count > 0) {
+            $data['setting'] = Setting::first();
+        }
         return view('setting.index', $data);
     }
 
@@ -25,7 +33,6 @@ class SettingController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -33,13 +40,34 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'nama_toko' => 'required',
+            'alamat_toko' => 'required',
+        ];
+        $pesan = [
+            'nama_toko.required' => 'Nama toko tidak boleh kosong',
+            'alamat_toko.required' => 'Nama toko tidak boleh kosong',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $pesan);
+        if ($validator->fails()) {
+            return redirect()->back()->with('pesan2', 'Silahkan input data yang benar')->withErrors($validator);
+        } else {
+            $data = [
+                'unique' => Str::orderedUuid(),
+                'nama_toko' => strtoupper($request->nama_toko),
+                'alamat_toko' => ucwords(strtolower($request->alamat_toko)),
+                'kontak' => $request->kontak,
+            ];
+            Setting::create($data);
+            return redirect('/setting')->with('pesan', 'Data berhasil ditambahkan');
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Setting $setting)
     {
         //
     }
@@ -47,7 +75,7 @@ class SettingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Setting $setting)
     {
         //
     }
@@ -55,15 +83,35 @@ class SettingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Setting $setting)
     {
-        //
+        $rules = [
+            'nama_toko' => 'required',
+            'alamat_toko' => 'required',
+        ];
+        $pesan = [
+            'nama_toko.required' => 'Nama toko tidak boleh kosong',
+            'alamat_toko.required' => 'Nama toko tidak boleh kosong',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $pesan);
+        if ($validator->fails()) {
+            return redirect()->back()->with('pesan2', 'Silahkan input data yang benar')->withErrors($validator);
+        } else {
+            $data = [
+                'nama_toko' => strtoupper($request->nama_toko),
+                'alamat_toko' => ucwords(strtolower($request->alamat_toko)),
+                'kontak' => $request->kontak,
+            ];
+            Setting::where('unique', $setting->unique)->update($data);
+            return redirect('/setting')->with('pesan', 'Data berhasil diupdate');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Setting $setting)
     {
         //
     }
