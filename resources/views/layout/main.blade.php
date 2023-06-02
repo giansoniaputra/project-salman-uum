@@ -47,6 +47,10 @@
     <link rel="stylesheet" href="/css/vendor/select2.min.css" />
 
     <link rel="stylesheet" href="/css/vendor/select2-bootstrap4.min.css" />
+
+    {{-- CROPPER --}}
+    <link rel="stylesheet" href="/css/cropper/cropper.min.css">
+    <script src="/js/cropper/cropper.min.js"></script>
     <!-- Vendor Styles End -->
 
     <link rel="stylesheet" href="/css/vendor/datatables.min.css" />
