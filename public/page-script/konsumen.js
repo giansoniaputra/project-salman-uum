@@ -36,7 +36,7 @@ $(document).ready(function () {
             {
                 data: "action",
             },
-        ],
+        ], 
         columnDefs: [
             {
                 targets: [5], // index kolom atau sel yang ingin diatur

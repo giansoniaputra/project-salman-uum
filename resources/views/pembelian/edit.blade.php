@@ -46,7 +46,7 @@
                                     <input type="hidden" name="oldKTP" value="{{ $consumer->photo_ktp }}">
                                 </div>
                                 <div id="data_konsumen" class="tab-pane" role="tabpanel">
-                                    <input type="hidden" name="penjual" id="penjual" value="{{ $consumer->penjual }}">
+                                    {{-- <input type="hidden" name="penjual" id="penjual" value="{{ $consumer->penjual }}"> --}}
                                     @if ($consumer->penjual == 'INDIVIDU')
                                     <div class="row">
                                         <div class="form-floating mb-3 col-md-6">

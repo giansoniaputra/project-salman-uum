@@ -17,7 +17,7 @@
                             <div class="d-flex align-items-center lh-1-25">Jumlah Asset</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="cta-2 text-primary">22</div>
+                            <div class="cta-2 text-primary">null</div>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                             <div class="d-flex align-items-center lh-1-25">Penjualan Tahun Ini</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="cta-2 text-primary">35</div>
+                            <div class="cta-2 text-primary">null</div>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                             <div class="d-flex align-items-center lh-1-25">Penjualan Bulan Ini</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="cta-2 text-primary">14</div>
+                            <div class="cta-2 text-primary">null</div>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                             <div class="d-flex align-items-center lh-1-25">Penjualan Hari Ini</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="cta-2 text-primary">3</div>
+                            <div class="cta-2 text-primary">null</div>
                         </div>
                     </div>
                 </div>
