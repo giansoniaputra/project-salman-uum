@@ -11,6 +11,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ConsumerController;
+use App\Http\Controllers\KwitansiController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\MaintenanceController;
@@ -142,6 +143,10 @@ Route::get('/penjualanWeek', [PDFController::class, 'cetak_week'])->middleware('
 Route::get('/penjualanMonth', [PDFController::class, 'cetak_month'])->middleware('auth');
 //Penjualan Bulan Ini(Select)
 Route::post('penjualanSelectMonth', [PDFController::class, 'cetak_select_month'])->middleware('auth');
+
+
+// CETAK KWITANSI
+Route::get('/kwitansi', [KwitansiController::class, 'cetak_kwitansi'])->middleware('auth');
 
 //Pembelian Cash Berdasar tanggal
 Route::post('/pembelianDate', [PDFController::class, 'cetak_pembelian'])->middleware('auth');
