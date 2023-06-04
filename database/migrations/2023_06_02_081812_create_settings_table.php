@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->uuid('unique')->unique();
             $table->string('nama_toko');
+            $table->string('nama_pemilik');
             $table->string('alamat_toko');
+            $table->string('kota');
             $table->string('kontak')->nullable();
             $table->timestamps();
         });

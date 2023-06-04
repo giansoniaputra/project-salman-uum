@@ -519,6 +519,31 @@
         </div>
     </div>
 </div>
+{{-- Modal Cetak Kwitansi --}}
+<div class="modal fade" id="cetak_kwitansi" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Masukan Nama Leasing</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/kwitansi" method="post" target="_blank">
+                @csrf
+                <div class="modal-body">
+                    <input type="hidden" name="unique" id="unique">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="nama_leasing" id="nama_leasing" required>
+                        <label for="nama_leasing">Nama Leasing</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-secondary btn-kwitansi">Cetak Kwitansi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
 {{-- Simple Money Format --}}
 <script src="/page-script/simple.money.format.js"></script>

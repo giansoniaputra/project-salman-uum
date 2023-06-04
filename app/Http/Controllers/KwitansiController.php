@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kredit;
+use App\Models\Setting;
 use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
 
@@ -17,6 +19,9 @@ class KwitansiController extends Controller
 
     public function cetak_kwitansi(Request $request)
     {
+        $data = Kredit::get_data($request->unique);
+        $setting = Setting::first();
+
         $this->pdf->AddPage('P', 'A4');
         $this->pdf->SetFont('Arial', 'B', '8');
         $this->pdf->SetFillColor(255, 255, 255);
@@ -63,21 +68,21 @@ class KwitansiController extends Controller
         // KWITANSI PELUNASAN (DATA)
         $this->pdf->SetFont('Arial', '', '8');
         $this->pdf->SetXY(62, 17);
-        $this->pdf->MultiCell(130, 5, ": Telah diterima dari", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $request->nama_leasing, 0, 'L',  true);
         $this->pdf->SetXY(62, 22);
-        $this->pdf->MultiCell(130, 5, ": Jumlah", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . rupiah($data->pencairan), 0, 'L',  true);
         $this->pdf->SetXY(62, 27);
-        $this->pdf->MultiCell(130, 5, ": Terbilang", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . terbilang($data->pencairan), 0, 'L',  true);
         $this->pdf->SetXY(62, 32);
-        $this->pdf->MultiCell(130, 5, ": Untuk Pembayaran", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": Pelunasan", 0, 'L',  true);
         $this->pdf->SetXY(62, 37);
-        $this->pdf->MultiCell(130, 5, ": No Rangka", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_rangka, 0, 'L',  true);
         $this->pdf->SetXY(62, 42);
-        $this->pdf->MultiCell(130, 5, ": No Mesin", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": ", 0, 'L',  true);
         $this->pdf->SetXY(130, 48);
-        $this->pdf->MultiCell(30, 5, "Tasikmalaya,", 0, 'L',  true);
+        $this->pdf->MultiCell(30, 5, $setting->kota . ",", 0, 'L',  true);
         $this->pdf->SetXY(130, 68);
-        $this->pdf->MultiCell(30, 5, "Gian Sonia,", 0, 'L',  true);
+        $this->pdf->MultiCell(30, 5, $setting->nama_pemilik, 0, 'L',  true);
 
         // KWITANSI UANG MUKA
         $this->pdf->SetFont('Arial', 'U', '10');
@@ -100,21 +105,21 @@ class KwitansiController extends Controller
         // KWITANSI UANG MUKA (DATA)
         $this->pdf->SetFont('Arial', '', '8');
         $this->pdf->SetXY(62, 84);
-        $this->pdf->MultiCell(130, 5, ": Telah diterima dari", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $data->nama, 0, 'L',  true);
         $this->pdf->SetXY(62, 89);
-        $this->pdf->MultiCell(130, 5, ": Jumlah", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . rupiah($data->dp), 0, 'L',  true);
         $this->pdf->SetXY(62, 94);
-        $this->pdf->MultiCell(130, 5, ": Terbilang", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . terbilang($data->dp), 0, 'L',  true);
         $this->pdf->SetXY(62, 99);
-        $this->pdf->MultiCell(130, 5, ": Untuk Pembayaran", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": Uang Muka", 0, 'L',  true);
         $this->pdf->SetXY(62, 104);
-        $this->pdf->MultiCell(130, 5, ": No Rangka", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_rangka, 0, 'L',  true);
         $this->pdf->SetXY(62, 109);
-        $this->pdf->MultiCell(130, 5, ": No Mesin", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": ", 0, 'L',  true);
         $this->pdf->SetXY(130, 115);
-        $this->pdf->MultiCell(30, 5, "Tasikmalaya,", 0, 'L',  true);
+        $this->pdf->MultiCell(30, 5, $setting->kota . ",", 0, 'L',  true);
         $this->pdf->SetXY(130, 135);
-        $this->pdf->MultiCell(30, 5, "Gian Sonia,", 0, 'L',  true);
+        $this->pdf->MultiCell(30, 5, $setting->nama_pemilik, 0, 'L',  true);
 
         // KWITANSI SUBSIDI
         $this->pdf->SetFont('Arial', 'U', '10');
@@ -134,24 +139,24 @@ class KwitansiController extends Controller
         $this->pdf->SetXY(19, 176);
         $this->pdf->MultiCell(50, 5, "No Mesin", 0, 'L',  true);
 
-        // KWITANSI UANG MUKA (DATA)
+        // KWITANSI SUBSIDI (DATA)
         $this->pdf->SetFont('Arial', '', '8');
         $this->pdf->SetXY(62, 151);
-        $this->pdf->MultiCell(130, 5, ": Telah diterima dari", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $request->nama_leasing, 0, 'L',  true);
         $this->pdf->SetXY(62, 156);
-        $this->pdf->MultiCell(130, 5, ": Jumlah", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . rupiah($data->komisi), 0, 'L',  true);
         $this->pdf->SetXY(62, 161);
-        $this->pdf->MultiCell(130, 5, ": Terbilang", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . terbilang($data->komisi), 0, 'L',  true);
         $this->pdf->SetXY(62, 166);
-        $this->pdf->MultiCell(130, 5, ": Untuk Pembayaran", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": Subsidi", 0, 'L',  true);
         $this->pdf->SetXY(62, 171);
-        $this->pdf->MultiCell(130, 5, ": No Rangka", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_rangka, 0, 'L',  true);
         $this->pdf->SetXY(62, 176);
-        $this->pdf->MultiCell(130, 5, ": No Mesin", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": ", 0, 'L',  true);
         $this->pdf->SetXY(130, 182);
-        $this->pdf->MultiCell(30, 5, "Tasikmalaya,", 0, 'L',  true);
+        $this->pdf->MultiCell(30, 5, $setting->kota . ",", 0, 'L',  true);
         $this->pdf->SetXY(130, 202);
-        $this->pdf->MultiCell(30, 5, "Gian Sonia,", 0, 'L',  true);
+        $this->pdf->MultiCell(30, 5, $setting->nama_pemilik, 0, 'L',  true);
 
         // SURAT JALAN
         $this->pdf->SetXY(18, 211);
@@ -181,21 +186,21 @@ class KwitansiController extends Controller
         // SURAT JALAN (DATA)
         $this->pdf->SetFont('Arial', '', '8');
         $this->pdf->SetXY(62, 224);
-        $this->pdf->MultiCell(130, 5, ": Telah diterima dari", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $data->nama, 0, 'L',  true);
         $this->pdf->SetXY(62, 229);
-        $this->pdf->MultiCell(130, 5, ": Jumlah", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $data->alamat, 0, 'L',  true);
         $this->pdf->SetXY(62, 234);
-        $this->pdf->MultiCell(130, 5, ": Terbilang", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $data->merek . "/" . $data->type . "/" . $data->warna . "/" . $data->tahun_pembuatan, 0, 'L',  true);
         $this->pdf->SetXY(62, 239);
-        $this->pdf->MultiCell(130, 5, ": Untuk Pembayaran", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": Surat Jalan", 0, 'L',  true);
         $this->pdf->SetXY(62, 244);
-        $this->pdf->MultiCell(130, 5, ": No Rangka", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_rangka, 0, 'L',  true);
         $this->pdf->SetXY(62, 249);
-        $this->pdf->MultiCell(130, 5, ": No Mesin", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": ", 0, 'L',  true);
         $this->pdf->SetXY(130, 255);
         $this->pdf->MultiCell(30, 5, "Hormat Kami,", 0, 'L',  true);
         $this->pdf->SetXY(130, 270);
-        $this->pdf->MultiCell(30, 5, "Gian Sonia,", 0, 'L',  true);
+        $this->pdf->MultiCell(30, 5, $setting->nama_pemilik, 0, 'L',  true);
         $this->pdf->SetXY(29, 255);
         $this->pdf->MultiCell(30, 5, "Yang Menerima,", 0, 'L',  true);
         // $this->pdf->SetXY(29, 270);

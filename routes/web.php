@@ -146,7 +146,7 @@ Route::post('penjualanSelectMonth', [PDFController::class, 'cetak_select_month']
 
 
 // CETAK KWITANSI
-Route::get('/kwitansi', [KwitansiController::class, 'cetak_kwitansi'])->middleware('auth');
+Route::post('/kwitansi', [KwitansiController::class, 'cetak_kwitansi'])->middleware('auth');
 
 //Pembelian Cash Berdasar tanggal
 Route::post('/pembelianDate', [PDFController::class, 'cetak_pembelian'])->middleware('auth');

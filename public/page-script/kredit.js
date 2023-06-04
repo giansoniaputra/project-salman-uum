@@ -605,6 +605,24 @@ $(document).ready(function () {
         });
     });
 
+    //CERTAK KWINTASI
+    $("#datatableBoxed_penjualan_kredit").on(
+        "click",
+        ".cetak-button-kwitansi",
+        function () {
+            $("#nama_leasing").val("");
+            let unique = $(this).attr("data-unique");
+            $("#unique").val(unique);
+            $("#cetak_kwitansi").modal("show");
+        }
+    );
+
+    $(".btn-kwitansi").on("click", function () {
+        if ($("#nama_leasing").val() != "") {
+            $("#cetak_kwitansi").modal("hide");
+        }
+    });
+
     //Action Retur
     $("#datatableBoxed_penjualan_kredit").on(
         "click",

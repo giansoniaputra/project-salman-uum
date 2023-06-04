@@ -92,7 +92,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="mb-3 form-floating">
-                                <input type="text" name="nama_pemilik" id="nama_pemilik" class="form-control @error('nama_pemilik')is-invalid @enderror" value="{{ old('nama_pemilik') }}" placeholder="Masukan Nama Pemilik">
+                                <input type="text" name="nama_pemilik" id="nama_pemilik" class="form-control @error('nama_pemilik')is-invalid @enderror" value="{{ old('nama_pemilik', $setting->nama_pemilik) }}" placeholder="Masukan Nama Pemilik">
                                 @error('nama_pemilik')
                                 <div class="invalid-feedback">
                                     {{ $message }}

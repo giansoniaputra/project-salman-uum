@@ -42,11 +42,15 @@ class SettingController extends Controller
     {
         $rules = [
             'nama_toko' => 'required',
+            'nama_pemilik' => 'required',
+            'kota' => 'required',
             'alamat_toko' => 'required',
         ];
         $pesan = [
             'nama_toko.required' => 'Nama toko tidak boleh kosong',
+            'nama_pemilik.required' => 'Nama pemilik tidak boleh kosong',
             'alamat_toko.required' => 'Nama toko tidak boleh kosong',
+            'kota.required' => 'Kota tidak boleh kosong',
         ];
 
         $validator = Validator::make($request->all(), $rules, $pesan);
@@ -56,7 +60,9 @@ class SettingController extends Controller
             $data = [
                 'unique' => Str::orderedUuid(),
                 'nama_toko' => strtoupper($request->nama_toko),
+                'nama_pemilik' => ucwords(strtolower($request->nama_pemilik)),
                 'alamat_toko' => ucwords(strtolower($request->alamat_toko)),
+                'kota' => ucwords(strtolower($request->kota)),
                 'kontak' => $request->kontak,
             ];
             Setting::create($data);
@@ -87,11 +93,15 @@ class SettingController extends Controller
     {
         $rules = [
             'nama_toko' => 'required',
+            'nama_pemilik' => 'required',
+            'kota' => 'required',
             'alamat_toko' => 'required',
         ];
         $pesan = [
             'nama_toko.required' => 'Nama toko tidak boleh kosong',
+            'nama_pemilik.required' => 'Nama pemilik tidak boleh kosong',
             'alamat_toko.required' => 'Nama toko tidak boleh kosong',
+            'kota.required' => 'Kota tidak boleh kosong',
         ];
 
         $validator = Validator::make($request->all(), $rules, $pesan);
@@ -100,7 +110,9 @@ class SettingController extends Controller
         } else {
             $data = [
                 'nama_toko' => strtoupper($request->nama_toko),
+                'nama_pemilik' => ucwords(strtolower($request->nama_pemilik)),
                 'alamat_toko' => ucwords(strtolower($request->alamat_toko)),
+                'kota' => ucwords(strtolower($request->kota)),
                 'kontak' => $request->kontak,
             ];
             Setting::where('unique', $setting->unique)->update($data);
