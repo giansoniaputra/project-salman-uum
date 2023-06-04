@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('warna');
             $table->integer('tahun_pembuatan');
             $table->string('no_rangka');
+            $table->string('no_mesin');
             $table->string('bpkb');
             $table->string('nama_bpkb');
             $table->date('berlaku_sampai');

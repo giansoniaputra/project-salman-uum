@@ -194,6 +194,15 @@
                                 <label class="text-label" for="no_rangka">&nbsp;&nbsp;No Rangka<span class="text-danger"> *</label></span>
                             </div>
                             <div class="form-floating mb-3 col-md-6">
+                                <input type="text" name="no_mesin" id="no_mesin" class="form-control @error('no_mesin')is-invalid @enderror" value="{{ old('no_mesin') }}" placeholder="Masukan No Rangka">
+                                @error('no_mesin')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                                <label class="text-label" for="no_mesin">&nbsp;&nbsp;No Mesin<span class="text-danger"> *</label></span>
+                            </div>
+                            <div class="form-floating mb-3 col-md-6">
                                 <input type="text" name="no_polisi" id="no_polisi_input" class="form-control @error('no_polisi')is-invalid @enderror" value="{{ old('no_polisi') }}" placeholder="Masukan No Polisi">
                                 @error('no_polisi')
                                 <div class="invalid-feedback">

@@ -78,7 +78,7 @@ class KwitansiController extends Controller
         $this->pdf->SetXY(62, 37);
         $this->pdf->MultiCell(130, 5, ": " . $data->no_rangka, 0, 'L',  true);
         $this->pdf->SetXY(62, 42);
-        $this->pdf->MultiCell(130, 5, ": ", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_mesin, 0, 'L',  true);
         $this->pdf->SetXY(130, 48);
         $this->pdf->MultiCell(30, 5, $setting->kota . ",", 0, 'L',  true);
         $this->pdf->SetXY(130, 68);
@@ -115,7 +115,7 @@ class KwitansiController extends Controller
         $this->pdf->SetXY(62, 104);
         $this->pdf->MultiCell(130, 5, ": " . $data->no_rangka, 0, 'L',  true);
         $this->pdf->SetXY(62, 109);
-        $this->pdf->MultiCell(130, 5, ": ", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_mesin, 0, 'L',  true);
         $this->pdf->SetXY(130, 115);
         $this->pdf->MultiCell(30, 5, $setting->kota . ",", 0, 'L',  true);
         $this->pdf->SetXY(130, 135);
@@ -152,7 +152,7 @@ class KwitansiController extends Controller
         $this->pdf->SetXY(62, 171);
         $this->pdf->MultiCell(130, 5, ": " . $data->no_rangka, 0, 'L',  true);
         $this->pdf->SetXY(62, 176);
-        $this->pdf->MultiCell(130, 5, ": ", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_mesin, 0, 'L',  true);
         $this->pdf->SetXY(130, 182);
         $this->pdf->MultiCell(30, 5, $setting->kota . ",", 0, 'L',  true);
         $this->pdf->SetXY(130, 202);
@@ -196,7 +196,7 @@ class KwitansiController extends Controller
         $this->pdf->SetXY(62, 244);
         $this->pdf->MultiCell(130, 5, ": " . $data->no_rangka, 0, 'L',  true);
         $this->pdf->SetXY(62, 249);
-        $this->pdf->MultiCell(130, 5, ": ", 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_mesin, 0, 'L',  true);
         $this->pdf->SetXY(130, 255);
         $this->pdf->MultiCell(30, 5, "Hormat Kami,", 0, 'L',  true);
         $this->pdf->SetXY(130, 270);
