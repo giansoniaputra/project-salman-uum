@@ -82,6 +82,8 @@ Route::post('/rulesPenjualan', [PenjualanController::class, 'rules_penjualan'])-
 Route::post('/tambahPenjualan', [PenjualanController::class, 'tambah_data'])->middleware('auth');
 //Edit Penjualan
 Route::get('/ambilDataPenjualan', [PenjualanController::class, 'get_data'])->middleware('auth');
+//Edit Penjualan
+Route::get('/getDataSele', [PenjualanController::class, 'get_data_detail'])->middleware('auth');
 //Edit Penjualan Kredit
 Route::get('/getDataKredit', [KreditController::class, 'get_data'])->middleware('auth');
 //Update Penjualan
@@ -97,6 +99,8 @@ Route::get('/refresh_no_polisi', [PenjualanController::class, 'refresh_no_polisi
 
 // PENJUALAN KREDIT
 Route::resource('/kredit', KreditController::class)->middleware('auth');
+//Edit Penjualan
+Route::get('/getDataKredit', [KreditController::class, 'get_data'])->middleware('auth');
 
 // SETTING
 Route::resource('/setting', SettingController::class)->middleware('auth');

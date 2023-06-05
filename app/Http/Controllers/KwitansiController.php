@@ -192,11 +192,11 @@ class KwitansiController extends Controller
         $this->pdf->SetXY(62, 234);
         $this->pdf->MultiCell(130, 5, ": " . $data->merek . "/" . $data->type . "/" . $data->warna . "/" . $data->tahun_pembuatan, 0, 'L',  true);
         $this->pdf->SetXY(62, 239);
-        $this->pdf->MultiCell(130, 5, ": Surat Jalan", 0, 'L',  true);
-        $this->pdf->SetXY(62, 244);
         $this->pdf->MultiCell(130, 5, ": " . $data->no_rangka, 0, 'L',  true);
-        $this->pdf->SetXY(62, 249);
+        $this->pdf->SetXY(62, 244);
         $this->pdf->MultiCell(130, 5, ": " . $data->no_mesin, 0, 'L',  true);
+        $this->pdf->SetXY(62, 249);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_polisi, 0, 'L',  true);
         $this->pdf->SetXY(130, 255);
         $this->pdf->MultiCell(30, 5, "Hormat Kami,", 0, 'L',  true);
         $this->pdf->SetXY(130, 270);

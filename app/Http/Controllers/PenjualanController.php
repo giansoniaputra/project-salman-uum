@@ -207,6 +207,16 @@ class PenjualanController extends Controller
         return response()->json(['data' => $data]);
     }
 
+    public function get_data_detail(Request $request)
+    {
+        $data = DB::table('seles')
+            ->join('bikes', 'bikes.id', '=', 'seles.bike_id')
+            ->join('buyers', 'buyers.id', '=', 'seles.buyer_id')
+            ->where('seles.unique', $request->unique)
+            ->first();
+        return response()->json(['data' => $data]);
+    }
+
     /**
      * Update the specified resource in storage.
      */

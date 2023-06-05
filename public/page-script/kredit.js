@@ -623,6 +623,151 @@ $(document).ready(function () {
         }
     });
 
+    //Lihat Detail Penjualan
+    $("#datatableBoxed_penjualan_kredit").on(
+        "click",
+        ".info-button-kredit",
+        function () {
+            $("#modal-detail").modal("show");
+            $.ajax({
+                data: { unique: $(this).attr("data-unique") },
+                url: "/getDataKredit",
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    // console.log(response);
+                    //data pembeli
+                    $("#nik-detail").html(response.data.nik);
+                    $("#nama").html(response.data.nama);
+                    $("#no-telepon").html(response.data.no_telepon);
+                    $("#alamat-detail").html(response.data.alamat);
+                    $("#table_konsumen tbody").append(
+                        '<tr class="info-ktp"><td>Photo KTP</td><td>:</td><td><button data-img="/storage/ktp_pembeli/' +
+                            response.data.photo_ktp +
+                            '" class="btn btn-sm btn-primary rounded text-white look-img-ktp">Lihat Gambar</button></td></tr>'
+                    );
+
+                    //data motor
+                    $("#no-polisi-detail").html(response.data.no_polisi);
+                    $("#merk-detail").html(response.data.merek);
+                    $("#tipe").html(response.data.type);
+                    $("#warna-detail").html(response.data.warna);
+                    $("#tahun-pembuatan").html(response.data.tahun_pembuatan);
+                    $("#no-rangka").html(response.data.no_rangka);
+                    $("#bpkb").html(response.data.bpkb);
+                    $("#nama-bpkb").html(response.data.nama_bpkb);
+                    $("#berlaku-sampai").html(response.data.berlaku_sampai);
+                    $("#perpanjang-stnk").html(response.data.perpanjang_stnk);
+                    $("#foto-bpkb").html(
+                        '<button data-img="/storage/' +
+                            response.data.photo_bpkb +
+                            '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
+                    );
+                    $("#foto-stnk").html(
+                        '<button data-img="/storage/' +
+                            response.data.photo_stnk +
+                            '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
+                    );
+
+                    // data penjulana
+                    $("#tanggal-jual-detail").html(response.data.tanggal_jual);
+                    $("#otr-leasing").html(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.otr_leasing)
+                            .replace(/\./g, ",")
+                    );
+                    $("#dp-po").html(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.dp_po)
+                            .replace(/\./g, ",")
+                    );
+                    $("#dp-bayar").html(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.dp)
+                            .replace(/\./g, ",")
+                    );
+                    $("#pencairan-detail").html(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.pencairan)
+                            .replace(/\./g, ",")
+                    );
+                    $("#angsuran-detail").html(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.angsuran)
+                            .replace(/\./g, ",")
+                    );
+                    $("#tenor-detail").html(response.data.tenor + " Bulan");
+                    $("#komisi-tac").html(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.komisi)
+                            .replace(/\./g, ",")
+                    );
+                },
+            });
+        }
+    );
+
+    //Lihat Photo STNK
+    $("#modal-detail").on("click", ".look-img-stnk", function () {
+        let image = $(this).attr("data-img");
+        // alert(image);
+        $("#img-photo").html(
+            '<img src="' +
+                image +
+                '" alt="" class="img-fluid" style="width: 800px">'
+        );
+        $("#judul-modal-photo").html("Photo STNK");
+        $("#modal-image").modal("show");
+    });
+    //Lihat Foto BPKB
+    $("#modal-detail").on("click", ".look-img-bpkb", function () {
+        let image = $(this).attr("data-img");
+        // alert(image);
+        $("#img-photo").html(
+            '<img src="' +
+                image +
+                '" alt="" class="img-fluid" style="width: 800px">'
+        );
+        $("#judul-modal-photo").html("Photo BPKB");
+        $("#modal-image").modal("show");
+    });
+
+    $("#modal-detail").on("click", ".look-img-ktp", function () {
+        let image = $(this).attr("data-img");
+        // alert(image);
+        $("#img-photo").html(
+            '<img src="' +
+                image +
+                '" alt="" class="img-fluid" style="width: 800px">'
+        );
+        $("#judul-modal-photo").html("Photo KTP");
+        $("#modal-image").modal("show");
+    });
+
     //Action Retur
     $("#datatableBoxed_penjualan_kredit").on(
         "click",

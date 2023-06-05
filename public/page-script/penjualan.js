@@ -432,6 +432,102 @@ $(document).ready(function () {
             });
         }
     );
+    //Lihat Detail Penjualan
+    $("#datatableBoxed_penjualan_cash").on(
+        "click",
+        ".info-button-cash",
+        function () {
+            $("#modal-detail").modal("show");
+            $.ajax({
+                data: { unique: $(this).attr("data-unique") },
+                url: "/getDataSele",
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    // console.log(response);
+                    //data pembeli
+                    $("#nik-detail").html(response.data.nik);
+                    $("#nama").html(response.data.nama);
+                    $("#no-telepon").html(response.data.no_telepon);
+                    $("#alamat-detail").html(response.data.alamat);
+                    $("#table_konsumen tbody").append(
+                        '<tr class="info-ktp"><td>Photo KTP</td><td>:</td><td><button data-img="/storage/ktp_pembeli/' +
+                            response.data.photo_ktp +
+                            '" class="btn btn-sm btn-primary rounded text-white look-img-ktp">Lihat Gambar</button></td></tr>'
+                    );
+
+                    //data motor
+                    $("#no-polisi-detail").html(response.data.no_polisi);
+                    $("#merk-detail").html(response.data.merek);
+                    $("#tipe").html(response.data.type);
+                    $("#warna-detail").html(response.data.warna);
+                    $("#tahun-pembuatan").html(response.data.tahun_pembuatan);
+                    $("#no-rangka").html(response.data.no_rangka);
+                    $("#bpkb").html(response.data.bpkb);
+                    $("#nama-bpkb").html(response.data.nama_bpkb);
+                    $("#berlaku-sampai").html(response.data.berlaku_sampai);
+                    $("#perpanjang-stnk").html(response.data.perpanjang_stnk);
+                    $("#foto-bpkb").html(
+                        '<button data-img="/storage/' +
+                            response.data.photo_bpkb +
+                            '" class="btn btn-sm btn-primary rounded text-white look-img-bpkb">Lihat Gambar</button>'
+                    );
+                    $("#foto-stnk").html(
+                        '<button data-img="/storage/' +
+                            response.data.photo_stnk +
+                            '" class="btn btn-sm btn-primary rounded text-white look-img-stnk">Lihat Gambar</button>'
+                    );
+
+                    $("#harga-jual").html(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.harga_jual)
+                            .replace(/\./g, ",")
+                    );
+                    $("#tanggal-jual").html(response.data.tanggal_jual);
+                },
+            });
+        }
+    );
+    //Lihat Photo STNK
+    $("#modal-detail").on("click", ".look-img-stnk", function () {
+        let image = $(this).attr("data-img");
+        // alert(image);
+        $("#img-photo").html(
+            '<img src="' +
+                image +
+                '" alt="" class="img-fluid" style="width: 800px">'
+        );
+        $("#judul-modal-photo").html("Photo STNK");
+        $("#modal-image").modal("show");
+    });
+    //Lihat Foto BPKB
+    $("#modal-detail").on("click", ".look-img-bpkb", function () {
+        let image = $(this).attr("data-img");
+        // alert(image);
+        $("#img-photo").html(
+            '<img src="' +
+                image +
+                '" alt="" class="img-fluid" style="width: 800px">'
+        );
+        $("#judul-modal-photo").html("Photo BPKB");
+        $("#modal-image").modal("show");
+    });
+
+    $("#modal-detail").on("click", ".look-img-ktp", function () {
+        let image = $(this).attr("data-img");
+        // alert(image);
+        $("#img-photo").html(
+            '<img src="' +
+                image +
+                '" alt="" class="img-fluid" style="width: 800px">'
+        );
+        $("#judul-modal-photo").html("Photo KTP");
+        $("#modal-image").modal("show");
+    });
     // //Action Retur
     // $("#dataTablesPenjualan").on("click", ".retur-button", function () {
     //     let id = $(this).attr("data-id");

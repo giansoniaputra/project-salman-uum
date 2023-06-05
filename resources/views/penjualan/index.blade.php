@@ -281,7 +281,7 @@
 </div>
 {{-- Modal Detail Penjualan Cash --}}
 <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Detail Penjualan Cash</h5>
@@ -303,7 +303,7 @@
                                             <tr>
                                                 <td>NIK</td>
                                                 <td>:</td>
-                                                <td><span id="nik"></span></td>
+                                                <td><span id="nik-detail"></span></td>
                                             </tr>
                                             <tr>
                                                 <td>Nama</td>
@@ -318,7 +318,7 @@
                                             <tr>
                                                 <td>Alamat</td>
                                                 <td>:</td>
-                                                <td><span id="alamat"></span></td>
+                                                <td><span id="alamat-detail"></span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -340,12 +340,12 @@
                                             <tr>
                                                 <td>No Polisi</td>
                                                 <td>:</td>
-                                                <td><span id="no-polisi"></span></td>
+                                                <td><span id="no-polisi-detail"></span></td>
                                             </tr>
                                             <tr>
                                                 <td>Merk</td>
                                                 <td>:</td>
-                                                <td><span id="merk"></span></td>
+                                                <td><span id="merk-detail"></span></td>
                                             </tr>
                                             <tr>
                                                 <td>Tipe</td>
@@ -355,7 +355,7 @@
                                             <tr>
                                                 <td>Warna</td>
                                                 <td>:</td>
-                                                <td><span id="warna"></span></td>
+                                                <td><span id="warna-detail"></span></td>
                                             </tr>
                                             <tr>
                                                 <td>Tahun Pembuatan</td>
@@ -406,7 +406,7 @@
                     <div class="accordion-item">
                         <div class="accordion-header" id="flush-headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                Data Pembelian
+                                Data Penjualan
                             </button>
                         </div>
                         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
@@ -417,12 +417,12 @@
                                             <tr>
                                                 <td>Tanggal Beli</td>
                                                 <td>:</td>
-                                                <td><span id="tanggal-beli"></span></td>
+                                                <td><span id="tanggal-jual"></span></td>
                                             </tr>
                                             <tr>
                                                 <td>Harga Beli</td>
                                                 <td>:</td>
-                                                <td><span id="harga-beli"></span></td>
+                                                <td><span id="harga-jual"></span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -431,6 +431,23 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal  Launch Large Gambar-->
+<div class="modal fade" id="modal-image" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="judul-modal-photo"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="img-photo" class="d-flex justify-content-center align-items-center"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
