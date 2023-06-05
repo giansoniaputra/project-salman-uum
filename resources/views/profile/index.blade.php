@@ -1,5 +1,8 @@
 @extends('layout.main')
 @section('container')
+<link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+<div class="flash-data" data-flash="{{ session('pesan') }}"></div>
+<div class="flash-data-error" data-flash="{{ session('pesan2') }}"></div>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -7,57 +10,79 @@
                 <h4 class="card-title data-pelanggan">Detail Profile</h4>
             </div>
             <div class="card-body">
-                <div class="row g-3">
-                    <div class="col-md-12">
-                        <div class="mb-3 form-floating">
-                            <input type="text" name="username" id="username" class="form-control @error('username')is-invalid @enderror" value="{{ old('username') }}" placeholder="Masukan Username">
-                            @error('username')
+                <form action="/updateProfile" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="oldPhoto" value="{{ auth()->user()->photo }}">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <div class="mb-3 form-floating">
+                                <input type="text" name="name" id="name" class="form-control @error('name')is-invalid @enderror" value="{{ old('name', auth()->user()->name) }}" placeholder="Masukan Username">
+                                @error('name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                                <label class="text-label" for="name">Nama<span class="text-danger"> *</span></label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3 form-floating">
+                                <input type="email" name="email" id="email" class="form-control @error('email')is-invalid @enderror" value="{{ old('email', auth()->user()->email) }}" placeholder="Masukan Email">
+                                @error('email')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                                <label for="email">Email<span class="text-danger"> *</span></label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3 form-floating">
+                                <input type="password" name="new_password" id="new_password" class="form-control @error('new_password')is-invalid @enderror">
+                                @error('new_password')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                                <label class="text-label" for="new_password">New Password</label>
+                            </div>
+                            <span class="text-success m-0">*New password boleh dikosongkan</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo">
+                            <label class="input-group-text" style="display:block" for="inputGroupFile02">Upload</label>
+                            @error('photo')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
-                            <label class="text-label" for="username">Username<span class="text-danger"> *</span></label>
+                        </div>
+                        <span class="text-success m-0">*Photo boleh dikosongkan</span>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn btn-primary me-md-2 button-conf" type="button">Edit Data Profile</button>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="mb-3 form-floating">
-                            <input type="email" name="email" id="email" class="form-control @error('email')is-invalid @enderror" value="{{ old('email') }}" placeholder="Masukan Email">
-                            @error('email')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                    {{-- Modal Konfirmasi Password --}}
+                    <div class="modal fade" id="conf_password" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-md modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Masukan Password</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" name="password" id="password" required>
+                                        <label for="password">Masukan Password Lama <span class="text-danger">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-secondary btn-kwitansi">Update Profile</button>
+                                </div>
                             </div>
-                            @enderror
-                            <label for="email">Email<span class="text-danger"> *</span></label>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="mb-3 form-floating">
-                            <input type="text" name="password" id="password" class="form-control @error('password')is-invalid @enderror" value="{{ old('password') }}" placeholder="Masukan Password">
-                            @error('password')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                            <label class="text-label" for="password">Password<span class="text-danger"> *</span></label>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="file" class="form-control @error('photo_pria') is-invalid @enderror" name="photo_pria" id="photo_pria">
-                        <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                        <input type="hidden" name="fotoPria" id="fotoPria" value="{{ old('fotoPria') }}">
-                        @error('photo_pria')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-                    <div class="col-md-12" id="show-foto-pria">
-                        {{-- <img src="{{ old('fotoPria', '/storage/post-images/mempelai/'.$data->photo_pria) }}" alt="" class="img-fluid show-foto-pria" width="200px"> --}}
-                    </div>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-primary me-md-2" type="button">Edit Data Profile</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -85,4 +110,21 @@
     </div>
 </div>
 <script src="/page-script/photo-profile.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const flashData = $('.flash-data').data('flash');
+    const flashData2 = $('.flash-data-error').data('flash');
+    if (flashData) {
+        Swal.fire(
+            'Good job!', flashData, 'success'
+        )
+    }
+    if (flashData2) {
+        Swal.fire(
+            'Error', flashData2, 'error'
+        )
+    }
+
+</script>
 @endsection

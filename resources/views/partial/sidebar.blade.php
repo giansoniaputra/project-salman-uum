@@ -1,7 +1,11 @@
 <!-- User Menu Start -->
 <div class="user-container d-flex">
     <a href="#" class="d-flex user position-relative" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img class="profile mt-3" alt="profile" src="/img/profile/pp (Small).jpg" />
+        @if (auth()->user()->photo)
+        <img class="profile mt-3" alt="profile" src="/storage/{{ auth()->user()->photo }}" />
+        @else
+        <img class="profile mt-3" alt="profile" src="/storage/photo_user/default.png" />
+        @endif
         <div class="name"><span class="">Halo,
                 <strong>{{ auth()->user()->name }}</strong></span>
             <p class="cta-6 mt-1">{{ auth()->user()->roles }}</p>

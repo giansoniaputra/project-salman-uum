@@ -58,6 +58,7 @@ Route::get('/getDataMotor', [BikeController::class, 'get_motor'])->middleware('a
 
 // PROFILE
 Route::resource('/profile', ProfileController::class)->middleware('auth');
+Route::post('/updateProfile', [ProfileController::class, 'update_data'])->middleware('auth');
 
 // MODAL
 Route::resource('/modal', ModalController::class)->middleware('auth');
