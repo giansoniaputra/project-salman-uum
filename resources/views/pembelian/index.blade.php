@@ -113,9 +113,9 @@
                             <i data-acorn-icon="plus"></i>
                         </a>
                         @endif
-                        <button class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Download PDF" type="button">
+                        {{-- <button class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Download PDF" type="button">
                             <i data-acorn-icon="download"></i>
-                        </button>
+                        </button> --}}
                         <!-- Add New Button End -->
 
                         {{-- <!-- Print Button Start -->
