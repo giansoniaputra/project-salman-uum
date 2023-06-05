@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="mb-3 form-floating">
-                                <input type="text" name="kota" id="kota" class="form-control @error('kota')is-invalid @enderror" value="{{ old('kota', $setting->kota) }}" placeholder="Masukan Nama Kota">
+                                <input type="text" name="kota" id="kota" class="form-control @error('kota')is-invalid @enderror" value="{{ old('kota') }}" placeholder="Masukan Nama Kota">
                                 @error('kota')
                                 <div class="invalid-feedback">
                                     {{ $message }}
