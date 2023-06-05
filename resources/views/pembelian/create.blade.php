@@ -238,7 +238,7 @@
                                 @enderror
                                 <label class="text-label" for="berlaku_sampai">&nbsp;&nbsp;Berlaku Sampai<span class="text-danger"> *</label></span>
                             </div>
-                            <div class="form-floating mb-3 col-md-6">
+                            <div class="form-floating mb-3 col-md-12">
                                 <input type="text" class="date-picker form-control @error('perpanjang_stnk')is-invalid @enderror" value="{{ old('perpanjang_stnk') }}" placeholder="Masukan Perpanjang STNK" name="perpanjang_stnk" id="perpanjang_stnk">
                                 @error('perpanjang_stnk')
                                 <div class="invalid-feedback">
