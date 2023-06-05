@@ -51,9 +51,9 @@
                     <i data-acorn-icon="plus" data-bs-toggle="tooltip" data-bs-placement="left" title="Tambah Data Penjualan Cash"></i>
                 </button>
                 <button type="button" class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="modal" data-bs-target="#summary_cash"><i data-acorn-icon="notebook-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Summary Penjualan Cash"></i></button>
-                <button class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Download PDF" type="button">
+                {{-- <button class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Download PDF" type="button">
                     <i data-acorn-icon="download"></i>
-                </button>
+                </button> --}}
                 <!-- Export Dropdown Start -->
                 <div class="d-inline-block datatable-export" data-datatable="#datatableBoxed">
 
