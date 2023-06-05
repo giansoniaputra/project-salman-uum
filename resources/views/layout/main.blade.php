@@ -81,7 +81,11 @@
                     {{-- <!-- Or added via css to provide different ones for different color themes -->
                     <div class="img"></div> --}}
                 </a>
+                @if(Setting::count() > 0)
                 <h6 class="cta-4 mt-1 text-white">{{ ucwords(strtolower(Setting::first()->nama_toko)) }}</h6>
+                @else
+                <h6 class="cta-4 mt-1 text-white">{{ SISMAC }}</h6>
+                @endif
 
                 <!-- Logo End -->
 
