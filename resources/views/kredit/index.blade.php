@@ -232,7 +232,7 @@
                 <div class="row">
                     <div class="col-12 mt-5">
                         <label class="text-label" for="laporan_perbulan">Laporan Penjualan Kredit Perbulan</label>
-                        <form action="/penjualanSelectMonth" method="post">
+                        <form action="/penjualanSelectMonthKredit" method="post">
                             @csrf
                             <div class="input-group mt-2">
                                 <label class="input-group-text" for="inputGroupSelect01"><i class="bi-calendar2-month-fill icon-16 text-primary"></i></label>
@@ -264,7 +264,7 @@
                         </form>
                     </div>
                     <div class="col-12 mt-5">
-                        <form action="/penjualanDate" method="post">
+                        <form action="/penjualanDateKredit" method="post">
                             @csrf
                             <label class="text-label mb-2" for="laporan_pertanggal">Laporan Penjualan Kredit Pertanggal</label>
                             <div class="input-daterange input-group">
@@ -286,7 +286,7 @@
                     <div class="col-12 mt-5">
                         <label class="text-label" for="laporan_pertanggal">Laporan Penjualan Kredit Hari Ini</label>
                         <div class="input-daterange input-group mt-2">
-                            <a href="/penjualanDay" target="_blank" class="btn btn-primary rounded-md-bottom-start rounded-md-top-start">
+                            <a href="/penjualanDayKredit" target="_blank" class="btn btn-primary rounded-md-bottom-start rounded-md-top-start">
                                 <i data-acorn-icon="download" data-acorn-size="18"></i>
                                 PDF
                             </a>
@@ -299,7 +299,7 @@
                     <div class="col-12 mt-5">
                         <label class="text-label" for="laporan_pertanggal">Laporan Penjualan Kredit Minggu Ini</label>
                         <div class="input-daterange input-group mt-2">
-                            <a href="/penjualanWeek" class="btn btn-primary rounded-md-bottom-start rounded-md-top-start">
+                            <a href="/penjualanWeekKredit" class="btn btn-primary rounded-md-bottom-start rounded-md-top-start">
                                 <i data-acorn-icon="download" data-acorn-size="18"></i>
                                 PDF
                             </a>
@@ -312,7 +312,7 @@
                     <div class="col-12 mt-5">
                         <label class="text-label" for="laporan_pertanggal">Laporan Penjualan Kredit Bulan Ini</label>
                         <div class="input-daterange input-group mt-2">
-                            <a href="/penjualanMonth" class="btn btn-primary rounded-md-bottom-start rounded-md-top-start">
+                            <a href="/penjualanMonthKredit" class="btn btn-primary rounded-md-bottom-start rounded-md-top-start">
                                 <i data-acorn-icon="download" data-acorn-size="18"></i>
                                 PDF
                             </a>

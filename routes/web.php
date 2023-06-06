@@ -136,8 +136,6 @@ Route::get('/dataTablesMaintenance', [MaintenanceController::class, 'dataTables'
 
 
 //CETAK PDF
-//test cetak
-Route::get('/testCetak', [PDFController::class, 'testPDF'])->middleware('auth');
 //Penjualan Cash Berdasar tanggal
 Route::post('/penjualanDate', [PDFController::class, 'cetak_penjualan_cash_date'])->middleware('auth');
 //Penjualan Hari Ini
@@ -148,6 +146,30 @@ Route::get('/penjualanWeek', [PDFController::class, 'cetak_week'])->middleware('
 Route::get('/penjualanMonth', [PDFController::class, 'cetak_month'])->middleware('auth');
 //Penjualan Bulan Ini(Select)
 Route::post('penjualanSelectMonth', [PDFController::class, 'cetak_select_month'])->middleware('auth');
+
+//CETAK PDF CASH ONLY
+//Penjualan Cash Berdasar tanggal
+Route::post('/penjualanDateCash', [PDFController::class, 'cetak_penjualan_cash_date_only'])->middleware('auth');
+//Penjualan Hari Ini
+Route::get('/penjualanDayCash', [PDFController::class, 'cetak_day_cash_only'])->middleware('auth');
+//Penjualan Minggu Ini
+Route::get('/penjualanWeekCash', [PDFController::class, 'cetak_week_cash_only'])->middleware('auth');
+//Penjualan BUlan Ini
+Route::get('/penjualanMonthCash', [PDFController::class, 'cetak_month_cash_only'])->middleware('auth');
+//Penjualan Bulan Ini(Select)
+Route::post('penjualanSelectMonthCash', [PDFController::class, 'cetak_select_month_cash_only'])->middleware('auth');
+
+//CETAK PDF CASH ONLY
+//Penjualan Cash Berdasar tanggal
+Route::post('/penjualanDateKredit', [PDFController::class, 'cetak_penjualan_kredit_date'])->middleware('auth');
+//Penjualan Hari Ini
+Route::get('/penjualanDayKredit', [PDFController::class, 'cetak_day_kredit_only'])->middleware('auth');
+//Penjualan Minggu Ini
+Route::get('/penjualanWeekKredit', [PDFController::class, 'cetak_week_kredit_only'])->middleware('auth');
+//Penjualan BUlan Ini
+Route::get('/penjualanMonthKredit', [PDFController::class, 'cetak_month_kredit_only'])->middleware('auth');
+//Penjualan Bulan Ini(Select)
+Route::post('penjualanSelectMonthKredit', [PDFController::class, 'cetak_select_month_kredit_only'])->middleware('auth');
 
 
 // CETAK KWITANSI
