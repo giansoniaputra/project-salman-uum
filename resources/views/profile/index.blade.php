@@ -38,15 +38,15 @@
                         </div>
                         <div class="col-md-12">
                             <div class="mb-3 form-floating">
-                                <input type="password" name="new_password" id="new_password" class="form-control @error('new_password')is-invalid @enderror">
+                                <input type="password" name="new_password" id="new_password" class="form-control @error('new_password')is-invalid @enderror" placeholder="Masukan Password Baru">
                                 @error('new_password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
-                                <label class="text-label" for="new_password">New Password</label>
+                                <label class="text-label" for="new_password">Password Baru</label>
                             </div>
-                            <span class="text-success m-0">*New password boleh dikosongkan</span>
+                            <span class="text-success m-0">*Password Baru boleh dikosongkan</span>
                         </div>
                         <div class="input-group mb-3">
                             <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo">
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control" name="password" id="password" required>
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Masukan Password Lama" required>
                                         <label for="password">Masukan Password Lama <span class="text-danger">*</span></label>
                                     </div>
                                 </div>

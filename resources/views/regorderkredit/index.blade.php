@@ -47,13 +47,13 @@
             </div>
             <div class="d-inline-block">
                 <!-- Add New Button Start -->
-                <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable-regorderkredit" data-bs-toggle="modal" data-bs-target="#modal-regorderkredit" id="btn-add-data">
+                <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable-pemohon" data-bs-toggle="modal" data-bs-target="#modal-pemohon" id="btn-add-data">
                     <i data-acorn-icon="plus" data-bs-toggle="tooltip" data-bs-placement="left" title="Tambah Data Penjualan Cash"></i>
                 </button>
                 <button type="button" class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="modal" data-bs-target="#summary_regorderkredit"><i data-acorn-icon="notebook-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Summary Register Order Kredit"></i></button>
-                <button class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Download PDF" type="button">
+                {{-- <button class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Download PDF" type="button">
                     <i data-acorn-icon="download"></i>
-                </button>
+                </button> --}}
                 <!-- Export Dropdown Start -->
                 <div class="d-inline-block datatable-export" data-datatable="#datatableBoxed">
 
@@ -82,6 +82,128 @@
 
     </tbody>
 </table>
+<!-- Add Edit Modal Start -->
+<div class="modal modal-center fade" id="modal-pemohon" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Tambah Pemohon</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="mb-3 form-floating">
+                            <input type="text" name="nik" id="nik" class="form-control @error('nik')is-invalid @enderror" value="{{ old('nik') }}" placeholder="Masukan NIK">
+                            @error('nik')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            <label class="text-label" for="nik">NIK Pemohon<span class="text-danger"> *</span></label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3 form-floating">
+                            <input type="text" name="nama_pemohon" id="nama_pemohon" class="form-control @error('nama_pemohon')is-invalid @enderror" value="{{ old('nama_pemohon') }}" placeholder="Masukan Nama Pemohon">
+                            @error('nama_pemohon')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            <label class="text-label" for="nama_pembeli">Nama Pemohon<span class="text-danger"> *</span></label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3 form-floating">
+                            <select id="jenis_kelamin" name="jenis_kelamin">
+                                <option label=""></option>
+                                <option value="Laki-Laki">Laki - Laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                            <label class="text-label" for="jenis_kelamin">Jenis Kelamin Pemohon<span class="text-danger"> *</label></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="mb-3 form-floating">
+                            <textarea class="form-control @error('alamat')is-invalid @enderror" rows="3" name="alamat" id="alamat" placeholder="Masukan Alamat">{{ old('alamat') }}</textarea>
+                            @error('alamat')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            <label for="alamat">Alamat Pemohon<span class="text-danger"> *</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="mb-3 form-floating">
+                            <input type="text" name="no_hp" id="no_hp" class="form-control @error('no_hp')is-invalid @enderror" value="{{ old('no_hp') }}" placeholder="Masukan No HP Pemohon">
+                            @error('no_hp')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            <label class="text-label" for="no_hp">No HP Pemohon<span class="text-danger"> *</span></label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3 form-floating">
+                            <input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control @error('tempat_lahir')is-invalid @enderror" value="{{ old('tempat_lahir') }}" placeholder="Masukan Tempat Lahir">
+                            @error('tempat_lahir')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            <label class="text-label" for="tempat_lahir">Tempat Lahir Pemohon<span class="text-danger"> *</span></label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3 form-floating">
+                            <input type="text" name="tanggal_lahir" id="tanggal_lahir" class="form-control @error('tanggal_lahir')is-invalid @enderror" value="{{ old('tanggal_lahir') }}" placeholder="Masukan Tanggal Lahir">
+                            @error('tanggal_lahir')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            <label class="text-label" for="tanggal_lahir">Tanggal Lahir Pemohon<span class="text-danger"> *</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" name="photo-ktp" id="photo-ktp" onchange="previewImageKTP()">
+                            <label class="input-group-text" for="photo-ktp">Upload Foto KTP</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3 text-center" id="img-ktp">
+                    <div class="col-md-12">
+                        <div class="mb-3 form-floating">
+                            <img src="/storage/ktp/default.png" alt="" class="img-fluid" width="200px">
+                            <br>
+                            <input type="hidden" name="photo_ktp" id="photo_ktp">
+                            <input type="hidden" name="old_ktp" id="old_ktp">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" id="btn-action">
+                <div>
+                    <button class="btn btn-icon btn-icon-end btn-primary" type="submit">
+                        <span>Tambah</span>
+                        {{-- <i data-acorn-icon="chevron-right"></i> --}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Edit Modal End -->
 <!-- Add Edit Modal Start -->
 <div class="modal modal-center fade" id="modal-regorderkredit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -308,7 +430,7 @@
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Summary Penjualan Kredit</h5>
+                <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Summary Reg Order Kredit</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

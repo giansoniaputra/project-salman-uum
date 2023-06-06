@@ -84,8 +84,8 @@
                             <div class="sh-11 text-center">
                                 <a href="/home">
                                     {{-- <div class="logo-default"> --}}
-                                    <img src="/img/logo/smac white.png" alt="" style="width: 150px;" class="">
-                                    <h6 class="cta-2 mt-2 text-primary text-center"><b>Sistem Informasi Showroom Mandiri Utama Community</b></h6>
+                                    <img src="/img/logo/smac transparent.png" alt="" style="width: 150px;" class="">
+                                    <h6 class="cta-2 mt-2 text-primary"><b>Sistem Informasi Showroom Mandiri Utama Community</b></h6>
                                     {{-- </div> --}}
                                 </a>
                             </div>
