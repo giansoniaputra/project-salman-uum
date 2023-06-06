@@ -2970,6 +2970,11 @@ Table of Contents
   z-index: 1;
 }
 
+.t-25 {
+  top: 0.8rem !important;
+  z-index: 1;
+}
+
 .b-2 {
   bottom: 0.5rem !important;
   z-index: 1;

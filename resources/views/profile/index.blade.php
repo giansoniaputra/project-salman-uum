@@ -73,6 +73,10 @@
                                 <div class="modal-body">
                                     <div class="form-floating mb-3">
                                         <input type="password" class="form-control" name="password" id="password" placeholder="Masukan Password Lama" required>
+                                        <a class="position-absolute t-3 e-3">
+                                            <span class="bi-eye" id="eye" aria-hidden="true"></span>
+                                            <span class="bi-eye-slash text-danger d-none" id="eye-slash" aria-hidden="true"></span>
+                                        </a>
                                         <label for="password">Masukan Password Lama <span class="text-danger">*</span></label>
                                     </div>
                                 </div>
@@ -125,6 +129,23 @@
             'Error', flashData2, 'error'
         )
     }
+
+</script>
+<script>
+    $(document).ready(function() {
+        $('#eye').on("click", function() {
+            $('#eye').toggleClass("d-none");
+            $('#eye-slash').toggleClass("d-none");
+            $('#password').attr('type', 'text');
+            $('#see').html('Hidden Password');
+        });
+        $('#eye-slash').on("click", function() {
+            $('#eye').toggleClass("d-none");
+            $('#eye-slash').toggleClass("d-none");
+            $('#password').attr('type', 'password');
+            $('#see').html('Show Password');
+        });
+    });
 
 </script>
 @endsection

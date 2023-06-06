@@ -116,7 +116,7 @@
                                     <div class="mb-3 filled form-group tooltip-end-top">
                                         <i data-acorn-icon="lock-on"></i>
                                         <input type="password" name="password" id="password" class="form-control input-default text-black @error('password') is-invalid @enderror" placeholder="Masukan Password">
-                                        <a class="position-absolute t-3 e-3">
+                                        <a class="position-absolute t-25 e-3">
                                             <span class="bi-eye" id="eye" aria-hidden="true"></span>
                                             <span class="bi-eye-slash text-danger d-none" id="eye-slash" aria-hidden="true"></span>
                                         </a>
