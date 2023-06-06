@@ -137,6 +137,16 @@
                         <input type="text" class="form-control money" name="harga_beli" id="harga_beli" style="background-color: rgba(215, 218, 227, 0.3)" readonly>
                         <label for="harga_beli">Harga Beli</label>
                     </div>
+                    <div class="form-floating mb-3 w-100" id="no-reg-order-select">
+                        <select id="no_reg_order" name="no_reg_order" class="form-control no-reg-order" placeholder="Masukan No Reg Order">
+
+                        </select>
+                        <label>No Register Order <span class="text-danger"> *</span></label>
+                    </div>
+                    <div class="form-floating mb-3" id="current-no-reg-order">
+
+
+                    </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control " placeholder="Masukan No NIK KTP" name="nik" id="nik">
                         <label class="text-label" for="nik">NIK<span class="text-danger"> *</span></label>

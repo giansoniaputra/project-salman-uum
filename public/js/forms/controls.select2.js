@@ -16,6 +16,7 @@ class Select2Controls {
     }
 
     this._initSelect2Basic();
+    this._initSelect2Basic2();
     this._initSelect2Multiple();
     this._initTags();
     this._initSearchHidden();
@@ -30,6 +31,9 @@ class Select2Controls {
   // Basic single select2
   _initSelect2Basic() {
     jQuery('#no_polisi').select2({placeholder: 'Pilih No Polisi'});
+  }
+  _initSelect2Basic2() {
+    jQuery('#no_reg_order').select2({placeholder: 'Pilih No Register Order'});
   }
 
   // Basic multiple select2
