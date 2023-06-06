@@ -117,8 +117,8 @@
                                         <i data-acorn-icon="lock-on"></i>
                                         <input type="password" name="password" id="password" class="form-control input-default text-black @error('password') is-invalid @enderror" placeholder="Masukan Password">
                                         <a class="position-absolute t-25 e-3">
-                                            <span class="bi-eye" id="eye" aria-hidden="true"></span>
-                                            <span class="bi-eye-slash text-danger d-none" id="eye-slash" aria-hidden="true"></span>
+                                            <span class="bi-eye text-black" id="eye" aria-hidden="true"></span>
+                                            <span class="bi-eye-slash text-primary d-none" id="eye-slash" aria-hidden="true"></span>
                                         </a>
                                         @error('password')
                                         <div class="invalid-feedback">

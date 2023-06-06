@@ -130,8 +130,8 @@
                                         <i data-acorn-icon="lock-on"></i>
                                         <input type="password" name="password" id="password" class="form-control input-default text-black @error('password') is-invalid @enderror" placeholder="Masukan Password Anda" name="password" id="password">
                                         <a class="position-absolute t-25 e-3">
-                                            <span class="bi-eye" id="eye" aria-hidden="true"></span>
-                                            <span class="bi-eye-slash text-danger d-none" id="eye-slash" aria-hidden="true"></span>
+                                            <span class="bi-eye text-black" id="eye" aria-hidden="true"></span>
+                                            <span class="bi-eye-slash text-primary d-none" id="eye-slash" aria-hidden="true"></span>
                                         </a>
                                         @error('password')
                                         <div class="invalid-feedback">
@@ -143,8 +143,8 @@
                                         <i data-acorn-icon="lock-off"></i>
                                         <input type="password" class="form-control input-default text-black @error('conf_password') is-invalid @enderror" placeholder="Masukan Konfirmasi Password Anda" name="conf_password" id="conf_password">
                                         <a class="position-absolute t-25 e-3">
-                                            <span class="bi-eye" id="eye2" aria-hidden="true"></span>
-                                            <span class="bi-eye-slash text-danger d-none" id="eye-slash2" aria-hidden="true"></span>
+                                            <span class="bi-eye text-black" id="eye2" aria-hidden="true"></span>
+                                            <span class="bi-eye-slash text-primary d-none" id="eye-slash2" aria-hidden="true"></span>
                                         </a>
                                         @error('conf_password')
                                         <div class="invalid-feedback">

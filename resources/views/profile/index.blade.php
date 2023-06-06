@@ -74,8 +74,8 @@
                                     <div class="form-floating mb-3">
                                         <input type="password" class="form-control" name="password" id="password" placeholder="Masukan Password Lama" required>
                                         <a class="position-absolute t-3 e-3">
-                                            <span class="bi-eye" id="eye" aria-hidden="true"></span>
-                                            <span class="bi-eye-slash text-danger d-none" id="eye-slash" aria-hidden="true"></span>
+                                            <span class="bi-eye text-black" id="eye" aria-hidden="true"></span>
+                                            <span class="bi-eye-slash text-primary d-none" id="eye-slash" aria-hidden="true"></span>
                                         </a>
                                         <label for="password">Masukan Password Lama <span class="text-danger">*</span></label>
                                     </div>
