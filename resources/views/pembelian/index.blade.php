@@ -113,7 +113,7 @@
                             <i data-acorn-icon="plus"></i>
                         </a>
                         @endif
-                        <button type="button" class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="modal" data-bs-target="#summary_pembelian"><i data-acorn-icon="notebook-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Summary Pemblian"></i></button>
+                        <button type="button" class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="modal" data-bs-target="#summary_pembelian" title="Summary Pembelian"><i data-acorn-icon="notebook-1"></i></button>
                         {{-- <button class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Download PDF" type="button">
                             <i data-acorn-icon="download"></i>
                         </button> --}}

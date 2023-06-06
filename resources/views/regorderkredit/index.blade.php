@@ -47,10 +47,10 @@
             </div>
             <div class="d-inline-block">
                 <!-- Add New Button Start -->
-                <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable-pemohon" data-bs-toggle="modal" data-bs-target="#modal-pemohon" id="btn-add-data">
-                    <i data-acorn-icon="plus" data-bs-toggle="tooltip" data-bs-placement="left" title="Tambah Data Penjualan Cash"></i>
+                <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable-pemohon" data-bs-toggle="modal" data-bs-target="#modal-pemohon" id="btn-add-data" title="Tambah Reg Order Kredit">
+                    <i data-acorn-icon="plus"></i>
                 </button>
-                <button type="button" class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="modal" data-bs-target="#summary_regorderkredit"><i data-acorn-icon="notebook-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Summary Register Order Kredit"></i></button>
+                <button type="button" class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="modal" data-bs-target="#summary_regorderkredit" title="Summary Reg Order Kredit"><i data-acorn-icon="notebook-1"></i></button>
                 {{-- <button class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Download PDF" type="button">
                     <i data-acorn-icon="download"></i>
                 </button> --}}
