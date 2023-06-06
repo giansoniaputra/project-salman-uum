@@ -27,6 +27,9 @@
     <meta name="msapplication-wide310x150logo" content="/img/favicon/mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="/img/favicon/mstile-310x310.png" />
     <!-- Favicon Tags End -->
+    <!-- Icon Bootstrap Start -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <!-- Icon Bootstrap End -->
     <!-- Font Tags Start -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700&display=swap" rel="stylesheet" />
@@ -113,6 +116,10 @@
                                     <div class="mb-3 filled form-group tooltip-end-top">
                                         <i data-acorn-icon="lock-on"></i>
                                         <input type="password" name="password" id="password" class="form-control input-default text-black @error('password') is-invalid @enderror" placeholder="Masukan Password">
+                                        <a class="position-absolute t-3 e-3">
+                                            <span class="bi-eye" id="eye" aria-hidden="true"></span>
+                                            <span class="bi-eye-slash text-danger d-none" id="eye-slash" aria-hidden="true"></span>
+                                        </a>
                                         @error('password')
                                         <div class="invalid-feedback">
                                             {{ 'Password Tidak Boleh Kosong!' }}
@@ -159,6 +166,23 @@
 
     <script src="/js/common.js"></script>
     <script src="/js/scripts.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#eye').on("click", function() {
+                $('#eye').toggleClass("d-none");
+                $('#eye-slash').toggleClass("d-none");
+                $('#password').attr('type', 'text');
+                $('#see').html('Hidden Password');
+            });
+            $('#eye-slash').on("click", function() {
+                $('#eye').toggleClass("d-none");
+                $('#eye-slash').toggleClass("d-none");
+                $('#password').attr('type', 'password');
+                $('#see').html('Show Password');
+            });
+        });
+
+    </script>
     <!-- Page Specific Scripts End -->
 </body>
 </html>
