@@ -65,6 +65,8 @@ class KwitansiController extends Controller
         $this->pdf->MultiCell(50, 5, "No Rangka", 0, 'L',  true);
         $this->pdf->SetXY(19, 42);
         $this->pdf->MultiCell(50, 5, "No Mesin", 0, 'L',  true);
+        $this->pdf->SetXY(19, 47);
+        $this->pdf->MultiCell(50, 5, "No Polisi", 0, 'L',  true);
         // KWITANSI PELUNASAN (DATA)
         $this->pdf->SetFont('Arial', '', '8');
         $this->pdf->SetXY(62, 17);
@@ -79,7 +81,9 @@ class KwitansiController extends Controller
         $this->pdf->MultiCell(130, 5, ": " . $data->no_rangka, 0, 'L',  true);
         $this->pdf->SetXY(62, 42);
         $this->pdf->MultiCell(130, 5, ": " . $data->no_mesin, 0, 'L',  true);
-        $this->pdf->SetXY(130, 48);
+        $this->pdf->SetXY(62, 47);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_polisi, 0, 'L',  true);
+        $this->pdf->SetXY(130, 52);
         $this->pdf->MultiCell(30, 5, $setting->kota . ",", 0, 'L',  true);
         $this->pdf->SetXY(130, 68);
         $this->pdf->MultiCell(30, 5, $setting->nama_pemilik, 0, 'L',  true);
@@ -101,6 +105,8 @@ class KwitansiController extends Controller
         $this->pdf->MultiCell(50, 5, "No Rangka", 0, 'L',  true);
         $this->pdf->SetXY(19, 109);
         $this->pdf->MultiCell(50, 5, "No Mesin", 0, 'L',  true);
+        $this->pdf->SetXY(19, 114);
+        $this->pdf->MultiCell(50, 5, "No Polisi", 0, 'L',  true);
 
         // KWITANSI UANG MUKA (DATA)
         $this->pdf->SetFont('Arial', '', '8');
@@ -116,7 +122,9 @@ class KwitansiController extends Controller
         $this->pdf->MultiCell(130, 5, ": " . $data->no_rangka, 0, 'L',  true);
         $this->pdf->SetXY(62, 109);
         $this->pdf->MultiCell(130, 5, ": " . $data->no_mesin, 0, 'L',  true);
-        $this->pdf->SetXY(130, 115);
+        $this->pdf->SetXY(62, 115);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_polisi, 0, 'L',  true);
+        $this->pdf->SetXY(130, 120);
         $this->pdf->MultiCell(30, 5, $setting->kota . ",", 0, 'L',  true);
         $this->pdf->SetXY(130, 135);
         $this->pdf->MultiCell(30, 5, $setting->nama_pemilik, 0, 'L',  true);
@@ -138,6 +146,8 @@ class KwitansiController extends Controller
         $this->pdf->MultiCell(50, 5, "No Rangka", 0, 'L',  true);
         $this->pdf->SetXY(19, 176);
         $this->pdf->MultiCell(50, 5, "No Mesin", 0, 'L',  true);
+        $this->pdf->SetXY(19, 181);
+        $this->pdf->MultiCell(50, 5, "No Polisi", 0, 'L',  true);
 
         // KWITANSI SUBSIDI (DATA)
         $this->pdf->SetFont('Arial', '', '8');
@@ -153,7 +163,9 @@ class KwitansiController extends Controller
         $this->pdf->MultiCell(130, 5, ": " . $data->no_rangka, 0, 'L',  true);
         $this->pdf->SetXY(62, 176);
         $this->pdf->MultiCell(130, 5, ": " . $data->no_mesin, 0, 'L',  true);
-        $this->pdf->SetXY(130, 182);
+        $this->pdf->SetXY(62, 181);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_polisi, 0, 'L',  true);
+        $this->pdf->SetXY(130, 186);
         $this->pdf->MultiCell(30, 5, $setting->kota . ",", 0, 'L',  true);
         $this->pdf->SetXY(130, 202);
         $this->pdf->MultiCell(30, 5, $setting->nama_pemilik, 0, 'L',  true);
