@@ -147,6 +147,16 @@
 
 
                     </div>
+                    <div class="form-floating mb-3 w-100" id="list-order-select">
+                        <select id="list_order" name="list_order" class="form-control list-order" placeholder="Masukan List Order">
+
+                        </select>
+                        <label>List Order<span class="text-danger"> *</span></label>
+                    </div>
+                    <div class="form-floating mb-3" id="current-list_order">
+
+
+                    </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control " placeholder="Masukan No NIK KTP" name="nik" id="nik">
                         <label class="text-label" for="nik">NIK<span class="text-danger"> *</span></label>

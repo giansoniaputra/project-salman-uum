@@ -39,6 +39,10 @@
                         <div class="col-md-12">
                             <div class="mb-3 form-floating">
                                 <input type="password" name="new_password" id="new_password" class="form-control @error('new_password')is-invalid @enderror" placeholder="Masukan Password Baru">
+                                <a class="position-absolute t-3 e-3">
+                                    <span class="bi-eye text-black" id="eye2" aria-hidden="true"></span>
+                                    <span class="bi-eye-slash text-primary d-none" id="eye-slash2" aria-hidden="true"></span>
+                                </a>
                                 @error('new_password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -137,13 +141,23 @@
             $('#eye').toggleClass("d-none");
             $('#eye-slash').toggleClass("d-none");
             $('#password').attr('type', 'text');
-            $('#see').html('Hidden Password');
+
         });
         $('#eye-slash').on("click", function() {
             $('#eye').toggleClass("d-none");
             $('#eye-slash').toggleClass("d-none");
             $('#password').attr('type', 'password');
-            $('#see').html('Show Password');
+        })
+
+        $('#eye2').on("click", function() {
+            $('#eye2').toggleClass("d-none");
+            $('#eye-slash2').toggleClass("d-none");
+            $('#new_password').attr('type', 'text');
+        });
+        $('#eye-slash2').on("click", function() {
+            $('#eye2').toggleClass("d-none");
+            $('#eye-slash2').toggleClass("d-none");
+            $('#new_password').attr('type', 'password');
         });
     });
 
