@@ -101,7 +101,7 @@ $(document).ready(function () {
 
         $("#tempat_lahir").val("");
         $("#tanggal_lahir").val("");
-        $("#jenis_kelamin").val("");
+        $("#jenis_kelamin").val(null).trigger("change");
         $("#otr_leasing").val("");
         $("#dp_po").val("");
         $("#dp_bayar").val("");
@@ -144,7 +144,7 @@ $(document).ready(function () {
 
         $("#tempat_lahir").val("");
         $("#tanggal_lahir").val("");
-        $("#jenis_kelamin").val("");
+        $("#jenis_kelamin").val(null).trigger("change");
         $("#otr_leasing").val("");
         $("#dp_po").val("");
         $("#dp_bayar").val("");
@@ -257,6 +257,10 @@ $(document).ready(function () {
                 } else {
                     $("#nama_pembeli").val("");
                     $("#modal-transaksi #alamat").html("");
+                    $("#jenis_kelamin").val(null).trigger("change");
+                    $("#no_telepon").val("");
+                    $("#tempat_lahir").val("");
+                    $("#tanggal_lahir").val("");
                     $("#nama_pembeli").removeAttr("style");
                     $("#alamat").removeAttr("style");
                     $("#tempat_lahir").removeAttr("style");
@@ -365,7 +369,7 @@ $(document).ready(function () {
                     $("#img-ktp img").attr("src", "/storage/ktp/default.png");
                     $("#tempat_lahir").val("");
                     $("#tanggal_lahir").val("");
-                    $("#jenis_kelamin").val("");
+                    $("#jenis_kelamin").val(null).trigger("change");
                     $("#otr_leasing").val("");
                     $("#dp_po").val("");
                     $("#dp_bayar").val("");
@@ -583,7 +587,7 @@ $(document).ready(function () {
                     $("#img-ktp img").attr("src", "/storage/ktp/default.png");
                     $("#tempat_lahir").val("");
                     $("#tanggal_lahir").val("");
-                    $("#jenis_kelamin").val("");
+                    $("#jenis_kelamin").val(null).trigger("change");
                     $("#otr_leasing").val("");
                     $("#dp_po").val("");
                     $("#dp_bayar").val("");

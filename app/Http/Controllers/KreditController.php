@@ -178,7 +178,7 @@ class KreditController extends Controller
             }
             //Membuat random nota
             $trx = 'TRX-KRDT-00';
-            $last_trx = Kredit::latest()->first();;
+            $last_trx = Kredit::latest()->first();
             if ($last_trx == NULL) {
                 $random_num = 1;
             } else {

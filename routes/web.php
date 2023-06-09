@@ -15,6 +15,7 @@ use App\Http\Controllers\KwitansiController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\ListRegOrderController;
 use App\Http\Controllers\RegOrderKreditController;
 use App\Http\Controllers\LaporanPembelianController;
 
@@ -32,7 +33,6 @@ use App\Http\Controllers\LaporanPembelianController;
 // Route::get('/', function () {
 //     return view('index');
 // });
-
 Route::get('/', [Dashboard::class, 'index'])->middleware('auth');
 Route::get('/home', [Dashboard::class, 'index'])->middleware('auth');
 
@@ -108,6 +108,7 @@ Route::resource('/setting', SettingController::class)->middleware('auth');
 
 // REG ORDER KREDIT
 Route::resource('/regorderkredit', RegOrderKreditController::class)->middleware('auth');
+Route::get('/getDataBuyerRegOrder', [RegOrderKreditController::class, 'get_data_buyer'])->middleware('auth');
 
 // MAINTENANCE
 Route::resource('/maintenance', MaintenanceController::class)->middleware('auth');
@@ -133,6 +134,8 @@ Route::get('/dataTablesTerjual', [BikeController::class, 'dataTablesTerjual'])->
 Route::get('/dataTablesPenjualan', [PenjualanController::class, 'dataTables'])->middleware('auth');
 Route::get('/dataTablesPenjualanKredit', [KreditController::class, 'dataTables'])->middleware('auth');
 Route::get('/dataTablesMaintenance', [MaintenanceController::class, 'dataTables'])->middleware('auth');
+Route::get('/datatablesRegOrderKredit', [RegOrderKreditController::class, 'dataTables'])->middleware('auth');
+Route::get('/listPengajualOrder', [ListRegOrderController::class, 'dataTables'])->middleware('auth');
 
 
 //CETAK PDF

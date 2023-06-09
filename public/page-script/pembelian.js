@@ -326,7 +326,7 @@ $(document).ready(function () {
         $(".penjual").removeClass("is-invalid");
         if ($(".penjual").val() == "INDIVIDU") {
             $(".tab-content").css({
-                height : "auto",
+                height: "auto",
             });
             $("#consumer-content-dealer").addClass("d-none");
             $("#consumer-content-individu").removeClass("d-none");
