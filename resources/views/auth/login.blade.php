@@ -172,13 +172,11 @@
                 $('#eye').toggleClass("d-none");
                 $('#eye-slash').toggleClass("d-none");
                 $('#password').attr('type', 'text');
-                $('#see').html('Hidden Password');
             });
             $('#eye-slash').on("click", function() {
                 $('#eye').toggleClass("d-none");
                 $('#eye-slash').toggleClass("d-none");
                 $('#password').attr('type', 'password');
-                $('#see').html('Show Password');
             });
         });
 

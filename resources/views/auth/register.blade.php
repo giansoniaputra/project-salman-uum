@@ -221,27 +221,30 @@
                 $('#eye').toggleClass("d-none");
                 $('#eye-slash').toggleClass("d-none");
                 $('#password').attr('type', 'text');
-                $('#see').html('Hidden Password');
+
             });
             $('#eye-slash').on("click", function() {
                 $('#eye').toggleClass("d-none");
                 $('#eye-slash').toggleClass("d-none");
                 $('#password').attr('type', 'password');
-                $('#see').html('Show Password');
-            });
+            })
 
             $('#eye2').on("click", function() {
-                $('#eye').toggleClass("d-none");
-                $('#eye-slash').toggleClass("d-none");
-                $('#password').attr('type', 'text');
-                $('#see').html('Hidden Password');
+                $('#eye2').toggleClass("d-none");
+                $('#eye-slash2').toggleClass("d-none");
+                $('#conf_password').attr('type', 'text');
             });
             $('#eye-slash2').on("click", function() {
-                $('#eye').toggleClass("d-none");
-                $('#eye-slash').toggleClass("d-none");
-                $('#password').attr('type', 'password');
-                $('#see').html('Show Password');
+                $('#eye2').toggleClass("d-none");
+                $('#eye-slash2').toggleClass("d-none");
+                $('#conf_password').attr('type', 'password');
             });
+        });
+
+    </script>
+    <script>
+        $(document).ready(function() {
+
         });
 
     </script>
