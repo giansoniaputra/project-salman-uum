@@ -110,6 +110,9 @@ Route::resource('/setting', SettingController::class)->middleware('auth');
 Route::resource('/regorderkredit', RegOrderKreditController::class)->middleware('auth');
 Route::get('/getDataBuyerRegOrder', [RegOrderKreditController::class, 'get_data_buyer'])->middleware('auth');
 
+// LIST REGISTER ORDER KREDIT
+Route::resource('/listRegOrder', ListRegOrderController::class)->middleware('auth');
+
 // MAINTENANCE
 Route::resource('/maintenance', MaintenanceController::class)->middleware('auth');
 Route::get('/getDataMaintenance', [MaintenanceController::class, 'get_maintenance'])->middleware('auth');

@@ -102,6 +102,9 @@ $(document).ready(function () {
                 data: "type",
             },
             {
+                data: "status",
+            },
+            {
                 data: "action",
             },
         ],
@@ -248,7 +251,7 @@ $(document).ready(function () {
         });
     });
 
-    // ACTION SIMPAN
+    // ACTION SIMPAN REGISTER ORDER
     $("#btn-action").on("click", ".btn-add-data", function () {
         $("#modal-pemohon .invalid-jk").remove();
         $("#btn-action .btn-add-data").attr("disabled", "true");
@@ -311,17 +314,17 @@ $(document).ready(function () {
         "click",
         ".register-button",
         function () {
-            table2.ajax.reload();
             let unique = $(this).attr("data-unique");
             $("#modal-regorderkredit").modal("show");
             $("#unique_no_reg").val(unique);
+            table2.ajax.reload();
             $.ajax({
                 data: { unique: unique },
                 url: "/getDataBuyerRegOrder",
                 type: "GET",
                 dataType: "json",
                 success: function (response) {
-                    console.log(response.data);
+                    // console.log(response.data);
                     $("#nama_nasabah")
                         .val(response.data.nama)
                         .trigger("change");
@@ -332,6 +335,120 @@ $(document).ready(function () {
             });
         }
     );
+
+    // ACTION SIMPAN LIST ORDER
+    $("#btn-action-list-order").on("click", "#btn-add-list-order", function () {
+        $("#modal-pemohon .invalid-jt").remove();
+        $("#modal-pemohon .invalid-via").remove();
+        $("#btn-action-list-order #btn-add-list-order").attr(
+            "disabled",
+            "true"
+        );
+        let formdata = $("#modal-regorderkredit form").serializeArray();
+        let data = {};
+        $(formdata).each(function (index, obj) {
+            data[obj.name] = obj.value;
+        });
+        $.ajax({
+            data: $("#modal-regorderkredit form").serialize(),
+            url: "/listRegOrder",
+            type: "POST",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                $("#btn-action-list-order #btn-add-list-order").removeAttr(
+                    "disabled"
+                );
+                if (response.errors) {
+                    if (response.errors.jenis_transaksi) {
+                        $("#modal-regorderkredit .select2").eq(0).css({
+                            border: "1px solid red",
+                            "border-radius": "10px",
+                        });
+                        $("#modal-regorderkredit .select2")
+                            .eq(0)
+                            .after(
+                                '<small class="text-center text-danger invalid-jt">Jenis kelamin tidak boleh kosong</small>'
+                            );
+                    }
+                    if (response.errors.via) {
+                        $("#modal-regorderkredit .select2").eq(1).css({
+                            border: "1px solid red",
+                            "border-radius": "10px",
+                        });
+                        $("#modal-regorderkredit .select2")
+                            .eq(1)
+                            .after(
+                                '<small class="text-center text-danger invalid-via">Kredit via leasing tidak boleh kosong</small>'
+                            );
+                    }
+                    displayErrors(response.errors);
+                } else {
+                    $("#nama_dealer").val("");
+                    $("#cmo").val("");
+                    $("#pic").val("");
+                    $("#jenis_transaksi").val(null).trigger("change");
+                    $("#kredit_via_leasing").val(null).trigger("change");
+                    $("#merk").val("");
+                    $("#type").val("");
+                    $("#tahun_pembuatan").val("");
+                    $("#otr").val("");
+                    $("#dp_po").val("");
+                    $("#pencairan").val("");
+                    $("#dp").val("");
+                    $("#angsuran").val("");
+                    $("#tenor").val("");
+                    Swal.fire("Good job!", response.success, "success");
+                    table2.ajax.reload();
+                }
+            },
+        });
+    });
+
+    //RESET MODAL LIST ORDER
+    $("#btn-close-list").on("click", function () {
+        $("#unique_no_reg").val("");
+        $("#buyer_id").val("");
+        $("#nama_dealer").val("");
+        $("#cmo").val("");
+        $("#pic").val("");
+        $("#jenis_transaksi").val(null).trigger("change");
+        $("#kredit_via_leasing").val(null).trigger("change");
+        $("#merk").val("");
+        $("#type").val("");
+        $("#tahun_pembuatan").val("");
+        $("#otr").val("");
+        $("#dp_po").val("");
+        $("#pencairan").val("");
+        $("#dp").val("");
+        $("#angsuran").val("");
+        $("#tenor").val("");
+
+        $("#nama_dealer").removeClass("is-invalid");
+        $("#cmo").removeClass("is-invalid");
+        $("#pic").removeClass("is-invalid");
+        $("#merk").removeClass("is-invalid");
+        $("#type").removeClass("is-invalid");
+        $("#tahun_pembuatan").removeClass("is-invalid");
+        $("#otr").removeClass("is-invalid");
+        $("#dp_po").removeClass("is-invalid");
+        $("#pencairan").removeClass("is-invalid");
+        $("#dp").removeClass("is-invalid");
+        $("#angsuran").removeClass("is-invalid");
+        $("#tenor").removeClass("is-invalid");
+
+        $("#modal-regorderkredit .invalid-jt").remove();
+        $("#modal-regorderkredit .invalid-via").remove();
+
+        $("#modal-regorderkredit .select2").eq(0).css({
+            border: "0px",
+            "border-radius": "10px",
+        });
+        $("#modal-regorderkredit .select2").eq(1).css({
+            border: "0px",
+            "border-radius": "10px",
+        });
+    });
 
     //Hendler Error
     function displayErrors(errors) {

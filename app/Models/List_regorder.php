@@ -19,7 +19,7 @@ class List_regorder extends Model
     public static function dataTables($unique = '')
     {
         $query = DB::table('list_regorders')
-            ->where('unique', $unique);
+            ->where('regorder_id', $unique);
         return $query->get();
     }
 }

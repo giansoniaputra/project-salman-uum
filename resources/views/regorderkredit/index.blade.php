@@ -208,10 +208,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitle">Register Order Kredit</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" id="btn-close-list" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="javascript:;">
+                    @csrf
                     {{-- Form Hidden --}}
                     <input type="text" name="unique_no_reg" id="unique_no_reg" value="0">
                     <input type="text" name="buyer_id" id="buyer_id">
@@ -219,23 +220,13 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="mb-3 form-floating">
-                                <input type="text" name="nama_nasabah" id="nama_nasabah" class="form-control @error('nama_nasabah')is-invalid @enderror" value="{{ old('nama_nasabah') }}" disabled>
-                                @error('nama_nasabah')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <input type="text" name="nama_nasabah" id="nama_nasabah" class="form-control" disabled>
                                 <label class="text-label" for="nama_nasabah">Nama Nasabah<span class="text-danger"> *</span></label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3 form-floating">
-                                <input type="text" name="no_telepon_nasabah" id="no_telepon_nasabah" class="form-control @error('no_telepon_nasabah')is-invalid @enderror" value="{{ old('no_telepon_nasabah') }}" disabled>
-                                @error('no_telepon_nasabah')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <input type="text" name="no_telepon_nasabah" id="no_telepon_nasabah" class="form-control" disabled>
                                 <label class="text-label" for="no_telepon_nasabah">No Telepon Nasabah<span class="text-danger"> *</span></label>
                             </div>
                         </div>
@@ -256,8 +247,8 @@
                     <div class="row g-3">
                         <div class="col-md-4">
                             <div class="mb-3 form-floating">
-                                <input type="text" name="dealer" id="dealer" class="form-control @error('dealer')is-invalid @enderror" value="{{ old('dealer') }}" placeholder="Masukan Nama Dealer">
-                                @error('dealer')
+                                <input type="text" name="nama_dealer" id="nama_dealer" class="form-control @error('nama_dealer')is-invalid @enderror" value="{{ old('nama_dealer') }}" placeholder="Masukan Nama Dealer">
+                                @error('nama_dealer')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -267,24 +258,19 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 form-floating">
-                                <input type="text" name="CMO Leasing" id="CMO Leasing" class="form-control @error('CMO Leasing')is-invalid @enderror" value="{{ old('CMO Leasing') }}" placeholder="Masukan CMO Leasing">
-                                @error('CMO Leasing')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <input type="text" name="cmo" id="cmo" class="form-control" placeholder="Masukan cmo">
                                 <label class="text-label" for="CMO Leasing">CMO Leasing<span class="text-danger"> *</span></label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 form-floating">
-                                <input type="text" name="pic_showroom" id="pic_showroom" class="form-control @error('pic_showroom')is-invalid @enderror" value="{{ old('pic_showroom') }}" placeholder="Masukan Sales/PIC Showroom">
-                                @error('pic_showroom')
+                                <input type="text" name="pic" id="pic" class="form-control @error('pic')is-invalid @enderror" value="{{ old('pic') }}" placeholder="Masukan Sales/PIC Showroom">
+                                @error('pic')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
-                                <label class="text-label" for="pic_showroom">Sales/PIC Showroom<span class="text-danger"> *</span></label>
+                                <label class="text-label" for="pic">Sales/PIC Showroom<span class="text-danger"> *</span></label>
                             </div>
                         </div>
                     </div>
@@ -301,48 +287,48 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3 form-floating w-100">
-                                <select id="kredit_via_leasing" name="kredit_via_leasing">
+                                <select id="kredit_via_leasing" name="via">
                                     <option label="&nbsp;"></option>
                                     <option value="MUF">MUF</option>
                                     <option value="ADIRA">Adira</option>
                                     <option value="CASH">Cash</option>
                                 </select>
-                                <label class="text-label" for="kredit_via_leasing">Kredit Via Leasing<span class="text-danger"> *</label></span>
+                                <label class="text-label" for="via">Kredit Via Leasing<span class="text-danger"> *</label></span>
                             </div>
                         </div>
                     </div>
                     <div class="row g-3">
                         <div class="col-md-4">
                             <div class="mb-3 form-floating w-100">
-                                <input type="text" name="merk_motor" id="merk_motor" class="form-control @error('merk_motor')is-invalid @enderror" value="{{ old('merk_motor') }}" placeholder="Masukan Merk Motor">
-                                @error('merk_motor')
+                                <input type="text" name="merk" id="merk" class="form-control @error('merk')is-invalid @enderror" value="{{ old('merk') }}" placeholder="Masukan Merk Motor">
+                                @error('merk')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
-                                <label class="text-label" for="merk_motor">Merk Motor<span class="text-danger"> *</span></label>
+                                <label class="text-label" for="merk">Merk Motor<span class="text-danger"> *</span></label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 form-floating w-100">
-                                <input type="text" name="tipe_motor" id="tipe_motor" class="form-control @error('tipe_motor')is-invalid @enderror" value="{{ old('tipe_motor') }}" placeholder="Masukan Tipe Motor">
-                                @error('tipe_motor')
+                                <input type="text" name="type" id="type" class="form-control @error('type')is-invalid @enderror" value="{{ old('type') }}" placeholder="Masukan Tipe Motor">
+                                @error('type')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
-                                <label class="text-label" for="tipe_motor">Tipe Motor<span class="text-danger"> *</span></label>
+                                <label class="text-label" for="type">Tipe Motor<span class="text-danger"> *</span></label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 form-floating w-100">
-                                <input type="text" name="tahun_kendaraan" id="tahun_kendaraan" class="form-control @error('tahun_kendaraan')is-invalid @enderror" value="{{ old('tahun_kendaraan') }}" placeholder="Masukan Tahun Kendaraan">
-                                @error('tahun_kendaraan')
+                                <input type="text" name="tahun_pembuatan" id="tahun_pembuatan" class="form-control @error('tahun_pembuatan')is-invalid @enderror" value="{{ old('tahun_pembuatan') }}" placeholder="Masukan Tahun Kendaraan">
+                                @error('tahun_pembuatan')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
-                                <label class="text-label" for="tahun_kendaraan">Tahun Kendaraan<span class="text-danger"> *</span></label>
+                                <label class="text-label" for="tahun_pembuatan">Tahun Kendaraan<span class="text-danger"> *</span></label>
                             </div>
                         </div>
                     </div>
@@ -384,13 +370,13 @@
                     <div class="row g-3">
                         <div class="col-md-4">
                             <div class="mb-3 form-floating w-100">
-                                <input type="text" name="dp_bayar" id="dp_bayar" class="form-control @error('dp_bayar')is-invalid @enderror" value="{{ old('dp_bayar') }}" placeholder="Masukan DP Bayar">
-                                @error('dp_bayar')
+                                <input type="text" name="dp" id="dp" class="form-control @error('dp')is-invalid @enderror" value="{{ old('dp') }}" placeholder="Masukan DP Bayar">
+                                @error('dp')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
-                                <label class="text-label" for="dp_bayar">DP Bayar<span class="text-danger"> *</span></label>
+                                <label class="text-label" for="dp">DP Bayar<span class="text-danger"> *</span></label>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -427,6 +413,7 @@
                             <th class="text-muted text-small text-uppercase">Kredit Via Leading</th>
                             <th class="text-muted text-small text-uppercase">Merk Motor</th>
                             <th class="text-muted text-small text-uppercase">Tipe</th>
+                            <th class="text-muted text-small text-uppercase">Status</th>
                             <th class="text-muted text-small text-uppercase">Action</th>
                         </tr>
                     </thead>
@@ -434,9 +421,9 @@
                     </tbody>
                 </table>
             </div>
-            <div class="modal-footer" id="btn-action">
+            <div class="modal-footer" id="btn-action-list-order">
                 <div>
-                    <button class="btn btn-icon btn-icon-end btn-primary" type="submit">
+                    <button class="btn btn-icon btn-icon-end btn-primary" type="button" id="btn-add-list-order">
                         <span>Tambah</span>
                         {{-- <i data-acorn-icon="chevron-right"></i> --}}
                     </button>

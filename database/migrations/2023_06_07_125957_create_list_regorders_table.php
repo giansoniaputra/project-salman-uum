@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('list_regorders', function (Blueprint $table) {
             $table->id();
             $table->uuid('unique')->unique();
-            $table->integer('regorder_id');
+            $table->string('regorder_id');
             $table->string('nama_dealer');
             $table->string('cmo');
             $table->string('pic');
@@ -22,13 +22,14 @@ return new class extends Migration
             $table->string('via');
             $table->string('merk');
             $table->string('type');
-            $table->string('rahun_pembuatan');
+            $table->string('tahun_pembuatan');
             $table->integer('otr');
             $table->integer('dp_po');
             $table->integer('pencairan');
             $table->integer('dp');
             $table->integer('angsuran');
             $table->integer('tenor');
+            $table->string('status');
             $table->timestamps();
         });
     }
