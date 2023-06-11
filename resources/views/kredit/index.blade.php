@@ -229,7 +229,7 @@
                         <label class="text-label" for="angsuran">Angsuran<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control money" name="tenor" id="tenor" placeholder="Masukan Tenor" style="">
+                        <input type="text" class="form-control" name="tenor" id="tenor" placeholder="Masukan Tenor" style="">
                         <label class="text-label" for="tenor">Tenor<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">

@@ -407,7 +407,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 form-floating w-100">
-                                <input type="text" name="tenor" id="tenor" class="form-control money @error('tenor')is-invalid @enderror" value="{{ old('tenor') }}" placeholder="Masukan Tenor">
+                                <input type="text" name="tenor" id="tenor" class="form-control @error('tenor')is-invalid @enderror" value="{{ old('tenor') }}" placeholder="Masukan Tenor">
                                 @error('tenor')
                                 <div class="invalid-feedback">
                                     {{ $message }}
