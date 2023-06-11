@@ -113,7 +113,7 @@
                                         <input type="text" name="name" id="name" class="form-control input-default text-black @error('name') is-invalid @enderror" placeholder="Masukan Username" value="{{ old('name') }}">
                                         @error('name')
                                         <div class="invalid-feedback">
-                                            {{ 'Username Tidak Boleh Kosong!' }}
+                                            {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
@@ -122,7 +122,7 @@
                                         <input type="email" name="email" id="email" class="form-control input-default text-black @error('email') is-invalid @enderror" placeholder="contoh@gmail.com" value="{{ old('email') }}">
                                         @error('email')
                                         <div class="invalid-feedback">
-                                            {{ 'Email Tidak Boleh Kosong!' }}
+                                            {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
@@ -135,7 +135,7 @@
                                         </a>
                                         @error('password')
                                         <div class="invalid-feedback">
-                                            {{ 'Password Tidak Boleh Kosong!' }}
+                                            {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
@@ -148,7 +148,7 @@
                                         </a>
                                         @error('conf_password')
                                         <div class="invalid-feedback">
-                                            {{ 'Konfirmasi Password Tidak Boleh Kosong!' }}
+                                            {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
@@ -162,7 +162,7 @@
                                         </select>
                                         @error('roles')
                                         <div class="invalid-feedback">
-                                            {{ 'Role Tidak Boleh Kosong!' }}
+                                            {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
