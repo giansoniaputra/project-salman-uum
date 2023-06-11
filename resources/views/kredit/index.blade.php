@@ -137,26 +137,29 @@
                         <input type="text" class="form-control money" name="harga_beli" id="harga_beli" style="background-color: rgba(215, 218, 227, 0.3)" readonly>
                         <label for="harga_beli">Harga Beli</label>
                     </div>
-                    <div class="form-floating mb-3 w-100" id="no-reg-order-select">
-                        <select id="no_reg_order" name="no_reg_order" class="form-control no-reg-order" placeholder="Masukan No Reg Order">
-
-                        </select>
-                        <label>No Register Order <span class="text-danger"> *</span></label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="reg_order">
+                        <label class="form-check-label" for="reg_order">Apakah sudah melakukan pengajuan di register order?</label>
                     </div>
-                    <div class="form-floating mb-3" id="current-no-reg-order">
+                    <div id="check-reg-order" class="d-none">
+                        <div class="form-floating mb-3 w-100" id="no-reg-order-select">
+                            <select id="no_reg_order" name="no_reg_order" class="form-control no-reg-order" placeholder="Masukan No Reg Order">
+                                <option label="&nbsp;"></option>
+                                @foreach($orders as $order)
+                                <option value="{{ $order->unique }}">{{ $order->no_reg }}&nbsp; - &nbsp;{{ $order->nama }}</option>
+                                @endforeach
+                            </select>
+                            <label>No Register Order<span class="text-danger"> *</span></label>
+                        </div>
+                        <div class="form-floating mb-3 w-100" id="list-order-select">
+                            <select id="list_order" name="list_order" class="form-control list-order" placeholder="Masukan List Order">
 
-
+                            </select>
+                            <label>List Order<span class="text-danger"> *</span></label>
+                        </div>
                     </div>
-                    <div class="form-floating mb-3 w-100" id="list-order-select">
-                        <select id="list_order" name="list_order" class="form-control list-order" placeholder="Masukan List Order">
-
-                        </select>
-                        <label>List Order<span class="text-danger"> *</span></label>
-                    </div>
-                    <div class="form-floating mb-3" id="current-list_order">
-
-
-                    </div>
+                    <div class="form-floating mb-3" id="current-no-reg-order"></div>
+                    <div class="form-floating mb-3" id="current-list_order"></div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control " placeholder="Masukan No NIK KTP" name="nik" id="nik">
                         <label class="text-label" for="nik">NIK<span class="text-danger"> *</span></label>

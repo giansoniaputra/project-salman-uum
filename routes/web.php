@@ -97,6 +97,10 @@ Route::get('/returMotor/{sele:unique}', [PenjualanController::class, 'retur_moto
 Route::get('/returMotorKredit/{kredit:unique}', [KreditController::class, 'retur_motor'])->middleware('auth');
 //Refresh no polisi
 Route::get('/refresh_no_polisi', [PenjualanController::class, 'refresh_no_polisi'])->middleware('auth');
+//Ketika no register dipilih
+Route::get('/getListOrder', [KreditController::class, 'get_list_order'])->middleware('auth');
+//Memasukan semua data register order
+Route::get('/getDataListOrderKredit', [KreditController::class, 'get_list_order_kredit'])->middleware('auth');
 
 // PENJUALAN KREDIT
 Route::resource('/kredit', KreditController::class)->middleware('auth');

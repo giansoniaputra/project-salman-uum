@@ -794,6 +794,200 @@ $(document).ready(function () {
         }
     );
 
+    //MEMILIH DATA DARI REGISTER ORDER
+    $("#reg_order").on("click", function () {
+        let check = $("#reg_order").is(":checked");
+        if (check) {
+            $("#check-reg-order").removeClass("d-none");
+        } else {
+            $("#check-reg-order").addClass("d-none");
+            $("#no_reg_order").val(null).trigger("change");
+            $("#list_order").val(null).trigger("change");
+        }
+    });
+
+    //KETIKA REGISTER ORDER DIPILIH
+    $("#no_reg_order").on("change", function () {
+        let unique = $(this).val();
+        if (unique != "") {
+            $.ajax({
+                data: { unique: unique },
+                url: "/getListOrder",
+                success: function (response) {
+                    $("#list_order").html(response);
+                },
+            });
+        }
+    });
+
+    $("#list_order").on("change", function () {
+        let unique = $(this).val();
+        if (unique != "") {
+            $.ajax({
+                data: { unique: unique },
+                url: "/getDataListOrderKredit",
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    // console.log(response);
+                    //DATA BUYER
+                    $("#nik").val(response.success.nik);
+                    $("#nama_pembeli").val(response.success.nama);
+                    $("#alamat").val(response.success.alamat);
+                    $("#no_telepon").val(response.success.no_telepon);
+                    if (
+                        response.success.tempat_lahir &&
+                        response.success.tanggal_lahir
+                    ) {
+                        $("#tempat_lahir").val(response.success.tempat_lahir);
+                        $("#jenis_kelamin")
+                            .val(response.success.jenis_kelamin)
+                            .trigger("change");
+                        $("#tanggal_lahir").val(response.success.tanggal_lahir);
+                        $("#tempat_lahir").css({
+                            "background-color": "rgba(215, 218, 227, 0.3)",
+                        });
+                        $("#tanggal_lahir").css({
+                            "background-color": "rgba(215, 218, 227, 0.3)",
+                        });
+                        $("#jenis_kelamin").css({
+                            "background-color": "rgba(215, 218, 227, 0.3)",
+                        });
+                    }
+                    $("#nama_pembeli").css({
+                        "background-color": "rgba(215, 218, 227, 0.3)",
+                    });
+                    $("#alamat").css({
+                        "background-color": "rgba(215, 218, 227, 0.3)",
+                    });
+                    $("#no_telepon").css({
+                        "background-color": "rgba(215, 218, 227, 0.3)",
+                    });
+                    $("#nama_pembeli").removeClass("is-invalid");
+                    $("#alamat").removeClass("is-invalid");
+                    $("#no_telepon").removeClass("is-invalid");
+                    $("#tanggal_lahir").removeClass("is-invalid");
+                    $("#tempat_lahir").removeClass("is-invalid");
+                    if (response.success.photo_ktp == null) {
+                        $("#img-ktp img").attr(
+                            "src",
+                            "/storage/ktp/default.png"
+                        );
+                    } else {
+                        $("#img-ktp img").attr(
+                            "src",
+                            "/storage/ktp_pembeli/" + response.success.photo_ktp
+                        );
+                    }
+
+                    //DATA DANA
+                    $("#otr_leasing").val(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.success.otr)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
+                    );
+                    $("#dp_po").val(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.success.dp_po)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
+                    );
+                    $("#pencairan").val(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.success.pencairan)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
+                    );
+                    $("#dp_bayar").val(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.success.dp)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
+                    );
+                    $("#angsuran").val(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.success.angsuran)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
+                    );
+                    $("#tenor").val(response.success.tenor);
+
+                    $("#nik").css({
+                        "background-color": "rgba(215, 218, 227, 0.3)",
+                    });
+                    $("#otr_leasing").css({
+                        "background-color": "rgba(215, 218, 227, 0.3)",
+                    });
+                    $("#dp_po").css({
+                        "background-color": "rgba(215, 218, 227, 0.3)",
+                    });
+                    $("#pencairan").css({
+                        "background-color": "rgba(215, 218, 227, 0.3)",
+                    });
+                    $("#dp_bayar").css({
+                        "background-color": "rgba(215, 218, 227, 0.3)",
+                    });
+                    $("#angsuran").css({
+                        "background-color": "rgba(215, 218, 227, 0.3)",
+                    });
+                    $("#tenor").css({
+                        "background-color": "rgba(215, 218, 227, 0.3)",
+                    });
+
+                    // $("#nama_dealer").removeAttr("disabled");
+                    // $("#cmo").removeAttr("disabled");
+                    // $("#pic").removeAttr("disabled");
+                    // $("#merk").removeAttr("disabled");
+                    // $("#type").removeAttr("disabled");
+                    // $("#tahun_pembuatan").removeAttr("disabled");
+                    // $("#otr").removeAttr("disabled");
+                    // $("#dp_po").removeAttr("disabled");
+                    // $("#pencairan").removeAttr("disabled");
+                    // $("#dp").removeAttr("disabled");
+                    // $("#angsuran").removeAttr("disabled");
+                    // $("#tenor").removeAttr("disabled");
+
+                    // $("#select-jenis-transaksi").removeClass("d-none");
+                    // $("#select-via").removeClass("d-none");
+                    // $("#view-jenis-transaksi").addClass("d-none");
+
+                    // $("#modal-regorderkredit .invalid-jt").remove();
+                    // $("#modal-regorderkredit .invalid-via").remove();
+
+                    // $("#modal-regorderkredit .select2").eq(0).css({
+                    //     border: "0px",
+                    //     "border-radius": "10px",
+                    // });
+                    // $("#modal-regorderkredit .select2").eq(1).css({
+                    //     border: "0px",
+                    //     "border-radius": "10px",
+                    // });
+                },
+            });
+        }
+    });
+
     //Hendler Error
     function displayErrors(errors) {
         // menghapus class 'is-invalid' dan pesan error sebelumnya

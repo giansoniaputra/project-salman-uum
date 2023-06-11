@@ -6,6 +6,8 @@ use App\Models\Bike;
 use App\Models\Buyer;
 use App\Models\Retur;
 use App\Models\Kredit;
+use App\Models\Regorder;
+use App\Models\List_regorder;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -27,7 +29,8 @@ class KreditController extends Controller
             'judul' => 'Transaksi',
             'breadcumb1' => 'Penjualan',
             'breadcumb2' => 'Penjualan Kredit',
-            'no_polisi' => DB::table('bikes')->select('no_polisi', 'id')->where('status', 'READY STOCK')->get()
+            'no_polisi' => DB::table('bikes')->select('no_polisi', 'id')->where('status', 'READY STOCK')->get(),
+            'orders' => Regorder::dataTables(),
         ];
         return view('kredit.index', $data);
     }
@@ -421,5 +424,23 @@ class KreditController extends Controller
         Kredit::where('unique', $kredit->unique)->delete();
 
         return redirect('/kredit')->with('success', 'Data Penjualan teleh Diretur');
+    }
+
+    public function get_list_order(Request $request)
+    {
+        $query = List_regorder::where('regorder_id', $request->unique)->where('status', 'DI SETUJUI')->get();
+        echo '<option label="&nbsp;"></option>';
+        foreach ($query as $row) {
+            echo '<option value="' . $row->unique . '">' . $row->merk . '&nbsp; - &nbsp;' . $row->type . '</option>';
+        }
+    }
+
+    public function get_list_order_kredit(Request $request)
+    {
+        $query = $query = DB::table('list_regorders as a')
+            ->join('regorders as b', 'a.regorder_id', '=', 'b.unique')
+            ->join('buyers as c', 'b.buyer_id', '=', 'c.id')
+            ->where('a.unique', $request->unique);
+        return response()->json(['success' => $query->first()]);
     }
 }
