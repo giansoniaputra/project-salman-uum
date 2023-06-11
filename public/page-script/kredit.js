@@ -109,6 +109,25 @@ $(document).ready(function () {
         $("#angsuran").val("");
         $("#tenor").val("");
         $("#komisi").val("");
+
+        $("#nama_pembeli").removeAttr("style");
+        $("#alamat").removeAttr("style");
+        $("#tempat_lahir").removeAttr("style");
+        $("#tanggal_lahir").removeAttr("style");
+        $("#no_telepon").removeAttr("style");
+
+        $("#nik").removeAttr("style");
+        $("#otr_leasing").removeAttr("style");
+        $("#dp_po").removeAttr("style");
+        $("#pencairan").removeAttr("style");
+        $("#dp_bayar").removeAttr("style");
+        $("#angsuran").removeAttr("style");
+        $("#tenor").removeAttr("style");
+
+        $("#reg_order").prop("checked", false);
+        $("#check-reg-order").addClass("d-none");
+        $("#no_reg_order").val(null).trigger("change");
+        $("#list_order").val(null).trigger("change");
     });
     //Reset ketika tombol tutup di click
     $(".modal-footer").on("click", ".btn-outline-primary", function () {
@@ -153,6 +172,25 @@ $(document).ready(function () {
         $("#tenor").val("");
         $("#komisi").val("");
         $(".current-method").html("");
+
+        $("#nama_pembeli").removeAttr("style");
+        $("#alamat").removeAttr("style");
+        $("#tempat_lahir").removeAttr("style");
+        $("#tanggal_lahir").removeAttr("style");
+        $("#no_telepon").removeAttr("style");
+
+        $("#nik").removeAttr("style");
+        $("#otr_leasing").removeAttr("style");
+        $("#dp_po").removeAttr("style");
+        $("#pencairan").removeAttr("style");
+        $("#dp_bayar").removeAttr("style");
+        $("#angsuran").removeAttr("style");
+        $("#tenor").removeAttr("style");
+
+        $("#reg_order").prop("checked", false);
+        $("#check-reg-order").addClass("d-none");
+        $("#no_reg_order").val(null).trigger("change");
+        $("#list_order").val(null).trigger("change");
     });
 
     $("#btn-add-data").on("click", function () {
@@ -355,6 +393,7 @@ $(document).ready(function () {
                     $("#jumlah_bayar").val("");
                     $("#nik").val("");
                     $("#kembali").val("");
+                    $("#no_telepon").val("");
                     $("#nama_pembeli").val("");
                     $("#tanggal_jual").val("");
                     $("#harga_jual").removeClass("is-invalid");
@@ -384,6 +423,19 @@ $(document).ready(function () {
                     $("#tempat_lahir").removeAttr("style");
                     $("#tanggal_lahir").removeAttr("style");
                     $("#no_telepon").removeAttr("style");
+
+                    $("#nik").removeAttr("style");
+                    $("#otr_leasing").removeAttr("style");
+                    $("#dp_po").removeAttr("style");
+                    $("#pencairan").removeAttr("style");
+                    $("#dp_bayar").removeAttr("style");
+                    $("#angsuran").removeAttr("style");
+                    $("#tenor").removeAttr("style");
+
+                    $("#reg_order").prop("checked", false);
+                    $("#check-reg-order").addClass("d-none");
+                    $("#no_reg_order").val(null).trigger("change");
+                    $("#list_order").val(null).trigger("change");
                     Swal.fire("Good job!", response.success, "success");
                     table.ajax.reload();
                 }
@@ -575,6 +627,7 @@ $(document).ready(function () {
                     $("#kembali").val("");
                     $("#nama_pembeli").val("");
                     $("#tanggal_jual").val("");
+                    $("#no_telepon").val("");
                     $("#harga_jual").removeClass("is-invalid");
                     $("#jumlah_bayar").removeClass("is-invalid");
                     $("#photo-ktp").val("");
@@ -602,6 +655,19 @@ $(document).ready(function () {
                     $("#tempat_lahir").removeAttr("style");
                     $("#tanggal_lahir").removeAttr("style");
                     $("#no_telepon").removeAttr("style");
+
+                    $("#nik").removeAttr("style");
+                    $("#otr_leasing").removeAttr("style");
+                    $("#dp_po").removeAttr("style");
+                    $("#pencairan").removeAttr("style");
+                    $("#dp_bayar").removeAttr("style");
+                    $("#angsuran").removeAttr("style");
+                    $("#tenor").removeAttr("style");
+
+                    $("#reg_order").prop("checked", false);
+                    $("#check-reg-order").addClass("d-none");
+                    $("#no_reg_order").val(null).trigger("change");
+                    $("#list_order").val(null).trigger("change");
                     Swal.fire("Good job!", response.success, "success");
                     table.ajax.reload();
                 }
