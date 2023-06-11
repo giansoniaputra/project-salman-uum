@@ -350,7 +350,7 @@
                     <div class="row g-3">
                         <div class="col-md-4">
                             <div class="mb-3 form-floating w-100">
-                                <input type="text" name="otr" id="otr" class="form-control @error('otr')is-invalid @enderror" value="{{ old('otr') }}" placeholder="Masukan OTR">
+                                <input type="text" name="otr" id="otr" class="form-control money @error('otr')is-invalid @enderror" value="{{ old('otr') }}" placeholder="Masukan OTR">
                                 @error('otr')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -361,7 +361,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 form-floating w-100">
-                                <input type="text" name="dp_po" id="dp_po" class="form-control @error('dp_po')is-invalid @enderror" value="{{ old('dp_po') }}" placeholder="Masukan DP PO">
+                                <input type="text" name="dp_po" id="dp_po" class="form-control money @error('dp_po')is-invalid @enderror" value="{{ old('dp_po') }}" placeholder="Masukan DP PO">
                                 @error('dp_po')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -372,7 +372,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 form-floating w-100">
-                                <input type="text" name="pencairan" id="pencairan" class="form-control @error('pencairan')is-invalid @enderror" value="{{ old('pencairan') }}" placeholder="Masukan Pencairan">
+                                <input type="text" name="pencairan" id="pencairan" class="form-control money @error('pencairan')is-invalid @enderror" value="{{ old('pencairan') }}" placeholder="Masukan Pencairan">
                                 @error('pencairan')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -385,7 +385,7 @@
                     <div class="row g-3">
                         <div class="col-md-4">
                             <div class="mb-3 form-floating w-100">
-                                <input type="text" name="dp" id="dp" class="form-control @error('dp')is-invalid @enderror" value="{{ old('dp') }}" placeholder="Masukan DP Bayar">
+                                <input type="text" name="dp" id="dp" class="form-control money @error('dp')is-invalid @enderror" value="{{ old('dp') }}" placeholder="Masukan DP Bayar">
                                 @error('dp')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -396,7 +396,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 form-floating w-100">
-                                <input type="text" name="angsuran" id="angsuran" class="form-control @error('angsuran')is-invalid @enderror" value="{{ old('angsuran') }}" placeholder="Masukan Angsuran">
+                                <input type="text" name="angsuran" id="angsuran" class="form-control money @error('angsuran')is-invalid @enderror" value="{{ old('angsuran') }}" placeholder="Masukan Angsuran">
                                 @error('angsuran')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -407,7 +407,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 form-floating w-100">
-                                <input type="text" name="tenor" id="tenor" class="form-control @error('tenor')is-invalid @enderror" value="{{ old('tenor') }}" placeholder="Masukan Tenor">
+                                <input type="text" name="tenor" id="tenor" class="form-control money @error('tenor')is-invalid @enderror" value="{{ old('tenor') }}" placeholder="Masukan Tenor">
                                 @error('tenor')
                                 <div class="invalid-feedback">
                                     {{ $message }}

@@ -242,12 +242,6 @@
         });
 
     </script>
-    <script>
-        $(document).ready(function() {
-
-        });
-
-    </script>
     <!-- Page Specific Scripts End -->
 </body>
 </html>
