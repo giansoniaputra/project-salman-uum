@@ -112,6 +112,16 @@ Route::get('/getDataBuyerRegOrder', [RegOrderKreditController::class, 'get_data_
 
 // LIST REGISTER ORDER KREDIT
 Route::resource('/listRegOrder', ListRegOrderController::class)->middleware('auth');
+//get data list order
+Route::get('/getDataListOrder', [ListRegOrderController::class, 'get_data_list_order'])->middleware('auth');
+//get data list order
+Route::post('/listRegOrderUpdate', [ListRegOrderController::class, 'get_data_list_order_update'])->middleware('auth');
+//order disetujui
+Route::get('/statusDiSetujui', [ListRegOrderController::class, 'status_setuju'])->middleware('auth');
+//order ditolak
+Route::get('/statusDiTolak', [ListRegOrderController::class, 'status_tolak'])->middleware('auth');
+//order diproses
+Route::get('/statusDiProses', [ListRegOrderController::class, 'status_proses'])->middleware('auth');
 
 // MAINTENANCE
 Route::resource('/maintenance', MaintenanceController::class)->middleware('auth');

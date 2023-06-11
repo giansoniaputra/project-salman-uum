@@ -204,7 +204,7 @@
 <!-- Add Edit Modal End -->
 <!-- Add Edit Modal Start -->
 <div class="modal modal-center fade" id="modal-regorderkredit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitle">Register Order Kredit</h5>
@@ -214,8 +214,9 @@
                 <form action="javascript:;">
                     @csrf
                     {{-- Form Hidden --}}
-                    <input type="text" name="unique_no_reg" id="unique_no_reg" value="0">
-                    <input type="text" name="buyer_id" id="buyer_id">
+                    <input type="hidden" name="unique_no_reg" id="unique_no_reg" value="0">
+                    <input type="hidden" name="buyer_id" id="buyer_id">
+                    <input type="hidden" name="current_unique" id="current_unique">
                     {{-- !Form Hidden --}}
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -274,9 +275,23 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row g-3 d-none" id="view-jenis-transaksi">
+                        <div class="col-md-6">
+                            <div class="mb-3 form-floating">
+                                <input type="text" id="view_jenis_transaksi" class="form-control" disabled>
+                                <label class="text-label">Jenis Transksi</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3 form-floating">
+                                <input type="text" id="view_via" class="form-control" disabled>
+                                <label class="text-label">Kredit Via Leasing</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <div class="mb-3 form-floating w-100">
+                            <div class="mb-3 form-floating w-100" id="select-jenis-transaksi">
                                 <select id="jenis_transaksi" name="jenis_transaksi">
                                     <option label="&nbsp;"></option>
                                     <option value="CASH">Cash</option>
@@ -286,7 +301,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="mb-3 form-floating w-100">
+                            <div class="mb-3 form-floating w-100" id="select-via">
                                 <select id="kredit_via_leasing" name="via">
                                     <option label="&nbsp;"></option>
                                     <option value="MUF">MUF</option>
@@ -414,6 +429,7 @@
                             <th class="text-muted text-small text-uppercase">Merk Motor</th>
                             <th class="text-muted text-small text-uppercase">Tipe</th>
                             <th class="text-muted text-small text-uppercase">Status</th>
+                            <th class="text-muted text-small text-uppercase">Ubah Status</th>
                             <th class="text-muted text-small text-uppercase">Action</th>
                         </tr>
                     </thead>
@@ -421,14 +437,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="modal-footer" id="btn-action-list-order">
-                <div>
-                    <button class="btn btn-icon btn-icon-end btn-primary" type="button" id="btn-add-list-order">
-                        <span>Tambah</span>
-                        {{-- <i data-acorn-icon="chevron-right"></i> --}}
-                    </button>
-                </div>
-            </div>
+            <div class="modal-footer" id="btn-action-list-order"></div>
         </div>
     </div>
 </div>

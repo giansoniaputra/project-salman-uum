@@ -103,12 +103,51 @@ $(document).ready(function () {
             },
             {
                 data: "status",
+                render: function (data, type, row, meta) {
+                    if (data == "DALAM PENGAJUAN") {
+                        return type === "display"
+                            ? '<div class="badge bg-info text-uppercase py-1 px-2">' +
+                                  data +
+                                  "</div>"
+                            : data;
+                    } else if (data == "DI SETUJUI") {
+                        return type === "display"
+                            ? '<div class="badge bg-success text-uppercase py-1 px-2">' +
+                                  data +
+                                  "</div>"
+                            : data;
+                    } else if (data == "DI TOLAK") {
+                        return type === "display"
+                            ? '<div class="badge bg-danger text-uppercase py-1 px-2">' +
+                                  data +
+                                  "</div>"
+                            : data;
+                    }
+                },
+            },
+            {
+                data: "unique",
+                render: function (data, type, row, meta) {
+                    return type === "display"
+                        ? '<button class="btn btn-rounded btn-sm btn-success button-disetujui" data-bs-toggle="tooltip" data-bs-placement="top" title="Order Disetujui" data-unique="' +
+                              data +
+                              '"><i class="bi-check-all"></i></button> <button class="btn btn-rounded btn-sm btn-danger button-ditolak" data-bs-toggle="tooltip" data-bs-placement="top" title="Order Ditolak" data-unique="' +
+                              data +
+                              '"><i class="bi-x-circle"></i></button> <button class="btn btn-rounded btn-sm btn-info button-proses" data-bs-toggle="tooltip" data-bs-placement="top" title="Order Dalam Pengajuan" data-unique="' +
+                              data +
+                              '"><i class="bi-hourglass-split"></i></button>'
+                        : data;
+                },
             },
             {
                 data: "action",
             },
         ],
         columnDefs: [
+            {
+                targets: [6], // index kolom atau sel yang ingin diatur
+                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
+            },
             {
                 targets: [5], // index kolom atau sel yang ingin diatur
                 className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
@@ -314,6 +353,9 @@ $(document).ready(function () {
         "click",
         ".register-button",
         function () {
+            let btn_element =
+                '<div> <button class="btn btn-icon btn-icon-end btn-primary" type="button" id="btn-add-list-order"><span>Tambah</span></button></div>';
+            $("#btn-action-list-order").html(btn_element);
             let unique = $(this).attr("data-unique");
             $("#modal-regorderkredit").modal("show");
             $("#unique_no_reg").val(unique);
@@ -355,7 +397,7 @@ $(document).ready(function () {
             type: "POST",
             dataType: "json",
             success: function (response) {
-                console.log(response);
+                // console.log(response);
                 $("#btn-action-list-order #btn-add-list-order").removeAttr(
                     "disabled"
                 );
@@ -405,10 +447,247 @@ $(document).ready(function () {
         });
     });
 
-    //RESET MODAL LIST ORDER
-    $("#btn-close-list").on("click", function () {
-        $("#unique_no_reg").val("");
-        $("#buyer_id").val("");
+    // AMBIL DATA LIST ORDER YANG AKAN DI UPDATE
+    $("#modal-regorderkredit").on(
+        "click",
+        ".edit-list-order-button",
+        function () {
+            let btn_element =
+                '<div><button class="btn btn-icon btn-icon-end btn-warning" type="button" id="btn-cancel-edit"><span>Batal</span></button></div><div> <button class="btn btn-icon btn-icon-end btn-primary" type="button" id="btn-edit-list-order"><span>Update</span></button></div>';
+            $("#btn-action-list-order").html(btn_element);
+            let unique = $(this).attr("data-unique");
+            $.ajax({
+                data: { unique: unique },
+                url: "/getDataListOrder",
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    // console.log(response);
+                    $("#current_unique").val(response.success.unique);
+                    $("#nama_dealer").val(response.success.nama_dealer);
+                    $("#cmo").val(response.success.cmo);
+                    $("#pic").val(response.success.pic);
+                    $("#jenis_transaksi")
+                        .val(response.success.jenis_transaksi)
+                        .trigger("change");
+                    $("#kredit_via_leasing")
+                        .val(response.success.via)
+                        .trigger("change");
+                    $("#merk").val(response.success.merk);
+                    $("#type").val(response.success.type);
+                    $("#tahun_pembuatan").val(response.success.tahun_pembuatan);
+                    $("#otr").val(response.success.otr);
+                    $("#dp_po").val(response.success.dp_po);
+                    $("#pencairan").val(response.success.pencairan);
+                    $("#dp").val(response.success.dp);
+                    $("#angsuran").val(response.success.angsuran);
+                    $("#tenor").val(response.success.tenor);
+
+                    $("#nama_dealer").removeClass("is-invalid");
+                    $("#cmo").removeClass("is-invalid");
+                    $("#pic").removeClass("is-invalid");
+                    $("#merk").removeClass("is-invalid");
+                    $("#type").removeClass("is-invalid");
+                    $("#tahun_pembuatan").removeClass("is-invalid");
+                    $("#otr").removeClass("is-invalid");
+                    $("#dp_po").removeClass("is-invalid");
+                    $("#pencairan").removeClass("is-invalid");
+                    $("#dp").removeClass("is-invalid");
+                    $("#angsuran").removeClass("is-invalid");
+                    $("#tenor").removeClass("is-invalid");
+
+                    $("#nama_dealer").removeAttr("disabled");
+                    $("#cmo").removeAttr("disabled");
+                    $("#pic").removeAttr("disabled");
+                    $("#merk").removeAttr("disabled");
+                    $("#type").removeAttr("disabled");
+                    $("#tahun_pembuatan").removeAttr("disabled");
+                    $("#otr").removeAttr("disabled");
+                    $("#dp_po").removeAttr("disabled");
+                    $("#pencairan").removeAttr("disabled");
+                    $("#dp").removeAttr("disabled");
+                    $("#angsuran").removeAttr("disabled");
+                    $("#tenor").removeAttr("disabled");
+
+                    $("#select-jenis-transaksi").removeClass("d-none");
+                    $("#select-via").removeClass("d-none");
+                    $("#view-jenis-transaksi").addClass("d-none");
+
+                    $("#modal-regorderkredit .invalid-jt").remove();
+                    $("#modal-regorderkredit .invalid-via").remove();
+
+                    $("#modal-regorderkredit .select2").eq(0).css({
+                        border: "0px",
+                        "border-radius": "10px",
+                    });
+                    $("#modal-regorderkredit .select2").eq(1).css({
+                        border: "0px",
+                        "border-radius": "10px",
+                    });
+                },
+            });
+        }
+    );
+    //LIHAT DATA LIST ORDER
+    $("#modal-regorderkredit").on("click", ".info-button-list", function () {
+        let btn_element =
+            '<div><button class="btn btn-icon btn-icon-end btn-warning" type="button" id="btn-cancel-edit">Batal</button></div>';
+        $("#btn-action-list-order").html(btn_element);
+        let unique = $(this).attr("data-unique");
+        $.ajax({
+            data: { unique: unique },
+            url: "/getDataListOrder",
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                // console.log(response);
+                $("#current_unique").val(response.success.unique);
+                $("#nama_dealer").val(response.success.nama_dealer);
+                $("#cmo").val(response.success.cmo);
+                $("#pic").val(response.success.pic);
+                $("#view_jenis_transaksi").val(
+                    response.success.jenis_transaksi
+                );
+                $("#view_via").val(response.success.via);
+                $("#merk").val(response.success.merk);
+                $("#type").val(response.success.type);
+                $("#tahun_pembuatan").val(response.success.tahun_pembuatan);
+                $("#otr").val(response.success.otr);
+                $("#dp_po").val(response.success.dp_po);
+                $("#pencairan").val(response.success.pencairan);
+                $("#dp").val(response.success.dp);
+                $("#angsuran").val(response.success.angsuran);
+                $("#tenor").val(response.success.tenor);
+
+                $("#nama_dealer").removeClass("is-invalid");
+                $("#cmo").removeClass("is-invalid");
+                $("#pic").removeClass("is-invalid");
+                $("#merk").removeClass("is-invalid");
+                $("#type").removeClass("is-invalid");
+                $("#tahun_pembuatan").removeClass("is-invalid");
+                $("#otr").removeClass("is-invalid");
+                $("#dp_po").removeClass("is-invalid");
+                $("#pencairan").removeClass("is-invalid");
+                $("#dp").removeClass("is-invalid");
+                $("#angsuran").removeClass("is-invalid");
+                $("#tenor").removeClass("is-invalid");
+
+                //disable semua input
+                $("#nama_dealer").attr("disabled", "true");
+                $("#cmo").attr("disabled", "true");
+                $("#pic").attr("disabled", "true");
+                $("#merk").attr("disabled", "true");
+                $("#type").attr("disabled", "true");
+                $("#tahun_pembuatan").attr("disabled", "true");
+                $("#otr").attr("disabled", "true");
+                $("#dp_po").attr("disabled", "true");
+                $("#pencairan").attr("disabled", "true");
+                $("#dp").attr("disabled", "true");
+                $("#angsuran").attr("disabled", "true");
+                $("#tenor").attr("disabled", "true");
+
+                $("#modal-regorderkredit .invalid-jt").remove();
+                $("#modal-regorderkredit .invalid-via").remove();
+
+                $("#modal-regorderkredit .select2").eq(0).css({
+                    border: "0px",
+                    "border-radius": "10px",
+                });
+                $("#modal-regorderkredit .select2").eq(1).css({
+                    border: "0px",
+                    "border-radius": "10px",
+                });
+
+                $("#select-jenis-transaksi").addClass("d-none");
+                $("#select-via").addClass("d-none");
+                $("#view-jenis-transaksi").removeClass("d-none");
+            },
+        });
+    });
+
+    //ACTION UPDATE DATA LIST ORDER
+    $("#btn-action-list-order").on(
+        "click",
+        "#btn-edit-list-order",
+        function () {
+            $("#modal-regorderkredit .invalid-jt").remove();
+            $("#modal-regorderkredit .invalid-via").remove();
+            $("#btn-action-list-order #btn-edit-list-order").attr(
+                "disabled",
+                "true"
+            );
+            let formdata = $("#modal-regorderkredit form").serializeArray();
+            let data = {};
+            $(formdata).each(function (index, obj) {
+                data[obj.name] = obj.value;
+            });
+            $.ajax({
+                data: $("#modal-regorderkredit form").serialize(),
+                url: "/listRegOrderUpdate",
+                type: "POST",
+                dataType: "json",
+                success: function (response) {
+                    // console.log(response);
+                    $("#btn-action-list-order #btn-edit-list-order").removeAttr(
+                        "disabled"
+                    );
+                    if (response.errors) {
+                        if (response.errors.jenis_transaksi) {
+                            $("#modal-regorderkredit .select2").eq(0).css({
+                                border: "1px solid red",
+                                "border-radius": "10px",
+                            });
+                            $("#modal-regorderkredit .select2")
+                                .eq(0)
+                                .after(
+                                    '<small class="text-center text-danger invalid-jt">Jenis kelamin tidak boleh kosong</small>'
+                                );
+                        }
+                        if (response.errors.via) {
+                            $("#modal-regorderkredit .select2").eq(1).css({
+                                border: "1px solid red",
+                                "border-radius": "10px",
+                            });
+                            $("#modal-regorderkredit .select2")
+                                .eq(1)
+                                .after(
+                                    '<small class="text-center text-danger invalid-via">Kredit via leasing tidak boleh kosong</small>'
+                                );
+                        }
+                        displayErrors(response.errors);
+                    } else {
+                        let btn_element =
+                            '<div> <button class="btn btn-icon btn-icon-end btn-primary" type="button" id="btn-add-list-order"><span>Tambah</span></button></div>';
+                        $("#btn-action-list-order").html(btn_element);
+                        $("#current_unique").val("");
+                        $("#nama_dealer").val("");
+                        $("#cmo").val("");
+                        $("#pic").val("");
+                        $("#jenis_transaksi").val(null).trigger("change");
+                        $("#kredit_via_leasing").val(null).trigger("change");
+                        $("#merk").val("");
+                        $("#type").val("");
+                        $("#tahun_pembuatan").val("");
+                        $("#otr").val("");
+                        $("#dp_po").val("");
+                        $("#pencairan").val("");
+                        $("#dp").val("");
+                        $("#angsuran").val("");
+                        $("#tenor").val("");
+                        Swal.fire("Good job!", response.success, "success");
+                        table2.ajax.reload();
+                    }
+                },
+            });
+        }
+    );
+
+    // KEtikA TOBOL BATAL UPDATE DI KLIK
+    $("#btn-action-list-order").on("click", "#btn-cancel-edit", function () {
+        let btn_element =
+            '<div> <button class="btn btn-icon btn-icon-end btn-primary" type="button" id="btn-add-list-order"><span>Tambah</span></button></div>';
+        $("#btn-action-list-order").html(btn_element);
+        $("#current_unique").val("");
         $("#nama_dealer").val("");
         $("#cmo").val("");
         $("#pic").val("");
@@ -437,6 +716,23 @@ $(document).ready(function () {
         $("#angsuran").removeClass("is-invalid");
         $("#tenor").removeClass("is-invalid");
 
+        $("#nama_dealer").removeAttr("disabled");
+        $("#cmo").removeAttr("disabled");
+        $("#pic").removeAttr("disabled");
+        $("#merk").removeAttr("disabled");
+        $("#type").removeAttr("disabled");
+        $("#tahun_pembuatan").removeAttr("disabled");
+        $("#otr").removeAttr("disabled");
+        $("#dp_po").removeAttr("disabled");
+        $("#pencairan").removeAttr("disabled");
+        $("#dp").removeAttr("disabled");
+        $("#angsuran").removeAttr("disabled");
+        $("#tenor").removeAttr("disabled");
+
+        $("#select-jenis-transaksi").removeClass("d-none");
+        $("#select-via").removeClass("d-none");
+        $("#view-jenis-transaksi").addClass("d-none");
+
         $("#modal-regorderkredit .invalid-jt").remove();
         $("#modal-regorderkredit .invalid-via").remove();
 
@@ -449,6 +745,162 @@ $(document).ready(function () {
             "border-radius": "10px",
         });
     });
+
+    //RESET MODAL LIST ORDER
+    $("#btn-close-list").on("click", function () {
+        let btn_element =
+            '<div> <button class="btn btn-icon btn-icon-end btn-primary" type="button" id="btn-add-list-order"><span>Tambah</span></button></div>';
+        $("#btn-action-list-order").html(btn_element);
+        $("#current_unique").val("");
+        $("#nama_dealer").val("");
+        $("#cmo").val("");
+        $("#pic").val("");
+        $("#jenis_transaksi").val(null).trigger("change");
+        $("#kredit_via_leasing").val(null).trigger("change");
+        $("#merk").val("");
+        $("#type").val("");
+        $("#tahun_pembuatan").val("");
+        $("#otr").val("");
+        $("#dp_po").val("");
+        $("#pencairan").val("");
+        $("#dp").val("");
+        $("#angsuran").val("");
+        $("#tenor").val("");
+
+        $("#nama_dealer").removeClass("is-invalid");
+        $("#cmo").removeClass("is-invalid");
+        $("#pic").removeClass("is-invalid");
+        $("#merk").removeClass("is-invalid");
+        $("#type").removeClass("is-invalid");
+        $("#tahun_pembuatan").removeClass("is-invalid");
+        $("#otr").removeClass("is-invalid");
+        $("#dp_po").removeClass("is-invalid");
+        $("#pencairan").removeClass("is-invalid");
+        $("#dp").removeClass("is-invalid");
+        $("#angsuran").removeClass("is-invalid");
+        $("#tenor").removeClass("is-invalid");
+
+        $("#nama_dealer").removeAttr("disabled");
+        $("#cmo").removeAttr("disabled");
+        $("#pic").removeAttr("disabled");
+        $("#merk").removeAttr("disabled");
+        $("#type").removeAttr("disabled");
+        $("#tahun_pembuatan").removeAttr("disabled");
+        $("#otr").removeAttr("disabled");
+        $("#dp_po").removeAttr("disabled");
+        $("#pencairan").removeAttr("disabled");
+        $("#dp").removeAttr("disabled");
+        $("#angsuran").removeAttr("disabled");
+        $("#tenor").removeAttr("disabled");
+
+        $("#select-jenis-transaksi").removeClass("d-none");
+        $("#select-via").removeClass("d-none");
+        $("#view-jenis-transaksi").addClass("d-none");
+
+        $("#modal-regorderkredit .invalid-jt").remove();
+        $("#modal-regorderkredit .invalid-via").remove();
+
+        $("#modal-regorderkredit .select2").eq(0).css({
+            border: "0px",
+            "border-radius": "10px",
+        });
+        $("#modal-regorderkredit .select2").eq(1).css({
+            border: "0px",
+            "border-radius": "10px",
+        });
+    });
+
+    //PERUBAHAN STATUS REGISSTER ORDER
+    //bila disetujui
+    $("#datatableBoxed_reg_order_list").on(
+        "click",
+        ".button-disetujui",
+        function () {
+            let unique = $(this).attr("data-unique");
+            Swal.fire({
+                title: "Anda yakin ingin mengubah status menajdi disetujui?",
+                text: "Anda bisa mengubahnya jika keliru",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, Saya yakin!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        data: { unique: unique },
+                        url: "/statusDiSetujui",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (response) {
+                            Swal.fire("Pesan!", response.success, "success");
+                            table2.ajax.reload();
+                        },
+                    });
+                }
+            });
+        }
+    );
+    //bila ditolak
+    $("#datatableBoxed_reg_order_list").on(
+        "click",
+        ".button-ditolak",
+        function () {
+            let unique = $(this).attr("data-unique");
+            Swal.fire({
+                title: "Anda yakin ingin mengubah status menjadi ditolak?",
+                text: "Anda bisa mengubahnya jika keliru",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, Saya yakin!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        data: { unique: unique },
+                        url: "/statusDiTolak",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (response) {
+                            Swal.fire("Pesan!", response.success, "success");
+                            table2.ajax.reload();
+                        },
+                    });
+                }
+            });
+        }
+    );
+    //bila diajukan
+    $("#datatableBoxed_reg_order_list").on(
+        "click",
+        ".button-proses",
+        function () {
+            let unique = $(this).attr("data-unique");
+            Swal.fire({
+                title: "Anda yakin ingin mengubah status menjadi diproses?",
+                text: "Anda bisa mengubahnya jika keliru",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, Saya yakin!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        data: { unique: unique },
+                        url: "/statusDiProses",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (response) {
+                            Swal.fire("Pesan!", response.success, "success");
+                            table2.ajax.reload();
+                        },
+                    });
+                }
+            });
+        }
+    );
 
     //Hendler Error
     function displayErrors(errors) {

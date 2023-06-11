@@ -22,4 +22,10 @@ class List_regorder extends Model
             ->where('regorder_id', $unique);
         return $query->get();
     }
+
+    public static function getDataListOrder($unique = '')
+    {
+        $query = List_regorder::where('unique', $unique);
+        return $query->first();
+    }
 }
