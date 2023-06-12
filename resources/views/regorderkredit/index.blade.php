@@ -189,8 +189,8 @@
                             <div class="mb-3 form-floating">
                                 <img src="/storage/ktp/default.png" alt="" class="img-fluid" width="200px">
                                 <br>
-                                <input type="text" name="photo_ktp" id="photo_ktp">
-                                <input type="text" name="old_ktp" id="old_ktp">
+                                <input type="hidden" name="photo_ktp" id="photo_ktp">
+                                <input type="hidden" name="old_ktp" id="old_ktp">
                             </div>
                         </div>
                     </div>

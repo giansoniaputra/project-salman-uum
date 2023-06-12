@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buyer;
+use App\Models\List_regorder;
 use App\Models\Regorder;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -129,10 +130,9 @@ class RegOrderKreditController extends Controller
                         Storage::delete("ktp_pembeli/" . $request->old_ktp);
                     }
                     $data_buyer['photo_ktp'] = $name_Image;
+                    Buyer::where('nik', $cek_nik->nik)->update($data_buyer);
                 }
-                Buyer::where('nik', $cek_nik->nik)->update($data_buyer);
             }
-
             $data_register = [
                 'unique' => Str::orderedUuid(),
                 'no_reg' => $nota,
@@ -175,9 +175,11 @@ class RegOrderKreditController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Regorder $regorder)
+    public function destroy(Regorder $regorder, $unique)
     {
-        //
+        Regorder::where('unique', $unique)->delete();
+        List_regorder::where('regorder_id', $unique)->delete();
+        return response()->json(['success' => 'Data Berhasil Dihapus']);
     }
 
     public function dataTables(Request $request)
@@ -187,8 +189,8 @@ class RegOrderKreditController extends Controller
             return DataTables::of($query)->addColumn('action', function ($row) {
                 $actionBtn =
                     '<button class="btn btn-secondary btn-sm register-button" data-unique="' . $row->unique . '"><i class="bi-folder-plus"></i></button>
-                    <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
-                        <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="text-white bi-trash"></i>
+                    <form action="javascript:;" class="d-inline form-delete">
+                        <button type="button" class="btn btn-danger btn-sm delete-button-regorder" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="text-white bi-trash"></i>
                     </form>';
                 return $actionBtn;
             })->make(true);
