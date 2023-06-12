@@ -394,7 +394,6 @@ class KreditController extends Controller
             $actionBtn =
                 '<button class="btn btn-info btn-sm info-button-kredit" data-unique="' . $row->unique . '"><i class="bi-info-circle"></i></button>
                 <button class="btn btn-success btn-sm edit-button-kredit" data-unique="' . $row->unique . '"><i class="bi-pencil"></i></button>
-                <button class="btn btn-quaternary btn-sm cetak-button-kwitansi" data-unique="' . $row->unique . '"><i class="bi-printer"></i></button>
                 <button type="button" class="btn btn-warning btn-sm retur-button"  data-unique="' . $row->unique . '"><i class="bi-arrow-repeat"></i></button>
                 <form action="javascript:;" class="d-inline form-delete-kredit">
                     <button type="button" class="btn btn-danger btn-sm delete-button-kredit" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="bi-trash"></i></button>

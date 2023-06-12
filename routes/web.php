@@ -15,6 +15,7 @@ use App\Http\Controllers\KwitansiController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\CetakTagihanController;
 use App\Http\Controllers\ListRegOrderController;
 use App\Http\Controllers\RegOrderKreditController;
 use App\Http\Controllers\LaporanPembelianController;
@@ -194,6 +195,9 @@ Route::post('penjualanSelectMonthKredit', [PDFController::class, 'cetak_select_m
 
 // CETAK KWITANSI
 Route::post('/kwitansi', [KwitansiController::class, 'cetak_kwitansi'])->middleware('auth');
+
+// CETAK TAGIHAN
+Route::post('/cetak_tagihan', [CetakTagihanController::class, 'cetak_tagihan'])->middleware('auth');
 
 //Pembelian Cash Berdasar tanggal
 Route::post('/pembelianDate', [PDFController::class, 'cetak_pembelian'])->middleware('auth');

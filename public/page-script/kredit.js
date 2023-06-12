@@ -38,6 +38,18 @@ $(document).ready(function () {
                 data: "harga_beli",
             },
             {
+                data: "unique",
+                render: function (data, type, row, meta) {
+                    return type === "display"
+                        ? '<button class="btn btn-quaternary btn-sm cetak-button-kwitansi" data-bs-toggle="tooltip" data-bs-placement="top" title="Cetak Kwitansi" data-unique="' +
+                              data +
+                              '"><i class="bi-printer"></i></button> <button class="btn btn-info btn-sm cetak-button-tagihan" data-bs-toggle="tooltip" data-bs-placement="top" title="Cetak PDF" data-unique="' +
+                              data +
+                              '"><i class="bi-printer"></i></button>'
+                        : data;
+                },
+            },
+            {
                 data: "action",
                 orderable: true,
                 searchable: true,
@@ -46,6 +58,10 @@ $(document).ready(function () {
         columnDefs: [
             {
                 targets: [6], // index kolom atau sel yang ingin diatur
+                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
+            },
+            {
+                targets: [7], // index kolom atau sel yang ingin diatur
                 className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
             },
             {
@@ -681,6 +697,7 @@ $(document).ready(function () {
         ".cetak-button-kwitansi",
         function () {
             $("#nama_leasing").val("");
+            $("#subsidi").val("");
             let unique = $(this).attr("data-unique");
             $("#unique").val(unique);
             $("#cetak_kwitansi").modal("show");
@@ -690,6 +707,25 @@ $(document).ready(function () {
     $(".btn-kwitansi").on("click", function () {
         if ($("#nama_leasing").val() != "") {
             $("#cetak_kwitansi").modal("hide");
+        }
+    });
+
+    //CERTAK TAGIHAN
+    $("#datatableBoxed_penjualan_kredit").on(
+        "click",
+        ".cetak-button-tagihan",
+        function () {
+            $("#nama_leasing2").val("");
+            $("#subsidi2").val("");
+            let unique = $(this).attr("data-unique");
+            $("#unique2").val(unique);
+            $("#cetak_tagihan").modal("show");
+        }
+    );
+
+    $(".btn-tagihan").on("click", function () {
+        if ($("#nama_leasing2").val() != "") {
+            $("#cetak_tagihan").modal("hide");
         }
     });
 

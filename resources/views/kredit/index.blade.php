@@ -82,6 +82,7 @@
             <th class="text-muted text-small text-uppercase">Merk</th>
             <th class="text-muted text-small text-uppercase">Warna</th>
             <th class="text-muted text-small text-uppercase">Harga Jual</th>
+            <th class="text-muted text-small text-uppercase">Cetak</th>
             <th class="text-muted text-small text-uppercase">Action</th>
         </tr>
     </thead>
@@ -547,21 +548,70 @@
     <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Masukan Nama Leasing</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Masukan Nama Leasing dan Subsidi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" class="btn-close-tagihan"></button>
             </div>
             <form action="/kwitansi" method="post" target="_blank">
                 @csrf
                 <div class="modal-body">
                     <input type="hidden" name="unique" id="unique">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="nama_leasing" id="nama_leasing" required>
-                        <label for="nama_leasing">Nama Leasing</label>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="nama_leasing" id="nama_leasing" required>
+                                <label for="nama_leasing">Nama Leasing</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control money" name="subsidi" id="subsidi" required>
+                                <label for="subsidi">Jumlah Subsidi</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-secondary btn-kwitansi">Cetak Kwitansi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{-- Modal Cetak Kwitansi --}}
+<div class="modal fade" id="cetak_tagihan" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Masukan Nama Leasing dan Subsidi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" class="btn-close-tagihan"></button>
+            </div>
+            <form action="/cetak_tagihan" method="post" target="_blank">
+                @csrf
+                <div class="modal-body">
+                    <input type="text" name="unique" id="unique2">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="nama_leasing" id="nama_leasing2" required>
+                                <label for="nama_leasing">Nama Leasing</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control money" name="subsidi" id="subsidi2" required>
+                                <label for="subsidi">Jumlah Subsidi</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-secondary btn-tagihan">Cetak Tagihan</button>
                 </div>
             </form>
         </div>

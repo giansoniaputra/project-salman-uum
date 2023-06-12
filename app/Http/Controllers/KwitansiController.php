@@ -74,7 +74,7 @@ class KwitansiController extends Controller
         $this->pdf->SetXY(62, 22);
         $this->pdf->MultiCell(130, 5, ": " . rupiah($data->pencairan), 0, 'L',  true);
         $this->pdf->SetXY(62, 27);
-        $this->pdf->MultiCell(130, 5, ": " . terbilang($data->pencairan), 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . terbilang($data->pencairan) . " Rupiah", 0, 'L',  true);
         $this->pdf->SetXY(62, 32);
         $this->pdf->MultiCell(130, 5, ": Pelunasan", 0, 'L',  true);
         $this->pdf->SetXY(62, 37);
@@ -113,9 +113,9 @@ class KwitansiController extends Controller
         $this->pdf->SetXY(62, 84);
         $this->pdf->MultiCell(130, 5, ": " . $data->nama, 0, 'L',  true);
         $this->pdf->SetXY(62, 89);
-        $this->pdf->MultiCell(130, 5, ": " . rupiah($data->dp), 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . rupiah($data->dp_po), 0, 'L',  true);
         $this->pdf->SetXY(62, 94);
-        $this->pdf->MultiCell(130, 5, ": " . terbilang($data->dp), 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . terbilang($data->dp_po) . " Rupiah", 0, 'L',  true);
         $this->pdf->SetXY(62, 99);
         $this->pdf->MultiCell(130, 5, ": Uang Muka", 0, 'L',  true);
         $this->pdf->SetXY(62, 104);
@@ -154,9 +154,9 @@ class KwitansiController extends Controller
         $this->pdf->SetXY(62, 151);
         $this->pdf->MultiCell(130, 5, ": " . $request->nama_leasing, 0, 'L',  true);
         $this->pdf->SetXY(62, 156);
-        $this->pdf->MultiCell(130, 5, ": " . rupiah($data->komisi), 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . rupiah(preg_replace('/[,]/', '', $request->subsidi)), 0, 'L',  true);
         $this->pdf->SetXY(62, 161);
-        $this->pdf->MultiCell(130, 5, ": " . terbilang($data->komisi), 0, 'L',  true);
+        $this->pdf->MultiCell(130, 5, ": " . terbilang(preg_replace('/[,]/', '', $request->subsidi)) . " Rupiah", 0, 'L',  true);
         $this->pdf->SetXY(62, 166);
         $this->pdf->MultiCell(130, 5, ": Subsidi", 0, 'L',  true);
         $this->pdf->SetXY(62, 171);
