@@ -369,9 +369,15 @@ class KreditController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kredit $kredit)
+    public function destroy($unique)
     {
-        //
+        $query = Kredit::where('unique', $unique)->first();
+        $motor = Bike::where('id', $query->bike_id)->first();
+
+        Kredit::where('unique', $unique)->delete();
+        Bike::where('unique', $motor->unique)->update(['status' => 'READY STOCK']);
+
+        return response()->json(['success' => 'Data Berhasil Dihapus']);
     }
     public function dataTables()
     {
@@ -390,7 +396,7 @@ class KreditController extends Controller
                 <button class="btn btn-success btn-sm edit-button-kredit" data-unique="' . $row->unique . '"><i class="bi-pencil"></i></button>
                 <button class="btn btn-quaternary btn-sm cetak-button-kwitansi" data-unique="' . $row->unique . '"><i class="bi-printer"></i></button>
                 <button type="button" class="btn btn-warning btn-sm retur-button"  data-unique="' . $row->unique . '"><i class="bi-arrow-repeat"></i></button>
-                <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
+                <form action="javascript:;" class="d-inline form-delete-kredit">
                     <button type="button" class="btn btn-danger btn-sm delete-button-kredit" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="bi-trash"></i></button>
                 </form>';
             return $actionBtn;

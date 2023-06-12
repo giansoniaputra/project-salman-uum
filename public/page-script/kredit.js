@@ -1054,6 +1054,48 @@ $(document).ready(function () {
         }
     });
 
+    //Hapus data penjualan
+    $("#datatableBoxed_penjualan_kredit").on(
+        "click",
+        ".delete-button-kredit",
+        function () {
+            let token = $(this).attr("data-token");
+            let unique = $(this).attr("data-unique");
+            Swal.fire({
+                title: "Yakin ingin menghapus?",
+                text: "Data akan dihapus permanen dan tidak bisa dikembalikan",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, Hapus!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        data: {
+                            _token: token,
+                            _method: "DELETE",
+                        },
+                        url: "/kredit/" + unique,
+                        type: "POST",
+                        dataType: "json",
+                        success: function (response) {
+                            // console.log(response);
+                            $.ajax({
+                                url: "/refresh_no_polisi",
+                                type: "GET",
+                                success: function (response) {
+                                    $(".no-polisi").html(response);
+                                },
+                            });
+                            Swal.fire("Pesan!", response.success, "success");
+                            table.ajax.reload();
+                        },
+                    });
+                }
+            });
+        }
+    );
     //Hendler Error
     function displayErrors(errors) {
         // menghapus class 'is-invalid' dan pesan error sebelumnya
