@@ -141,12 +141,12 @@
                                     </div>
                                     <div class="mb-3 filled form-group tooltip-end-top">
                                         <i data-acorn-icon="lock-off"></i>
-                                        <input type="password" class="form-control input-default text-black @error('conf_password') is-invalid @enderror" placeholder="Masukan Konfirmasi Password Anda" name="conf_password" id="conf_password">
+                                        <input type="password" class="form-control input-default text-black @error('password_confirmation') is-invalid @enderror" placeholder="Masukan Konfirmasi Password Anda" name="password_confirmation" id="password_confirmation">
                                         <a class="position-absolute t-25 e-3">
                                             <span class="bi-eye text-black" id="eye2" aria-hidden="true"></span>
                                             <span class="bi-eye-slash text-primary d-none" id="eye-slash2" aria-hidden="true"></span>
                                         </a>
-                                        @error('conf_password')
+                                        @error('password_confirmation')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -155,10 +155,10 @@
                                     <div class="mb-3 filled form-group tooltip-end-top">
                                         <i data-acorn-icon="key"></i>
                                         <select class="form-control @error('roles') is-invalid @enderror" name="roles" id="roles" value="{{ old('roles') }}">
-                                            <option value="Pilih Role">Pilih Role</option>
-                                            <option>Super Admin</option>
-                                            <option>Admin</option>
-                                            <option>Member</option>
+                                            <option value="PILIH ROLE" disabled selected>Pilih Role</option>
+                                            <option value="SUPER ADMIN">Super Admin</option>
+                                            <option value="ADMIN">Admin</option>
+                                            <option value="MEMBER">Member</option>
                                         </select>
                                         @error('roles')
                                         <div class="invalid-feedback">
@@ -232,12 +232,12 @@
             $('#eye2').on("click", function() {
                 $('#eye2').toggleClass("d-none");
                 $('#eye-slash2').toggleClass("d-none");
-                $('#conf_password').attr('type', 'text');
+                $('#password_confirmation').attr('type', 'text');
             });
             $('#eye-slash2').on("click", function() {
                 $('#eye2').toggleClass("d-none");
                 $('#eye-slash2').toggleClass("d-none");
-                $('#conf_password').attr('type', 'password');
+                $('#password_confirmation').attr('type', 'password');
             });
         });
 

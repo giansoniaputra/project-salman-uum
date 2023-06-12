@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -34,18 +35,37 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $rules = [
             'name' => 'required',
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required',
+            'password' => 'required|confirmed|min:7',
+            'password_confirmation' => 'required',
             'roles' => 'required'
-
-        ]);
-
-        $validatedData['roles'] = strtoupper($request->roles);
-        $validatedData['password'] = bcrypt($request->password);
-        user::create($validatedData);
-        return redirect('/')->with('success', 'Akun Berhasil Didaftarkan');
+        ];
+        $pesan = [
+            'name.required' => 'Nama Tidak Boleh Kosong',
+            'email.required' => 'Email Tidak boleh kosong',
+            'email.email' => 'Email Harus Valid',
+            'email.unique' => 'Email Sudah Terdaftar',
+            'password.required' => 'Password Tidak Boleh Kosong',
+            'password.confirmed' => 'Password Tidak Sesuai/Sama',
+            'password.min' => 'Password Minimal 7 Karakter',
+            'password_confirmation.required' => 'Konfirmasi Password Tidak Boleh Kosong',
+            'roles.required' => 'Role Tidak Boleh Kosong',
+        ];
+        $validator = Validator::make($request->all(), $rules, $pesan);
+        if ($validator->fails()) {
+            return redirect('./auth/create')->withErrors($validator);
+        } else {
+            $validatedData = [
+                'name' => $request->name,
+                'email' => $request->email,
+            ];
+            $validatedData['roles'] = strtoupper($request->roles);
+            $validatedData['password'] = bcrypt($request->password);
+            user::create($validatedData);
+            return redirect('/')->with('success', 'Akun Berhasil Didaftarkan');
+        }
     }
 
     /**

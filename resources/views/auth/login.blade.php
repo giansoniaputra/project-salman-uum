@@ -89,18 +89,12 @@
                                     {{-- </div> --}}
                                 </a>
                             </div>
-                            {{-- <div class="mb-5">
-                                <h2 class="cta-1 mb-0 text-primary">Selamat Datang,</h2>
-                                <h2 class="cta-1 text-primary">Silahkan Login!</h2>
-                            </div> --}}
-                            {{-- <div class="mb-5">
-                                <p class="h6 mt-5">Silahkan Login menggunakan akun yang sudah terdaftar.</p>
-                                <p class="h6">
-                                    Jika belum daftar
-                                    <a href="/Pages.Authentication.Register.html">disini</a>
-                                    .
-                                </p>
-                            </div> --}}
+                            @if (session('error'))
+                            <div class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+                                <strong>{{ session('error') }}</strong>
+                                <button type="button" class="btn-close t-2" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            @endif
                             <div>
                                 <form action="/authenticate" method="post" class="tooltip-end-bottom mt-5" novalidate>
                                     @csrf

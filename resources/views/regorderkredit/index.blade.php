@@ -419,6 +419,9 @@
                     </div>
                 </form>
                 {{-- Table --}}
+                <br>
+                <hr>
+                <br>
                 <!-- Table Start -->
                 <table id="datatableBoxed_reg_order_list" class="data-table nowrap hover" style="font-family: 'Nunito Sans', sans-serif; font-size: 0.9em ">
                     <thead>

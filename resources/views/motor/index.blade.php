@@ -310,7 +310,7 @@
 
                             <!-- Table Start -->
                             <div>
-                                <table id="dataTables2" class="data-table nowrap hover" style="font-family: 'Nunito Sans', sans-serif; font-size: 0.9em ">
+                                <table id="dataTables2" class="data-table nowrap hover" style="font-family: 'Nunito Sans', sans-serif; font-size: 0.9em;">
                                     <thead>
                                         <tr>
                                             <th class="text-muted text-small text-uppercase">No</th>
