@@ -184,9 +184,10 @@ class ListRegOrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(List_regorder $list_regorder)
+    public function destroy(List_regorder $list_regorder, $unique)
     {
-        //
+        List_regorder::where('unique', $unique)->delete();
+        return response()->json(['success' => 'Data Berhasil Dihapus']);
     }
 
     public function dataTables(Request $request)
@@ -197,8 +198,8 @@ class ListRegOrderController extends Controller
                 '
                 <button class="btn btn-rounded btn-sm btn-info info-button-list" data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat Data List Order" data-unique="' . $row->unique . '"><i class="bi-person-badge"></i></button>
                 <button class="btn btn-warning btn-sm edit-list-order-button"  data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Data List Order" data-unique="' . $row->unique . '"><i class="bi-pencil-square"></i></button>
-                <form action="javascript:void(0)" class="d-inline form-delete">
-                    <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="text-white bi-trash" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data List Order"></i>
+                <form action="javascript:;" class="d-inline form-delete-list-order">
+                    <button type="button" class="btn btn-danger btn-sm delete-button-list-order" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="text-white bi-trash" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data List Order"></i>
                 </form>';
             return $actionBtn;
         })->addColumn('setatus', function ($row) {

@@ -206,5 +206,8 @@ Route::get('/pembelianMonth', [PDFController::class, 'cetak_month_buy'])->middle
 //Pembelian Bulan Ini(Select)
 Route::post('pembelianSelectMonth', [PDFController::class, 'cetak_select_month_buy'])->middleware('auth');
 
+//LIST ORDER
+Route::resource('/listorder', ListRegOrderController::class)->middleware('auth');
+
 
 //METHOD HAPUS DATA

@@ -1001,6 +1001,41 @@ $(document).ready(function () {
             });
         }
     );
+    //Hapus data list order
+    $("#datatableBoxed_reg_order_list").on(
+        "click",
+        ".delete-button-list-order",
+        function () {
+            let unique = $(this).attr("data-unique");
+            let token = $(this).attr("data-token");
+            Swal.fire({
+                title: "Yakin ingin menghapus?",
+                text: "Data akan dihapus permanen dan tidak bisa dikembalikan",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, Hapus!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        data: {
+                            _token: token,
+                            _method: "DELETE",
+                        },
+                        url: "/listorder/" + unique,
+                        type: "POST",
+                        dataType: "json",
+                        success: function (response) {
+                            // console.log(response);
+                            Swal.fire("Pesan!", response.success, "success");
+                            table2.ajax.reload();
+                        },
+                    });
+                }
+            });
+        }
+    );
 });
 
 //Show Gambar KTP
