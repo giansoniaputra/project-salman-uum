@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BikeController;
+use App\Http\Controllers\ChartDataController;
 use App\Http\Controllers\ModalController;
 use App\Http\Controllers\KreditController;
 use App\Http\Controllers\LaporanController;
@@ -211,3 +212,6 @@ Route::resource('/listorder', ListRegOrderController::class)->middleware('auth')
 
 
 //METHOD HAPUS DATA
+
+//Ambil Data Chart
+Route::get('/chart-data', [ChartDataController::class, 'dataTables'])->middleware('auth');
