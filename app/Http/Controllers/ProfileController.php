@@ -78,7 +78,7 @@ class ProfileController extends Controller
             'email.required' => 'Email tidak boleh kosong',
             'email.email' => 'Email harus valid',
             'photo.image' => 'File Harus Berupa Gambar',
-            'photo.max' => 'Gambar Minimal Berukuran 2MB',
+            'photo.max' => 'Gambar Maksimal Berukuran 2MB',
         ];
         $validator = Validator::make($request->all(), $rules, $pesan);
         if ($validator->fails()) {

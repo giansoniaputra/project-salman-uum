@@ -21,6 +21,7 @@ class Charts {
     this._radarChart = null;
     this._polarChart = null;
     this._pieChart = null;
+    this._pieChart2 = null;
     this._doughnutChart = null;
     this._barChart = null;
     this._horizontalBarChart = null;
@@ -51,6 +52,7 @@ class Charts {
     this._initRadarChart();
     this._initPolarChart();
     this._initPieChart();
+    this._initPieChart2();
     this._initDoughnutChart();
     this._initBarChart();
     this._initHorizontalBarChart();
@@ -97,6 +99,9 @@ class Charts {
 
       this._pieChart && this._pieChart.destroy();
       this._initPieChart();
+
+      this._pieChart2 && this._pieChart2.destroy();
+      this._initPieChart2();
 
       this._doughnutChart && this._doughnutChart.destroy();
       this._initDoughnutChart();
@@ -215,7 +220,7 @@ class Charts {
             yAxes: [
               {
                 gridLines: {display: true, lineWidth: 1, color: Globals.separatorLight, drawBorder: false},
-                ticks: {beginAtZero: true, stepSize: 5, min: 50, max: 70, padding: 20, fontColor: Globals.alternate},
+                ticks: {beginAtZero: true, stepSize: 10, min: 0, max: 100, padding: 20, fontColor: Globals.alternate},
               },
             ],
             xAxes: [
@@ -229,22 +234,22 @@ class Charts {
           tooltips: ChartsExtend.ChartTooltipForCrosshair(),
         },
         data: {
-          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
           datasets: [
             {
               label: '',
-              data: [60, 54, 68, 60, 63, 60, 65],
-              borderColor: Globals.primary,
+              data: [60, 54, 68, 60, 63, 60, 35, 45, 22, 15, 95, 85],
+              borderColor: Globals.secondary,
               pointBackgroundColor: Globals.foreground,
-              pointBorderColor: Globals.primary,
-              pointHoverBackgroundColor: Globals.primary,
+              pointBorderColor: Globals.secondary,
+              pointHoverBackgroundColor: Globals.secondary,
               pointHoverBorderColor: Globals.foreground,
               pointRadius: 4,
               pointBorderWidth: 2,
               pointHoverRadius: 5,
               fill: true,
               borderWidth: 2,
-              backgroundColor: 'rgba(' + Globals.primaryrgb + ',0.1)',
+              backgroundColor: Globals.primary,
             },
           ],
         },
@@ -418,6 +423,49 @@ class Charts {
       this._pieChart = new Chart(pieChart, {
         type: 'pie',
         data: {
+          labels: ['Breads', 'Pastry'],
+          datasets: [
+            {
+              label: '',
+              borderColor: [Globals.primary, Globals.secondary, Globals.tertiary],
+              backgroundColor: ['rgba(' + Globals.primaryrgb + ',0.1)', 'rgba(' + Globals.secondaryrgb + ',0.1)', 'rgba(' + Globals.tertiaryrgb + ',0.1)'],
+              borderWidth: 2,
+              data: [15, 25, 20],
+            },
+          ],
+        },
+        draw: function () {},
+        options: {
+          plugins: {
+            datalabels: {display: false},
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+          title: {
+            display: false,
+          },
+          layout: {
+            padding: {
+              bottom: 20,
+            },
+          },
+          legend: {
+            position: 'bottom',
+            labels: ChartsExtend.LegendLabels(),
+          },
+          tooltips: ChartsExtend.ChartTooltip(),
+        },
+      });
+    }
+  }
+
+  // Standard pie chart2
+  _initPieChart2() {
+    if (document.getElementById('pieChart2')) {
+      const pieChart2 = document.getElementById('pieChart2');
+      this._pieChart2 = new Chart(pieChart2, {
+        type: 'pie',
+        data: {
           labels: ['Breads', 'Pastry', 'Patty'],
           datasets: [
             {
@@ -544,17 +592,24 @@ class Charts {
           tooltips: ChartsExtend.ChartTooltip(),
         },
         data: {
-          labels: ['January', 'February', 'March', 'April'],
+          labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
           datasets: [
             {
-              label: 'Breads',
+              label: 'Cash',
               borderColor: Globals.primary,
               backgroundColor: 'rgba(' + Globals.primaryrgb + ',0.1)',
               data: [456, 479, 424, 569],
               borderWidth: 2,
             },
             {
-              label: 'Patty',
+              label: 'Kredit',
+              borderColor: Globals.secondary,
+              backgroundColor: 'rgba(' + Globals.secondaryrgb + ',0.1)',
+              data: [364, 504, 605, 400],
+              borderWidth: 2,
+            },
+            {
+              label: 'Order In',
               borderColor: Globals.secondary,
               backgroundColor: 'rgba(' + Globals.secondaryrgb + ',0.1)',
               data: [364, 504, 605, 400],
@@ -1192,7 +1247,7 @@ class Charts {
                   beginAtZero: true,
                   stepSize: 200,
                   min: 0,
-                  max: 800,
+                  max: 1000,
                   padding: 20,
                 },
               },
@@ -1273,24 +1328,24 @@ class Charts {
           },
         },
         data: {
-          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
           datasets: [
             {
-              label: 'Breads',
-              backgroundColor: 'rgba(' + Globals.primaryrgb + ',0.1)',
+              label: 'Cash',
+              backgroundColor: Globals.primary,
               borderColor: Globals.primary,
               borderWidth: 2,
-              data: [213, 434, 315, 367, 289, 354, 242],
+              data: [213, 434, 315, 367, 289, 354, 242, 242, 242, 242, 242, 242],
             },
             {
-              label: 'Cakes',
-              backgroundColor: 'rgba(' + Globals.secondaryrgb + ',0.1)',
-              borderColor: Globals.secondary,
+              label: 'Kredit',
+              backgroundColor: Globals.danger,
+              borderColor: Globals.danger,
               borderWidth: 2,
-              data: [143, 234, 156, 207, 191, 214, 95],
+              data: [143, 234, 156, 207, 191, 214, 95, 95, 95, 95, 95, 95],
             },
           ],
-          icons: ['loaf', 'cupcake'],
+          icons: ['dollar', 'credit-card'],
         },
       });
       this._customLegendBar.generateLegend();

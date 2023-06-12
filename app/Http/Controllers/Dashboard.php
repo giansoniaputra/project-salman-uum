@@ -12,7 +12,7 @@ class Dashboard extends Controller
             'title' => 'Dashboards | SMAC',
             'judul' => 'Dashboards',
             'breadcumb1' => 'Dashboard',
-            'breadcumb2' => 'Info Penjualan',
+            'breadcumb2' => 'Info Transaksi Showroom',
         ];
         return view('index', $data);
     }
