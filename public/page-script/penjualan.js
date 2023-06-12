@@ -699,6 +699,49 @@ $(document).ready(function () {
     yearRangeAfter.addClass("fa fa-arrow-down fa-lg text-dark");
     yearRangeAfter.removeClass("material-icons");
     yearRangeAfter.html("");
+
+    //Hapus data penjualan
+    $("#datatableBoxed_penjualan_cash").on(
+        "click",
+        ".delete-button-penjualan-cash",
+        function () {
+            let token = $(this).attr("data-token");
+            let unique = $(this).attr("data-unique");
+            Swal.fire({
+                title: "Yakin ingin menghapus?",
+                text: "Data akan dihapus permanen dan tidak bisa dikembalikan",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, Hapus!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        data: {
+                            _token: token,
+                            _method: "DELETE",
+                        },
+                        url: "/penjualan/" + unique,
+                        type: "POST",
+                        dataType: "json",
+                        success: function (response) {
+                            // console.log(response);
+                            $.ajax({
+                                url: "/refresh_no_polisi",
+                                type: "GET",
+                                success: function (response) {
+                                    $(".no-polisi").html(response);
+                                },
+                            });
+                            Swal.fire("Pesan!", response.success, "success");
+                            table.ajax.reload();
+                        },
+                    });
+                }
+            });
+        }
+    );
 });
 
 //Show Gambar KTP

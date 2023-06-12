@@ -324,9 +324,15 @@ class PenjualanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($unique)
     {
-        //
+        $query = Sele::where('unique', $unique)->first();
+        $motor = Bike::where('id', $query->bike_id)->first();
+
+        Sele::where('unique', $unique)->delete();
+        Bike::where('unique', $motor->unique)->update(['status' => 'READY STOCK']);
+
+        return response()->json(['success' => 'Data Berhasil Dihapus']);
     }
 
     //Retur
@@ -382,8 +388,8 @@ class PenjualanController extends Controller
                 '<button class="btn btn-info btn-sm info-button-cash" data-unique="' . $row->unique . '"><i class="bi-info-circle"></i></button>
                 <button class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="text-white bi-pencil"></i></button>
                 <button type="button" class="btn btn-warning btn-sm retur-button"  data-id="' . $row->unique . '"><i class="text-white bi-arrow-repeat"></i></button>
-                <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
-                    <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-id="' . $row->id . '"><i class="text-white bi-trash"></i>
+                <form action="javascript:;" class="d-inline form-delete-penjualan-cash">
+                    <button type="button" class="btn btn-danger btn-sm delete-button-penjualan-cash" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="text-white bi-trash"></i>
                 </form>';
             return $actionBtn;
         })->make(true);
