@@ -639,9 +639,14 @@ class PembelianController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Buy $buy)
+    public function destroy(Buy $buy, $unique)
     {
-        //
+        $query = Buy::where('unique', $unique)->first();
+        $motor = Bike::where('id', $query->bike_id)->first();
+
+        Buy::where('unique', $unique)->delete();
+        Bike::where('unique', $motor->unique)->delete();
+        return response()->json(['success' => 'Data Berhasil Dihapus']);
     }
 
     public function cek_nik(Request $request)
@@ -676,7 +681,7 @@ class PembelianController extends Controller
                     <a href="/edit-transaksi/' . $row->unique . '" class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="bi-pencil"></i></a>
                     
                     <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
-                        <button type="button" class="btn btn-danger btn-sm delete-button" data-token="' . csrf_token() . '" data-id="' . $row->id . '"><i class="bi-trash"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm delete-button-pembelian" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="bi-trash"></i></button>
                     </form>';
                 } else {
                     $actionBtn =

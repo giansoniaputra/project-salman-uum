@@ -365,6 +365,42 @@ $(document).ready(function () {
             footer: '<a href="/modal">Input Modal Disini</a>',
         });
     });
+
+    //HAPUS DATA PEMBELIAN
+    $("#datatableBoxed_pembelian").on(
+        "click",
+        ".delete-button-pembelian",
+        function () {
+            let token = $(this).attr("data-token");
+            let unique = $(this).attr("data-unique");
+            Swal.fire({
+                title: "Yakin ingin menghapus?",
+                text: "Data akan dihapus permanen dan tidak bisa dikembalikan",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, Hapus!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        data: {
+                            _token: token,
+                            _method: "DELETE",
+                        },
+                        url: "/pembelian/" + unique,
+                        type: "POST",
+                        dataType: "json",
+                        success: function (response) {
+                            // console.log(response);
+                            Swal.fire("Pesan!", response.success, "success");
+                            table.ajax.reload();
+                        },
+                    });
+                }
+            });
+        }
+    );
 });
 
 function previewImageBPKB() {
