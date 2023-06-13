@@ -705,7 +705,7 @@ $(document).ready(function () {
     );
 
     $(".btn-kwitansi").on("click", function () {
-        if ($("#nama_leasing").val() != "") {
+        if ($("#nama_leasing").val() != "" && $("#subsidi").val() != "") {
             $("#cetak_kwitansi").modal("hide");
         }
     });
@@ -724,9 +724,16 @@ $(document).ready(function () {
     );
 
     $(".btn-tagihan").on("click", function () {
-        if ($("#nama_leasing2").val() != "") {
+        if (
+            $("#nama_leasing").val() != "" &&
+            $("#subsidi").val() != "" &&
+            $("#size").val() != ""
+        ) {
             $("#cetak_tagihan").modal("hide");
         }
+    });
+    $(".btn-close-tagihan").on("click", function () {
+        $("#unique2").val("");
     });
 
     //Lihat Detail Penjualan

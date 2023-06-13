@@ -586,16 +586,16 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Masukan Nama Leasing dan Subsidi</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" class="btn-close-tagihan"></button>
+                <button type="button" class="btn-close btn-close-tagihan" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="/cetak_tagihan" method="post" target="_blank">
                 @csrf
                 <div class="modal-body">
-                    <input type="text" name="unique" id="unique2">
+                    <input type="hidden" name="unique" id="unique2">
                     <div class="row">
                         <div class="col">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="nama_leasing" id="nama_leasing2" required>
+                                <input type="text" class="form-control" name="nama_leasing" id="nama_leasing2" placeholder="Masukan Nama Leasing" required>
                                 <label for="nama_leasing">Nama Leasing</label>
                             </div>
                         </div>
@@ -603,8 +603,20 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control money" name="subsidi" id="subsidi2" required>
+                                <input type="text" class="form-control money" name="subsidi" id="subsidi2" placeholder="Masukan Nominal Subsidi" required>
                                 <label for="subsidi">Jumlah Subsidi</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-floating mb-3 w-100">
+                                <select id="size" name="size" class="form-control" placeholder="Pilih ukuran kertas" required>
+                                    <option label="&nbsp;"></option>
+                                    <option value="A4">A4</option>
+                                    <option value="Legal">Legal</option>
+                                </select>
+                                <label>Ukuran Kertas <span class="text-danger"> *</span></label>
                             </div>
                         </div>
                     </div>

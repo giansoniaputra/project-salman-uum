@@ -148,6 +148,12 @@
                 <span class="label">Reg Order Kredit</span>
             </a>
         </li>
+        {{-- <li>
+            <a href="https://www.sejda.com/id/pdf-editor" target="_blank">
+                <i data-acorn-icon="edit-square" class="icon" data-acorn-size="18"></i>
+                <span class="label">Editor PDF</span>
+            </a>
+        </li> --}}
     </ul>
 </div>
 <!-- Menu End -->
