@@ -182,6 +182,20 @@ class Select2Controls {
     this._addFullClassToSelect2(jQuery('#jenis_kelamin'));
   }
 
+  _initFloatingLabel() {
+    const _this = this;
+    jQuery('#size')
+      .select2({minimumResultsForSearch: Infinity, placeholder: ''})
+      .on('select2:open', function (e) {
+        jQuery(this).addClass('show');
+      })
+      .on('select2:close', function (e) {
+        _this._addFullClassToSelect2(this);
+        jQuery(this).removeClass('show');
+      });
+    this._addFullClassToSelect2(jQuery('#size'));
+  }
+
   // Helper method for floating label Select2
   _addFullClassToSelect2(el) {
     if (jQuery(el).val() !== '' && jQuery(el).val() !== null) {
