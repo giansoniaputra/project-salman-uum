@@ -85,7 +85,7 @@ class BikeController extends Controller
                 $actionBtn =
                     '<button class="btn btn-info btn-sm info-button info-motor-button" title="Detail Motor" data-id="' . $row->id . '"><i class="bi-info-circle"></i></button>
                     
-                    <button class="btn btn-warning text-white btn-sm warning-button perbaikan-motor-button" data-id="' . $row->id . '"><i class="bi-tools"></i></button>
+                    <button class="btn btn-warning text-white btn-sm warning-button perbaikan-motor-button" title="Reparasi Motor" data-id="' . $row->id . '"><i class="bi-tools"></i></button>
 
                     ';
                 return $actionBtn;

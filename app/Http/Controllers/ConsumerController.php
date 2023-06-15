@@ -85,7 +85,7 @@ class ConsumerController extends Controller
             return DataTables::of($query)->addColumn('action', function ($row) {
                 $actionButton = '
                 <button class="btn btn-rounded btn-sm btn-info info-button-ktp" data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat Foto KTP" data-ktp="' . $row->photo_ktp . '"><i class="bi-person-badge"></i></button>
-                <button class="btn btn-rounded btn-sm btn-primary info-button-individu" data-bs-toggle="tooltip" data-bs-placement="top" title="Riwayat Penjualan" data-id="' . $row->id . '"><i class="bi-journal-text"></i></button>
+                <button class="btn btn-rounded btn-sm btn-primary info-button-individu" data-bs-toggle="tooltip" data-bs-placement="top" title="Riwayat Penjualan Individu" data-id="' . $row->id . '"><i class="bi-journal-text"></i></button>
                 ';
                 return $actionButton;
             })->make(true);
@@ -97,7 +97,7 @@ class ConsumerController extends Controller
         if ($request->ajax()) {
             $query = Consumer::where('penjual', 'DEALER')->get();
             return DataTables::of($query)->addColumn('action', function ($row) {
-                $actionButton = '<button class="btn btn-rounded btn-sm btn-primary info-button-dealer" data-bs-toggle="tooltip" data-bs-placement="top" title="Riwayat Penjualan" data-id="' . $row->id . '"><i class="bi-journal-text"></i></button>';
+                $actionButton = '<button class="btn btn-rounded btn-sm btn-primary info-button-dealer" data-bs-toggle="tooltip" data-bs-placement="top" title="Riwayat Penjualan Non Individu" data-id="' . $row->id . '"><i class="bi-journal-text"></i></button>';
                 return $actionButton;
             })->make(true);
         }

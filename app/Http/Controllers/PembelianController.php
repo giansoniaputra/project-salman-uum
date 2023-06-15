@@ -676,12 +676,12 @@ class PembelianController extends Controller
             return DataTables::of($data)->addColumn('action', function ($row) {
                 if ($row->status == 'READY STOCK') {
                     $actionBtn =
-                        '<button class="btn btn-info btn-sm info-button" data-id="' . $row->id . '"><i class="bi-info-circle"></i>
+                        '<button class="btn btn-info btn-sm info-button" title="Detail Transaksi Pembelian" data-id="' . $row->id . '"><i class="bi-info-circle"></i>
                         </button>
-                    <a href="/edit-transaksi/' . $row->unique . '" class="btn btn-success btn-sm edit-button" data-id="' . $row->id . '"><i class="bi-pencil"></i></a>
+                    <a href="/edit-transaksi/' . $row->unique . '" class="btn btn-success btn-sm edit-button" title="Edit Data Pembelian" data-id="' . $row->id . '"><i class="bi-pencil"></i></a>
                     
                     <form onSubmit="JavaScript:submitHandler()" action="javascript:void(0)" class="d-inline form-delete">
-                        <button type="button" class="btn btn-danger btn-sm delete-button-pembelian" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="bi-trash"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm delete-button-pembelian" title="Hapus Data Pembelian" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="bi-trash"></i></button>
                     </form>';
                 } else {
                     $actionBtn =
