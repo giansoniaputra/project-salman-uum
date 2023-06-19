@@ -558,16 +558,16 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="nama_leasing" id="nama_leasing" required>
-                                <label for="nama_leasing">Nama Leasing</label>
+                                <input type="text" class="form-control" name="nama_leasing" id="nama_leasing" placeholder="Masukan Nama Leasing" required>
+                                <label for="nama_leasing">Nama Leasing<span class="text-danger"> *</span></label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control money" name="subsidi" id="subsidi" required>
-                                <label for="subsidi">Jumlah Subsidi</label>
+                                <input type="text" class="form-control money" name="subsidi" id="subsidi" placeholder="Masukan Jumlah Subsidi" required>
+                                <label for="subsidi">Jumlah Subsidi<span class="text-danger"> *</span></label>
                             </div>
                         </div>
                     </div>
@@ -596,7 +596,7 @@
                         <div class="col">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="nama_leasing" id="nama_leasing2" placeholder="Masukan Nama Leasing" required>
-                                <label for="nama_leasing">Nama Leasing</label>
+                                <label for="nama_leasing">Nama Leasing<span class="text-danger"> *</span></label>
                             </div>
                         </div>
                     </div>
@@ -604,19 +604,19 @@
                         <div class="col">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control money" name="subsidi" id="subsidi2" placeholder="Masukan Nominal Subsidi" required>
-                                <label for="subsidi">Jumlah Subsidi</label>
+                                <label for="subsidi">Jumlah Subsidi<span class="text-danger"> *</span></label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-floating mb-3 w-100">
-                                <select id="size" name="size" class="form-control" placeholder="Pilih ukuran kertas" required>
+                                <select id="size" name="size" required>
                                     <option label="&nbsp;"></option>
                                     <option value="A4">A4</option>
                                     <option value="Legal">Legal</option>
                                 </select>
-                                <label>Ukuran Kertas <span class="text-danger"> *</span></label>
+                                <label class="text-label" for="size">Ukuran Kertas <span class="text-danger"> *</span></label>
                             </div>
                         </div>
                     </div>

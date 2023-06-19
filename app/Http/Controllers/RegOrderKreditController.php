@@ -188,9 +188,9 @@ class RegOrderKreditController extends Controller
             $query = Regorder::dataTables();
             return DataTables::of($query)->addColumn('action', function ($row) {
                 $actionBtn =
-                    '<button class="btn btn-secondary btn-sm register-button" data-unique="' . $row->unique . '"><i class="bi-folder-plus"></i></button>
+                    '<button class="btn btn-secondary btn-sm register-button" title="Reg Order Kredit" data-unique="' . $row->unique . '"><i class="bi-folder-plus"></i></button>
                     <form action="javascript:;" class="d-inline form-delete">
-                        <button type="button" class="btn btn-danger btn-sm delete-button-regorder" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="text-white bi-trash"></i>
+                        <button type="button" class="btn btn-danger btn-sm delete-button-regorder" title="Hapus Reg Order Kredit" data-token="' . csrf_token() . '" data-unique="' . $row->unique . '"><i class="text-white bi-trash"></i>
                     </form>';
                 return $actionBtn;
             })->make(true);
