@@ -40,22 +40,22 @@ Route::get('/', [Dashboard::class, 'index'])->middleware('auth');
 Route::get('/home', [Dashboard::class, 'index'])->middleware('auth');
 
 Route::resource('/auth', AuthController::class)->middleware('guest');
-Route::get('/auth/create', [AuthController::class, 'register'])->middleware('auth');
+Route::get('/auth/create', [AuthController::class, 'register'])->middleware('admin');
 Route::get('/auth', [AuthController::class, 'index'])->name('login')->middleware('guest');
 
 // PEMBELIAN
-Route::resource('/pembelian', PembelianController::class)->middleware('auth');
+Route::resource('/pembelian', PembelianController::class)->middleware('pembelian');
 // Cek apakah konsumen sudah terdaftar
 Route::get('/cekNIK', [PembelianController::class, 'cek_nik'])->middleware('auth');
 // Edit Data
-Route::get('/edit-transaksi/{buy:unique}', [PembelianController::class, 'page_edit'])->middleware('auth');
+Route::get('/edit-transaksi/{buy:unique}', [PembelianController::class, 'page_edit'])->middleware('pembelian');
 //Ambil Data Transaksi
 Route::get('/getDataTransaksi', [PembelianController::class, 'get_transaksi'])->middleware('auth');
 //Load Individu
 // Route::get('/loadIndividu', [PembelianController::class, 'load_individu'])->middleware('auth');
 
 // DATA MOTOR
-Route::resource('/motor', BikeController::class)->middleware('auth');
+Route::resource('/motor', BikeController::class)->middleware('master');
 //Ambil Data Motor
 Route::get('/getDataMotor', [BikeController::class, 'get_motor'])->middleware('auth');
 
@@ -64,17 +64,17 @@ Route::resource('/profile', ProfileController::class)->middleware('auth');
 Route::post('/updateProfile', [ProfileController::class, 'update_data'])->middleware('auth');
 
 // MODAL
-Route::resource('/modal', ModalController::class)->middleware('auth');
+Route::resource('/modal', ModalController::class)->middleware('modal');
 //refresh page modal
 Route::get('/refreshPage', [ModalController::class, 'refresh_page'])->middleware('auth');
 
 // LAPORAN
-Route::resource('/laporanPenjualan', LaporanController::class)->middleware('auth');
+Route::resource('/laporanPenjualan', LaporanController::class)->middleware('laporan');
 // LAPORAN PEMBELIAN
-Route::get('/laporanPembelian', [LaporanController::class, 'index_pembelian'])->middleware('auth');
+Route::get('/laporanPembelian', [LaporanController::class, 'index_pembelian'])->middleware('laporan');
 
 // DATA KONSUMEN
-Route::resource('/consumer', ConsumerController::class)->middleware('auth');
+Route::resource('/consumer', ConsumerController::class)->middleware('master');
 
 // PENJUALAN
 //Rules
@@ -110,10 +110,10 @@ Route::resource('/kredit', KreditController::class)->middleware('penjualan');
 Route::get('/getDataKredit', [KreditController::class, 'get_data'])->middleware('penjualan');
 
 // SETTING
-Route::resource('/setting', SettingController::class)->middleware('auth');
+Route::resource('/setting', SettingController::class)->middleware('setting');
 
 // REG ORDER KREDIT
-Route::resource('/regorderkredit', RegOrderKreditController::class)->middleware('auth');
+Route::resource('/regorderkredit', RegOrderKreditController::class)->middleware('register');
 Route::get('/getDataBuyerRegOrder', [RegOrderKreditController::class, 'get_data_buyer'])->middleware('auth');
 
 // LIST REGISTER ORDER KREDIT
@@ -130,7 +130,7 @@ Route::get('/statusDiTolak', [ListRegOrderController::class, 'status_tolak'])->m
 Route::get('/statusDiProses', [ListRegOrderController::class, 'status_proses'])->middleware('auth');
 
 // MAINTENANCE
-Route::resource('/maintenance', MaintenanceController::class)->middleware('auth');
+Route::resource('/maintenance', MaintenanceController::class)->middleware('master');
 Route::get('/getDataMaintenance', [MaintenanceController::class, 'get_maintenance'])->middleware('auth');
 
 // AUTHENTIKASI
@@ -217,7 +217,7 @@ Route::post('pembelianSelectMonth', [PDFController::class, 'cetak_select_month_b
 Route::resource('/listorder', ListRegOrderController::class)->middleware('auth');
 
 // ROLES
-Route::resource('/roles', RoleController::class)->middleware('auth');
+Route::resource('/roles', RoleController::class)->middleware('admin');
 //Refresh List Access
 Route::get('/refresh_access', [RoleController::class, 'list_access'])->middleware('auth');
 Route::get('/tambah_access', [RoleController::class, 'tambah_access'])->middleware('auth');

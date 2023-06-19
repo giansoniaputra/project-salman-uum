@@ -8,7 +8,7 @@ use App\Models\Access;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class penjualan
+class setting
 {
     /**
      * Handle an incoming request.
@@ -18,12 +18,12 @@ class penjualan
     public function handle(Request $request, Closure $next): Response
     {
         $role = Role::where('name', auth()->user()->roles)->first();
-        $penjualan = Access::where('role_unique', $role->unique)->where('menu_name', 'PENJUALAN')->first();
-        if (!$penjualan || !auth()->user()->roles == "SUPER ADMIN") {
+        $setting = Access::where('role_unique', $role->unique)->where('menu_name', 'SETTING')->first();
+        if (!$setting || auth()->user()->roles == "SUPER ADMIN") {
             if (auth()->user()->roles == "SUPER ADMIN") {
                 return $next($request);
             }
-            if (!$penjualan) {
+            if (!$setting) {
                 abort(403);
             } else {
                 return $next($request);

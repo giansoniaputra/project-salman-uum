@@ -67,5 +67,12 @@ class Kernel extends HttpKernel
         'jwt.refresh' => \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,
 
         'penjualan' => \App\Http\Middleware\penjualan::class,
+        'pembelian' => \App\Http\Middleware\pembelian::class,
+        'modal' => \App\Http\Middleware\modal::class,
+        'register' => \App\Http\Middleware\register::class,
+        'laporan' => \App\Http\Middleware\laporan::class,
+        'setting' => \App\Http\Middleware\setting::class,
+        'master' => \App\Http\Middleware\master::class,
+        'admin' => \App\Http\Middleware\admin::class,
     ];
 }
