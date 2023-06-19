@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\users;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('auth.register');
+        return view('auth.register', ['roles' => Role::all()]);
     }
 
     /**
@@ -37,7 +38,7 @@ class AuthController extends Controller
     {
         $rules = [
             'name' => 'required',
-            'email' => 'required|email:dns|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:7',
             'password_confirmation' => 'required',
             'roles' => 'required'

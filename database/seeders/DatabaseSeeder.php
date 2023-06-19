@@ -46,5 +46,29 @@ class DatabaseSeeder extends Seeder
             'no_telepon' => '082321634181',
             'photo_ktp' => null,
         ]);
+        \App\Models\Menu::factory()->create([
+            'unique' => Str::orderedUuid(32),
+            'menu' => 'PENJUALAN',
+        ]);
+        \App\Models\Menu::factory()->create([
+            'unique' => Str::orderedUuid(32),
+            'menu' => 'PEMBELIAN',
+        ]);
+        \App\Models\Menu::factory()->create([
+            'unique' => Str::orderedUuid(32),
+            'menu' => 'MODAL',
+        ]);
+        \App\Models\Menu::factory()->create([
+            'unique' => Str::orderedUuid(32),
+            'menu' => 'REGISTER ORDER',
+        ]);
+        \App\Models\Menu::factory()->create([
+            'unique' => Str::orderedUuid(32),
+            'menu' => 'LAPORAN',
+        ]);
+        \App\Models\Menu::factory()->create([
+            'unique' => Str::orderedUuid(32),
+            'menu' => 'SETTING',
+        ]);
     }
 }

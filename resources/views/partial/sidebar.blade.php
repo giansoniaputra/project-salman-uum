@@ -21,22 +21,26 @@
                             <span class="align-middle">Profile</span>
                         </a>
                     </li>
+                    @if(auth()->user()->roles == "SUPER ADMIN")
                     <li>
                         <a href="/auth/create">
                             <i data-acorn-icon="credit-card" class="me-2" data-acorn-size="17"></i>
                             <span class="align-middle">Daftar</span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </div>
             <div class="col-6 pe-1 ps-1">
                 <ul class="list-unstyled">
+                    @if($setting || auth()->user()->roles == "SUPER ADMIN")
                     <li>
                         <a href="/setting">
                             <i data-acorn-icon="gear" class="me-2" data-acorn-size="17"></i>
                             <span class="align-middle">Settings</span>
                         </a>
                     </li>
+                    @endif
                     <li>
                         <a href="/logout">
                             <i data-acorn-icon="logout" class="me-2" data-acorn-size="17"></i>
@@ -70,12 +74,14 @@
                 <span class="label">Dashboards</span>
             </a>
         </li>
+        @if($penjualan || $pembelian || auth()->user()->roles == "SUPER ADMIN")
         <li>
             <a href="#transaksi">
                 <i data-acorn-icon="cart" class="icon" data-acorn-size="18"></i>
                 <span class="label">Transaksi</span>
             </a>
             <ul id="transaksi">
+                @if($penjualan || auth()->user()->roles == "SUPER ADMIN")
                 <li>
                     <a href="#penjualan">
                         <span class="label">Penjualan</span>
@@ -93,13 +99,18 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+                @if($pembelian || auth()->user()->roles == "SUPER ADMIN")
                 <li>
                     <a href="/pembelian">
                         <span class="label">Pembelian</span>
                     </a>
                 </li>
+                @endif
             </ul>
         </li>
+        @endif
+        @if($master || auth()->user()->roles == "SUPER ADMIN")
         <li>
             <a href="#master">
                 <i data-acorn-icon="archive" class="icon" data-acorn-size="18"></i>
@@ -118,12 +129,16 @@
                 </li>
             </ul>
         </li>
+        @endif
+        @if($modal || auth()->user()->roles == "SUPER ADMIN")
         <li>
             <a href="/modal">
                 <i data-acorn-icon="dollar" class="icon" data-acorn-size="18"></i>
                 <span class="label">Modal</span>
             </a>
         </li>
+        @endif
+        @if($laporan || auth()->user()->roles == "SUPER ADMIN")
         <li>
             <a href="#laporan">
                 <i data-acorn-icon="print" class="icon" data-acorn-size="18"></i>
@@ -142,18 +157,36 @@
                 </li>
             </ul>
         </li>
+        @endif
+        @if($register || auth()->user()->roles == "SUPER ADMIN")
         <li>
             <a href="/regorderkredit">
                 <i data-acorn-icon="edit-square" class="icon" data-acorn-size="18"></i>
                 <span class="label">Reg Order Kredit</span>
             </a>
         </li>
+        @endif
         {{-- <li>
             <a href="https://www.sejda.com/id/pdf-editor" target="_blank">
                 <i data-acorn-icon="edit-square" class="icon" data-acorn-size="18"></i>
                 <span class="label">Editor PDF</span>
             </a>
         </li> --}}
+        @if(auth()->user()->roles == "SUPER ADMIN")
+        <li>
+            <a href="#access">
+                <i data-acorn-icon="cart" class="icon" data-acorn-size="18"></i>
+                <span class="label">Access User</span>
+            </a>
+            <ul id="access">
+                <li>
+                    <a href="/roles">
+                        <span class="label">Roles</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        @endif
     </ul>
 </div>
 <!-- Menu End -->

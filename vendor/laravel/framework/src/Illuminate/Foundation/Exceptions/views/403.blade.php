@@ -71,7 +71,7 @@
                                 </a>
                             </div>
                             <div class="mb-5">
-                                <h2 class="cta-1 mb-0 text-primary">Ooops, sepertinya ada yang error!</h2>
+                                <h2 class="cta-1 mb-0 text-primary">Ooops, anda tidak di izinkan untuk mengakses halaman ini!</h2>
                                 <h2 class="display-2 text-primary">Error 403</h2>
                             </div>
                             <div class="mb-5">
@@ -85,7 +85,7 @@
                             <div>
                                 <a href="/home" class="btn btn-icon btn-icon-start btn-primary">
                                     <i data-acorn-icon="arrow-left"></i>
-                                    <span>Kembali Ke Home</span>
+                                    <span>Kembali Ke Dashboard {{ ucwords(auth()->user()->role) }}</span>
                                 </a>
                             </div>
                         </div>
