@@ -33,7 +33,7 @@ class modal
             }
             return $next($request);
         } else {
-            return redirect('/auth');
+            return redirect('/auth')->with('error', 'Anda Harus Login Terlebih Dahulu!');
         }
     }
 }
