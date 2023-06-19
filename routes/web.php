@@ -226,4 +226,4 @@ Route::get('/hapus_access', [RoleController::class, 'hapus_access'])->middleware
 //METHOD HAPUS DATA
 
 //Ambil Data Chart
-Route::get('/chart-data', [ChartDataController::class, 'dataTables'])->middleware('auth');
+Route::get('/chart-data', 'ChartDataController@index');

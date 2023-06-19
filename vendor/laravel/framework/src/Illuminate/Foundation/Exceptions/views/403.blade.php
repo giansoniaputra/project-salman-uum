@@ -71,11 +71,11 @@
                                 </a>
                             </div>
                             <div class="mb-5">
-                                <h2 class="cta-1 mb-0 text-primary">Ooops, anda tidak di izinkan untuk mengakses halaman ini!</h2>
-                                <h2 class="display-2 text-primary">Error 403</h2>
+                                <h2 class="cta-1 mb-0 text-primary">Error 403</h2>
+                                <h2 class="display-2 text-primary">Forbidden!</h2>
                             </div>
                             <div class="mb-5">
-                                <p class="h6">Sepertinya halaman yang kamu cari tidak tersedia.</p>
+                                <p class="h6">Ooops, anda tidak di izinkan untuk mengakses halaman ini!</p>
                                 <p class="h6">
                                     Jika ada kesalahan silahkan hubungi
                                     <a href="#">kontak</a>
