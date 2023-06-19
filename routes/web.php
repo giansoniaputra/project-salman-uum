@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BikeController;
-use App\Http\Controllers\ChartDataController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ModalController;
 use App\Http\Controllers\KreditController;
 use App\Http\Controllers\LaporanController;
@@ -13,6 +13,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\KwitansiController;
+use App\Http\Controllers\ChartDataController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\MaintenanceController;
@@ -76,38 +77,37 @@ Route::get('/laporanPembelian', [LaporanController::class, 'index_pembelian'])->
 Route::resource('/consumer', ConsumerController::class)->middleware('auth');
 
 // PENJUALAN
-Route::resource('/penjualan', PenjualanController::class)->middleware('auth');
 //Rules
-Route::resource('/penjualan', PenjualanController::class)->middleware('auth');
+Route::resource('/penjualan', PenjualanController::class)->middleware('penjualan');
 //Rules Penjualan
-Route::post('/rulesPenjualan', [PenjualanController::class, 'rules_penjualan'])->middleware('auth');
+Route::post('/rulesPenjualan', [PenjualanController::class, 'rules_penjualan'])->middleware('penjualan');
 //Tambah Penjualan Cash
-Route::post('/tambahPenjualan', [PenjualanController::class, 'tambah_data'])->middleware('auth');
+Route::post('/tambahPenjualan', [PenjualanController::class, 'tambah_data'])->middleware('penjualan');
 //Edit Penjualan
-Route::get('/ambilDataPenjualan', [PenjualanController::class, 'get_data'])->middleware('auth');
+Route::get('/ambilDataPenjualan', [PenjualanController::class, 'get_data'])->middleware('penjualan');
 //Edit Penjualan
-Route::get('/getDataSele', [PenjualanController::class, 'get_data_detail'])->middleware('auth');
+Route::get('/getDataSele', [PenjualanController::class, 'get_data_detail'])->middleware('penjualan');
 //Edit Penjualan Kredit
-Route::get('/getDataKredit', [KreditController::class, 'get_data'])->middleware('auth');
+Route::get('/getDataKredit', [KreditController::class, 'get_data'])->middleware('penjualan');
 //Update Penjualan
-Route::post('/updatePenjualan', [PenjualanController::class, 'update_data'])->middleware('auth');
+Route::post('/updatePenjualan', [PenjualanController::class, 'update_data'])->middleware('penjualan');
 //Cek Nik Penjual
-Route::get('/cekNikPembeli', [PenjualanController::class, 'cek_nik'])->middleware('auth');
+Route::get('/cekNikPembeli', [PenjualanController::class, 'cek_nik'])->middleware('penjualan');
 //Retur Motor
-Route::get('/returMotor/{sele:unique}', [PenjualanController::class, 'retur_motor'])->middleware('auth');
+Route::get('/returMotor/{sele:unique}', [PenjualanController::class, 'retur_motor'])->middleware('penjualan');
 //Retur Motor Kredit
-Route::get('/returMotorKredit/{kredit:unique}', [KreditController::class, 'retur_motor'])->middleware('auth');
+Route::get('/returMotorKredit/{kredit:unique}', [KreditController::class, 'retur_motor'])->middleware('penjualan');
 //Refresh no polisi
-Route::get('/refresh_no_polisi', [PenjualanController::class, 'refresh_no_polisi'])->middleware('auth');
+Route::get('/refresh_no_polisi', [PenjualanController::class, 'refresh_no_polisi'])->middleware('penjualan');
 //Ketika no register dipilih
-Route::get('/getListOrder', [KreditController::class, 'get_list_order'])->middleware('auth');
+Route::get('/getListOrder', [KreditController::class, 'get_list_order'])->middleware('penjualan');
 //Memasukan semua data register order
-Route::get('/getDataListOrderKredit', [KreditController::class, 'get_list_order_kredit'])->middleware('auth');
+Route::get('/getDataListOrderKredit', [KreditController::class, 'get_list_order_kredit'])->middleware('penjualan');
 
 // PENJUALAN KREDIT
-Route::resource('/kredit', KreditController::class)->middleware('auth');
+Route::resource('/kredit', KreditController::class)->middleware('penjualan');
 //Edit Penjualan
-Route::get('/getDataKredit', [KreditController::class, 'get_data'])->middleware('auth');
+Route::get('/getDataKredit', [KreditController::class, 'get_data'])->middleware('penjualan');
 
 // SETTING
 Route::resource('/setting', SettingController::class)->middleware('auth');
@@ -155,6 +155,8 @@ Route::get('/dataTablesPenjualanKredit', [KreditController::class, 'dataTables']
 Route::get('/dataTablesMaintenance', [MaintenanceController::class, 'dataTables'])->middleware('auth');
 Route::get('/datatablesRegOrderKredit', [RegOrderKreditController::class, 'dataTables'])->middleware('auth');
 Route::get('/listPengajualOrder', [ListRegOrderController::class, 'dataTables'])->middleware('auth');
+Route::get('/datatablesRoles', [RoleController::class, 'dataTables'])->middleware('auth');
+Route::get('//datatablesAccess', [RoleController::class, 'dataTablesAccess'])->middleware('auth');
 
 
 //CETAK PDF
@@ -214,6 +216,12 @@ Route::post('pembelianSelectMonth', [PDFController::class, 'cetak_select_month_b
 //LIST ORDER
 Route::resource('/listorder', ListRegOrderController::class)->middleware('auth');
 
+// ROLES
+Route::resource('/roles', RoleController::class)->middleware('auth');
+//Refresh List Access
+Route::get('/refresh_access', [RoleController::class, 'list_access'])->middleware('auth');
+Route::get('/tambah_access', [RoleController::class, 'tambah_access'])->middleware('auth');
+Route::get('/hapus_access', [RoleController::class, 'hapus_access'])->middleware('auth');
 
 //METHOD HAPUS DATA
 

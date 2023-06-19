@@ -1,4 +1,17 @@
-<?php use App\Models\Setting; ?>
+<?php 
+use App\Models\Setting; 
+use App\Models\Access;
+use App\Models\Role;
+$role = Role::where('name', auth()->user()->roles)->first();
+
+$penjualan = Access::where('role_unique', $role->unique)->where('menu_name', 'PENJUALAN')->first();
+$pembelian = Access::where('role_unique', $role->unique)->where('menu_name', 'PEMBELIAN')->first();
+$modal = Access::where('role_unique', $role->unique)->where('menu_name', 'MODAL')->first();
+$register = Access::where('role_unique', $role->unique)->where('menu_name', 'REGISTER ORDER')->first();
+$laporan = Access::where('role_unique', $role->unique)->where('menu_name', 'LAPORAN')->first();
+$setting = Access::where('role_unique', $role->unique)->where('menu_name', 'SETTING')->first();
+$master = Access::where('role_unique', $role->unique)->where('menu_name', 'MASTER')->first();
+?>
 <!DOCTYPE html>
 <html lang="en" data-footer="true" data-override='{"attributes": {"placement": "vertical" }}'>
 <head>
