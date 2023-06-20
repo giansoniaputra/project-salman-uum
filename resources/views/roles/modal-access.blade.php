@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body">
                 <input type="hidden" name="unique" id="unique_access" value="0">
-                <table class="table table-striped" id="table-access">
+                <table class="table table-hover" id="table-access">
                     <thead>
                         <tr>
                             <td class="text-center">No</td>
@@ -25,20 +25,21 @@
                             <td class="text-center">{{ $i++ }}</td>
                             <td>{{ $menu->menu }}</td>
                             <td class="text-center">
-                                <button class="btn btn-sm btn-icon btn-icon-only btn-outline-secondary mb-1" data-menu="{{ $menu->menu }}" id="tambah-access" type="button">
-                                    <i class="mb-3 d-inline-block text-primary icon-20 bi-plus-circle"></i>
+                                <button class="btn btn-sm btn-icon btn-icon-only btn-secondary" data-menu="{{ $menu->menu }}" id="tambah-access" type="button">
+                                    <i class="bi-plus-circle"></i>
                                 </button>
-                                <button class="btn btn-sm btn-icon btn-icon-only btn-outline-danger mb-1" data-menu="{{ $menu->menu }}" id="hapus-access" type="button">
-                                    <i class="mb-3 d-inline-block text-primary icon-20 bi-dash-circle"></i>
+                                <button class="btn btn-sm btn-icon btn-icon-only btn-danger" data-menu="{{ $menu->menu }}" id="hapus-access" type="button">
+                                    <i class="bi-dash-circle"></i>
                                 </button>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <div class="alert alert-primary" role="alert" id="list-access">
-                </div>
+                <h5 class="">Akses Yang Diberikan :</h5>
+                <button type="button" id="list-access" class="btn btn-primary mt-5">
+
+                </button>
             </div>
         </div>
     </div>
-</div>

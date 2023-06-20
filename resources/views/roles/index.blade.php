@@ -51,7 +51,7 @@
                 <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto add-data" data-bs-toggle="modal" data-bs-target="#modal-roles" id="btn-add-data" title="Tambah Data Penjualan Kredit">
                     <i data-acorn-icon="plus"></i>
                 </button>
-                <button type="button" class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="modal" data-bs-target="#summary_kredit" title="Summary Penjualan Kredit"><i data-acorn-icon="notebook-1"></i></button>
+                {{-- <button type="button" class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="modal" data-bs-target="#summary_kredit" title="Summary Penjualan Kredit"><i data-acorn-icon="notebook-1"></i></button> --}}
                 {{-- <button class="btn btn-icon btn-icon-only btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Print Tagihan" type="button">
                     <i data-acorn-icon="print"></i>
                 </button> --}}
@@ -96,12 +96,12 @@
             <form action="javascript:;">
                 @csrf
                 <div class="modal-body">
-                    <input type="text" name="unique" id="unique">
+                    <input type="hidden" name="unique" id="unique">
                     <div class="row">
                         <div class="col">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="name" id="name" required>
-                                <label for="name">Nama Roles</label>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan Nama Role" required>
+                                <label for="name">Nama Role<span class="text-danger"> *</span></label>
                             </div>
                         </div>
                     </div>

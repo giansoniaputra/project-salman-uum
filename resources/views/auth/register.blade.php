@@ -156,7 +156,6 @@
                                         <i data-acorn-icon="key"></i>
                                         <select class="form-control @error('roles') is-invalid @enderror" name="roles" id="roles" value="{{ old('roles') }}">
                                             <option value="PILIH ROLE" disabled selected>Pilih Role</option>
-                                            <option value="SUPER ADMIN">Super Admin</option>
                                             @foreach ($roles as $role)
                                             <option value="{{ $role->name }}">{{ $role->name }}</option>
                                             @endforeach
