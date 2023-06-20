@@ -6,6 +6,7 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BikeController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ModalController;
 use App\Http\Controllers\KreditController;
 use App\Http\Controllers\LaporanController;
@@ -219,6 +220,9 @@ Route::resource('/listorder', ListRegOrderController::class)->middleware('auth')
 
 // ROLES
 Route::resource('/roles', RoleController::class)->middleware('admin');
+
+// USER
+Route::resource('/user', UserController::class)->middleware('admin');
 //Refresh List Access
 Route::get('/refresh_access', [RoleController::class, 'list_access'])->middleware('auth');
 Route::get('/tambah_access', [RoleController::class, 'tambah_access'])->middleware('auth');

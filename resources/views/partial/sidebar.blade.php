@@ -184,6 +184,11 @@
                         <span class="label">Setting Roles</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/user">
+                        <span class="label">Data User</span>
+                    </a>
+                </li>
             </ul>
         </li>
         @endif
