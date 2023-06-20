@@ -479,8 +479,10 @@ $(document).ready(function () {
                     $("#warna-detail").html(response.data.warna);
                     $("#tahun-pembuatan").html(response.data.tahun_pembuatan);
                     $("#no-rangka").html(response.data.no_rangka);
+                    $("#no-mesin").html(response.data.no_mesin);
                     $("#bpkb").html(response.data.bpkb);
                     $("#nama-bpkb").html(response.data.nama_bpkb);
+                    $("#alamat-bpkb").html(response.data.alamat_bpkb);
                     $("#berlaku-sampai").html(response.data.berlaku_sampai);
                     $("#perpanjang-stnk").html(response.data.perpanjang_stnk);
                     $("#foto-bpkb").html(

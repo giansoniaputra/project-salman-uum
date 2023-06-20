@@ -201,7 +201,9 @@ $(document).ready(function () {
                     response.success.motor.tahun_pembuatan
                 );
                 $("#no-rangka").html(response.success.motor.no_rangka);
+                $("#no-mesin").html(response.success.motor.no_mesin);
                 $("#nama-bpkb").html(response.success.motor.nama_bpkb);
+                $("#alamat-bpkb").html(response.success.motor.alamat_bpkb);
                 $("#bpkb").html(response.success.motor.bpkb);
                 $("#berlaku-sampai").html(response.success.berlaku_sampai);
                 $("#perpanjang-stnk").html(response.success.perpanjang_stnk);
