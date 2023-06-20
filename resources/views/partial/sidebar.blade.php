@@ -175,13 +175,13 @@
         @if(auth()->user()->roles == "SUPER ADMIN")
         <li>
             <a href="#access">
-                <i data-acorn-icon="cart" class="icon" data-acorn-size="18"></i>
-                <span class="label">Access User</span>
+                <i data-acorn-icon="user" class="icon" data-acorn-size="18"></i>
+                <span class="label">Akses User</span>
             </a>
             <ul id="access">
                 <li>
                     <a href="/roles">
-                        <span class="label">Roles</span>
+                        <span class="label">Setting Roles</span>
                     </a>
                 </li>
             </ul>

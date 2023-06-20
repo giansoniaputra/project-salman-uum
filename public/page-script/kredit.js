@@ -43,7 +43,7 @@ $(document).ready(function () {
                     return type === "display"
                         ? '<button class="btn btn-quaternary btn-sm cetak-button-kwitansi" data-bs-toggle="tooltip" data-bs-placement="top" title="Cetak Kwitansi" data-unique="' +
                               data +
-                              '"><i class="bi-printer"></i></button> <button class="btn btn-info btn-sm cetak-button-tagihan" data-bs-toggle="tooltip" data-bs-placement="top" title="Cetak PDF" data-unique="' +
+                              '"><i class="bi-printer"></i></button> <button class="btn btn-info btn-sm cetak-button-tagihan" data-bs-toggle="tooltip" data-bs-placement="top" title="Tagihan" data-unique="' +
                               data +
                               '"><i class="bi-file-earmark-arrow-down"></i></button>'
                         : data;

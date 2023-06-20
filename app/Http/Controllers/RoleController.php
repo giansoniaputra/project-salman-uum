@@ -111,7 +111,7 @@ class RoleController extends Controller
     {
         $query = Access::where('role_unique', $request->unique)->get();
         foreach ($query as $row) {
-            echo '<p class="text-danger">' . $row->menu_name . '</p>';
+            echo '<button type="button" class="btn btn-primary">' . $row->menu_name . '</button>';
         }
     }
     public function tambah_access(Request $request)

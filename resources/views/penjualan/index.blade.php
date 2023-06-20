@@ -155,7 +155,7 @@
                         <input type="hidden" name="old_ktp" id="old_ktp">
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="date-picker form-control" placeholder="Masukan Tanggal Penjualan" name="tanggal_jual" id="tanggal_jual" />
+                        <input type="text" class="form-control date-picker" placeholder="Masukan Tanggal Penjualan" name="tanggal_jual" id="tanggal_jual" />
                         <label class="text-label" for="tanggal_jual">Tanggal Penjualan<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
