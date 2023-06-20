@@ -27,6 +27,16 @@ class Buy extends Model
         return 'unique';
     }
 
+    public static function get_data($unique)
+    {
+        $query = DB::table('seles as a')
+            ->join('bikes as b', 'a.bike_id', '=', 'b.id')
+            ->join('buyers as c', 'a.buyer_id', '=', 'c.id')
+            ->where('a.unique', $unique)
+            ->first();
+        return $query;
+    }
+
     public static function data_pertanggal($awal, $akhir)
     {
         $query = DB::table('buys as a')

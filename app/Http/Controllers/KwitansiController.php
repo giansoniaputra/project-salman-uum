@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buy;
 use App\Models\Kredit;
 use App\Models\Setting;
 use Codedge\Fpdf\Fpdf\Fpdf;
@@ -219,6 +220,87 @@ class KwitansiController extends Controller
         // $this->pdf->MultiCell(30, 5, "Gian Sonia,", 0, 'L',  true);
 
 
+
+        // Simpan file PDF ke server
+        $this->pdf->Output('Kwitansi.pdf', 'I');
+        exit;
+    }
+
+    public function cetak_kwitansi_cash($unique)
+    {
+
+        $data = Buy::get_data($unique);
+        $setting = Setting::first();
+
+        $this->pdf->AddPage('P', 'A4');
+        $this->pdf->SetFont('Arial', 'B', '8');
+        $this->pdf->SetFillColor(255, 255, 255);
+        $this->pdf->SetTextColor(0, 0, 0);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetXY(10, 10);
+        $this->pdf->MultiCell(8, 100, '', 1, '0', 'C', true);
+
+
+        //Row 2
+        $this->pdf->SetXY(18, 10);
+        $this->pdf->MultiCell(178, 100, "", 1, 'L',  true);
+
+
+        // KWITANSI PELUNASAN
+        $this->pdf->SetFont('Arial', 'U', '10');
+        $this->pdf->SetXY(19, 11);
+        $this->pdf->MultiCell(50, 5, "KWITANSI PENJUALAN", 0, 'L',  true);
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetXY(19, 17);
+        $this->pdf->MultiCell(50, 5, "Telah diterima dari", 0, 'L',  true);
+        $this->pdf->SetXY(19, 22);
+        $this->pdf->MultiCell(50, 5, "Jumlah", 0, 'L',  true);
+        $this->pdf->SetXY(19, 27);
+        $this->pdf->MultiCell(50, 5, "Terbilang", 0, 'L',  true);
+        $this->pdf->SetXY(19, 32);
+        $this->pdf->MultiCell(50, 5, "Untuk Pembayaran", 0, 'L',  true);
+        $this->pdf->SetXY(19, 37);
+        $this->pdf->MultiCell(50, 5, "Merk", 0, 'L',  true);
+        $this->pdf->SetXY(19, 42);
+        $this->pdf->MultiCell(50, 5, "Tipe", 0, 'L',  true);
+        $this->pdf->SetXY(19, 47);
+        $this->pdf->MultiCell(50, 5, "Tahun Pembuatan", 0, 'L',  true);
+        $this->pdf->SetXY(19, 52);
+        $this->pdf->MultiCell(50, 5, "Warna", 0, 'L',  true);
+        $this->pdf->SetXY(19, 57);
+        $this->pdf->MultiCell(50, 5, "No Rangka", 0, 'L',  true);
+        $this->pdf->SetXY(19, 62);
+        $this->pdf->MultiCell(50, 5, "No Mesin", 0, 'L',  true);
+        $this->pdf->SetXY(19, 67);
+        $this->pdf->MultiCell(50, 5, "No Polisi", 0, 'L',  true);
+        // KWITANSI PELUNASAN (DATA)
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetXY(62, 17);
+        $this->pdf->MultiCell(130, 5, ": " . strtoupper($data->nama), 0, 'L',  true);
+        $this->pdf->SetXY(62, 22);
+        $this->pdf->MultiCell(130, 5, ": " . rupiah($data->harga_jual), 0, 'L',  true);
+        $this->pdf->SetXY(62, 27);
+        $this->pdf->MultiCell(130, 5, ": "  . terbilang($data->harga_jual) . " Rupiah", 0, 'L',  true);
+        $this->pdf->SetXY(62, 32);
+        $this->pdf->MultiCell(130, 5, ": Pembelian 1(Satu) Unit Motor", 0, 'L',  true);
+        $this->pdf->SetXY(62, 37);
+        $this->pdf->MultiCell(130, 5, ": " . $data->merek, 0, 'L',  true);
+        $this->pdf->SetXY(62, 42);
+        $this->pdf->MultiCell(130, 5, ": " . $data->type, 0, 'L',  true);
+        $this->pdf->SetXY(62, 47);
+        $this->pdf->MultiCell(130, 5, ": " . $data->tahun_pembuatan, 0, 'L',  true);
+        $this->pdf->SetXY(62, 52);
+        $this->pdf->MultiCell(130, 5, ": " . $data->warna, 0, 'L',  true);
+        $this->pdf->SetXY(62, 57);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_rangka, 0, 'L',  true);
+        $this->pdf->SetXY(62, 62);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_mesin, 0, 'L',  true);
+        $this->pdf->SetXY(62, 67);
+        $this->pdf->MultiCell(130, 5, ": " . $data->no_polisi, 0, 'L',  true);
+        $this->pdf->SetXY(130, 73);
+        $this->pdf->MultiCell(30, 5, $setting->kota . ",", 0, 'L',  true);
+        $this->pdf->SetXY(130, 96);
+        $this->pdf->MultiCell(30, 5, $setting->nama_pemilik, 0, 'L',  true);
 
         // Simpan file PDF ke server
         $this->pdf->Output('Kwitansi.pdf', 'I');

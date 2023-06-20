@@ -41,7 +41,9 @@ $(document).ready(function () {
                 data: "unique",
                 render: function (data, type, row, meta) {
                     return type === "display"
-                        ? '<a href="/kwitansiCash" class="btn btn-quaternary btn-sm cetak-button-kwitansi" data-bs-toggle="tooltip" data-bs-placement="top" title="Cetak Kwitansi" data-unique="' +
+                        ? '<a href="kwitansiCash/' +
+                              data +
+                              '" class="btn btn-quaternary btn-sm cetak-button-kwitansi" data-bs-toggle="tooltip" data-bs-placement="top" title="Cetak Kwitansi" data-unique="' +
                               data +
                               '"><i class="bi-printer"></i></a>'
                         : data;
@@ -547,8 +549,7 @@ $(document).ready(function () {
     //     "click",
     //     ".cetak-button-kwitansi",
     //     function () {
-    //         $("#nama_leasing").val("");
-    //         $("#subsidi").val("");
+    //         $("#nama_pembeli").val("");
     //         let unique = $(this).attr("data-unique");
     //         $("#unique").val(unique);
     //         $("#cetak_kwitansi").modal("show");
