@@ -17,7 +17,7 @@
                             <div class="d-flex align-items-center lh-1-25">Total Penjualan</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="cta-2 text-primary">1000</div>
+                            <div class="cta-2 text-primary">{{$total_jual}}</div>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                             <div class="d-flex align-items-center lh-1-25">Total Pembelian</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="cta-2 text-primary">1000</div>
+                            <div class="cta-2 text-primary">{{$semua_unit}}</div>
                         </div>
                     </div>
                 </div>
