@@ -38,6 +38,16 @@ $(document).ready(function () {
                 data: "harga_jual",
             },
             {
+                data: "unique",
+                render: function (data, type, row, meta) {
+                    return type === "display"
+                        ? '<a href="/kwitansiCash" class="btn btn-quaternary btn-sm cetak-button-kwitansi" data-bs-toggle="tooltip" data-bs-placement="top" title="Cetak Kwitansi" data-unique="' +
+                              data +
+                              '"><i class="bi-printer"></i></a>'
+                        : data;
+                },
+            },
+            {
                 data: "action",
                 orderable: true,
                 searchable: true,
@@ -46,6 +56,10 @@ $(document).ready(function () {
         columnDefs: [
             {
                 targets: [6], // index kolom atau sel yang ingin diatur
+                className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
+            },
+            {
+                targets: [7], // index kolom atau sel yang ingin diatur
                 className: "text-center", // kelas CSS untuk memposisikan isi ke tengah
             },
             {
@@ -528,6 +542,18 @@ $(document).ready(function () {
         $("#judul-modal-photo").html("Photo KTP");
         $("#modal-image").modal("show");
     });
+    //CETAK KWITANSI
+    // $("#datatableBoxed_penjualan_cash").on(
+    //     "click",
+    //     ".cetak-button-kwitansi",
+    //     function () {
+    //         $("#nama_leasing").val("");
+    //         $("#subsidi").val("");
+    //         let unique = $(this).attr("data-unique");
+    //         $("#unique").val(unique);
+    //         $("#cetak_kwitansi").modal("show");
+    //     }
+    // );
     // //Action Retur
     // $("#dataTablesPenjualan").on("click", ".retur-button", function () {
     //     let id = $(this).attr("data-id");

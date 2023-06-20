@@ -230,6 +230,15 @@
                                 <label class="text-label" for="nama_bpkb">&nbsp;&nbsp;Nama BPKB<span class="text-danger"> *</label></span>
                             </div>
                             <div class="form-floating mb-3 col-md-6">
+                                <input type="text" name="alamat_bpkb" id="alamat_bpkb" class="form-control @error('alamat_bpkb')is-invalid @enderror" value="{{ old('alamat_bpkb') }}" placeholder="Masukan BPKB">
+                                @error('alamat_bpkb')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                                <label class="text-label" for="bpkb">&nbsp;&nbsp;Alamat BPKB<span class="text-danger"> *</label></span>
+                            </div>
+                            <div class="form-floating mb-3 col-md-6">
                                 <input type="text" class="date-picker form-control @error('berlaku_sampai')is-invalid @enderror" value="{{ old('berlaku_sampai') }}" placeholder="Masukan Masa Berlaku" name="berlaku_sampai" id="berlaku_sampai">
                                 @error('berlaku_sampai')
                                 <div class="invalid-feedback">
@@ -238,7 +247,7 @@
                                 @enderror
                                 <label class="text-label" for="berlaku_sampai">&nbsp;&nbsp;Berlaku Sampai<span class="text-danger"> *</label></span>
                             </div>
-                            <div class="form-floating mb-3 col-md-12">
+                            <div class="form-floating mb-3 col-md-6">
                                 <input type="text" class="date-picker form-control @error('perpanjang_stnk')is-invalid @enderror" value="{{ old('perpanjang_stnk') }}" placeholder="Masukan Perpanjang STNK" name="perpanjang_stnk" id="perpanjang_stnk">
                                 @error('perpanjang_stnk')
                                 <div class="invalid-feedback">

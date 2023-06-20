@@ -1196,7 +1196,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 6.7, 'Alamat', 0, '0', 'L', true);
             $this->pdf->Cell(2, 6.7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(145, 6.7, '', 0, '0', 'L', true);
+            $this->pdf->Cell(145, 6.7, strtoupper($data->alamat_bpkb), 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(100, 6.7, '3. Bahwa kendaraan tersebut di atas BUKAN TITIPAN PIHAK LAIN.', 0, '0', 'L', true);
 

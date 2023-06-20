@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('no_rangka');
             $table->string('no_mesin');
             $table->string('bpkb');
+            $table->string('alamat_bpkb');
             $table->string('nama_bpkb');
             $table->date('berlaku_sampai');
             $table->date('perpanjang_stnk');

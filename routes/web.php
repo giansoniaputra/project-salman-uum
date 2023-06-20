@@ -198,6 +198,7 @@ Route::post('penjualanSelectMonthKredit', [PDFController::class, 'cetak_select_m
 
 // CETAK KWITANSI
 Route::post('/kwitansi', [KwitansiController::class, 'cetak_kwitansi'])->middleware('auth');
+Route::get('/kwitansiCash', [KwitansiController::class, 'cetak_kwitansi_cash'])->middleware('auth');
 
 // CETAK TAGIHAN
 Route::post('/cetak_tagihan', [CetakTagihanController::class, 'cetak_tagihan'])->middleware('auth');
