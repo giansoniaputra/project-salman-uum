@@ -369,6 +369,11 @@
                                                 <td><span id="no-rangka"></span></td>
                                             </tr>
                                             <tr>
+                                                <td>No Mesin</td>
+                                                <td>:</td>
+                                                <td><span id="no-mesin"></span></td>
+                                            </tr>
+                                            <tr>
                                                 <td>Nomor BPKB</td>
                                                 <td>:</td>
                                                 <td><span id="bpkb"></span></td>
@@ -377,6 +382,11 @@
                                                 <td>Nama BPKB</td>
                                                 <td>:</td>
                                                 <td><span id="nama-bpkb"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Alamat BPKB</td>
+                                                <td>:</td>
+                                                <td><span id="alamat-bpkb"></span></td>
                                             </tr>
                                             <tr>
                                                 <td>Berlaku Sampai</td>
