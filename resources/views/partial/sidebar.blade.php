@@ -166,12 +166,12 @@
             </a>
         </li>
         @endif
-        <li>
+        {{-- <li>
             <a href="https://www.canva.com/pdf-editor/" target="_blank">
                 <i data-acorn-icon="edit-square" class="icon" data-acorn-size="18"></i>
                 <span class="label">Editor PDF</span>
             </a>
-        </li>
+        </li> --}}
         @if(auth()->user()->roles == "SUPER ADMIN")
         <li>
             <a href="#access">
