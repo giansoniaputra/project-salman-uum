@@ -39,7 +39,6 @@ class Select2Controls {
   _initSelect2Basic1() {
     jQuery('#list_order').select2({placeholder: 'Pilih List Order'});
   }
-
   // Basic multiple select2
   _initSelect2Multiple() {
     jQuery('#select2Multiple').select2({});
