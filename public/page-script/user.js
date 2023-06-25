@@ -24,9 +24,6 @@ $(document).ready(function () {
                 data: "name",
             },
             {
-                data: "email",
-            },
-            {
                 data: "roles_edit",
                 render: function (data, type, row, meta) {
                     let split = data.split("-");
@@ -43,6 +40,9 @@ $(document).ready(function () {
                               '"></div>'
                         : data;
                 },
+            },
+            {
+                data: "email",
             },
             {
                 data: "action",

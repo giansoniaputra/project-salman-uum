@@ -59,8 +59,8 @@
         <tr>
             <th class="text-muted text-small text-uppercase">No</th>
             <th class="text-muted text-small text-uppercase">Nama</th>
-            <th class="text-muted text-small text-uppercase">Email</th>
             <th class="text-muted text-small text-uppercase">Role</th>
+            <th class="text-muted text-small text-uppercase">Email</th>
             <th class="text-muted text-small text-uppercase">Action</th>
         </tr>
     </thead>
