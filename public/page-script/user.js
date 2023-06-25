@@ -176,8 +176,13 @@ $(document).ready(function () {
                     type: "POST",
                     dataType: "json",
                     success: function (response) {
-                        Swal.fire("Pesan!", response.success, "success");
-                        table.ajax.reload();
+                        if (response.error) {
+                            table.ajax.reload();
+                            Swal.fire("Pesan!", response.error, "warning");
+                        } else {
+                            Swal.fire("Pesan!", response.success, "success");
+                            table.ajax.reload();
+                        }
                     },
                 });
             }

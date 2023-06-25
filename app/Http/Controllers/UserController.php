@@ -104,8 +104,12 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        User::where('id', $user->id)->delete();
-        return response()->json(['success' => 'User Berhasil Dihapus']);
+        if ($user->name == 'Admin') {
+            return response()->json(['error' => 'Akun Ini Tidak Dapat Dihapus']);
+        } else {
+            User::where('id', $user->id)->delete();
+            return response()->json(['success' => 'User Berhasil Dihapus']);
+        }
     }
 
     public function dataTablesUser(Request $request)
