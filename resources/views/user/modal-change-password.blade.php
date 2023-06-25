@@ -9,7 +9,7 @@
             <form action="javascript:;">
                 @csrf
                 <div class="modal-body">
-                    <input type="text" name="unique" id="unique">
+                    <input type="hidden" name="unique" id="unique">
                     <div class="row">
                         <div class="col">
                             <div class="form-floating mb-3">
