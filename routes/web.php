@@ -142,6 +142,10 @@ Route::get('/logout', [AuthController::class, 'logout']);
 // Register
 Route::get('/register', [AuthController::class, 'index']);
 Route::post('/register', [AuthController::class, 'store']);
+//change password
+Route::post('/changePassword', [AuthController::class, 'update_password'])->middleware('admin');
+Route::post('/updateRoles', [UserController::class, 'update_roles'])->middleware('admin');
+Route::get('/changeRoles', [UserController::class, 'change_roles'])->middleware('admin');
 
 // DATATABLES
 Route::get('/datatablesPembelian', [PembelianController::class, 'dataTables'])->middleware('auth');
@@ -157,7 +161,8 @@ Route::get('/dataTablesMaintenance', [MaintenanceController::class, 'dataTables'
 Route::get('/datatablesRegOrderKredit', [RegOrderKreditController::class, 'dataTables'])->middleware('auth');
 Route::get('/listPengajualOrder', [ListRegOrderController::class, 'dataTables'])->middleware('auth');
 Route::get('/datatablesRoles', [RoleController::class, 'dataTables'])->middleware('auth');
-Route::get('//datatablesAccess', [RoleController::class, 'dataTablesAccess'])->middleware('auth');
+Route::get('/datatablesAccess', [RoleController::class, 'dataTablesAccess'])->middleware('auth');
+Route::get('/datatablesUser', [UserController::class, 'dataTablesUser'])->middleware('auth');
 
 
 //CETAK PDF
@@ -231,4 +236,4 @@ Route::get('/hapus_access', [RoleController::class, 'hapus_access'])->middleware
 //METHOD HAPUS DATA
 
 //Ambil Data Chart
-Route::get('/chart-data', 'ChartDataController@index');
+// Route::get('/chart-data', 'ChartDataController@index');

@@ -109,7 +109,7 @@ $(document).ready(function () {
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Ya, Retur!",
+                confirmButtonText: "Ya, Hapus!",
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({

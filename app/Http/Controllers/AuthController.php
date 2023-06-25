@@ -65,7 +65,7 @@ class AuthController extends Controller
             $validatedData['roles'] = strtoupper($request->roles);
             $validatedData['password'] = bcrypt($request->password);
             user::create($validatedData);
-            return redirect('/')->with('success', 'Akun Berhasil Didaftarkan');
+            return redirect('/user')->with('success', 'Akun Berhasil Didaftarkan');
         }
     }
 
@@ -91,6 +91,29 @@ class AuthController extends Controller
     public function update(Request $request, users $users)
     {
         //
+    }
+    public function update_password(Request $request)
+    {
+        $rules = [
+            'password' => 'required|confirmed|min:7',
+            'password_confirmation' => 'required',
+        ];
+        $pesan = [
+            'password.required' => 'Password Tidak Boleh Kosong',
+            'password.confirmed' => 'Password Tidak Sesuai/Sama',
+            'password.min' => 'Password Minimal 7 Karakter',
+            'password_confirmation.required' => 'Konfirmasi Password Tidak Boleh Kosong',
+        ];
+        $validator = Validator::make($request->all(), $rules, $pesan);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()]);
+        } else {
+            $validatedData = [
+                'password' => bcrypt($request->password)
+            ];
+            User::where('id', $request->unique)->update($validatedData);
+            return response()->json(['success' => 'Password Berhasil Diubah']);
+        }
     }
 
     /**
