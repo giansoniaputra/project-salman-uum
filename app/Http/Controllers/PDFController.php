@@ -109,6 +109,33 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN LABA
+        $jumlah_jual_sele = Sele::where('tanggal_jual', '>=', $tanggal_awal)
+            ->where('tanggal_jual', '<=', $tanggal_akhir)
+            ->count('id');
+        $harga_beli = Sele::where('tanggal_jual', '>=', $tanggal_awal)
+            ->where('tanggal_jual', '<=', $tanggal_akhir)
+            ->sum('harga_beli');
+        $harga_jual = Sele::where('tanggal_jual', '>=', $tanggal_awal)
+            ->where('tanggal_jual', '<=', $tanggal_akhir)
+            ->sum('harga_jual');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Laba yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual_sele, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($harga_jual - $harga_beli), 1, '0', 'C', true);
+        $this->pdf->Ln();
+
         $this->pdf->AddPage('P', 'A4');
 
         $query_kredit = Kredit::data_pertanggal($tanggal_awal, $tanggal_akhir);
@@ -157,6 +184,29 @@ class PDFController extends Controller
             $this->pdf->Cell(25, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN TAC
+        $jumlah_jual = Kredit::where('tanggal_jual', '>=', $tanggal_awal)
+            ->where('tanggal_jual', '<=', $tanggal_akhir)
+            ->count('id');
+        $tac = Kredit::where('tanggal_jual', '>=', $tanggal_awal)
+            ->where('tanggal_jual', '<=', $tanggal_akhir)
+            ->sum('komisi');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Komisi (TAC) yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($tac), 1, '0', 'C', true);
+        $this->pdf->Ln();
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'I');
         exit;
@@ -208,6 +258,29 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN LABA
+        $jumlah_jual_sele = Sele::where('tanggal_jual', '>=', $hari_ini)
+            ->count('id');
+        $harga_beli = Sele::where('tanggal_jual', '>=', $hari_ini)
+            ->sum('harga_beli');
+        $harga_jual = Sele::where('tanggal_jual', '>=', $hari_ini)
+            ->sum('harga_jual');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Laba yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual_sele, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($harga_jual - $harga_beli), 1, '0', 'C', true);
+        $this->pdf->Ln();
         $this->pdf->AddPage('P', 'A4');
 
         $query_kredit = Kredit::data_hari_ini($hari_ini);;
@@ -256,6 +329,27 @@ class PDFController extends Controller
             $this->pdf->Cell(25, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN TAC
+        $jumlah_jual = Kredit::where('tanggal_jual', '>=', $hari_ini)
+            ->count('id');
+        $tac = Kredit::where('tanggal_jual', '>=', $hari_ini)
+            ->sum('komisi');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Komisi (TAC) yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($tac), 1, '0', 'C', true);
+        $this->pdf->Ln();
         $this->pdf->Output('Laporan Penjualan Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'I');
         exit;
     }
@@ -307,7 +401,32 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN LABA
+        $jumlah_jual_sele = Sele::where('tanggal_jual', '>=', $minggu_awal)
+            ->where('tanggal_jual', '<=', $minggu_akhir)
+            ->count('id');
+        $harga_beli = Sele::where('tanggal_jual', '>=', $minggu_awal)
+            ->where('tanggal_jual', '<=', $minggu_akhir)
+            ->sum('harga_beli');
+        $harga_jual = Sele::where('tanggal_jual', '>=', $minggu_awal)
+            ->where('tanggal_jual', '<=', $minggu_akhir)
+            ->sum('harga_jual');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Laba yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
 
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual_sele, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($harga_jual - $harga_beli), 1, '0', 'C', true);
+        $this->pdf->Ln();
         $this->pdf->AddPage('P', 'A4');
 
         $query_kredit = Kredit::data_minggu_ini();
@@ -356,6 +475,29 @@ class PDFController extends Controller
             $this->pdf->Cell(25, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN TAC
+        $jumlah_jual = Kredit::where('tanggal_jual', '>=', $minggu_awal)
+            ->where('tanggal_jual', '<=', $minggu_akhir)
+            ->count('id');
+        $tac = Kredit::where('tanggal_jual', '>=', $minggu_awal)
+            ->where('tanggal_jual', '<=', $minggu_akhir)
+            ->sum('komisi');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Komisi (TAC) yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($tac), 1, '0', 'C', true);
+        $this->pdf->Ln();
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'I');
         exit;
@@ -408,7 +550,32 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN LABA
+        $jumlah_jual_sele = Sele::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->count('id');
+        $harga_beli = Sele::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->sum('harga_beli');
+        $harga_jual = Sele::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->sum('harga_jual');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Laba yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
 
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual_sele, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($harga_jual - $harga_beli), 1, '0', 'C', true);
+        $this->pdf->Ln();
         $this->pdf->AddPage('P', 'A4');
 
         $query_kredit = Kredit::data_bulan_ini();
@@ -457,6 +624,29 @@ class PDFController extends Controller
             $this->pdf->Cell(25, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN TAC
+        $jumlah_jual = Kredit::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->count('id');
+        $tac = Kredit::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->sum('komisi');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Komisi (TAC) yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($tac), 1, '0', 'C', true);
+        $this->pdf->Ln();
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
         exit;
@@ -479,6 +669,7 @@ class PDFController extends Controller
         $bulan_akhir = Carbon::now()->year . '-' . $request->bulan . '-' . $tanggal_akhir;
 
         $query_cash = Sele::data_bulan_ini_select($bulan_awal, $bulan_akhir);
+
 
         $this->pdf->AddPage('P', 'A4');
 
@@ -522,6 +713,33 @@ class PDFController extends Controller
             $this->pdf->Ln();
         }
 
+        //DATA TOTAL JUAL DAN LABA
+        $jumlah_jual_sele = Sele::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->count('id');
+        $harga_beli = Sele::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->sum('harga_beli');
+        $harga_jual = Sele::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->sum('harga_jual');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Laba yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual_sele, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($harga_jual - $harga_beli), 1, '0', 'C', true);
+        $this->pdf->Ln();
+
         $this->pdf->AddPage('P', 'A4');
 
         $query_kredit = Kredit::data_bulan_ini();
@@ -570,6 +788,29 @@ class PDFController extends Controller
             $this->pdf->Cell(25, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN TAC
+        $jumlah_jual = Kredit::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->count('id');
+        $tac = Kredit::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->sum('komisi');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Komisi (TAC) yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($tac), 1, '0', 'C', true);
+        $this->pdf->Ln();
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
         exit;
@@ -895,6 +1136,32 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN LABA
+        $jumlah_jual_sele = Sele::where('tanggal_jual', '>=', $tanggal_awal)
+            ->where('tanggal_jual', '<=', $tanggal_akhir)
+            ->count('id');
+        $harga_beli = Sele::where('tanggal_jual', '>=', $tanggal_awal)
+            ->where('tanggal_jual', '<=', $tanggal_akhir)
+            ->sum('harga_beli');
+        $harga_jual = Sele::where('tanggal_jual', '>=', $tanggal_awal)
+            ->where('tanggal_jual', '<=', $tanggal_akhir)
+            ->sum('harga_jual');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Laba yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual_sele, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($harga_jual - $harga_beli), 1, '0', 'C', true);
+        $this->pdf->Ln();
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'I');
         exit;
@@ -946,7 +1213,29 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN LABA
+        $jumlah_jual_sele = Sele::where('tanggal_jual', '>=', $hari_ini)
+            ->count('id');
+        $harga_beli = Sele::where('tanggal_jual', '>=', $hari_ini)
+            ->sum('harga_beli');
+        $harga_jual = Sele::where('tanggal_jual', '>=', $hari_ini)
+            ->sum('harga_jual');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Laba yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
 
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual_sele, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($harga_jual - $harga_beli), 1, '0', 'C', true);
+        $this->pdf->Ln();
         $this->pdf->Output('Laporan Penjualan Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'I');
         exit;
     }
@@ -998,7 +1287,32 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN LABA
+        $jumlah_jual_sele = Sele::where('tanggal_jual', '>=', $minggu_awal)
+            ->where('tanggal_jual', '<=', $minggu_akhir)
+            ->count('id');
+        $harga_beli = Sele::where('tanggal_jual', '>=', $minggu_awal)
+            ->where('tanggal_jual', '<=', $minggu_akhir)
+            ->sum('harga_beli');
+        $harga_jual = Sele::where('tanggal_jual', '>=', $minggu_awal)
+            ->where('tanggal_jual', '<=', $minggu_akhir)
+            ->sum('harga_jual');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Laba yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
 
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual_sele, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($harga_jual - $harga_beli), 1, '0', 'C', true);
+        $this->pdf->Ln();
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'I');
         exit;
@@ -1051,6 +1365,32 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN LABA
+        $jumlah_jual_sele = Sele::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->count('id');
+        $harga_beli = Sele::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->sum('harga_beli');
+        $harga_jual = Sele::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->sum('harga_jual');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Laba yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual_sele, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($harga_jual - $harga_beli), 1, '0', 'C', true);
+        $this->pdf->Ln();
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
         exit;
@@ -1115,6 +1455,32 @@ class PDFController extends Controller
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN LABA
+        $jumlah_jual_sele = Sele::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->count('id');
+        $harga_beli = Sele::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->sum('harga_beli');
+        $harga_jual = Sele::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->sum('harga_jual');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Laba yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual_sele, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($harga_jual - $harga_beli), 1, '0', 'C', true);
+        $this->pdf->Ln();
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
         exit;
@@ -1176,6 +1542,29 @@ class PDFController extends Controller
             $this->pdf->Cell(25, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN TAC
+        $jumlah_jual = Kredit::where('tanggal_jual', '>=', $tanggal_awal)
+            ->where('tanggal_jual', '<=', $tanggal_akhir)
+            ->count('id');
+        $tac = Kredit::where('tanggal_jual', '>=', $tanggal_awal)
+            ->where('tanggal_jual', '<=', $tanggal_akhir)
+            ->sum('komisi');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Komisi (TAC) yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($tac), 1, '0', 'C', true);
+        $this->pdf->Ln();
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'I');
         exit;
@@ -1232,6 +1621,27 @@ class PDFController extends Controller
             $this->pdf->Cell(25, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN TAC
+        $jumlah_jual = Kredit::where('tanggal_jual', '>=', $hari_ini)
+            ->count('id');
+        $tac = Kredit::where('tanggal_jual', '>=', $hari_ini)
+            ->sum('komisi');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Komisi (TAC) yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($tac), 1, '0', 'C', true);
+        $this->pdf->Ln();
         $this->pdf->Output('Laporan Penjualan Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'I');
         exit;
     }
@@ -1290,6 +1700,29 @@ class PDFController extends Controller
             $this->pdf->Cell(25, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN TAC
+        $jumlah_jual = Kredit::where('tanggal_jual', '>=', $minggu_awal)
+            ->where('tanggal_jual', '<=', $minggu_akhir)
+            ->count('id');
+        $tac = Kredit::where('tanggal_jual', '>=', $minggu_awal)
+            ->where('tanggal_jual', '<=', $minggu_akhir)
+            ->sum('komisi');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Komisi (TAC) yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($tac), 1, '0', 'C', true);
+        $this->pdf->Ln();
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'I');
         exit;
@@ -1348,6 +1781,29 @@ class PDFController extends Controller
             $this->pdf->Cell(25, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN TAC
+        $jumlah_jual = Kredit::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->count('id');
+        $tac = Kredit::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->sum('komisi');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Komisi (TAC) yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($tac), 1, '0', 'C', true);
+        $this->pdf->Ln();
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
         exit;
@@ -1418,6 +1874,29 @@ class PDFController extends Controller
             $this->pdf->Cell(25, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
+        //DATA TOTAL JUAL DAN TAC
+        $jumlah_jual = Kredit::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->count('id');
+        $tac = Kredit::where('tanggal_jual', '>=', $bulan_awal)
+            ->where('tanggal_jual', '<=', $bulan_akhir)
+            ->sum('komisi');
+        $this->pdf->Ln();
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(96, 7, 'Jumlah Unit yang Terjual', 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, 'Jumlah Komisi (TAC) yang Didapat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $this->pdf->Cell(96, 7, $jumlah_jual, 1, '0', 'C', true);
+        $this->pdf->Cell(96, 7, rupiah($tac), 1, '0', 'C', true);
+        $this->pdf->Ln();
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
         exit;

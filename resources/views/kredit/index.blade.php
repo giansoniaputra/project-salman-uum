@@ -114,10 +114,7 @@
                         </select>
                         <label>No Polisi <span class="text-danger"> *</span></label>
                     </div>
-                    <div class="form-floating mb-3" id="current-no-polisi">
-
-
-                    </div>
+                    <div class="form-floating mb-3" id="current-no-polisi"></div>
                     <div class="form-floating mb-3">
                         <input type="text" name="merk" id="merk" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" disabled>
                         <label class="text-label" for="merk">Merk</label>

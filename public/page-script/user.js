@@ -32,7 +32,7 @@ $(document).ready(function () {
                               split[0] +
                               '" data-id="' +
                               split[0] +
-                              '">' +
+                              '" style="cursor: pointer;">' +
                               split[1] +
                               "</p>" +
                               '<div class="d-none edit-roles edit-roles-' +

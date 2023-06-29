@@ -634,6 +634,7 @@ $(document).ready(function () {
                     $(".no-polisi").val(null).trigger("change");
                     $("#current-no-polisi").html("");
                     $("#no-polisi").removeClass("d-none");
+                    $("#no-polisi-select").removeClass("d-none");
                     $("#jenis_pembayaran").val("");
                     $("#jenis_pembayaran").removeAttr("disabled style");
                     $("#buys-content-cash").addClass("d-none");
