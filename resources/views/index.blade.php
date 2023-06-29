@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-    <!-- Custom Legend Chart Start -->
+    {{-- <!-- Custom Legend Chart Start -->
     <div class="col-12 col-xl-6">
         <section class="scroll-section" id="customLegendBarTitle">
             <div class="card mb-5">
@@ -125,7 +125,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
