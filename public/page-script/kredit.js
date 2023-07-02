@@ -714,7 +714,6 @@ $(document).ready(function () {
         "click",
         ".cetak-button-tagihan",
         function () {
-            $("#nama_leasing2").val("");
             $("#subsidi2").val("");
             let unique = $(this).attr("data-unique");
             $("#unique2").val(unique);

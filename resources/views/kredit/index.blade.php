@@ -661,6 +661,10 @@
 <script src="/page-script/kredit.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    document.getElementById('nama_leasing2').value = 'Mandiri Utama Finance'
+
+</script>
+<script>
     const flashData = $('#pesan').data('flash');
     if (flashData) {
         Swal.fire(
