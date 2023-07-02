@@ -426,12 +426,12 @@
                                     <table class="table header-border table-responsive-sm table-striped">
                                         <tbody>
                                             <tr>
-                                                <td>Tanggal Beli</td>
+                                                <td>Tanggal Jual</td>
                                                 <td>:</td>
                                                 <td><span id="tanggal-jual"></span></td>
                                             </tr>
                                             <tr>
-                                                <td>Harga Beli</td>
+                                                <td>Harga Jual</td>
                                                 <td>:</td>
                                                 <td><span id="harga-jual"></span></td>
                                             </tr>
