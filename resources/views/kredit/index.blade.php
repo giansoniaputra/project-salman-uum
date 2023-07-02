@@ -231,6 +231,10 @@
                         <label class="text-label" for="tenor">Tenor<span class="text-danger"> *</label></span>
                     </div>
                     <div class="form-floating mb-3">
+                        <input type="text" class="form-control money" name="harga_jual_kredit" id="harga_jual_kredit" placeholder="Masukan Komisi TAC" style="">
+                        <label class="text-label" for="harga_jual_kredit">Harga Jual Kredit<span class="text-danger"> *</label></span>
+                    </div>
+                    <div class="form-floating mb-3">
                         <input type="text" class="form-control money" name="komisi" id="komisi" placeholder="Masukan Komisi TAC" style="">
                         <label class="text-label" for="komisi">Komisi TAC<span class="text-danger"> *</label></span>
                     </div>

@@ -20,6 +20,9 @@ class ModalController extends Controller
         $modal = Modal::first();
         $harga_beli = Sele::sum('harga_beli');
         $harga_jual = Sele::sum('harga_jual');
+        $harga_jual_kredit = Kredit::sum('harga_jual_kredit');
+        $dp = Kredit::sum('dp');
+        $pencairan = Kredit::sum('pencairan');
         $komisi = Kredit::sum('komisi');
         $saldo_bank = $modal->modal + ($harga_jual - $harga_beli) + $komisi;
         $data = [
@@ -34,6 +37,7 @@ class ModalController extends Controller
             'jumlah_unit' => Bike::where('status', 'READY STOCK')->count('id'),
             'semua_unit' => Bike::count('id'),
             'sisa_bank' => $saldo_bank,
+            'laba_kredit' => $harga_jual_kredit - ($dp + $pencairan),
             'komisi' => $komisi,
         ];
         return view('modal.index', $data);

@@ -122,6 +122,7 @@ $(document).ready(function () {
         $("#pencairan").val("");
         $("#angsuran").val("");
         $("#tenor").val("");
+        $("#harga_jual_kredit").val("");
         $("#komisi").val("");
 
         $("#nama_pembeli").removeAttr("style");
@@ -184,6 +185,7 @@ $(document).ready(function () {
         $("#pencairan").val("");
         $("#angsuran").val("");
         $("#tenor").val("");
+        $("#harga_jual_kredit").val("");
         $("#komisi").val("");
         $(".current-method").html("");
 
@@ -429,6 +431,7 @@ $(document).ready(function () {
                     $("#pencairan").val("");
                     $("#angsuran").val("");
                     $("#tenor").val("");
+                    $("#harga_jual_kredit").val("");
                     $("#komisi").val("");
                     $("#modal-transaksi").modal("hide");
 
@@ -583,6 +586,16 @@ $(document).ready(function () {
                             .replace("Rp", "")
                             .replace(/\./g, ",")
                     );
+                    $("#harga_jual_kredit").val(
+                        new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                        })
+                            .format(response.data.harga_jual_kredit)
+                            .replace("Rp", "")
+                            .replace(/\./g, ",")
+                    );
                     $("#komisi").val(
                         new Intl.NumberFormat("id-ID", {
                             style: "currency",
@@ -662,6 +675,7 @@ $(document).ready(function () {
                     $("#pencairan").val("");
                     $("#angsuran").val("");
                     $("#tenor").val("");
+                    $("#harga_jual_kredit").val("");
                     $("#komisi").val("");
                     $("#modal-transaksi").modal("hide");
 

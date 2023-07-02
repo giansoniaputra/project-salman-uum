@@ -107,10 +107,10 @@
                 <div class="col">
                     <div class="row gx-2 d-flex align-content-center">
                         <div class="col-12 col-xl d-flex">
-                            <div class="d-flex align-items-center lh-1-25">Sisa Modal</div>
+                            <div class="d-flex align-items-center lh-1-25">Laba Kredit</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="cta-2 text-primary" id="refresh-sisa">{{ rupiah($sisa_modal) }}</div>
+                            <div class="cta-2 text-primary" id="refresh-sisa">{{ rupiah($laba_kredit) }}</div>
                         </div>
                     </div>
                 </div>
