@@ -38,7 +38,7 @@ class ModalController extends Controller
             'jumlah_unit' => Bike::where('status', 'READY STOCK')->count('id'),
             'semua_unit' => Bike::count('id'),
             'sisa_bank' => $saldo_bank,
-            'laba_kredit' => $harga_jual_kredit - $harga_beli,
+            'laba_kredit' => $harga_jual_kredit - $harga_beli_kredit,
             'komisi' => $komisi,
         ];
         return view('modal.index', $data);
