@@ -35,7 +35,7 @@ $(document).ready(function () {
                 data: "warna",
             },
             {
-                data: "harga_beli",
+                data: "harga_jual_kredit",
             },
             {
                 data: "unique",
