@@ -128,7 +128,7 @@
                 <div class="col">
                     <div class="row gx-2 d-flex align-content-center">
                         <div class="col-12 col-xl d-flex">
-                            <div class="d-flex align-items-center lh-1-25">Laba</div>
+                            <div class="d-flex align-items-center lh-1-25">Laba Cash</div>
                         </div>
                         <div class="col-12 col-xl-auto">
                             <div class="cta-2 text-primary" id="refresh-laba">{{ rupiah($laba) }}</div>
@@ -149,7 +149,7 @@
                 <div class="col">
                     <div class="row gx-2 d-flex align-content-center">
                         <div class="col-12 col-xl d-flex">
-                            <div class="d-flex align-items-center lh-1-25">Modal + Laba</div>
+                            <div class="d-flex align-items-center lh-1-25">Modal + Laba Cash</div>
                         </div>
                         <div class="col-12 col-xl-auto">
                             <div class="cta-2 text-primary" id="refresh-modal">{{ rupiah($data->modal + $laba) }}</div>

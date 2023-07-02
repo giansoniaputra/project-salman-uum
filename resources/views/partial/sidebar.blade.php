@@ -119,7 +119,7 @@
             <ul id="master">
                 <li>
                     <a href="/consumer">
-                        <span class="label">Data Konsumen</span>
+                        <span class="label">Data Penjual</span>
                     </a>
                 </li>
                 <li>
