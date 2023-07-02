@@ -64,6 +64,7 @@ class KreditController extends Controller
             'komisi' => 'required',
             'otr_leasing' => 'required',
             'dp_po' => 'required',
+            'harga_jual_kredit' => 'required',
             'no_telepon' => 'required',
 
         ];
@@ -83,6 +84,7 @@ class KreditController extends Controller
             'komisi.required' => 'Komisi tidak boleh kosong',
             'otr_leasing.required' => 'OTR tidak boleh kosong',
             'dp_po.required' => 'DP PO tidak boleh kosong',
+            'harga_jual_kredit.required' => 'Harga jual tidak boleh kosong',
             'no_telepon.required' => 'DP PO tidak boleh kosong',
         ];
         //Mengubah base64 menjadi file image
@@ -201,6 +203,7 @@ class KreditController extends Controller
                 'pencairan' => preg_replace('/[,]/', '', $request->pencairan),
                 'angsuran' => preg_replace('/[,]/', '', $request->angsuran),
                 'tenor' => $request->tenor,
+                'harga_jual_kredit' => preg_replace('/[,]/', '', $request->harga_jual_kredit),
                 'komisi' => preg_replace('/[,]/', '', $request->komisi),
             ];
             if ($buyer) {
@@ -258,6 +261,7 @@ class KreditController extends Controller
             'komisi' => 'required',
             'otr_leasing' => 'required',
             'dp_po' => 'required',
+            'harga_jual_kredit' => 'required',
             'no_telepon' => 'required',
 
         ];
@@ -276,6 +280,7 @@ class KreditController extends Controller
             'komisi.required' => 'Tidak boleh kosong',
             'otr_leasing.required' => 'OTR tidak boleh kosong',
             'dp_po.required' => 'DP PO tidak boleh kosong',
+            'harga_jual_kredit.required' => 'Harga jual kredit tidak boleh kosong',
             'no_telepon.required' => 'DP PO tidak boleh kosong',
         ];
         $validator = Validator::make($request->all(), $rules, $pesan);
@@ -318,6 +323,7 @@ class KreditController extends Controller
                 'pencairan' => preg_replace('/[,]/', '', $request->pencairan),
                 'angsuran' => preg_replace('/[,]/', '', $request->angsuran),
                 'tenor' => $request->tenor,
+                'harga_jual_kredit' => preg_replace('/[,]/', '', $request->harga_jual_kredit),
                 'komisi' => preg_replace('/[,]/', '', $request->komisi),
             ];
             if ($cek_buyer_nik) {
