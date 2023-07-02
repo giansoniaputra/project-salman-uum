@@ -554,7 +554,7 @@
         </div>
     </div>
 </div>
-{{-- Modal Cetak Kwitansi --}}
+{{-- Modal Cetak Kwitansi
 <div class="modal fade" id="cetak_kwitansi" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content">
@@ -569,8 +569,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="nama_leasing" id="nama_leasing" placeholder="Masukan Nama Leasing" required>
-                                <label for="nama_leasing">Nama Leasing<span class="text-danger"> *</span></label>
+                                <input type="text" class="form-control" name="nama_leasing" id="nama_leasing" placeholder="Masukan Nama Leasing" value="PT. Mandiri Utama Finance" required>
+                                <label for="nama_leasing"><span class="text-danger"> *</span></label>
                             </div>
                         </div>
                     </div>
@@ -590,8 +590,8 @@
             </form>
         </div>
     </div>
-</div>
-{{-- Modal Cetak Kwitansi --}}
+</div> --}}
+{{-- Modal Cetak Tagihan --}}
 <div class="modal fade" id="cetak_tagihan" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content">
@@ -606,7 +606,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="nama_leasing" id="nama_leasing2" placeholder="Masukan Nama Leasing" required>
+                                <input type="text" class="form-control" name="nama_leasing" id="nama_leasing2" placeholder="Masukan Nama Leasing" value="PT. Mandiri Utama Finance" required>
                                 <label for="nama_leasing">Nama Leasing<span class="text-danger"> *</span></label>
                             </div>
                         </div>
