@@ -70,7 +70,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Cell(145, 7, strtoupper($setting->alamat_toko), 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Ln();
-            $this->pdf->Cell(100, 7, 'Barang diterima dengan baik 1(satu) unit Sepeda Motor:', 0, '0', 'L', true);
+            $this->pdf->Cell(100, 7, 'Dengan ini menyerahkan 1(satu) unit sepeda motor:', 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'No Polisi', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
@@ -777,7 +777,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Cell(145, 7, strtoupper($setting->alamat_toko), 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Ln();
-            $this->pdf->Cell(100, 7, 'Barang diterima dengan baik 1(satu) unit Sepeda Motor:', 0, '0', 'L', true);
+            $this->pdf->Cell(100, 7, 'Dengan ini menyerahkan 1(satu) unit sepeda motor:', 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'No Polisi', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
