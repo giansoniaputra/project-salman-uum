@@ -361,7 +361,7 @@
                                 <td><span id="merk"></span></td>
                             </tr>
                             <tr>
-                                <td>Tipe</td>
+                                <td>Type/Model</td>
                                 <td>:</td>
                                 <td><span id="tipe"></span></td>
                             </tr>

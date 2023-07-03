@@ -304,7 +304,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 7, $data->merek . '   /' . $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Tahun/Warna', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
@@ -452,7 +452,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 6.7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 6.7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 6.7, $data->merek . '   /' . $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 6.7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 6.7, 'Tahun/Warna', 0, '0', 'L', true);
             $this->pdf->Cell(2, 6.7, ':', 0, '0', 'L', true);
@@ -567,7 +567,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 6.7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 6.7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 6.7, $data->merek . '   /' . $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 6.7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 6.7, 'Tahun/Warna', 0, '0', 'L', true);
             $this->pdf->Cell(2, 6.7, ':', 0, '0', 'L', true);
@@ -646,7 +646,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 6.7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 6.7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 6.7, $data->merek . '   /' . $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 6.7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 6.7, 'Tahun/Warna', 0, '0', 'L', true);
             $this->pdf->Cell(2, 6.7, ':', 0, '0', 'L', true);
@@ -1070,7 +1070,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 7, $data->merek . '   /' . $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Tahun/Warna', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
@@ -1218,7 +1218,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 6.7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 6.7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 6.7, $data->merek . '   /' . $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 6.7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 6.7, 'Tahun/Warna', 0, '0', 'L', true);
             $this->pdf->Cell(2, 6.7, ':', 0, '0', 'L', true);
@@ -1333,7 +1333,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 6.7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 6.7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 6.7, $data->merek . '   /' . $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 6.7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 6.7, 'Tahun/Warna', 0, '0', 'L', true);
             $this->pdf->Cell(2, 6.7, ':', 0, '0', 'L', true);
@@ -1412,7 +1412,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 6.7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 6.7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 6.7, $data->merek . '   /' . $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 6.7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 6.7, 'Tahun/Warna', 0, '0', 'L', true);
             $this->pdf->Cell(2, 6.7, ':', 0, '0', 'L', true);

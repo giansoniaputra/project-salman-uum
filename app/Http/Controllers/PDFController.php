@@ -1494,7 +1494,7 @@ class PDFController extends Controller
         $tanggal_akhir = $request->tanggal_akhir;
 
 
-        $this->pdf->AddPage('P', 'A4');
+        $this->pdf->AddPage('L', 'A4');
 
         $query_kredit = Kredit::data_pertanggal($tanggal_awal, $tanggal_akhir);
         $this->pdf->SetFont('Arial', 'B', '16');
@@ -1573,7 +1573,7 @@ class PDFController extends Controller
     public function cetak_day_kredit_only(Request $request)
     {
         $hari_ini =  date('Y-m-d', strtotime(Carbon::now()));
-        $this->pdf->AddPage('P', 'A4');
+        $this->pdf->AddPage('L', 'A4');
 
         $query_kredit = Kredit::data_hari_ini($hari_ini);;
         $this->pdf->SetFont('Arial', 'B', '16');
@@ -1652,7 +1652,7 @@ class PDFController extends Controller
         $minggu_akhir =  Carbon::now()->endOfWeek()->toDateString();
 
 
-        $this->pdf->AddPage('P', 'A4');
+        $this->pdf->AddPage('L', 'A4');
 
         $query_kredit = Kredit::data_minggu_ini();
         $this->pdf->SetFont('Arial', 'B', '16');
@@ -1733,7 +1733,7 @@ class PDFController extends Controller
         $bulan_awal =  Carbon::now()->startOfMonth()->toDateString();
         $bulan_akhir =  Carbon::now()->endOfMonth()->toDateString();
 
-        $this->pdf->AddPage('P', 'A4');
+        $this->pdf->AddPage('L', 'A4');
 
         $query_kredit = Kredit::data_bulan_ini();
         $this->pdf->SetFont('Arial', 'B', '16');
@@ -1826,7 +1826,7 @@ class PDFController extends Controller
         $bulan_akhir = Carbon::now()->year . '-' . $request->bulan . '-' . $tanggal_akhir;
 
 
-        $this->pdf->AddPage('P', 'A4');
+        $this->pdf->AddPage('L', 'A4');
 
         $query_kredit = Kredit::data_bulan_ini();
         $this->pdf->SetFont('Arial', 'B', '16');
@@ -1842,15 +1842,17 @@ class PDFController extends Controller
         $this->pdf->SetFillColor(9, 132, 227);
         $this->pdf->SetTextColor(255);
         $this->pdf->SetDrawColor(0, 0, 0);
-        $this->pdf->Cell(8, 7, 'No', 1, '0', 'C', true);
-        $this->pdf->Cell(20, 7, 'Pembeli', 1, '0', 'C', true);
-        $this->pdf->Cell(19, 7, 'No Polisi', 1, '0', 'C', true);
-        $this->pdf->Cell(22, 7, 'Merk', 1, '0', 'C', true);
-        $this->pdf->Cell(22, 7, 'Type', 1, '0', 'C', true);
-        $this->pdf->Cell(25, 7, 'Tanggal Jual', 1, '0', 'C', true);
-        $this->pdf->Cell(25, 7, 'Pencairan', 1, '0', 'C', true);
-        $this->pdf->Cell(25, 7, 'DP Konsumen', 1, '0', 'C', true);
-        $this->pdf->Cell(25, 7, 'TAC', 1, '0', 'C', true);
+        $this->pdf->Cell(10, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(24, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(23, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(26, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(26, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Pencairan', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'DP Konsumen', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'TAC', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Harga Modal', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Harga Modal', 1, '0', 'C', true);
         $this->pdf->Ln();
 
         //isi data cash
@@ -1863,15 +1865,17 @@ class PDFController extends Controller
         foreach ($query_kredit as $row) {
             $nama = explode(' ', $row->nama);
             $nama2 = $nama[0];
-            $this->pdf->Cell(8, 7, $no++, 1, '0', 'C', true);
-            $this->pdf->Cell(20, 7, $nama2, 1, '0', 'C', true);
-            $this->pdf->Cell(19, 7, $row->no_polisi, 1, '0', 'C', true);
-            $this->pdf->Cell(22, 7, $row->merek, 1, '0', 'C', true);
-            $this->pdf->Cell(22, 7, $row->type, 1, '0', 'C', true);
-            $this->pdf->Cell(25, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
-            $this->pdf->Cell(25, 7, rupiah($row->pencairan), 1, '0', 'C', true);
-            $this->pdf->Cell(25, 7, rupiah($row->dp), 1, '0', 'C', true);
-            $this->pdf->Cell(25, 7, rupiah($row->komisi), 1, '0', 'C', true);
+            $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+            $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+            $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+            $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+            $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         //DATA TOTAL JUAL DAN TAC

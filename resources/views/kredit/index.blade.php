@@ -125,7 +125,7 @@
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" name="type" id="type" class="form-control" style="background-color: rgba(215, 218, 227, 0.3)" disabled>
-                        <label>Tipe</label>
+                        <label>Type/Model</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" name="tahun_pembuatan" id="tahun_pembuatan" disabled style="background-color: rgba(215, 218, 227, 0.3)">
@@ -424,7 +424,7 @@
                                                 <td><span id="merk-detail"></span></td>
                                             </tr>
                                             <tr>
-                                                <td>Tipe</td>
+                                                <td>Type/Model</td>
                                                 <td>:</td>
                                                 <td><span id="tipe"></span></td>
                                             </tr>

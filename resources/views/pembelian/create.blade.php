@@ -158,13 +158,13 @@
                                 <label class="text-label" for="merek">&nbsp;&nbsp;Merk<span class="text-danger"> *</label></span>
                             </div>
                             <div class="form-floating mb-3 col-md-6">
-                                <input type="text" name="type" id="type" class="form-control @error('type')is-invalid @enderror" value="{{ old('type') }}" placeholder="Masukan Tipe">
+                                <input type="text" name="type" id="type" class="form-control @error('type')is-invalid @enderror" value="{{ old('type') }}" placeholder="Masukan Type/Model">
                                 @error('type')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
-                                <label class="text-label" for="type">&nbsp;&nbsp;Tipe<span class="text-danger"> *</label></span>
+                                <label class="text-label" for="type">&nbsp;&nbsp;Type/Model<span class="text-danger"> *</label></span>
                             </div>
                             <div class="form-floating mb-3 col-md-6">
                                 <input type="text" name="tahun_pembuatan" class="form-control @error('tahun_pembuatan') is-invalid @enderror" placeholder="Masukan Tahun Pembuatan" value="{{ old('tahun_pembuatan') }}">
