@@ -314,8 +314,8 @@ class KwitansiController extends Controller
         $this->pdf->Cell(44, 7, $data->warna, 0, '0', 'L', true);
         $this->pdf->Ln();
         $this->pdf->Ln();
-        $this->pdf->Cell(44, 7, 'Pelunasan', 0, '0', 'L', true);
-        $this->pdf->Cell(38, 7, ':', 0, '0', 'L', true);
+        // $this->pdf->Cell(44, 7, 'Pelunasan', 0, '0', 'L', true);
+        // $this->pdf->Cell(38, 7, ':', 0, '0', 'L', true);
         // $this->pdf->Cell(30, 7, rupiah($data->pencairan), 0, '0', 'L', true);
         $this->pdf->Ln();
         $this->pdf->Ln();
