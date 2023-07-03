@@ -109,7 +109,7 @@ $master = Access::where('role_unique', $role->unique)->where('menu_name', 'MASTE
                         <!-- Title and Top Buttons Start -->
                         <div class="page-title-container">
                             <div class="row">
-                                <h6 class="cta-1 mt-1 text-primary"><b>Sistem Informasi Mandiri Utama Community</b></h6>
+                                <h6 class="cta-1 mt-1 text-primary"><b>Sistem Informasi Showroom Mandiri Utama Community</b></h6>
                                 <h1 class="mt-5 pb-0 display-4">{{ $judul }}</h1>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
