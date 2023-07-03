@@ -394,7 +394,7 @@ class KreditController extends Controller
             ->get();
         foreach ($query as $row) {
             $row->tanggal_jual = tanggal_hari($row->tanggal_jual);
-            $row->harga_beli = rupiah($row->harga_beli);
+            $row->harga_jual_kredit = rupiah($row->harga_jual_kredit);
         }
         return DataTables::of($query)->addColumn('action', function ($row) {
             $actionBtn =

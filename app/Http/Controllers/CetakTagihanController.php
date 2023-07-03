@@ -88,8 +88,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 7, $data->merek, 0, '0', 'L', true);
-            $this->pdf->Cell(44, 7, $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Atas Nama BPKB', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
@@ -172,8 +171,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 7, $data->merek, 0, '0', 'L', true);
-            $this->pdf->Cell(44, 7, $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Atas Nama BPKB', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
@@ -245,8 +243,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 7, $data->merek, 0, '0', 'L', true);
-            $this->pdf->Cell(44, 7, $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Atas Nama BPKB', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
@@ -733,8 +730,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 7, $data->merek, 0, '0', 'L', true);
-            $this->pdf->Cell(44, 7, $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Atas Nama BPKB', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
@@ -795,8 +791,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 7, $data->merek, 0, '0', 'L', true);
-            $this->pdf->Cell(44, 7, $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Atas Nama BPKB', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
@@ -824,21 +819,21 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->SetFillColor(255);
             $this->pdf->SetTextColor(0, 0, 0);
-            $this->pdf->SetXY(145, 181);
+            $this->pdf->SetXY(145, 140);
             $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
-            $this->pdf->SetXY(9, 186);
+            $this->pdf->SetXY(9, 145);
             $this->pdf->MultiCell(55, 5, 'Yang menerima', 0, 'L',  true);
-            $this->pdf->SetXY(145, 186);
+            $this->pdf->SetXY(145, 145);
             $this->pdf->MultiCell(55, 5, 'Yang menyerahkan', 0, 'L',  true);
-            $this->pdf->SetXY(9, 220);
+            $this->pdf->SetXY(9, 175);
             $this->pdf->MultiCell(55, 5, '(..............................................)', 0, 'L',  true);
-            $this->pdf->SetXY(145, 220);
+            $this->pdf->SetXY(145, 175);
             $this->pdf->MultiCell(55, 5, $setting->nama_pemilik, 0, 'L',  true);
             $this->pdf->Ln();
 
             //KWITANSI PELUNASAN
-            $this->pdf->AddPage('P', 'Legal');
-            $this->header();
+            // $this->pdf->AddPage('P', 'Legal');
+            // $this->header();
 
             $this->pdf->SetFont('Arial', 'U', '16');
             $this->pdf->Cell(0, 16, 'KWITANSI PELUNASAN', '0', 1, 'C');
@@ -879,8 +874,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 7, $data->merek, 0, '0', 'L', true);
-            $this->pdf->Cell(44, 7, $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Atas Nama BPKB', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
@@ -901,9 +895,9 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->SetFillColor(255);
             $this->pdf->SetTextColor(0, 0, 0);
-            $this->pdf->SetXY(145, 181);
+            $this->pdf->SetXY(145, 290);
             $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
-            $this->pdf->SetXY(145, 220);
+            $this->pdf->SetXY(145, 320);
             $this->pdf->MultiCell(55, 5, $setting->nama_pemilik, 0, 'L',  true);
             $this->pdf->Ln();
 
@@ -952,8 +946,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Merk/Type', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 7, $data->merek, 0, '0', 'L', true);
-            $this->pdf->Cell(44, 7, $data->type, 0, '0', 'L', true);
+            $this->pdf->Cell(30, 7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
             $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Atas Nama BPKB', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
@@ -974,9 +967,72 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->SetFillColor(255);
             $this->pdf->SetTextColor(0, 0, 0);
-            $this->pdf->SetXY(145, 181);
+            $this->pdf->SetXY(145, 137);
             $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
-            $this->pdf->SetXY(145, 220);
+            $this->pdf->SetXY(145, 167);
+            $this->pdf->MultiCell(55, 5, $setting->nama_pemilik, 0, 'L',  true);
+            $this->pdf->Ln();
+
+            //KWITANSI KOMISI LANGSUNG
+            // $this->pdf->AddPage('P', 'Legal');
+            // $this->header();
+
+            $this->pdf->SetFont('Arial', 'U', '16');
+            $this->pdf->Cell(0, 16, 'KOMISI LANGSUNG', '0', 1, 'C');
+
+            $this->pdf->SetFont('Arial', '', '8');
+            $this->pdf->SetFillColor(255, 255, 255);
+            $this->pdf->SetTextColor(0);
+            // $this->pdf->SetDrawColor(255, 255, 255);
+            $this->pdf->Cell(44, 7, 'Sudah Terima Dari', 0, '0', 'L', true);
+            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
+            $this->pdf->Cell(145, 7, strtoupper($request->nama_leasing), 0, '0', 'L', true);
+            $this->pdf->Ln();
+            $this->pdf->Cell(44, 7, 'Uang sejumlah', 0, '0', 'L', true);
+            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
+            $this->pdf->Cell(145, 7, rupiah($data->komisi), 0, '0', 'L', true);
+            $this->pdf->Ln();
+            $this->pdf->Cell(44, 7, '', 0, '0', 'L', true);
+            $this->pdf->Cell(2, 7, '', 0, '0', 'L', true);
+            $this->pdf->Cell(145, 7, terbilang($data->komisi) . " Rupiah", 0, '0', 'L', true);
+            $this->pdf->Ln();
+            $this->pdf->Cell(44, 7, 'Untuk Pembayaran', 0, '0', 'L', true);
+            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
+            $this->pdf->Cell(145, 7, 'Komisi langsung atas pembelian 1 (unit) Sepeda Motor dengan data-data sebagai berikut :', 0, '0', 'L', true);
+            $this->pdf->Ln();
+            $this->pdf->Ln();
+            $this->pdf->Cell(44, 7, 'No Polisi', 0, '0', 'L', true);
+            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
+            $this->pdf->Cell(54, 7, $data->no_polisi, 0, '0', 'L', true);
+            $this->pdf->Cell(44, 7, 'No Rangka', 0, '0', 'L', true);
+            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
+            $this->pdf->Cell(45, 7, $data->no_rangka, 0, '0', 'L', true);
+            $this->pdf->Ln();
+            $this->pdf->Cell(44, 7, 'No BPKB', 0, '0', 'L', true);
+            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
+            $this->pdf->Cell(54, 7, $data->bpkb, 0, '0', 'L', true);
+            $this->pdf->Cell(44, 7, 'No Mesin', 0, '0', 'L', true);
+            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
+            $this->pdf->Cell(45, 7, $data->no_mesin, 0, '0', 'L', true);
+            $this->pdf->Ln();
+            $this->pdf->Cell(44, 7, 'Merk/Type', 0, '0', 'L', true);
+            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
+            $this->pdf->Cell(30, 7, $data->merek . ' ' . $data->type, 0, '0', 'L', true);
+            $this->pdf->Ln();
+            $this->pdf->Cell(44, 7, 'Atas Nama BPKB', 0, '0', 'L', true);
+            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
+            $this->pdf->Cell(145, 7, strtoupper($data->nama_bpkb), 0, '0', 'L', true);
+            $this->pdf->Ln();
+            $this->pdf->Cell(44, 7, 'Tahun/Warna', 0, '0', 'L', true);
+            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
+            $this->pdf->Cell(30, 7, $data->tahun_pembuatan, 0, '0', 'L', true);
+            $this->pdf->Cell(44, 7, $data->warna, 0, '0', 'L', true);
+            $this->pdf->Ln();
+            $this->pdf->SetFillColor(255);
+            $this->pdf->SetTextColor(0, 0, 0);
+            $this->pdf->SetXY(10, 270);
+            $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
+            $this->pdf->SetXY(10, 300);
             $this->pdf->MultiCell(55, 5, $setting->nama_pemilik, 0, 'L',  true);
             $this->pdf->Ln();
 
@@ -1394,69 +1450,6 @@ class CetakTagihanController extends Controller
             $this->pdf->SetXY(140, 305);
             $this->pdf->MultiCell(55, 5, $data->nama . "\nNasabah", 0, 'L',  true);
 
-            //KWITANSI KOMISI LANGSUNG
-            $this->pdf->AddPage('P', 'Legal');
-            $this->header();
-
-            $this->pdf->SetFont('Arial', 'U', '16');
-            $this->pdf->Cell(0, 16, 'KOMISI LANGSUNG', '0', 1, 'C');
-
-            $this->pdf->SetFont('Arial', '', '8');
-            $this->pdf->SetFillColor(255, 255, 255);
-            $this->pdf->SetTextColor(0);
-            // $this->pdf->SetDrawColor(255, 255, 255);
-            $this->pdf->Cell(44, 7, 'Sudah Terima Dari', 0, '0', 'L', true);
-            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(145, 7, strtoupper($request->nama_leasing), 0, '0', 'L', true);
-            $this->pdf->Ln();
-            $this->pdf->Cell(44, 7, 'Uang sejumlah', 0, '0', 'L', true);
-            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(145, 7, rupiah($data->komisi), 0, '0', 'L', true);
-            $this->pdf->Ln();
-            $this->pdf->Cell(44, 7, '', 0, '0', 'L', true);
-            $this->pdf->Cell(2, 7, '', 0, '0', 'L', true);
-            $this->pdf->Cell(145, 7, terbilang($data->komisi) . " Rupiah", 0, '0', 'L', true);
-            $this->pdf->Ln();
-            $this->pdf->Cell(44, 7, 'Untuk Pembayaran', 0, '0', 'L', true);
-            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(145, 7, 'Komisi langsung atas pembelian 1 (unit) Sepeda Motor dengan data-data sebagai berikut :', 0, '0', 'L', true);
-            $this->pdf->Ln();
-            $this->pdf->Ln();
-            $this->pdf->Cell(44, 7, 'No Polisi', 0, '0', 'L', true);
-            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(54, 7, $data->no_polisi, 0, '0', 'L', true);
-            $this->pdf->Cell(44, 7, 'No Rangka', 0, '0', 'L', true);
-            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(45, 7, $data->no_rangka, 0, '0', 'L', true);
-            $this->pdf->Ln();
-            $this->pdf->Cell(44, 7, 'No BPKB', 0, '0', 'L', true);
-            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(54, 7, $data->bpkb, 0, '0', 'L', true);
-            $this->pdf->Cell(44, 7, 'No Mesin', 0, '0', 'L', true);
-            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(45, 7, $data->no_mesin, 0, '0', 'L', true);
-            $this->pdf->Ln();
-            $this->pdf->Cell(44, 7, 'Merk/Type', 0, '0', 'L', true);
-            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 7, $data->merek, 0, '0', 'L', true);
-            $this->pdf->Cell(44, 7, $data->type, 0, '0', 'L', true);
-            $this->pdf->Ln();
-            $this->pdf->Cell(44, 7, 'Atas Nama BPKB', 0, '0', 'L', true);
-            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(145, 7, strtoupper($data->nama_bpkb), 0, '0', 'L', true);
-            $this->pdf->Ln();
-            $this->pdf->Cell(44, 7, 'Tahun/Warna', 0, '0', 'L', true);
-            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(30, 7, $data->tahun_pembuatan, 0, '0', 'L', true);
-            $this->pdf->Cell(44, 7, $data->warna, 0, '0', 'L', true);
-            $this->pdf->Ln();
-            $this->pdf->SetFillColor(255);
-            $this->pdf->SetTextColor(0, 0, 0);
-            $this->pdf->SetXY(10, 130);
-            $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
-            $this->pdf->SetXY(10, 160);
-            $this->pdf->MultiCell(55, 5, $setting->nama_pemilik, 0, 'L',  true);
-            $this->pdf->Ln();
             // Simpan file PDF ke server
             $this->pdf->Output('Cetak Tagihan ' . $data->nama . '.pdf', 'I');
             exit;
