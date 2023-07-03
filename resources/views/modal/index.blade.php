@@ -110,7 +110,7 @@
                             <div class="d-flex align-items-center lh-1-25">Sisa Modal</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <div class="cta-2 text-primary" id="refresh-asset">{{ rupiah($sisa_modal) }}</div>
+                            <div class="cta-2 text-primary" id="refresh-sisa">{{ rupiah($sisa_modal) }}</div>
                         </div>
                     </div>
                 </div>
