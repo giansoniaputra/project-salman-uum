@@ -1852,7 +1852,7 @@ class PDFController extends Controller
         $this->pdf->Cell(29, 7, 'DP Konsumen', 1, '0', 'C', true);
         $this->pdf->Cell(29, 7, 'TAC', 1, '0', 'C', true);
         $this->pdf->Cell(29, 7, 'Harga Modal', 1, '0', 'C', true);
-        $this->pdf->Cell(29, 7, 'Harga Modal', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Laba Kredit', 1, '0', 'C', true);
         $this->pdf->Ln();
 
         //isi data cash
@@ -1874,8 +1874,8 @@ class PDFController extends Controller
             $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
-            $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
-            $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, rupiah($row->harga_jual_kredit), 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, rupiah($row->harga_jual_kredit - $row->harga_beli), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         //DATA TOTAL JUAL DAN TAC
