@@ -190,8 +190,10 @@ $(document).ready(function () {
                 $("#warna").html(response.success.warna);
                 $("#tahun-pembuatan").html(response.success.tahun_pembuatan);
                 $("#no-rangka").html(response.success.no_rangka);
+                $("#no-mesin").html(response.success.no_mesin);
                 $("#bpkb").html(response.success.bpkb);
                 $("#nama-bpkb").html(response.success.nama_bpkb);
+                $("#alamat-bpkb").html(response.success.alamat_bpkb);
                 $("#berlaku-sampai").html(response.success.berlaku_sampai);
                 $("#perpanjang-stnk").html(response.success.perpanjang_stnk);
                 $("#foto-bpkb").html(
