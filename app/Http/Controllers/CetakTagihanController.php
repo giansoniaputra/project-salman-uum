@@ -117,7 +117,7 @@ class CetakTagihanController extends Controller
             $this->pdf->SetFillColor(255);
             $this->pdf->SetTextColor(0, 0, 0);
             $this->pdf->SetXY(145, 181);
-            $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
+            $this->pdf->MultiCell(55, 5, $setting->kota . ', ' . tanggal_hari(this_day()), 0, 'L',  true);
             $this->pdf->SetXY(9, 186);
             $this->pdf->MultiCell(55, 5, 'Yang menerima', 0, 'L',  true);
             $this->pdf->SetXY(145, 186);
@@ -193,7 +193,7 @@ class CetakTagihanController extends Controller
             $this->pdf->SetFillColor(255);
             $this->pdf->SetTextColor(0, 0, 0);
             $this->pdf->SetXY(145, 181);
-            $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
+            $this->pdf->MultiCell(55, 5, $setting->kota . ', ' . tanggal_hari(this_day()), 0, 'L',  true);
             $this->pdf->SetXY(145, 220);
             $this->pdf->MultiCell(55, 5, $setting->nama_pemilik, 0, 'L',  true);
             $this->pdf->Ln();
@@ -265,7 +265,7 @@ class CetakTagihanController extends Controller
             $this->pdf->SetFillColor(255);
             $this->pdf->SetTextColor(0, 0, 0);
             $this->pdf->SetXY(145, 181);
-            $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
+            $this->pdf->MultiCell(55, 5, $setting->kota . ', ' . tanggal_hari(this_day()), 0, 'L',  true);
             $this->pdf->SetXY(145, 220);
             $this->pdf->MultiCell(55, 5, $setting->nama_pemilik, 0, 'L',  true);
             $this->pdf->Ln();
@@ -346,7 +346,7 @@ class CetakTagihanController extends Controller
             $this->pdf->SetFillColor(255);
             $this->pdf->SetTextColor(0, 0, 0);
             $this->pdf->SetXY(9, 220);
-            $this->pdf->MultiCell(55, 5, $setting->kota . ',', 0, 'L',  true);
+            $this->pdf->MultiCell(55, 5, $setting->kota . ', ' . tanggal_hari(this_day()) . ',', 0, 'L',  true);
             $this->pdf->SetXY(9, 225);
             $this->pdf->MultiCell(55, 5, 'Yang menyatakan,', 0, 'L',  true);
             $this->pdf->SetXY(9, 259);
@@ -501,7 +501,7 @@ class CetakTagihanController extends Controller
             $this->pdf->MultiCell(190, 6.7, 'Saya menyatakan bahwa keterangan-keterangan  dalam Surat Pernyataan ini adalah benar dan saya buat dengan sejujurnya, apabila dikemudian hari ternyata keterangan-keterangan di atas tidak sebenarnya saya sanggup mempertanggungjawabkannya dihadapan hukum.', 0, 'J',  true);
             $this->pdf->Ln();
             $this->pdf->SetXY(10, 241);
-            $this->pdf->MultiCell(55, 5, $setting->kota . ',', 0, 'L',  true);
+            $this->pdf->MultiCell(55, 5, $setting->kota . ', ' . tanggal_hari(this_day()) . ',', 0, 'L',  true);
             $this->pdf->SetXY(10, 246);
             $this->pdf->MultiCell(55, 5, 'Pemberi pernyataan,,', 0, 'L',  true);
             $this->pdf->SetXY(10, 270);
@@ -595,7 +595,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Ln();
             $this->pdf->SetXY(10, 235);
-            $this->pdf->MultiCell(190, 5, $setting->kota . ' ,................................................', 0, 'L',  true);
+            $this->pdf->MultiCell(190, 5, $setting->kota . ', ' . tanggal_hari(this_day()) . ' ,................................................', 0, 'L',  true);
             $this->pdf->SetXY(10, 240);
             $this->pdf->MultiCell(55, 5, 'Pemberi pernyataan,,', 0, 'L',  true);
             $this->pdf->SetXY(10, 270);
@@ -676,7 +676,7 @@ class CetakTagihanController extends Controller
             $this->pdf->SetXY(10, 400);
             $this->pdf->MultiCell(190, 5, '', 0, 'L',  true);
             $this->pdf->SetXY(10, 20);
-            $this->pdf->MultiCell(190, 5, $setting->kota . ' ,................................................', 0, 'L',  true);
+            $this->pdf->MultiCell(190, 5, $setting->kota . ', ' . tanggal_hari(this_day()) . ' ,................................................', 0, 'L',  true);
             $this->pdf->SetXY(10, 25);
             $this->pdf->MultiCell(55, 5, 'Yang membuat,', 0, 'L',  true);
             $this->pdf->SetXY(10, 55);
@@ -744,7 +744,7 @@ class CetakTagihanController extends Controller
             $this->pdf->SetFillColor(255);
             $this->pdf->SetTextColor(0, 0, 0);
             $this->pdf->SetXY(10, 130);
-            $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
+            $this->pdf->MultiCell(55, 5, $setting->kota . ', ' . tanggal_hari(this_day()), 0, 'L',  true);
             $this->pdf->SetXY(10, 160);
             $this->pdf->MultiCell(55, 5, $setting->nama_pemilik, 0, 'L',  true);
             $this->pdf->Ln();
@@ -820,7 +820,7 @@ class CetakTagihanController extends Controller
             $this->pdf->SetFillColor(255);
             $this->pdf->SetTextColor(0, 0, 0);
             $this->pdf->SetXY(145, 140);
-            $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
+            $this->pdf->MultiCell(55, 5, $setting->kota . ', ' . tanggal_hari(this_day()), 0, 'L',  true);
             $this->pdf->SetXY(9, 145);
             $this->pdf->MultiCell(55, 5, 'Yang menerima', 0, 'L',  true);
             $this->pdf->SetXY(145, 145);
@@ -896,7 +896,7 @@ class CetakTagihanController extends Controller
             $this->pdf->SetFillColor(255);
             $this->pdf->SetTextColor(0, 0, 0);
             $this->pdf->SetXY(145, 290);
-            $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
+            $this->pdf->MultiCell(55, 5, $setting->kota . ', ' . tanggal_hari(this_day()), 0, 'L',  true);
             $this->pdf->SetXY(145, 320);
             $this->pdf->MultiCell(55, 5, $setting->nama_pemilik, 0, 'L',  true);
             $this->pdf->Ln();
@@ -968,7 +968,7 @@ class CetakTagihanController extends Controller
             $this->pdf->SetFillColor(255);
             $this->pdf->SetTextColor(0, 0, 0);
             $this->pdf->SetXY(145, 137);
-            $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
+            $this->pdf->MultiCell(55, 5, $setting->kota . ', ' . tanggal_hari(this_day()), 0, 'L',  true);
             $this->pdf->SetXY(145, 167);
             $this->pdf->MultiCell(55, 5, $setting->nama_pemilik, 0, 'L',  true);
             $this->pdf->Ln();
@@ -1031,7 +1031,7 @@ class CetakTagihanController extends Controller
             $this->pdf->SetFillColor(255);
             $this->pdf->SetTextColor(0, 0, 0);
             $this->pdf->SetXY(10, 270);
-            $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
+            $this->pdf->MultiCell(55, 5, $setting->kota . ', ' . tanggal_hari(this_day()), 0, 'L',  true);
             $this->pdf->SetXY(10, 300);
             $this->pdf->MultiCell(55, 5, $setting->nama_pemilik, 0, 'L',  true);
             $this->pdf->Ln();
@@ -1112,7 +1112,7 @@ class CetakTagihanController extends Controller
             $this->pdf->SetFillColor(255);
             $this->pdf->SetTextColor(0, 0, 0);
             $this->pdf->SetXY(9, 220);
-            $this->pdf->MultiCell(55, 5, $setting->kota . ',', 0, 'L',  true);
+            $this->pdf->MultiCell(55, 5, $setting->kota . ', ' . tanggal_hari(this_day()) . ',', 0, 'L',  true);
             $this->pdf->SetXY(9, 225);
             $this->pdf->MultiCell(55, 5, 'Yang menyatakan,', 0, 'L',  true);
             $this->pdf->SetXY(9, 259);
@@ -1267,7 +1267,7 @@ class CetakTagihanController extends Controller
             $this->pdf->MultiCell(190, 6.7, 'Saya menyatakan bahwa keterangan-keterangan  dalam Surat Pernyataan ini adalah benar dan saya buat dengan sejujurnya, apabila dikemudian hari ternyata keterangan-keterangan di atas tidak sebenarnya saya sanggup mempertanggungjawabkannya dihadapan hukum.', 0, 'J',  true);
             $this->pdf->Ln();
             $this->pdf->SetXY(10, 241);
-            $this->pdf->MultiCell(55, 5, $setting->kota . ',', 0, 'L',  true);
+            $this->pdf->MultiCell(55, 5, $setting->kota . ', ' . tanggal_hari(this_day()) . ',', 0, 'L',  true);
             $this->pdf->SetXY(10, 246);
             $this->pdf->MultiCell(55, 5, 'Pemberi pernyataan,,', 0, 'L',  true);
             $this->pdf->SetXY(10, 270);
@@ -1361,7 +1361,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Ln();
             $this->pdf->SetXY(10, 235);
-            $this->pdf->MultiCell(190, 5, $setting->kota . ' ,................................................', 0, 'L',  true);
+            $this->pdf->MultiCell(190, 5, $setting->kota . ', ' . tanggal_hari(this_day()), 0, 'L',  true);
             $this->pdf->SetXY(10, 240);
             $this->pdf->MultiCell(55, 5, 'Pemberi pernyataan,,', 0, 'L',  true);
             $this->pdf->SetXY(10, 270);
@@ -1440,7 +1440,7 @@ class CetakTagihanController extends Controller
             $this->pdf->Ln();
             $this->pdf->Ln();
             $this->pdf->SetXY(10, 270);
-            $this->pdf->MultiCell(190, 5, $setting->kota . ' ,................................................', 0, 'L',  true);
+            $this->pdf->MultiCell(190, 5, $setting->kota . ', ' . tanggal_hari(this_day()), 0, 'L',  true);
             $this->pdf->SetXY(10, 275);
             $this->pdf->MultiCell(55, 5, 'Yang membuat,', 0, 'L',  true);
             $this->pdf->SetXY(10, 305);
