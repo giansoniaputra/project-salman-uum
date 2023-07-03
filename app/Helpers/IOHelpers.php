@@ -1,4 +1,7 @@
 <?php
+
+use Illuminate\Support\Carbon;
+
 if (!function_exists('tanggal_hari') || !function_exists('rupiah') || !function_exists('terbilang')) {
     function tanggal_hari($tanggal, $cetak_hari = false)
     {
@@ -78,5 +81,10 @@ if (!function_exists('tanggal_hari') || !function_exists('rupiah') || !function_
             $hasil = trim(penyebut($nilai));
         }
         return $hasil;
+    }
+
+    function this_day()
+    {
+        return date('Y-m-d', strtotime(Carbon::now()));
     }
 }

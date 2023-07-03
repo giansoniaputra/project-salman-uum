@@ -7,6 +7,7 @@ use App\Models\Kredit;
 use App\Models\Setting;
 use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class KwitansiController extends Controller
 {
@@ -324,7 +325,7 @@ class KwitansiController extends Controller
         $this->pdf->SetFillColor(255);
         $this->pdf->SetTextColor(0, 0, 0);
         $this->pdf->SetXY(145, 181);
-        $this->pdf->MultiCell(55, 5, $setting->kota, 0, 'L',  true);
+        $this->pdf->MultiCell(55, 5, $setting->kota . ', ' . tanggal_hari(this_day()), 0, 'L',  true);
         $this->pdf->SetXY(145, 220);
         $this->pdf->MultiCell(55, 5, $setting->nama_pemilik, 0, 'L',  true);
         $this->pdf->Ln();
