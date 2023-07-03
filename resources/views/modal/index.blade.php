@@ -101,6 +101,28 @@
             <div class="h-100 row g-0 card-body align-items-center py-3">
                 <div class="col-auto pe-3">
                     <div class="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
+                        <i class="bi-bicycle icon-24 text-white"></i>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row gx-2 d-flex align-content-center">
+                        <div class="col-12 col-xl d-flex">
+                            <div class="d-flex align-items-center lh-1-25">Sisa Modal</div>
+                        </div>
+                        <div class="col-12 col-xl-auto">
+                            <div class="cta-2 text-primary" id="refresh-sisa">{{ rupiah($sisa_modal) }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-6">
+        <div class="card sh-11 hover-scale-up cursor-pointer">
+            <div class="h-100 row g-0 card-body align-items-center py-3">
+                <div class="col-auto pe-3">
+                    <div class="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
                         <i class="bi-cash-stack icon-20 text-white"></i>
                     </div>
                 </div>
