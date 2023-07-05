@@ -208,7 +208,9 @@ class PDFController extends Controller
         $tac = Kredit::where('tanggal_jual', '>=', $tanggal_awal)
             ->where('tanggal_jual', '<=', $tanggal_akhir)
             ->sum('komisi');
-        $sum_harga_jual = Kredit::where('tanggal_jual', '>=', $tanggal_awal)->where('tanggal_jual', '<=', $tanggal_akhir)->sum('harga_jual_kredit');
+        $sum_dp = Kredit::where('tanggal_jual', '>=', $tanggal_awal)->where('tanggal_jual', '<=', $tanggal_akhir)->sum('dp');
+        $sum_pencairan = Kredit::where('tanggal_jual', '>=', $tanggal_awal)->where('tanggal_jual', '<=', $tanggal_akhir)->sum('pencairan');
+        $sum_harga_jual = $sum_dp + $sum_pencairan;
         $sum_harga_beli = Kredit::where('tanggal_jual', '>=', $tanggal_awal)->where('tanggal_jual', '<=', $tanggal_akhir)->sum('harga_beli');
         $this->pdf->Ln();
         $this->pdf->SetFont('Arial', '', '8');
@@ -360,7 +362,9 @@ class PDFController extends Controller
         $tac = Kredit::where('tanggal_jual', '>=', $hari_ini)
             ->where('tanggal_jual', '<=', $hari_ini)
             ->sum('komisi');
-        $sum_harga_jual = Kredit::where('tanggal_jual', '>=', $hari_ini)->where('tanggal_jual', '<=', $hari_ini)->sum('harga_jual_kredit');
+        $sum_dp = Kredit::where('tanggal_jual', '>=', $hari_ini)->where('tanggal_jual', '<=', $hari_ini)->sum('dp');
+        $sum_pencairan = Kredit::where('tanggal_jual', '>=', $hari_ini)->where('tanggal_jual', '<=', $hari_ini)->sum('pencairan');
+        $sum_harga_jual = $sum_dp + $sum_pencairan;
         $sum_harga_beli = Kredit::where('tanggal_jual', '>=', $hari_ini)->where('tanggal_jual', '<=', $hari_ini)->sum('harga_beli');
         $this->pdf->Ln();
         $this->pdf->SetFont('Arial', '', '8');
@@ -515,7 +519,9 @@ class PDFController extends Controller
         $tac = Kredit::where('tanggal_jual', '>=', $minggu_awal)
             ->where('tanggal_jual', '<=', $minggu_akhir)
             ->sum('komisi');
-        $sum_harga_jual = Kredit::where('tanggal_jual', '>=', $minggu_awal)->where('tanggal_jual', '<=', $minggu_akhir)->sum('harga_jual_kredit');
+        $sum_dp = Kredit::where('tanggal_jual', '>=', $minggu_awal)->where('tanggal_jual', '<=', $minggu_akhir)->sum('dp');
+        $sum_pencairan = Kredit::where('tanggal_jual', '>=', $minggu_awal)->where('tanggal_jual', '<=', $minggu_akhir)->sum('pencairan');
+        $sum_harga_jual = $sum_dp + $sum_pencairan;
         $sum_harga_beli = Kredit::where('tanggal_jual', '>=', $minggu_awal)->where('tanggal_jual', '<=', $minggu_akhir)->sum('harga_beli');
         $this->pdf->Ln();
         $this->pdf->SetFont('Arial', '', '8');
@@ -670,8 +676,10 @@ class PDFController extends Controller
         $tac = Kredit::where('tanggal_jual', '>=', $bulan_awal)
             ->where('tanggal_jual', '<=', $bulan_akhir)
             ->sum('komisi');
-        $sum_harga_jual = Kredit::sum('harga_jual_kredit');
-        $sum_harga_beli = Kredit::sum('harga_beli');
+        $sum_dp = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('dp');
+        $sum_pencairan = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('pencairan');
+        $sum_harga_jual = $sum_dp + $sum_pencairan;
+        $sum_harga_beli = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('harga_beli');
         $this->pdf->Ln();
         $this->pdf->SetFont('Arial', '', '8');
         $this->pdf->SetFillColor(255);
@@ -840,8 +848,10 @@ class PDFController extends Controller
         $tac = Kredit::where('tanggal_jual', '>=', $bulan_awal)
             ->where('tanggal_jual', '<=', $bulan_akhir)
             ->sum('komisi');
-        $sum_harga_jual = Kredit::sum('harga_jual_kredit');
-        $sum_harga_beli = Kredit::sum('harga_beli');
+        $sum_dp = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('dp');
+        $sum_pencairan = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('pencairan');
+        $sum_harga_jual = $sum_dp + $sum_pencairan;
+        $sum_harga_beli = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('harga_beli');
         $this->pdf->Ln();
         $this->pdf->SetFont('Arial', '', '8');
         $this->pdf->SetFillColor(255);
@@ -1610,7 +1620,9 @@ class PDFController extends Controller
         $tac = Kredit::where('tanggal_jual', '>=', $tanggal_awal)
             ->where('tanggal_jual', '<=', $tanggal_akhir)
             ->sum('komisi');
-        $sum_harga_jual = Kredit::where('tanggal_jual', '>=', $tanggal_awal)->where('tanggal_jual', '<=', $tanggal_akhir)->sum('harga_jual_kredit');
+        $sum_dp = Kredit::where('tanggal_jual', '>=', $tanggal_awal)->where('tanggal_jual', '<=', $tanggal_akhir)->sum('dp');
+        $sum_pencairan = Kredit::where('tanggal_jual', '>=', $tanggal_awal)->where('tanggal_jual', '<=', $tanggal_akhir)->sum('pencairan');
+        $sum_harga_jual = $sum_dp + $sum_pencairan;
         $sum_harga_beli = Kredit::where('tanggal_jual', '>=', $tanggal_awal)->where('tanggal_jual', '<=', $tanggal_akhir)->sum('harga_beli');
         $this->pdf->Ln();
         $this->pdf->SetFont('Arial', '', '8');
@@ -1695,7 +1707,9 @@ class PDFController extends Controller
         $tac = Kredit::where('tanggal_jual', '>=', $hari_ini)
             ->where('tanggal_jual', '<=', $hari_ini)
             ->sum('komisi');
-        $sum_harga_jual = Kredit::where('tanggal_jual', '>=', $hari_ini)->where('tanggal_jual', '<=', $hari_ini)->sum('harga_jual_kredit');
+        $sum_dp = Kredit::where('tanggal_jual', '>=', $hari_ini)->where('tanggal_jual', '<=', $hari_ini)->sum('dp');
+        $sum_pencairan = Kredit::where('tanggal_jual', '>=', $hari_ini)->where('tanggal_jual', '<=', $hari_ini)->sum('pencairan');
+        $sum_harga_jual = $sum_dp + $sum_pencairan;
         $sum_harga_beli = Kredit::where('tanggal_jual', '>=', $hari_ini)->where('tanggal_jual', '<=', $hari_ini)->sum('harga_beli');
         $this->pdf->Ln();
         $this->pdf->SetFont('Arial', '', '8');
@@ -1781,7 +1795,9 @@ class PDFController extends Controller
         $tac = Kredit::where('tanggal_jual', '>=', $minggu_awal)
             ->where('tanggal_jual', '<=', $minggu_akhir)
             ->sum('komisi');
-        $sum_harga_jual = Kredit::where('tanggal_jual', '>=', $minggu_awal)->where('tanggal_jual', '<=', $minggu_akhir)->sum('harga_jual_kredit');
+        $sum_dp = Kredit::where('tanggal_jual', '>=', $minggu_awal)->where('tanggal_jual', '<=', $minggu_akhir)->sum('dp');
+        $sum_pencairan = Kredit::where('tanggal_jual', '>=', $minggu_awal)->where('tanggal_jual', '<=', $minggu_akhir)->sum('pencairan');
+        $sum_harga_jual = $sum_dp + $sum_pencairan;
         $sum_harga_beli = Kredit::where('tanggal_jual', '>=', $minggu_awal)->where('tanggal_jual', '<=', $minggu_akhir)->sum('harga_beli');
         $this->pdf->Ln();
         $this->pdf->SetFont('Arial', '', '8');
@@ -1869,7 +1885,9 @@ class PDFController extends Controller
         $tac = Kredit::where('tanggal_jual', '>=', $bulan_awal)
             ->where('tanggal_jual', '<=', $bulan_akhir)
             ->sum('komisi');
-        $sum_harga_jual = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('harga_jual_kredit');
+        $sum_dp = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('dp');
+        $sum_pencairan = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('pencairan');
+        $sum_harga_jual = $sum_dp + $sum_pencairan;
         $sum_harga_beli = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('harga_beli');
         $this->pdf->Ln();
         $this->pdf->SetFont('Arial', '', '8');
@@ -1969,7 +1987,9 @@ class PDFController extends Controller
         $tac = Kredit::where('tanggal_jual', '>=', $bulan_awal)
             ->where('tanggal_jual', '<=', $bulan_akhir)
             ->sum('komisi');
-        $sum_harga_jual = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('harga_jual_kredit');
+        $sum_dp = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('dp');
+        $sum_pencairan = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('pencairan');
+        $sum_harga_jual = $sum_dp + $sum_pencairan;
         $sum_harga_beli = Kredit::where('tanggal_jual', '>=', $bulan_awal)->where('tanggal_jual', '<=', $bulan_akhir)->sum('harga_beli');
         $this->pdf->Ln();
         $this->pdf->SetFont('Arial', '', '8');
