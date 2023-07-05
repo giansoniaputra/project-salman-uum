@@ -1216,3 +1216,15 @@ $(document).ready(function () {
         });
     }
 });
+function previewImageKTP() {
+    const image = document.querySelector("#photo-ktp");
+    const imageBase = document.querySelector("#photo_ktp");
+    const imgPre = document.querySelector(".image-ktp");
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image.files[0]);
+    oFReader.onload = function (oFREvent) {
+        imgPre.src = oFREvent.target.result;
+        imageBase.value = oFREvent.target.result;
+    };
+}

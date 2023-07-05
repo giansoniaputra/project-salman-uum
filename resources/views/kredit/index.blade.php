@@ -181,7 +181,7 @@
                         </div>
                     </div>
                     <div class="col-lg-12 mb-3 text-center" id="img-ktp">
-                        <img src="/storage/ktp/default.png" alt="" class="img-fluid" width="200px">
+                        <img src="/storage/ktp/default.png" alt="" class="img-fluid image-ktp" width="200px">
                         <br>
                         <input type="hidden" name="photo_ktp" id="photo_ktp">
                         <input type="hidden" name="old_ktp" id="old_ktp">
