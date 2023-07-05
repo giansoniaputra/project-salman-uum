@@ -198,7 +198,7 @@ class PDFController extends Controller
             $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit), 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit - $row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah(($row->dp + $row->pencairan) - $row->harga_beli), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         //DATA TOTAL JUAL DAN TAC
@@ -350,7 +350,7 @@ class PDFController extends Controller
             $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit), 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit - $row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah(($row->dp + $row->pencairan) - $row->harga_beli), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         //DATA TOTAL JUAL DAN TAC
@@ -505,7 +505,7 @@ class PDFController extends Controller
             $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit), 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit - $row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah(($row->dp + $row->pencairan) - $row->harga_beli), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         //DATA TOTAL JUAL DAN TAC
@@ -661,7 +661,7 @@ class PDFController extends Controller
             $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit), 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit - $row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah(($row->dp + $row->pencairan) - $row->harga_beli), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         $jumlah_jual = Kredit::where('tanggal_jual', '>=', $bulan_awal)
@@ -831,7 +831,7 @@ class PDFController extends Controller
             $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit), 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit - $row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah(($row->dp + $row->pencairan) - $row->harga_beli), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         $jumlah_jual = Kredit::where('tanggal_jual', '>=', $bulan_awal)
@@ -1600,7 +1600,7 @@ class PDFController extends Controller
             $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Cell(27, 7, rupiah($row->harga_beli), 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit - $row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah(($row->dp + $row->pencairan) - $row->harga_beli), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         //DATA TOTAL JUAL DAN TAC
@@ -1685,7 +1685,7 @@ class PDFController extends Controller
             $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Cell(27, 7, rupiah($row->harga_beli), 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit - $row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah(($row->dp + $row->pencairan) - $row->harga_beli), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         //DATA TOTAL JUAL DAN TAC
@@ -1772,7 +1772,7 @@ class PDFController extends Controller
             $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Cell(27, 7, rupiah($row->harga_beli), 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit - $row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah(($row->dp + $row->pencairan) - $row->harga_beli), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         $jumlah_jual = Kredit::where('tanggal_jual', '>=', $minggu_awal)
@@ -1859,7 +1859,7 @@ class PDFController extends Controller
             $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Cell(27, 7, rupiah($row->harga_beli), 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit - $row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah(($row->dp + $row->pencairan) - $row->harga_beli), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         ///DATA TOTAL JUAL DAN TAC
@@ -1959,7 +1959,7 @@ class PDFController extends Controller
             $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, rupiah($row->komisi), 1, '0', 'C', true);
             $this->pdf->Cell(27, 7, rupiah($row->harga_beli), 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, rupiah($row->harga_jual_kredit - $row->harga_beli), 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, rupiah(($row->dp + $row->pencairan) - $row->harga_beli), 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         //DATA TOTAL JUAL DAN TAC
