@@ -251,12 +251,14 @@ $(document).ready(function () {
         let dppo = $(this).val();
         let otr = $("#otr_leasing").val();
 
+        let hasil = otr.replace(',', '') - dppo.replace(',', '')
+
         $("#pencairan").val(new Intl.NumberFormat("id-ID", {
         style: "currency",
         currency: "IDR",
         minimumFractionDigits: 0,
         })
-        .format(otr.replace(',', '') - dppo.replace(',', ''))
+        .format(hasil)
         .replace("Rp", "")
         .replace(/\./g, ","))
     })
