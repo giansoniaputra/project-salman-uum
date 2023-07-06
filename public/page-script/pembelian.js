@@ -31,6 +31,11 @@ $(document).ready(function () {
                 searchable: true,
             },
             {
+                data: "type",
+                orderable: false,
+                searchable: true,
+            },
+            {
                 data: "no_polisi",
                 orderable: false,
             },
