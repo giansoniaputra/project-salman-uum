@@ -233,6 +233,10 @@ Route::get('/refresh_access', [RoleController::class, 'list_access'])->middlewar
 Route::get('/tambah_access', [RoleController::class, 'tambah_access'])->middleware('auth');
 Route::get('/hapus_access', [RoleController::class, 'hapus_access'])->middleware('auth');
 
+//UPLOAD EXEL
+Route::post('/upload-exel', [PembelianController::class, 'upload_excel'])->middleware('pembelian');
+
+
 //METHOD HAPUS DATA
 
 //Ambil Data Chart

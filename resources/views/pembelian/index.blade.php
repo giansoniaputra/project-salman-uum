@@ -109,6 +109,7 @@
 
                         </button>
                         @else
+                        <button type="button" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto" data-bs-toggle="modal" data-bs-target="#modal-exel"><i data-acorn-icon="upload"></i></button>
                         <a href="/pembelian/create" class="btn btn-primary btn-icon btn-icon-start w-100 w-md-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data Pembelian">
                             <i data-acorn-icon="plus"></i>
                         </a>
@@ -514,6 +515,7 @@
         </div>
     </div>
 </div>
+@include('pembelian.modal-import')
 <script src="/page-script/pembelian.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
