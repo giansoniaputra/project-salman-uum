@@ -263,7 +263,7 @@ class KwitansiController extends Controller
         $this->header();
 
         $this->pdf->SetFont('Arial', 'U', '16');
-        $this->pdf->Cell(0, 16, 'KWITANSI PELUNASAN', '0', 1, 'C');
+        $this->pdf->Cell(0, 16, 'KWITANSI PENJUALAN', '0', 1, 'C');
 
         $this->pdf->SetFont('Arial', '', '8');
         $this->pdf->SetFillColor(255, 255, 255);
