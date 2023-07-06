@@ -918,7 +918,7 @@ class PDFController extends Controller
             $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
             $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
-            $this->pdf->Cell(29, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
+            $this->pdf->Cell(54, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
