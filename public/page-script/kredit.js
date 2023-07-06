@@ -247,6 +247,19 @@ $(document).ready(function () {
         $(this).removeClass("is-invalid");
     });
 
+    $("#dp_po").on("change", function(){
+        let dppo = $(this).val();
+        let otr = $("#otr_leasing").val();
+
+        $("#pencairan").val(new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0,
+        })
+        .format(otr.replace(',', '') - dppo.replace(',', ''))
+        .replace("Rp", "")
+        .replace(/\./g, ","))
+    })
     //Ketika NIK terdaftar di table
     $("#nik").on("keyup", function () {
         NProgress.start();
