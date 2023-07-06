@@ -933,14 +933,14 @@ class PDFController extends Controller
         $this->pdf->SetTextColor(255);
         $this->pdf->SetDrawColor(0, 0, 0);
         $this->pdf->Cell(8, 7, 'No', 1, '0', 'C', true);
-        $this->pdf->Cell(25, 7, 'Pembeli', 1, '0', 'C', true);
-        $this->pdf->Cell(30, 7, 'No Polisi', 1, '0', 'C', true);
-        $this->pdf->Cell(22, 7, 'Merk', 1, '0', 'C', true);
-        $this->pdf->Cell(22, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(32, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(35, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Type', 1, '0', 'C', true);
         $this->pdf->Cell(27, 7, 'Tanggal Jual', 1, '0', 'C', true);
         $this->pdf->Cell(27, 7, 'Harga Jual', 1, '0', 'C', true);
-        $this->pdf->Cell(27, 7, 'No Telepon', 1, '0', 'C', true);
-        $this->pdf->Cell(27, 7, 'Alamat', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'No Telepon', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Alamat', 1, '0', 'C', true);
         $this->pdf->Ln();
 
         //isi data cash
@@ -955,14 +955,14 @@ class PDFController extends Controller
             $nama2 = $nama[0];
             $alamat = explode(" ", $row->alamat);
             $this->pdf->Cell(8, 7, $no++, 1, '0', 'C', true);
-            $this->pdf->Cell(25, 7, $nama[0], 1, '0', 'C', true);
-            $this->pdf->Cell(30, 7, $row->no_polisi, 1, '0', 'C', true);
-            $this->pdf->Cell(22, 7, $row->merek, 1, '0', 'C', true);
-            $this->pdf->Cell(22, 7, $row->type, 1, '0', 'C', true);
+            $this->pdf->Cell(32, 7, $nama[0], 1, '0', 'C', true);
+            $this->pdf->Cell(35, 7, $row->no_polisi, 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, $row->merek, 1, '0', 'C', true);
+            $this->pdf->Cell(27, 7, $row->type, 1, '0', 'C', true);
             $this->pdf->Cell(27, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
             $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
-            $this->pdf->Cell(21, 7, $row->no_telepon, 1, '0', 'C', true);
-            $this->pdf->Cell(21, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+            $this->pdf->Cell(29, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
             $this->pdf->Ln();
         }
         // Simpan file PDF ke server
