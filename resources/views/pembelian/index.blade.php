@@ -154,6 +154,7 @@
                             <th class="text-muted text-small text-uppercase">No</th>
                             <th class="text-muted text-small text-uppercase">No Transaksi</th>
                             <th class="text-muted text-small text-uppercase">Merk</th>
+                            <th class="text-muted text-small text-uppercase">Type</th>
                             <th class="text-muted text-small text-uppercase">No Polisi</th>
                             <th class="text-muted text-small text-uppercase">Warna</th>
                             <th class="text-muted text-small text-uppercase">Tanggal Beli</th>
