@@ -2048,6 +2048,9 @@ class PDFController extends Controller
             $this->pdf->Cell(91, 7, $row->alamat, 1, '0', 'C', true);
             $this->pdf->Cell(19, 7, $row->no_telepon, 1, '0', 'C', true);
             $this->pdf->Ln();
+
+            $this->pdf->Output('Laporan Nasabah.pdf', 'I');
+            exit;
         }
     }
 }
