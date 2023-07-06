@@ -2030,9 +2030,9 @@ class PDFController extends Controller
         $this->pdf->SetTextColor(255);
         $this->pdf->SetDrawColor(0, 0, 0);
         $this->pdf->Cell(10, 7, 'No', 1, '0', 'C', true);
-        $this->pdf->Cell(91, 7, 'Nama Nasbah', 1, '0', 'C', true);
-        $this->pdf->Cell(91, 7, 'Alamat', 1, '0', 'C', true);
-        $this->pdf->Cell(91, 7, 'No Telepon', 1, '0', 'C', true);
+        $this->pdf->Cell(50, 7, 'Nama Nasbah', 1, '0', 'C', true);
+        $this->pdf->Cell(50, 7, 'Alamat', 1, '0', 'C', true);
+        $this->pdf->Cell(50, 7, 'No Telepon', 1, '0', 'C', true);
         $this->pdf->Ln();
 
         //isi data cash
@@ -2044,13 +2044,13 @@ class PDFController extends Controller
         $no = 1;
         foreach ($query as $row) {
             $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
-            $this->pdf->Cell(91, 7, $row->nama, 1, '0', 'C', true);
-            $this->pdf->Cell(91, 7, $row->alamat, 1, '0', 'C', true);
-            $this->pdf->Cell(19, 7, $row->no_telepon, 1, '0', 'C', true);
+            $this->pdf->Cell(50, 7, $row->nama, 1, '0', 'C', true);
+            $this->pdf->Cell(50, 7, $row->alamat, 1, '0', 'C', true);
+            $this->pdf->Cell(50, 7, $row->no_telepon, 1, '0', 'C', true);
             $this->pdf->Ln();
-
-            $this->pdf->Output('Laporan Nasabah.pdf', 'I');
-            exit;
         }
+
+        $this->pdf->Output('Laporan Nasabah.pdf', 'I');
+        exit;
     }
 }
