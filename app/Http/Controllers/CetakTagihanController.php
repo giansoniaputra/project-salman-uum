@@ -846,10 +846,6 @@ class CetakTagihanController extends Controller
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
             $this->pdf->Cell(145, 7, strtoupper($request->nama_leasing) . "   QQ " . strtoupper($data->nama), 0, '0', 'L', true);
             $this->pdf->Ln();
-            $this->pdf->Cell(44, 7, 'Nama Nasabah', 0, '0', 'L', true);
-            $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
-            $this->pdf->Cell(145, 7, strtoupper($data->nama), 0, '0', 'L', true);
-            $this->pdf->Ln();
             $this->pdf->Cell(44, 7, 'Banyaknya Uang', 0, '0', 'L', true);
             $this->pdf->Cell(2, 7, ':', 0, '0', 'L', true);
             $this->pdf->Cell(145, 7, terbilang($data->pencairan) . " Rupiah", 0, '0', 'L', true);
