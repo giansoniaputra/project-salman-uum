@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Buy;
 use App\Models\Sele;
+use App\Models\Buyer;
 use App\Models\Kredit;
 use App\Models\Setting;
 use Codedge\Fpdf\Fpdf\Fpdf;
@@ -2010,5 +2011,43 @@ class PDFController extends Controller
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
         exit;
+    }
+
+    public function cetak_nasabah()
+    {
+        $query = Buyer::all();
+        $this->pdf->AddPage('P', 'A4');
+        $this->header();
+
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN DAFTAR NASABAH', '0', 1, 'C');
+
+        //periode laporan
+
+        //Membuat kolom judul tabel
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(10, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(91, 7, 'Nama Nasbah', 1, '0', 'C', true);
+        $this->pdf->Cell(91, 7, 'Alamat', 1, '0', 'C', true);
+        $this->pdf->Cell(91, 7, 'No Telepon', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '7');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $no = 1;
+        foreach ($query as $row) {
+            $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+            $this->pdf->Cell(91, 7, $row->nama, 1, '0', 'C', true);
+            $this->pdf->Cell(91, 7, $row->alamat, 1, '0', 'C', true);
+            $this->pdf->Cell(19, 7, $row->no_telepon, 1, '0', 'C', true);
+            $this->pdf->Ln();
+        }
     }
 }

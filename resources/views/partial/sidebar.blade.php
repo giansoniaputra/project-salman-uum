@@ -155,6 +155,11 @@
                         <span class="label">Laporan Pembelian</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/laporanNasabah">
+                        <span class="label">Laporan Nasabah</span>
+                    </a>
+                </li>
             </ul>
         </li>
         @endif
