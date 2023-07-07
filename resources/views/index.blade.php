@@ -14,7 +14,7 @@
                 <div class="col">
                     <div class="row gx-2 d-flex align-content-center">
                         <div class="col-12 col-xl d-flex">
-                            <div class="d-flex align-items-center lh-1-25">Total Penjualan</div>
+                            <div class="d-flex align-items-center lh-1-25">Total Motor</div>
                         </div>
                         <div class="col-12 col-xl-auto">
                             <div class="cta-2 text-primary">{{$total_jual}}</div>
