@@ -756,7 +756,12 @@ class CetakTagihanController extends Controller
             $this->pdf->AddPage('P', 'Legal');
             $this->header();
             $this->pdf->SetFont('Arial', 'U', '16');
-            $this->pdf->Cell(0, 16, 'SURAT JALAN', '0', 1, 'C');
+            $this->pdf->Cell(0, 16, "SURAT JALAN\n", '0', 1, 'C');
+            $this->pdf->SetFont('Arial', 'U', '9');
+            $this->pdf->SetFillColor(255);
+            $this->pdf->SetTextColor(0, 0, 0);
+            $this->pdf->SetXY(10, 45);
+            $this->pdf->MultiCell(196, 5, 'NO: ' . $data->nota, 0, 'C',  true);
 
             $this->pdf->SetFont('Arial', '', '8');
             $this->pdf->SetFillColor(255, 255, 255);
