@@ -368,7 +368,7 @@
                     <div class="accordion-item">
                         <div class="accordion-header" id="flush-headingZero">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseZero" aria-expanded="false" aria-controls="flush-collapseZero">
-                                Data Penjual
+                                Data Pembeli
                             </button>
                         </div>
                         <div id="flush-collapseZero" class="accordion-collapse collapse" aria-labelledby="flush-headingZero" data-bs-parent="#accordionFlushExample">

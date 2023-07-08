@@ -168,6 +168,7 @@ Route::get('/datatablesUser', [UserController::class, 'dataTablesUser'])->middle
 //CETAK PDF
 //Penjualan Cash Berdasar tanggal
 Route::post('/penjualanDate', [PDFController::class, 'cetak_penjualan_cash_date'])->middleware('auth');
+Route::get('/laporanNasabah', [PDFController::class, 'cetak_nasabah'])->middleware('auth');
 //Penjualan Hari Ini
 Route::get('/penjualanDay', [PDFController::class, 'cetak_day'])->middleware('auth');
 //Penjualan Minggu Ini
