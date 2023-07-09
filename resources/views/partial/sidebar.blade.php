@@ -155,11 +155,11 @@
                         <span class="label">Laporan Pembelian</span>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="/laporanNasabah">
                         <span class="label">Laporan Nasabah</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </li>
         @endif

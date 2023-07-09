@@ -874,7 +874,7 @@ class PDFController extends Controller
         $this->header2();
 
         $this->pdf->SetFont('Arial', 'B', '16');
-        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (KREDIT)', '0', 1, 'C');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (CASH)', '0', 1, 'C');
 
         //periode laporan
 
