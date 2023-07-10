@@ -229,6 +229,132 @@ class PDFController extends Controller
         $this->pdf->Cell(5, 7, ': ', 0, '0', 'L', true);
         $this->pdf->Cell(50, 7, rupiah($tac) . '      (' . terbilang($tac) . ' Rupiah)', 0, '0', 'L', true);
         $this->pdf->Ln();
+
+        $this->pdf->AddPage('L', 'A4');
+        $this->header2();
+
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (KREDIT)', '0', 1, 'C');
+
+        //periode laporan
+
+        $this->pdf->SetFont('Arial', '', '12');
+        $this->pdf->Cell(0, 12, 'Periode Laporan: ' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir), '0', 1, 'L');
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(10, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(24, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(23, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(26, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(26, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Pencairan', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'DP Konsumen', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'No Telepon', 1, '0', 'C', true);
+        $this->pdf->Cell(54, 7, 'Alamat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '7');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+
+        $no = 1;
+        foreach ($query_kredit as $row) {
+            $nama = explode(' ', $row->nama);
+            $nama2 = $nama[0];
+            $alamat = explode(" ", $row->alamat);
+            if (1 == count($alamat)) {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            } else {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            }
+        }
+
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (CASH)', '0', 1, 'C');
+
+        //periode laporan
+
+        //Membuat kolom judul tabel
+        $this->pdf->SetFont('Arial', '', '7');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(8, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(32, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(35, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Harga Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'No Telepon', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Alamat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '7');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $no = 1;
+        foreach ($query_cash as $row) {
+            $nama = explode(' ', $row->nama);
+            $nama2 = $nama[0];
+            $alamat = explode(" ", $row->alamat);
+            if (1 == count($alamat)) {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            } else {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            }
+        }
+
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($tanggal_awal) . ' - ' . tanggal_hari($tanggal_akhir) . ').pdf', 'I');
         exit;
@@ -383,6 +509,131 @@ class PDFController extends Controller
         $this->pdf->Cell(5, 7, ': ', 0, '0', 'L', true);
         $this->pdf->Cell(50, 7, rupiah($tac) . '      (' . terbilang($tac) . ' Rupiah)', 0, '0', 'L', true);
         $this->pdf->Ln();
+        $this->pdf->AddPage('L', 'A4');
+        $this->header2();
+
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (KREDIT)', '0', 1, 'C');
+
+        //periode laporan
+
+        $this->pdf->SetFont('Arial', '', '12');
+        $this->pdf->Cell(0, 12, 'Periode Laporan: ' . tanggal_hari($hari_ini) . ' - ' . tanggal_hari($hari_ini), '0', 1, 'L');
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(10, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(24, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(23, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(26, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(26, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Pencairan', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'DP Konsumen', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'No Telepon', 1, '0', 'C', true);
+        $this->pdf->Cell(54, 7, 'Alamat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '7');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+
+        $no = 1;
+        foreach ($query_kredit as $row) {
+            $nama = explode(' ', $row->nama);
+            $nama2 = $nama[0];
+            $alamat = explode(" ", $row->alamat);
+            if (1 == count($alamat)) {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            } else {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            }
+        }
+
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (CASH)', '0', 1, 'C');
+
+        //periode laporan
+
+        //Membuat kolom judul tabel
+        $this->pdf->SetFont('Arial', '', '7');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(8, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(32, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(35, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Harga Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'No Telepon', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Alamat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '7');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $no = 1;
+        foreach ($query_cash as $row) {
+            $nama = explode(' ', $row->nama);
+            $nama2 = $nama[0];
+            $alamat = explode(" ", $row->alamat);
+            if (1 == count($alamat)) {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            } else {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            }
+        }
+
         $this->pdf->Output('Laporan Penjualan Hari Ini (' . tanggal_hari(Carbon::now()) . ').pdf', 'I');
         exit;
     }
@@ -540,6 +791,130 @@ class PDFController extends Controller
         $this->pdf->Cell(5, 7, ': ', 0, '0', 'L', true);
         $this->pdf->Cell(50, 7, rupiah($tac) . '      (' . terbilang($tac) . ' Rupiah)', 0, '0', 'L', true);
         $this->pdf->Ln();
+        $this->pdf->AddPage('L', 'A4');
+        $this->header2();
+
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (KREDIT)', '0', 1, 'C');
+
+        //periode laporan
+
+        $this->pdf->SetFont('Arial', '', '12');
+        $this->pdf->Cell(0, 12, 'Periode Laporan: ' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir), '0', 1, 'L');
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(10, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(24, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(23, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(26, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(26, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Pencairan', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'DP Konsumen', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'No Telepon', 1, '0', 'C', true);
+        $this->pdf->Cell(54, 7, 'Alamat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '7');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+
+        $no = 1;
+        foreach ($query_kredit as $row) {
+            $nama = explode(' ', $row->nama);
+            $nama2 = $nama[0];
+            $alamat = explode(" ", $row->alamat);
+            if (1 == count($alamat)) {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            } else {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            }
+        }
+
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (CASH)', '0', 1, 'C');
+
+        //periode laporan
+
+        //Membuat kolom judul tabel
+        $this->pdf->SetFont('Arial', '', '7');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(8, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(32, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(35, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Harga Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'No Telepon', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Alamat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '7');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $no = 1;
+        foreach ($query_cash as $row) {
+            $nama = explode(' ', $row->nama);
+            $nama2 = $nama[0];
+            $alamat = explode(" ", $row->alamat);
+            if (1 == count($alamat)) {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            } else {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            }
+        }
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($minggu_awal) . ' - ' . tanggal_hari($minggu_akhir) . ').pdf', 'I');
         exit;
@@ -697,6 +1072,130 @@ class PDFController extends Controller
         $this->pdf->Cell(5, 7, ': ', 0, '0', 'L', true);
         $this->pdf->Cell(50, 7, rupiah($tac) . '      (' . terbilang($tac) . ' Rupiah)', 0, '0', 'L', true);
         $this->pdf->Ln();
+        $this->pdf->AddPage('L', 'A4');
+        $this->header2();
+
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (KREDIT)', '0', 1, 'C');
+
+        //periode laporan
+
+        $this->pdf->SetFont('Arial', '', '12');
+        $this->pdf->Cell(0, 12, 'Periode Laporan: ' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir), '0', 1, 'L');
+
+        $this->pdf->SetFont('Arial', '', '8');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(10, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(24, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(23, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(26, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(26, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Pencairan', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'DP Konsumen', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'No Telepon', 1, '0', 'C', true);
+        $this->pdf->Cell(54, 7, 'Alamat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '7');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+
+        $no = 1;
+        foreach ($query_kredit as $row) {
+            $nama = explode(' ', $row->nama);
+            $nama2 = $nama[0];
+            $alamat = explode(" ", $row->alamat);
+            if (1 == count($alamat)) {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            } else {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            }
+        }
+
+        $this->pdf->SetFont('Arial', 'B', '16');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (CASH)', '0', 1, 'C');
+
+        //periode laporan
+
+        //Membuat kolom judul tabel
+        $this->pdf->SetFont('Arial', '', '7');
+        $this->pdf->SetFillColor(9, 132, 227);
+        $this->pdf->SetTextColor(255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->Cell(8, 7, 'No', 1, '0', 'C', true);
+        $this->pdf->Cell(32, 7, 'Pembeli', 1, '0', 'C', true);
+        $this->pdf->Cell(35, 7, 'No Polisi', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Merk', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Type', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Tanggal Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(27, 7, 'Harga Jual', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'No Telepon', 1, '0', 'C', true);
+        $this->pdf->Cell(29, 7, 'Alamat', 1, '0', 'C', true);
+        $this->pdf->Ln();
+
+        //isi data cash
+        //Membuat kolom isi tabel
+        $this->pdf->SetFont('Arial', '', '7');
+        $this->pdf->SetFillColor(224, 235, 255);
+        $this->pdf->SetDrawColor(0, 0, 0);
+        $this->pdf->SetTextColor(0);
+        $no = 1;
+        foreach ($query_cash as $row) {
+            $nama = explode(' ', $row->nama);
+            $nama2 = $nama[0];
+            $alamat = explode(" ", $row->alamat);
+            if (1 == count($alamat)) {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            } else {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            }
+        }
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
         exit;
@@ -874,7 +1373,7 @@ class PDFController extends Controller
         $this->header2();
 
         $this->pdf->SetFont('Arial', 'B', '16');
-        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (CASH)', '0', 1, 'C');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (KREDIT)', '0', 1, 'C');
 
         //periode laporan
 
@@ -909,21 +1408,35 @@ class PDFController extends Controller
             $nama = explode(' ', $row->nama);
             $nama2 = $nama[0];
             $alamat = explode(" ", $row->alamat);
-            $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
-            $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
-            $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
-            $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
-            $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
-            $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
-            $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
-            $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
-            $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
-            $this->pdf->Cell(54, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
-            $this->pdf->Ln();
+            if (1 == count($alamat)) {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            } else {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            }
         }
 
         $this->pdf->SetFont('Arial', 'B', '16');
-        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (KREDIT)', '0', 1, 'C');
+        $this->pdf->Cell(0, 16, 'LAPORAN PENJUALAN BY NASABAH (CASH)', '0', 1, 'C');
 
         //periode laporan
 
@@ -954,16 +1467,31 @@ class PDFController extends Controller
             $nama = explode(' ', $row->nama);
             $nama2 = $nama[0];
             $alamat = explode(" ", $row->alamat);
-            $this->pdf->Cell(8, 7, $no++, 1, '0', 'C', true);
-            $this->pdf->Cell(32, 7, $nama[0], 1, '0', 'C', true);
-            $this->pdf->Cell(35, 7, $row->no_polisi, 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, $row->merek, 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, $row->type, 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
-            $this->pdf->Cell(27, 7, rupiah($row->harga_jual), 1, '0', 'C', true);
-            $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
-            $this->pdf->Cell(29, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
-            $this->pdf->Ln();
+            if (1 == count($alamat)) {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            } else {
+                $this->pdf->Cell(10, 7, $no++, 1, '0', 'C', true);
+                $this->pdf->Cell(24, 7, $nama2, 1, '0', 'C', true);
+                $this->pdf->Cell(23, 7, $row->no_polisi, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->merek, 1, '0', 'C', true);
+                $this->pdf->Cell(26, 7, $row->type, 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, tanggal_hari($row->tanggal_jual), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->pencairan), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, rupiah($row->dp), 1, '0', 'C', true);
+                $this->pdf->Cell(29, 7, $row->no_telepon, 1, '0', 'C', true);
+                $this->pdf->Cell(54, 7, $alamat[0] . ' ' . $alamat[1], 1, '0', 'C', true);
+                $this->pdf->Ln();
+            }
         }
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
@@ -2104,6 +2632,7 @@ class PDFController extends Controller
         $this->pdf->Cell(5, 7, ': ', 0, '0', 'L', true);
         $this->pdf->Cell(50, 7, rupiah($tac) . '      (' . terbilang($tac) . ' Rupiah)', 0, '0', 'L', true);
         $this->pdf->Ln();
+
         // Simpan file PDF ke server
         $this->pdf->Output('Laporan Penjualan (' . tanggal_hari($bulan_awal) . ' - ' . tanggal_hari($bulan_akhir) . ').pdf', 'I');
         exit;
