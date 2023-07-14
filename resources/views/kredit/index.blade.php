@@ -136,7 +136,7 @@
                         <label for="harga_beli">Harga Beli</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="reg_order">
+                        <input class="form-check-input" type="checkbox" id="reg_order" name="reg_order">
                         <label class="form-check-label" for="reg_order">Apakah sudah melakukan pengajuan di register order?</label>
                     </div>
                     <div id="check-reg-order" class="d-none">

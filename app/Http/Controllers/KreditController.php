@@ -209,137 +209,140 @@ class KreditController extends Controller
 
             if ($buyer) {
                 $data_kredit['buyer_id'] = $buyer->id;
-                //DATA REGISTER ORDER
-                //cek apakah data pembeli sudah terdaftar di register order
-                $cek_reg = Regorder::where('buyer_id', $buyer->id)->first();
-                //BUAT RANDOM NOTA
-                $trx = 'REG-ORDER-00';
-                $cek_last = Regorder::latest()->first();
-                if ($cek_last == NULL) {
-                    $random_num = 1;
-                } else {
-                    $last_nota = explode('-', $cek_last->no_reg);
-                    $random_num = $last_nota[2] + 1;
-                }
-                $nota_reg = $trx . $random_num;
-                //Ambil Data Motor
-                $motor2 = Bike::where('id', $request->no_polisi)->first();
-                if (!$cek_reg) {
-                    $data_reg = [
-                        'unique' => Str::orderedUuid(),
-                        'no_reg' => $nota_reg,
-                        'buyer_id' => $buyer->id
-                    ];
-                    Regorder::create($data_reg);
-                    $latest_reg = Regorder::latest()->first();
-                    $data_list = [
-                        'unique' => Str::orderedUuid(),
-                        'regorder_id' => $latest_reg->unique,
-                        'nama_dealer' => '',
-                        'cmo' => '',
-                        'pic' => '',
-                        'jenis_transaksi' => 'KREDIT',
-                        'via' => '',
-                        'merk' => $motor2->merek,
-                        'type' => $motor2->type,
-                        'tahun_pembuatan' => $motor2->tahun_pembuatan,
-                        'otr' => preg_replace('/[,]/', '', $request->otr_leasing),
-                        'dp_po' => preg_replace('/[,]/', '', $request->dp_po),
-                        'pencairan' => preg_replace('/[,]/', '', $request->pencairan),
-                        'dp' => preg_replace('/[,]/', '', $request->dp_bayar),
-                        'angsuran' => preg_replace('/[,]/', '', $request->angsuran),
-                        'tenor' => $request->tenor,
-                        'status' => 'DI SETUJUI',
-                    ];
-                    List_regorder::create($data_list);
-                } else {
-                    $data_list = [
-                        'unique' => Str::orderedUuid(),
-                        'regorder_id' => $cek_reg->unique,
-                        'nama_dealer' => '',
-                        'cmo' => '',
-                        'pic' => '',
-                        'jenis_transaksi' => 'KREDIT',
-                        'via' => '',
-                        'merk' => $motor2->merek,
-                        'type' => $motor2->type,
-                        'tahun_pembuatan' => $motor2->tahun_pembuatan,
-                        'otr' => preg_replace('/[,]/', '', $request->otr_leasing),
-                        'dp_po' => preg_replace('/[,]/', '', $request->dp_po),
-                        'pencairan' => preg_replace('/[,]/', '', $request->pencairan),
-                        'dp' => preg_replace('/[,]/', '', $request->dp_bayar),
-                        'angsuran' => preg_replace('/[,]/', '', $request->angsuran),
-                        'tenor' => $request->tenor,
-                        'status' => 'DI SETUJUI',
-                    ];
-                    List_regorder::create($data_list);
+                if (!$request->reg_order) {
+                    //DATA REGISTER ORDER
+                    //cek apakah data pembeli sudah terdaftar di register order
+                    $cek_reg = Regorder::where('buyer_id', $buyer->id)->first();
+                    //BUAT RANDOM NOTA
+                    $trx = 'REG-ORDER-00';
+                    $cek_last = Regorder::latest()->first();
+                    if ($cek_last == NULL) {
+                        $random_num = 1;
+                    } else {
+                        $last_nota = explode('-', $cek_last->no_reg);
+                        $random_num = $last_nota[2] + 1;
+                    }
+                    $nota_reg = $trx . $random_num;
+                    //Ambil Data Motor
+                    $motor2 = Bike::where('id', $request->no_polisi)->first();
+                    if (!$cek_reg) {
+                        $data_reg = [
+                            'unique' => Str::orderedUuid(),
+                            'no_reg' => $nota_reg,
+                            'buyer_id' => $buyer->id
+                        ];
+                        Regorder::create($data_reg);
+                        $latest_reg = Regorder::latest()->first();
+                        $data_list = [
+                            'unique' => Str::orderedUuid(),
+                            'regorder_id' => $latest_reg->unique,
+                            'nama_dealer' => '',
+                            'cmo' => '',
+                            'pic' => '',
+                            'jenis_transaksi' => 'KREDIT',
+                            'via' => '',
+                            'merk' => $motor2->merek,
+                            'type' => $motor2->type,
+                            'tahun_pembuatan' => $motor2->tahun_pembuatan,
+                            'otr' => preg_replace('/[,]/', '', $request->otr_leasing),
+                            'dp_po' => preg_replace('/[,]/', '', $request->dp_po),
+                            'pencairan' => preg_replace('/[,]/', '', $request->pencairan),
+                            'dp' => preg_replace('/[,]/', '', $request->dp_bayar),
+                            'angsuran' => preg_replace('/[,]/', '', $request->angsuran),
+                            'tenor' => $request->tenor,
+                            'status' => 'DI SETUJUI',
+                        ];
+                        List_regorder::create($data_list);
+                    } else {
+                        $data_list = [
+                            'unique' => Str::orderedUuid(),
+                            'regorder_id' => $cek_reg->unique,
+                            'nama_dealer' => '',
+                            'cmo' => '',
+                            'pic' => '',
+                            'jenis_transaksi' => 'KREDIT',
+                            'via' => '',
+                            'merk' => $motor2->merek,
+                            'type' => $motor2->type,
+                            'tahun_pembuatan' => $motor2->tahun_pembuatan,
+                            'otr' => preg_replace('/[,]/', '', $request->otr_leasing),
+                            'dp_po' => preg_replace('/[,]/', '', $request->dp_po),
+                            'pencairan' => preg_replace('/[,]/', '', $request->pencairan),
+                            'dp' => preg_replace('/[,]/', '', $request->dp_bayar),
+                            'angsuran' => preg_replace('/[,]/', '', $request->angsuran),
+                            'tenor' => $request->tenor,
+                            'status' => 'DI SETUJUI',
+                        ];
+                        List_regorder::create($data_list);
+                    }
                 }
             } else if (!$buyer) {
                 $last_input = Buyer::latest()->first();
                 $data_kredit['buyer_id'] = $last_input->id;
-
-                $cek_reg = Regorder::where('buyer_id', $last_input->id)->first();
-                //BUAT RANDOM NOTA
-                $trx = 'REG-ORDER-00';
-                $cek_last = Regorder::latest()->first();
-                if ($cek_last == NULL) {
-                    $random_num = 1;
-                } else {
-                    $last_nota = explode('-', $cek_last->no_reg);
-                    $random_num = $last_nota[2] + 1;
-                }
-                $nota_reg = $trx . $random_num;
-                //Ambil Data Motor
-                $motor2 = Bike::where('id', $request->no_polisi)->first();
-                if (!$cek_reg) {
-                    $data_reg = [
-                        'unique' => Str::orderedUuid(),
-                        'no_reg' => $nota_reg,
-                        'buyer_id' => $last_input->id
-                    ];
-                    Regorder::create($data_reg);
-                    $latest_reg = Regorder::latest()->first();
-                    $data_list = [
-                        'unique' => Str::orderedUuid(),
-                        'regorder_id' => $latest_reg->unique,
-                        'nama_dealer' => '',
-                        'cmo' => '',
-                        'pic' => '',
-                        'jenis_transaksi' => 'KREDIT',
-                        'via' => '',
-                        'merk' => $motor2->merek,
-                        'type' => $motor2->type,
-                        'tahun_pembuatan' => $motor2->tahun_pembuatan,
-                        'otr' => preg_replace('/[,]/', '', $request->otr_leasing),
-                        'dp_po' => preg_replace('/[,]/', '', $request->dp_po),
-                        'pencairan' => preg_replace('/[,]/', '', $request->pencairan),
-                        'dp' => preg_replace('/[,]/', '', $request->dp_bayar),
-                        'angsuran' => preg_replace('/[,]/', '', $request->angsuran),
-                        'tenor' => $request->tenor,
-                        'status' => 'DI SETUJUI',
-                    ];
-                    List_regorder::create($data_list);
-                } else {
-                    $data_list = [
-                        'unique' => Str::orderedUuid(),
-                        'regorder_id' => $cek_reg->unique,
-                        'nama_dealer' => '',
-                        'cmo' => '',
-                        'pic' => '',
-                        'jenis_transaksi' => 'KREDIT',
-                        'via' => '',
-                        'merk' => $motor2->merek,
-                        'type' => $motor2->type,
-                        'tahun_pembuatan' => $motor2->tahun_pembuatan,
-                        'otr' => preg_replace('/[,]/', '', $request->otr_leasing),
-                        'dp_po' => preg_replace('/[,]/', '', $request->dp_po),
-                        'pencairan' => preg_replace('/[,]/', '', $request->pencairan),
-                        'dp' => preg_replace('/[,]/', '', $request->dp_bayar),
-                        'angsuran' => preg_replace('/[,]/', '', $request->angsuran),
-                        'tenor' => $request->tenor,
-                        'status' => 'DI SETUJUI',
-                    ];
-                    List_regorder::create($data_list);
+                if (!$request->reg_order) {
+                    $cek_reg = Regorder::where('buyer_id', $last_input->id)->first();
+                    //BUAT RANDOM NOTA
+                    $trx = 'REG-ORDER-00';
+                    $cek_last = Regorder::latest()->first();
+                    if ($cek_last == NULL) {
+                        $random_num = 1;
+                    } else {
+                        $last_nota = explode('-', $cek_last->no_reg);
+                        $random_num = $last_nota[2] + 1;
+                    }
+                    $nota_reg = $trx . $random_num;
+                    //Ambil Data Motor
+                    $motor2 = Bike::where('id', $request->no_polisi)->first();
+                    if (!$cek_reg) {
+                        $data_reg = [
+                            'unique' => Str::orderedUuid(),
+                            'no_reg' => $nota_reg,
+                            'buyer_id' => $last_input->id
+                        ];
+                        Regorder::create($data_reg);
+                        $latest_reg = Regorder::latest()->first();
+                        $data_list = [
+                            'unique' => Str::orderedUuid(),
+                            'regorder_id' => $latest_reg->unique,
+                            'nama_dealer' => '',
+                            'cmo' => '',
+                            'pic' => '',
+                            'jenis_transaksi' => 'KREDIT',
+                            'via' => '',
+                            'merk' => $motor2->merek,
+                            'type' => $motor2->type,
+                            'tahun_pembuatan' => $motor2->tahun_pembuatan,
+                            'otr' => preg_replace('/[,]/', '', $request->otr_leasing),
+                            'dp_po' => preg_replace('/[,]/', '', $request->dp_po),
+                            'pencairan' => preg_replace('/[,]/', '', $request->pencairan),
+                            'dp' => preg_replace('/[,]/', '', $request->dp_bayar),
+                            'angsuran' => preg_replace('/[,]/', '', $request->angsuran),
+                            'tenor' => $request->tenor,
+                            'status' => 'DI SETUJUI',
+                        ];
+                        List_regorder::create($data_list);
+                    } else {
+                        $data_list = [
+                            'unique' => Str::orderedUuid(),
+                            'regorder_id' => $cek_reg->unique,
+                            'nama_dealer' => '',
+                            'cmo' => '',
+                            'pic' => '',
+                            'jenis_transaksi' => 'KREDIT',
+                            'via' => '',
+                            'merk' => $motor2->merek,
+                            'type' => $motor2->type,
+                            'tahun_pembuatan' => $motor2->tahun_pembuatan,
+                            'otr' => preg_replace('/[,]/', '', $request->otr_leasing),
+                            'dp_po' => preg_replace('/[,]/', '', $request->dp_po),
+                            'pencairan' => preg_replace('/[,]/', '', $request->pencairan),
+                            'dp' => preg_replace('/[,]/', '', $request->dp_bayar),
+                            'angsuran' => preg_replace('/[,]/', '', $request->angsuran),
+                            'tenor' => $request->tenor,
+                            'status' => 'DI SETUJUI',
+                        ];
+                        List_regorder::create($data_list);
+                    }
                 }
             }
 
